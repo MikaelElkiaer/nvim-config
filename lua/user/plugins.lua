@@ -106,6 +106,7 @@ return packer.startup(function(use)
     "Hoffs/omnisharp-extended-lsp.nvim",
     requires = { { "nvim-telescope/telescope.nvim" } }
   }
+  use { "vim-test/vim-test" }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim

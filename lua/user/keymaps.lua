@@ -78,3 +78,10 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- MikaelElkiaer
+keymap("n", "<leader>tn", "<cmd>TestNearest<CR>", opts)
+keymap("n", "<leader>tf", "<cmd>TestFile<CR>", opts)
+keymap("n", "<leader>ts", "<cmd>TestSuite<CR>", opts)
+keymap("n", "<leader>tl", "<cmd>TestLast<CR>", opts)
+keymap("n", "<leader>tv", "<cmd>TestVisit<CR>-\\><C-n><C-w>l", opts)
