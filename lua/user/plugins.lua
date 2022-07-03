@@ -120,6 +120,7 @@ return packer.startup(function(use)
       require('ufo').setup()
     end
   }
+  use { 'LunarVim/onedarker.nvim' }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
