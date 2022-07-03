@@ -40,6 +40,10 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 
 -- MikaelElkiaer/
+vim.opt.mouse = ""                             -- allow the mouse to be used in neovim
+vim.opt.timeoutlen = 500                        -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.numberwidth = 2                         -- set number column width to 2 {default 4}
+vim.opt.wrap = true                             -- display lines as one long line
 vim.wo.foldlevel = 99
 vim.wo.foldenable = true
 vim.g["test#csharp#runner"] = "dotnettest"
