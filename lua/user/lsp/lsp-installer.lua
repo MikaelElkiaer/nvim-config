@@ -13,6 +13,7 @@ local servers = {
   "jsonls",
   "yamlls",
   "omnisharp",
+  "efm",
 }
 
 lsp_installer.setup()
@@ -43,6 +44,11 @@ for _, server in pairs(servers) do
   if server == "omnisharp" then
     local omnisharp_opts = require "user.lsp.settings.omnisharp"
     opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
+  end
+
+  if server == "efm" then
+    local efm_opts = require "user.lsp.settings.efm"
+    opts = vim.tbl_deep_extend("force", efm_opts, opts)
   end
 
   lspconfig[server].setup(opts)
