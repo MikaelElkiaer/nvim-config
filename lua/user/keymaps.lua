@@ -80,6 +80,9 @@ keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- MikaelElkiaer
+keymap("n", "<leader>rf", "<cmd>RangerCurrentFile<CR>", opts)
+keymap("n", "<leader>rd", "<cmd>RangerWorkingDirectory<CR>", opts)
+
 keymap("n", "<leader>tn", "<cmd>TestNearest<CR>", opts)
 keymap("n", "<leader>tf", "<cmd>TestFile<CR>", opts)
 keymap("n", "<leader>ts", "<cmd>TestSuite<CR>", opts)

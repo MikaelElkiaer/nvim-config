@@ -107,6 +107,10 @@ return packer.startup(function(use)
     requires = { { "nvim-telescope/telescope.nvim" } }
   }
   use { "vim-test/vim-test" }
+  use {
+    "francoiscabrol/ranger.vim",
+    requires = { { "rbgrouleff/bclose.vim" } }
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim

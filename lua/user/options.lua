@@ -41,3 +41,4 @@ vim.opt.iskeyword:append("-")
 vim.g["test#csharp#runner"] = "dotnettest"
 vim.g["test#strategy"] = "neovim"
 vim.g["test#neovim#term_position"] = "below 15"
+vim.g.ranger_map_keys = 0
