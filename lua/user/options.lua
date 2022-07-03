@@ -38,6 +38,10 @@ vim.opt.fillchars.eob=" "
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
+
+-- MikaelElkiaer/
+vim.wo.foldlevel = 99
+vim.wo.foldenable = true
 vim.g["test#csharp#runner"] = "dotnettest"
 vim.g["test#strategy"] = "neovim"
 vim.g["test#neovim#term_position"] = "below 15"

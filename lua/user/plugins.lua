@@ -114,6 +114,12 @@ return packer.startup(function(use)
   use { "metakirby5/codi.vim" }
   use { "hrsh7th/cmp-nvim-lsp-signature-help" }
   use { "folke/which-key.nvim" }
+  use { 'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async',
+    config = function()
+      require('ufo').setup()
+    end
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
