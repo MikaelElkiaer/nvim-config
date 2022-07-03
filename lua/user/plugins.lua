@@ -152,6 +152,11 @@ return packer.startup(function(use)
       require('leap').set_default_keymaps()
     end
   }
+  use { "tiagovla/scope.nvim",
+    config = function()
+      require("scope").setup()
+    end
+  }
   use { 'kevinhwang91/nvim-ufo',
     requires = 'kevinhwang91/promise-async',
     config = function()
