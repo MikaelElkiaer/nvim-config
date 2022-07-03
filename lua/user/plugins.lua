@@ -112,6 +112,7 @@ return packer.startup(function(use)
     requires = { { "rbgrouleff/bclose.vim" } }
   }
   use { "metakirby5/codi.vim" }
+  use { "hrsh7th/cmp-nvim-lsp-signature-help" }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
