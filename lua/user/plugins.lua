@@ -112,6 +112,7 @@ return packer.startup(function(use)
     module = "nvim-treesitter-textobjects",
     after = "nvim-treesitter"
   }
+  use { "wellle/targets.vim" }
   use {
     "Hoffs/omnisharp-extended-lsp.nvim",
     requires = { { "nvim-telescope/telescope.nvim" } }
