@@ -15,6 +15,7 @@ local servers = {
   "omnisharp",
   "efm",
   "dockerls",
+  "terraformls"
 }
 
 lsp_installer.setup {
