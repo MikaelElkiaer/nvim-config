@@ -123,6 +123,13 @@ return packer.startup(function(use)
     requires = { { "rbgrouleff/bclose.vim" } }
   }
   use { "metakirby5/codi.vim" }
+  use {
+    'nvim-telescope/telescope-ui-select.nvim',
+    requires = { { "nvim-telescope/telescope.nvim" } },
+    config = function()
+      require("telescope").load_extension("ui-select")
+    end
+  }
   use { "hrsh7th/cmp-nvim-lsp-signature-help" }
   use { "folke/which-key.nvim" }
   use { 'kevinhwang91/nvim-ufo',
