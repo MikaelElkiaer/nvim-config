@@ -14,6 +14,7 @@ local servers = {
   "yamlls",
   "omnisharp",
   "efm",
+  "dockerls",
 }
 
 lsp_installer.setup {
