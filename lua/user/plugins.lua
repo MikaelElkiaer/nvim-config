@@ -102,6 +102,10 @@ return packer.startup(function(use)
     module = "nvim-treesitter-textobjects",
     after = "nvim-treesitter"
   }
+  use {
+    "Hoffs/omnisharp-extended-lsp.nvim",
+    requires = { { "nvim-telescope/telescope.nvim" } }
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
