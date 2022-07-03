@@ -130,6 +130,21 @@ return packer.startup(function(use)
       require("telescope").load_extension("ui-select")
     end
   }
+  use {
+    "danymat/neogen",
+    config = function()
+      require('neogen').setup {
+        languages = {
+          cs = {
+            template = {
+              annotation_convention = "xmldoc"
+            }
+          }
+        }
+      }
+    end,
+    requires = "nvim-treesitter/nvim-treesitter"
+  }
   use { "hrsh7th/cmp-nvim-lsp-signature-help" }
   use { "folke/which-key.nvim" }
   use { 'kevinhwang91/nvim-ufo',
