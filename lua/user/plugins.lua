@@ -113,6 +113,7 @@ return packer.startup(function(use)
   }
   use { "metakirby5/codi.vim" }
   use { "hrsh7th/cmp-nvim-lsp-signature-help" }
+  use { "folke/which-key.nvim" }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
