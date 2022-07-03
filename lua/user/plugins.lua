@@ -98,6 +98,15 @@ return packer.startup(function(use)
 
   -- MikaelElkiaer/
   use { "chaoren/vim-wordmotion" }
+  use { "Pocco81/AutoSave.nvim",
+    config = function()
+      require('autosave').setup {
+        conditions = {
+          filename_is_not = { "plugins.lua" }
+        }
+      }
+    end
+  }
   use {
     "nvim-treesitter/nvim-treesitter-textobjects",
     module = "nvim-treesitter-textobjects",
