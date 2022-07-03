@@ -42,3 +42,23 @@ vim.g["test#csharp#runner"] = "dotnettest"
 vim.g["test#strategy"] = "neovim"
 vim.g["test#neovim#term_position"] = "below 15"
 vim.g.ranger_map_keys = 0
+vim.g["codi#interpreters"] = {
+  csharp = {
+    bin = { "dotnet-script" },
+    prompt = "[>*] ",
+    quitcmd = "#exit"
+  }
+}
+vim.g["codi#interpreters"] = {
+  bash = {
+    bin = { "bash" },
+    prompt = "[>$] ",
+    quitcmd = "exit"
+  }
+}
+vim.g["codi#aliases"] = {
+  ["csx"] = "csharp",
+  ["bash"] = "bash",
+  ["sh"] = "bash"
+}
+vim.g["codi#autocmd"] = "InsertLeave"

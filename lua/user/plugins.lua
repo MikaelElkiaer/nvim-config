@@ -111,6 +111,7 @@ return packer.startup(function(use)
     "francoiscabrol/ranger.vim",
     requires = { { "rbgrouleff/bclose.vim" } }
   }
+  use { "metakirby5/codi.vim" }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
