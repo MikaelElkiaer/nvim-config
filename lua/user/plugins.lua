@@ -147,6 +147,11 @@ return packer.startup(function(use)
   }
   use { "hrsh7th/cmp-nvim-lsp-signature-help" }
   use { "folke/which-key.nvim" }
+  use { "ggandor/leap.nvim",
+    config = function()
+      require('leap').set_default_keymaps()
+    end
+  }
   use { 'kevinhwang91/nvim-ufo',
     requires = 'kevinhwang91/promise-async',
     config = function()
