@@ -80,8 +80,12 @@ keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- MikaelElkiaer
-keymap("n", "<leader>rf", "<cmd>RangerCurrentFile<CR>", opts)
-keymap("n", "<leader>rd", "<cmd>RangerWorkingDirectory<CR>", opts)
+keymap("n", "<leader>fr", "<cmd>RangerCurrentFile<CR>", opts)
+keymap("n", "<leader>fR", "<cmd>RangerWorkingDirectory<CR>", opts)
+keymap("n", "<leader>fF", ":Telescope find_files hidden=true no_ignore=true<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fG", ":Telescope live_grep hidden=true no_ignore=true<CR>", opts)
+keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
 
 keymap("n", "<leader>gd", "<cmd>lua _LAZYDOCKER_TOGGLE()<CR>", opts)
 keymap("n", "<leader>gt", "<cmd>ToggleTerm<CR>", opts)
