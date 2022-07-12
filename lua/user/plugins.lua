@@ -109,8 +109,7 @@ return packer.startup(function(use)
   }
   use {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    module = "nvim-treesitter-textobjects",
-    after = "nvim-treesitter"
+    requires = "nvim-treesitter"
   }
   use { "wellle/targets.vim" }
   use {
