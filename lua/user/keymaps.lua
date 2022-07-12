@@ -86,6 +86,8 @@ keymap("n", "<leader>fF", ":Telescope find_files hidden=true no_ignore=true<CR>"
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fG", ":Telescope live_grep hidden=true no_ignore=true<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
+keymap("n", "<leader>fS", ":Telescope lsp_workspace_symbols<CR>", opts)
 
 keymap("n", "<leader>gd", "<cmd>lua _LAZYDOCKER_TOGGLE()<CR>", opts)
 keymap("n", "<leader>gt", "<cmd>ToggleTerm<CR>", opts)
