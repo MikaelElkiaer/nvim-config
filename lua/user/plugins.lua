@@ -164,6 +164,9 @@ return packer.startup(function(use)
   }
   use { 'LunarVim/onedarker.nvim' }
   use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' }
+  use { 'nvim-treesitter/nvim-treesitter-context',
+    requires = 'nvim-treesitter/nvim-treesitter'
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
