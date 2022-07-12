@@ -167,6 +167,11 @@ return packer.startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter-context',
     requires = 'nvim-treesitter/nvim-treesitter'
   }
+  use { "ziontee113/syntax-tree-surfer",
+    config = function()
+      require('syntax-tree-surfer').setup {}
+    end
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
