@@ -53,25 +53,16 @@ M.setup = function()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
-
-  vim.lsp.handlers['textDocument/codeAction'] = require 'lsputil.codeAction'.code_action_handler
-  vim.lsp.handlers['textDocument/references'] = require 'lsputil.locations'.references_handler
-  vim.lsp.handlers['textDocument/definition'] = require 'lsputil.locations'.definition_handler
-  vim.lsp.handlers['textDocument/declaration'] = require 'lsputil.locations'.declaration_handler
-  vim.lsp.handlers['textDocument/typeDefinition'] = require 'lsputil.locations'.typeDefinition_handler
-  vim.lsp.handlers['textDocument/implementation'] = require 'lsputil.locations'.implementation_handler
-  vim.lsp.handlers['textDocument/documentSymbol'] = require 'lsputil.symbols'.document_handler
-  vim.lsp.handlers['workspace/symbol'] = require 'lsputil.symbols'.workspace_handler
 end
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
   local keymap = vim.api.nvim_buf_set_keymap
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
   keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  keymap(bufnr, "n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
+  keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
   keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
