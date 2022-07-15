@@ -45,7 +45,6 @@ vim.opt.timeoutlen = 500                        -- time to wait for a mapped seq
 vim.opt.numberwidth = 2                         -- set number column width to 2 {default 4}
 vim.opt.wrap = true                             -- display lines as one long line
 vim.g.wordmotion_prefix = "<BS>"
-vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = -1
 vim.o.foldenable = true
