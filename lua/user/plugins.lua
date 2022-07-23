@@ -170,6 +170,11 @@ return packer.startup(function(use)
       require('syntax-tree-surfer').setup {}
     end
   }
+  use {'akinsho/git-conflict.nvim',
+    config = function()
+      require('git-conflict').setup()
+    end
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
