@@ -13,7 +13,6 @@ local servers = {
   "jsonls",
   "yamlls",
   "omnisharp",
-  "efm",
   "dockerls",
   "terraformls"
 }
