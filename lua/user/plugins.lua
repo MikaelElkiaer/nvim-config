@@ -170,9 +170,14 @@ return packer.startup(function(use)
       require('syntax-tree-surfer').setup {}
     end
   }
-  use {'akinsho/git-conflict.nvim',
+  use { 'akinsho/git-conflict.nvim',
     config = function()
       require('git-conflict').setup()
+    end
+  }
+  use { 'Darazaki/indent-o-matic',
+    config = function()
+      require('indent-o-matic').setup {}
     end
   }
   -- /MikaelElkiaer
