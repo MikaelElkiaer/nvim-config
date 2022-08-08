@@ -97,13 +97,9 @@ return packer.startup(function(use)
 
   -- MikaelElkiaer/
   use { "chaoren/vim-wordmotion" }
-  use { "Pocco81/AutoSave.nvim",
+  use { "Pocco81/auto-save.nvim",
     config = function()
-      require('autosave').setup {
-        conditions = {
-          filename_is_not = { "plugins.lua" }
-        }
-      }
+      require('auto-save').setup { }
     end
   }
   use {
