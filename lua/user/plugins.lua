@@ -180,6 +180,14 @@ return packer.startup(function(use)
       require('indent-o-matic').setup {}
     end
   }
+  use({
+      "glepnir/lspsaga.nvim",
+      branch = "main",
+      config = function()
+          local saga = require("lspsaga")
+          saga.init_lsp_saga {}
+     end,
+  })
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
