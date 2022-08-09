@@ -171,11 +171,6 @@ return packer.startup(function(use)
       require('git-conflict').setup()
     end
   }
-  use { 'Darazaki/indent-o-matic',
-    config = function()
-      require('indent-o-matic').setup {}
-    end
-  }
   use({
       "glepnir/lspsaga.nvim",
       branch = "main",
