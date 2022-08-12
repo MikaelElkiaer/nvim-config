@@ -179,6 +179,10 @@ return packer.startup(function(use)
           saga.init_lsp_saga {}
      end,
   })
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
