@@ -13,6 +13,28 @@ if not dap_install_status_ok then
   return
 end
 
+dap.adapters.netcoredbg = {
+  type = 'executable',
+  command = '/usr/bin/netcoredbg',
+  args = {'--interpreter=vscode'}
+}
+dap.configurations.cs = {
+  {
+    type = "netcoredbg",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function()
+        return vim.fn.input('Path to dll', vim.fn.getcwd(), 'file')
+    end,
+  },
+  {
+    type = "netcoredbg",
+    name = "attach - netcoredbg",
+    request = "attach",
+    processId = require('dap.utils').pick_process,
+  },
+}
+
 dap_install.setup {}
 
 dap_install.config("python", {})
