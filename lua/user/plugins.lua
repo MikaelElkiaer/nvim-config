@@ -92,7 +92,7 @@ return packer.startup(function(use)
   use { "ravenxrz/DAPInstall.nvim" }
 
   -- MikaelElkiaer/
-  use { "chaoren/vim-wordmotion" }
+  use { "chaoren/vim-wordmotion" } -- camel/pascal/snake/kebab case motions
   use { "XXiaoA/auto-save.nvim",
     config = function()
       require('auto-save').setup {
@@ -120,26 +120,26 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter-textobjects",
     requires = "nvim-treesitter"
   }
-  use { "wellle/targets.vim" }
+  use { "wellle/targets.vim" } -- more text objects for quicker manipulation
   use {
-    "Hoffs/omnisharp-extended-lsp.nvim",
+    "Hoffs/omnisharp-extended-lsp.nvim", -- goto definition for external symbols
     requires = { { "nvim-telescope/telescope.nvim" } }
   }
-  use { "vim-test/vim-test" }
+  use { "vim-test/vim-test" } -- run tests based on context
   use {
-    "francoiscabrol/ranger.vim",
+    "francoiscabrol/ranger.vim", -- ranger integration
     requires = { { "rbgrouleff/bclose.vim" } }
   }
-  use { "metakirby5/codi.vim" }
+  use { "metakirby5/codi.vim" } -- scratchpad for scripting
   use {
-    'nvim-telescope/telescope-ui-select.nvim',
+    'nvim-telescope/telescope-ui-select.nvim', -- use telescope for various ui inputs
     requires = { { "nvim-telescope/telescope.nvim" } },
     config = function()
       require("telescope").load_extension("ui-select")
     end
   }
   use {
-    "danymat/neogen",
+    "danymat/neogen", -- generate c# xml doc
     config = function()
       require('neogen').setup {
         languages = {
@@ -153,39 +153,39 @@ return packer.startup(function(use)
     end,
     requires = "nvim-treesitter/nvim-treesitter"
   }
-  use { "hrsh7th/cmp-nvim-lsp-signature-help" }
-  use { "folke/which-key.nvim" }
-  use { "ggandor/leap.nvim",
+  use { "hrsh7th/cmp-nvim-lsp-signature-help" } -- lsp signature (method overloads etc.)
+  use { "folke/which-key.nvim" } -- mini cheatsheet for keymaps on demand
+  use { "ggandor/leap.nvim", -- simple and powerful search-based navigation
     config = function()
       require('leap').set_default_keymaps()
     end
   }
-  use { "tiagovla/scope.nvim",
+  use { "tiagovla/scope.nvim", -- limit visible buffers to active tab
     config = function()
       require("scope").setup()
     end
   }
-  use { 'kevinhwang91/nvim-ufo',
+  use { 'kevinhwang91/nvim-ufo', -- lsp-based folds
     requires = 'kevinhwang91/promise-async',
     config = function()
       require('ufo').setup()
     end
   }
-  use { 'nvim-treesitter/nvim-treesitter-context',
+  use { 'nvim-treesitter/nvim-treesitter-context', -- display parent context for nested constructs
     requires = 'nvim-treesitter/nvim-treesitter'
   }
-  use { "ziontee113/syntax-tree-surfer",
+  use { "ziontee113/syntax-tree-surfer", -- navigate and move constructs
     config = function()
       require('syntax-tree-surfer').setup {}
     end
   }
-  use { 'akinsho/git-conflict.nvim',
+  use { 'akinsho/git-conflict.nvim', -- navigate and simple view of git conflicts
     config = function()
       require('git-conflict').setup()
     end
   }
   use({
-    "glepnir/lspsaga.nvim",
+    "glepnir/lspsaga.nvim", -- lsp UI enhancements
     branch = "main",
     config = function()
       local saga = require("lspsaga")
@@ -198,11 +198,11 @@ return packer.startup(function(use)
     end,
   })
   use({
-    "iamcco/markdown-preview.nvim",
+    "iamcco/markdown-preview.nvim", -- markdown browser preview and sync
     run = function() vim.fn["mkdp#util#install"]() end,
   })
   use({
-    'arjunmahishi/run-code.nvim'
+    'arjunmahishi/run-code.nvim' -- run code from file (incl. markdown code blocks)
   })
   use {
     "williamboman/mason.nvim",
