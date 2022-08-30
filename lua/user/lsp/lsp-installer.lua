@@ -14,11 +14,15 @@ local servers = {
   "yamlls",
   "omnisharp",
   "dockerls",
-  "terraformls"
+  "terraformls",
 }
 
 lsp_installer.setup {
-  automatic_installation = true
+  automatic_installation = {
+    exclude = {
+      "omnisharp"
+    }
+  }
 }
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
