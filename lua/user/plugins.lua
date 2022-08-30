@@ -190,21 +190,21 @@ return packer.startup(function(use)
     end
   }
   use({
-      "glepnir/lspsaga.nvim",
-      branch = "main",
-      config = function()
-          local saga = require("lspsaga")
-          saga.init_lsp_saga {
-            code_action_lightbulb = {
-                sign = false,
-                enable_in_insert = false,
-            },
-          }
-     end,
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      local saga = require("lspsaga")
+      saga.init_lsp_saga {
+        code_action_lightbulb = {
+          sign = false,
+          enable_in_insert = false,
+        },
+      }
+    end,
   })
   use({
-      "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
   })
   use({
     'arjunmahishi/run-code.nvim'
