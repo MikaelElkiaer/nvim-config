@@ -47,7 +47,6 @@ return packer.startup(function(use)
   use { "numToStr/Comment.nvim" }
   use { "JoosepAlviste/nvim-ts-context-commentstring" }
   use { "kyazdani42/nvim-web-devicons" }
-  use { "kyazdani42/nvim-tree.lua" }
   use { "akinsho/bufferline.nvim" }
   use { "moll/vim-bbye" }
   use { "nvim-lualine/lualine.nvim" }
@@ -55,11 +54,9 @@ return packer.startup(function(use)
   use { "ahmedkhalf/project.nvim" }
   use { "lewis6991/impatient.nvim" }
   use { "lukas-reineke/indent-blankline.nvim" }
-  use { "goolord/alpha-nvim" }
 
   -- Colorschemes
-  use { "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" }
-  use { "lunarvim/darkplus.nvim", commit = "2584cdeefc078351a79073322eb7f14d7fbb1835" }
+  use { "folke/tokyonight.nvim" }
 
   -- cmp plugins
   use { "hrsh7th/nvim-cmp" } -- The completion plugin
@@ -174,7 +171,6 @@ return packer.startup(function(use)
       require('ufo').setup()
     end
   }
-  use { 'LunarVim/onedarker.nvim' }
   use { 'nvim-treesitter/nvim-treesitter-context',
     requires = 'nvim-treesitter/nvim-treesitter'
   }
