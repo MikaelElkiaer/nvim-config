@@ -83,5 +83,3 @@ vim.filetype.add({
     overlay = 'devicetree'
   }
 })
-
-vim.g.neovide_fullscreen = true
