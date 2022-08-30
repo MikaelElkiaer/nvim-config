@@ -37,7 +37,7 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Close buffers
 keymap("n", "<leader>c", "<cmd>Bdelete!<CR>", opts)
-keymap("n", "<leader>C", "<cmd>%Bdelete!<CR>", opts)
+keymap("n", "<leader>C", "<cmd>bufdo :Bdelete<CR>", opts)
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
@@ -92,9 +92,10 @@ keymap("n", "<leader>fO", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
 keymap("n", "<leader>fS", ":Telescope lsp_workspace_symbols<CR>", opts)
 
-keymap("n", "<leader>gd", "<cmd>lua _LAZYDOCKER_TOGGLE()<CR>", opts)
-keymap("n", "<leader>gt", "<cmd>ToggleTerm<CR>", opts)
+keymap("n", "<leader><leader>d", "<cmd>lua _LAZYDOCKER_TOGGLE()<CR>", opts)
+keymap("n", "<leader><cr>", "<cmd>ToggleTerm<CR>", opts)
 
+-- vim-test
 keymap("n", "<leader>tn", "<cmd>TestNearest<CR>", opts)
 keymap("n", "<leader>tf", "<cmd>TestFile<CR>", opts)
 keymap("n", "<leader>ts", "<cmd>TestSuite<CR>", opts)
@@ -142,5 +143,6 @@ vim.keymap.set("x", "L", '<cmd>STSSelectChildNode<cr>', opts)
 vim.keymap.set("x", "<A-j>", '<cmd>STSSwapNextVisual<cr>', opts)
 vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
 
+-- nvim-ufo
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)

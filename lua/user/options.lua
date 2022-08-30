@@ -83,3 +83,5 @@ vim.filetype.add({
     overlay = 'devicetree'
   }
 })
+
+vim.g.bclose_no_plugin_maps = true
