@@ -126,10 +126,6 @@ return packer.startup(function(use)
     requires = { { "nvim-telescope/telescope.nvim" } }
   }
   use { "vim-test/vim-test" } -- run tests based on context
-  use {
-    "francoiscabrol/ranger.vim", -- ranger integration
-    requires = { { "rbgrouleff/bclose.vim" } }
-  }
   use { "metakirby5/codi.vim" } -- scratchpad for scripting
   use {
     'nvim-telescope/telescope-ui-select.nvim', -- use telescope for various ui inputs
@@ -216,6 +212,18 @@ return packer.startup(function(use)
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig"
     }
+  }
+  use {
+    "lmburns/lf.nvim",
+    config = function()
+      -- This feature will not work if the plugin is lazy-loaded
+      vim.g.lf_netrw = 1
+
+      require("lf").setup {
+        escape_quit = true
+      }
+    end,
+    requires = { "plenary.nvim", "toggleterm.nvim" }
   }
   -- /MikaelElkiaer
 

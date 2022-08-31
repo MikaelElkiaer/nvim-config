@@ -82,8 +82,7 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 keymap("n", "<leader>dk", "<cmd>lua require('dap.ui.widgets').hover()<cr>", opts)
 
 -- MikaelElkiaer
-keymap("n", "<leader>fr", "<cmd>RangerCurrentFile<CR>", opts)
-keymap("n", "<leader>fR", "<cmd>RangerWorkingDirectory<CR>", opts)
+keymap("n", "<leader><leader>f", "<cmd>lua require('lf').start()<CR>", opts)
 keymap("n", "<leader>fF", ":Telescope find_files hidden=true no_ignore=true<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fG", ":Telescope live_grep hidden=true no_ignore=true<CR>", opts)

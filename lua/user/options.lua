@@ -51,7 +51,6 @@ vim.o.foldenable = true
 vim.g["test#csharp#runner"] = "dotnettest"
 vim.g["test#strategy"] = "neovim"
 vim.g["test#neovim#term_position"] = "below 15"
-vim.g.ranger_map_keys = 0
 vim.g["codi#interpreters"] = {
   csharp = {
     bin = { "dotnet-script" },
@@ -83,5 +82,3 @@ vim.filetype.add({
     overlay = 'devicetree'
   }
 })
-
-vim.g.bclose_no_plugin_maps = true
