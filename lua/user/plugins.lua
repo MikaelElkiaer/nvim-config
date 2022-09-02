@@ -51,7 +51,6 @@ return packer.startup(function(use)
   use { "moll/vim-bbye" }
   use { "nvim-lualine/lualine.nvim" }
   use { "akinsho/toggleterm.nvim" }
-  use { "ahmedkhalf/project.nvim" }
   use { "lewis6991/impatient.nvim" }
   use { "lukas-reineke/indent-blankline.nvim" }
 
@@ -224,6 +223,28 @@ return packer.startup(function(use)
       }
     end,
     requires = { "plenary.nvim", "toggleterm.nvim" }
+  }
+  use {
+    'airblade/vim-rooter'
+  }
+  use {
+    'cljoly/telescope-repo.nvim',
+    requires = 'nvim-telescope/telescope.nvim',
+    config = function()
+      require("telescope").setup {
+        extensions = {
+          repo = {
+            list = {
+              search_dirs = {
+                "~/Repositories",
+              },
+            },
+          },
+        },
+      }
+
+      require("telescope").load_extension "repo"
+    end
   }
   -- /MikaelElkiaer
 
