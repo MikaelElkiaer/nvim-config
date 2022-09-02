@@ -34,3 +34,9 @@ whichkey.register({
     name = "Test",
   },
 }, { prefix = "<leader>" })
+
+whichkey.register({
+  r = {
+    name = "Run",
+  },
+}, { prefix = "<leader>" })

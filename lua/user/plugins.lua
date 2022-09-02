@@ -225,6 +225,14 @@ return packer.startup(function(use)
     requires = { "plenary.nvim", "toggleterm.nvim" }
   }
   use {
+    "blackadress/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    branch = "response_body_stored",
+    config = function()
+      require("rest-nvim").setup {}
+    end
+  }
+  use {
     'airblade/vim-rooter'
   }
   use {

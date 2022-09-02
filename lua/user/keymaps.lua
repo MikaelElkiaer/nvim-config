@@ -144,3 +144,7 @@ vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
 -- nvim-ufo
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+-- rest-nvim
+vim.keymap.set('n', '<leader>re', '<cmd>lua require("rest-nvim").run()<cr>', opts)
+vim.keymap.set('n', '<leader>rp', '<cmd>lua require("rest-nvim").run(true)<cr>', opts)
