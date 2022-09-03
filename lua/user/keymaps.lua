@@ -62,9 +62,6 @@ keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
--- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
@@ -82,7 +79,6 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 keymap("n", "<leader>dk", "<cmd>lua require('dap.ui.widgets').hover()<cr>", opts)
 
 -- MikaelElkiaer
-keymap("n", "<leader><leader>f", "<cmd>lua require('lf').start()<CR>", opts)
 keymap("n", "<leader>fF", ":Telescope find_files hidden=true no_ignore=true<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fG", ":Telescope live_grep hidden=true no_ignore=true<CR>", opts)
@@ -91,8 +87,11 @@ keymap("n", "<leader>fO", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
 keymap("n", "<leader>fS", ":Telescope lsp_workspace_symbols<CR>", opts)
 
+-- TUIs
+keymap("n", "<leader><leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+keymap("n", "<leader><leader>l", "<cmd>lua require('lf').start()<CR>", opts)
 keymap("n", "<leader><leader>d", "<cmd>lua _LAZYDOCKER_TOGGLE()<CR>", opts)
-keymap("n", "<leader><cr>", "<cmd>ToggleTerm<CR>", opts)
+keymap("n", "<leader><leader><cr>", "<cmd>ToggleTerm<CR>", opts)
 
 -- vim-test
 keymap("n", "<leader>tn", "<cmd>TestNearest<CR>", opts)
