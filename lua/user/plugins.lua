@@ -197,7 +197,15 @@ return packer.startup(function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
   })
   use({
-    'arjunmahishi/run-code.nvim' -- run code from file (incl. markdown code blocks)
+    'arjunmahishi/run-code.nvim', -- run code from file (incl. markdown code blocks)
+    config = function()
+      require('run-code').setup {
+        output = {
+          buffer = true,
+          split_cmd = '100vsplit',
+        }
+      }
+    end
   })
   use {
     "williamboman/mason.nvim",

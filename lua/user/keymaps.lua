@@ -146,5 +146,11 @@ vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
 -- rest-nvim
-vim.keymap.set('n', '<leader>re', '<cmd>lua require("rest-nvim").run()<cr>', opts)
-vim.keymap.set('n', '<leader>rp', '<cmd>lua require("rest-nvim").run(true)<cr>', opts)
+vim.keymap.set('n', '<leader>rh', '<cmd>lua require("rest-nvim").run()<cr>', opts)
+vim.keymap.set('n', '<leader>rph', '<cmd>lua require("rest-nvim").run(true)<cr>', opts)
+
+-- run code and codi
+vim.keymap.set('n', '<leader>rcf', '<cmd>RunCodeFile<cr>', opts)
+vim.keymap.set('n', '<leader>rcb', '<cmd>RunCodeBlock<cr>', opts)
+vim.keymap.set('n', '<leader>rcs', '<cmd>RunCodeSelected<cr>', opts)
+vim.keymap.set('n', '<leader>rC', '<cmd>Codi<cr>', opts)
