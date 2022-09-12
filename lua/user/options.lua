@@ -75,7 +75,6 @@ vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=csx')
 vim.api.nvim_command('au BufRead,BufNewFile *.cheat set filetype=bash')
 local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
 ft_to_parser.csx = "c_sharp"
-vim.g.tokyonight_style = "night"
 vim.filetype.add({
   extension = {
     keymap = 'devicetree',
