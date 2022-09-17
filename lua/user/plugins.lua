@@ -221,18 +221,6 @@ return packer.startup(function(use)
     }
   }
   use {
-    "lmburns/lf.nvim",
-    config = function()
-      -- This feature will not work if the plugin is lazy-loaded
-      vim.g.lf_netrw = 1
-
-      require("lf").setup {
-        escape_quit = true
-      }
-    end,
-    requires = { "plenary.nvim", "toggleterm.nvim" }
-  }
-  use {
     "blackadress/rest.nvim",
     requires = { "nvim-lua/plenary.nvim" },
     branch = "response_body_stored",
@@ -244,23 +232,10 @@ return packer.startup(function(use)
     'airblade/vim-rooter'
   }
   use {
-    'cljoly/telescope-repo.nvim',
-    requires = 'nvim-telescope/telescope.nvim',
-    config = function()
-      require("telescope").setup {
-        extensions = {
-          repo = {
-            list = {
-              search_dirs = {
-                "~/Repositories",
-              },
-            },
-          },
-        },
-      }
-
-      require("telescope").load_extension "repo"
-    end
+    'rcarriga/nvim-notify'
+  }
+  use {
+    "nvim-telescope/telescope-file-browser.nvim"
   }
   -- /MikaelElkiaer
 

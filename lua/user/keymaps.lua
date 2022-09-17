@@ -59,7 +59,6 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope repo list<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
 -- Comment
@@ -86,10 +85,10 @@ keymap("n", "<leader>fo", ":Telescope oldfiles only_cwd=true<CR>", opts)
 keymap("n", "<leader>fO", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
 keymap("n", "<leader>fS", ":Telescope lsp_workspace_symbols<CR>", opts)
+keymap("n", "<leader>fl", ":Telescope file_browser initial_mode=normal hidden=true respect_gitignore=false<CR>", opts)
 
 -- TUIs
 keymap("n", "<leader><leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-keymap("n", "<leader><leader>l", "<cmd>lua require('lf').start()<CR>", opts)
 keymap("n", "<leader><leader>d", "<cmd>lua _LAZYDOCKER_TOGGLE()<CR>", opts)
 keymap("n", "<leader><leader><cr>", "<cmd>ToggleTerm<CR>", opts)
 
