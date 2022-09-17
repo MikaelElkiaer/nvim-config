@@ -81,7 +81,7 @@ keymap("n", "<leader>dk", "<cmd>lua require('dap.ui.widgets').hover()<cr>", opts
 -- MikaelElkiaer
 keymap("n", "<leader>fF", ":Telescope find_files hidden=true no_ignore=true<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fG", ":Telescope live_grep hidden=true no_ignore=true<CR>", opts)
+keymap("n", "<leader>fG", ":lua require'telescope.builtin'.live_grep({ additional_args = function(opts) return {'--hidden', '--no-ignore'} end})<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope oldfiles only_cwd=true<CR>", opts)
 keymap("n", "<leader>fO", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
