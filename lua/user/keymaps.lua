@@ -86,6 +86,7 @@ keymap("n", "<leader>fO", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
 keymap("n", "<leader>fS", ":Telescope lsp_workspace_symbols<CR>", opts)
 keymap("n", "<leader>fl", ":Telescope file_browser initial_mode=normal hidden=true respect_gitignore=false<CR>", opts)
+keymap("n", "<leader>fp", ":Telescope reprosjession<CR>", opts)
 
 -- TUIs
 keymap("n", "<leader><leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

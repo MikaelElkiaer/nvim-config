@@ -81,3 +81,5 @@ vim.filetype.add({
     overlay = 'devicetree'
   }
 })
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.g.rooter_cd_cmd = 'lcd'

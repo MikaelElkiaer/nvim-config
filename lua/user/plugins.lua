@@ -237,6 +237,27 @@ return packer.startup(function(use)
   use {
     "nvim-telescope/telescope-file-browser.nvim"
   }
+  use {
+    "~/Repositories/GitHub/telescope-reprosjession",
+    requires = {
+      'telescope.nvim',
+      'nvim-telescope/telescope-file-browser.nvim',
+      'rmagatti/auto-session'
+    },
+    config = function()
+      require "telescope".load_extension "reprosjession"
+    end
+  }
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        cwd_change_handling = {
+          restore_upcoming_session = true
+        }
+      }
+    end
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
