@@ -258,6 +258,10 @@ return packer.startup(function(use)
       }
     end
   }
+  use {
+    'mrjosh/helm-ls',
+    requires = { 'towolf/vim-helm' }
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim

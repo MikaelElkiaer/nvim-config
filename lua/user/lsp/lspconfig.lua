@@ -15,6 +15,7 @@ local servers = {
   "omnisharp",
   "dockerls",
   "terraformls",
+  "helm_ls"
 }
 
 mason_lspconfig.setup {
@@ -28,6 +29,19 @@ mason_lspconfig.setup {
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
   return
+end
+
+local configs = require('lspconfig.configs')
+if not configs.helm_ls then
+  configs.helm_ls = {
+    default_config = {
+      cmd = { "helm_ls", "serve" },
+      filetypes = { 'helm' },
+      root_dir = function(fname)
+        return lspconfig.util.root_pattern('Chart.yaml')(fname)
+      end,
+    },
+  }
 end
 
 local opts = {}
@@ -51,6 +65,13 @@ for _, server in pairs(servers) do
   if server == "omnisharp" then
     local omnisharp_opts = require "user.lsp.settings.omnisharp"
     opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
+  end
+
+  if server == "helm_ls" then
+    opts = {
+      cmd = { "helm_ls", "serve" },
+      filetypes = { 'helm' },
+    }
   end
 
   lspconfig[server].setup(opts)
