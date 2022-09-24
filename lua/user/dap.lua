@@ -8,11 +8,6 @@ if not dap_ui_status_ok then
   return
 end
 
-local dap_install_status_ok, dap_install = pcall(require, "dap-install")
-if not dap_install_status_ok then
-  return
-end
-
 dap.adapters.netcoredbg = {
   type = 'executable',
   command = '/usr/bin/netcoredbg',
@@ -34,11 +29,6 @@ dap.configurations.cs = {
     processId = require('dap.utils').pick_process,
   },
 }
-
-dap_install.setup {}
-
-dap_install.config("python", {})
--- add other configs here
 
 dapui.setup {}
 

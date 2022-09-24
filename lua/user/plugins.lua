@@ -107,25 +107,54 @@ return packer.startup(function(use)
     module = "plenary"
   } -- Useful lua functions used by lots of plugins
   use { "windwp/nvim-autopairs",
-    after = "nvim-cmp"
+    after = "nvim-cmp",
+    config = function()
+      require "user.autopairs"
+    end
   } -- Autopairs, integrates with both cmp and treesitter
   use { "numToStr/Comment.nvim",
     module = "Comment",
+    config = function()
+      require "user.comment"
+    end
   }
-  use { "JoosepAlviste/nvim-ts-context-commentstring" }
+  use { "JoosepAlviste/nvim-ts-context-commentstring",
+    after = "nvim-treesitter"
+  }
   use { "kyazdani42/nvim-web-devicons",
     module = "nvim-web-devicons"
   }
-  use { "akinsho/bufferline.nvim" }
+  use { "akinsho/bufferline.nvim",
+    config = function()
+      require "user.bufferline"
+    end
+  }
   use { "moll/vim-bbye" }
-  use { "nvim-lualine/lualine.nvim" }
-  use { "akinsho/toggleterm.nvim" }
-  use { "lewis6991/impatient.nvim" }
+  use { "nvim-lualine/lualine.nvim",
+    config = function()
+      require "user.lualine"
+    end
+  }
+  use { "akinsho/toggleterm.nvim",
+    config = function()
+      require "user.toggleterm"
+    end,
+    cmd = "ToggleTerm",
+    module = "toggleterm"
+  }
+  use { "lewis6991/impatient.nvim",
+    config = function()
+      require "user.impatient"
+    end,
+  }
   use { "lukas-reineke/indent-blankline.nvim",
     opt = true,
     setup = function()
       on_file_open "indent-blankline.nvim"
-    end
+    end,
+    config = function()
+      require "user.indentline"
+    end,
   }
 
   -- Colorschemes
@@ -133,7 +162,10 @@ return packer.startup(function(use)
 
   -- cmp plugins
   use { "hrsh7th/nvim-cmp",
-    after = "friendly-snippets"
+    after = "friendly-snippets",
+    config = function()
+      require "user.cmp"
+    end,
   } -- The completion plugin
   use { "hrsh7th/cmp-buffer",
     after = "cmp-nvim-lsp"
@@ -162,13 +194,33 @@ return packer.startup(function(use)
   } -- a bunch of snippets to use
 
   -- LSP
-  use { "neovim/nvim-lspconfig" } -- enable LSP
-  use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
-  use { "RRethy/vim-illuminate" }
+  use { "neovim/nvim-lspconfig",
+    opt = true,
+    setup = function()
+      on_file_open("nvim-lspconfig")
+    end,
+    config = function()
+      require "user.lsp"
+    end
+  } -- enable LSP
+  use { "jose-elias-alvarez/null-ls.nvim",
+    after = "nvim-lspconfig",
+    config = function()
+      require "user.lsp.null-ls"
+    end
+  } -- for formatters and linters
+  use { "RRethy/vim-illuminate",
+    config = function()
+      require "user.illuminate"
+    end
+  }
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim",
-    cmd = "Telescope"
+    cmd = "Telescope",
+    config = function()
+      require "user.telescope"
+    end
   }
 
   -- Treesitter
@@ -185,7 +237,10 @@ return packer.startup(function(use)
       "TSEnable",
       "TSDisable",
       "TSModuleInfo"
-    }
+    },
+    config = function()
+      require "user.treesitter"
+    end
   }
 
   -- Git
@@ -193,12 +248,23 @@ return packer.startup(function(use)
     ft = "gitcommit",
     setup = function()
       gitsigns()
+    end,
+    config = function()
+      require "user.gitsigns"
     end
   }
 
   -- DAP
-  use { "mfussenegger/nvim-dap" }
-  use { "rcarriga/nvim-dap-ui", module_pattern = "dapui.*" }
+  use { "mfussenegger/nvim-dap",
+    module = "dap", 
+    config = function()
+      require "user.dap"
+    end
+  }
+  use { "rcarriga/nvim-dap-ui",
+    requires = "mfussenegger/nvim-dap",
+    module = "dapui"
+  }
 
   -- MikaelElkiaer/
   use { "chaoren/vim-wordmotion" } -- camel/pascal/snake/kebab case motions
@@ -227,7 +293,8 @@ return packer.startup(function(use)
   }
   use {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    requires = "nvim-treesitter"
+    requires = "nvim-treesitter",
+    after = "nvim-treesitter"
   }
   use { "wellle/targets.vim" } -- more text objects for quicker manipulation
   use {
@@ -371,21 +438,28 @@ return packer.startup(function(use)
     module = "notify"
   }
   use {
-    "nvim-telescope/telescope-file-browser.nvim"
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = "nvim-telescope/telescope.nvim",
+    after = "telescope.nvim",
+    config = function()
+      require "user.telescope-file-browser"
+    end
   }
   use {
     "MikaelElkiaer/reprosjession.nvim",
     requires = {
-      'telescope.nvim',
+      'nvim-telescope/telescope.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
       'rmagatti/auto-session'
     },
+    after = { "telescope.nvim", "auto-session" },
     config = function()
       require "telescope".load_extension "reprosjession"
     end
   }
   use {
     'rmagatti/auto-session',
+    module = "auto-session",
     config = function()
       require("auto-session").setup {
         cwd_change_handling = {
