@@ -73,8 +73,6 @@ vim.g["codi#aliases"] = {
 vim.g["codi#autocmd"] = "InsertLeave"
 vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=csx')
 vim.api.nvim_command('au BufRead,BufNewFile *.cheat set filetype=bash')
-local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
-ft_to_parser.csx = "c_sharp"
 vim.filetype.add({
   extension = {
     keymap = 'devicetree',
