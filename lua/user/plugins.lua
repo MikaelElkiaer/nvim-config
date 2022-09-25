@@ -1,6 +1,7 @@
+-- Bootstrap packer - see https://github.com/wbthomason/packer.nvim#bootstrapping
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
@@ -11,7 +12,6 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
   augroup packer_user_config
   autocmd!
@@ -19,99 +19,28 @@ vim.cmd [[
   augroup end 
 ]]
 
--- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
   return
 end
 
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
-
-local lazy_load = function(tb)
-  vim.api.nvim_create_autocmd(tb.events, {
-    group = vim.api.nvim_create_augroup(tb.augroup_name, {}),
-    callback = function()
-      if tb.condition() then
-        vim.api.nvim_del_augroup_by_name(tb.augroup_name)
-
-        -- dont defer for treesitter as it will show slow highlighting
-        -- This deferring only happens only when we do "nvim filename"
-        if tb.plugin ~= "nvim-treesitter" then
-          vim.defer_fn(function()
-            require("packer").loader(tb.plugin)
-            if tb.plugin == "nvim-lspconfig" then
-              vim.cmd "silent! do FileType"
-            end
-          end, 0)
-        else
-          require("packer").loader(tb.plugin)
-        end
-      end
-    end,
-  })
-end
-
-local on_file_open = function(plugin_name)
-  lazy_load {
-    events = { "BufRead", "BufWinEnter", "BufNewFile" },
-    augroup_name = "BeLazyOnFileOpen" .. plugin_name,
-    plugin = plugin_name,
-    condition = function()
-      local file = vim.fn.expand "%"
-      return file ~= "NvimTree_1" and file ~= "[packer]" and file ~= ""
-    end,
+return packer.startup({ function(use)
+  use { "wbthomason/packer.nvim", -- Packer can manage itself 
+    module = "packer",
+    cmd = { "PackerSnapshot", "PackerSnapshotRollback", "PackerSnapshotDelete", "PackerInstall", "PackerUpdate", "PackerSync", "PackerClean", "PackerCompile", "PackerStatus", "PackerProfile", "PackerLoad" },
+    config = function()
+      require "user.plugins"
+    end
   }
-end
-
-local gitsigns = function()
-  vim.api.nvim_create_autocmd({ "BufRead" }, {
-    group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
-    callback = function()
-      vim.fn.system("git rev-parse " .. vim.fn.expand "%:p:h")
-      if vim.v.shell_error == 0 then
-        vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-        vim.schedule(function()
-          require("packer").loader "gitsigns.nvim"
-        end)
-      end
-    end,
-  })
-end
-
--- Install your plugins here
-return packer.startup(function(use)
-  -- My plugins here
-  use { "wbthomason/packer.nvim",
-    cmd = {
-      "PackerSnapshot",
-      "PackerSnapshotRollback",
-      "PackerSnapshotDelete",
-      "PackerInstall",
-      "PackerUpdate",
-      "PackerSync",
-      "PackerClean",
-      "PackerCompile",
-      "PackerStatus",
-      "PackerProfile",
-      "PackerLoad"
-    }
-  } -- Have packer manage itself
-  use { "nvim-lua/plenary.nvim",
+  use { "nvim-lua/plenary.nvim", -- Useful utils
     module = "plenary"
-  } -- Useful lua functions used by lots of plugins
-  use { "windwp/nvim-autopairs",
+  }
+  use { "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
     after = "nvim-cmp",
     config = function()
       require "user.autopairs"
     end
-  } -- Autopairs, integrates with both cmp and treesitter
+  }
   use { "numToStr/Comment.nvim",
     module = "Comment",
     config = function()
@@ -119,6 +48,7 @@ return packer.startup(function(use)
     end
   }
   use { "JoosepAlviste/nvim-ts-context-commentstring",
+    requires = { "nvim-treesitter" },
     after = "nvim-treesitter"
   }
   use { "kyazdani42/nvim-web-devicons",
@@ -139,8 +69,6 @@ return packer.startup(function(use)
     config = function()
       require "user.toggleterm"
     end,
-    cmd = "ToggleTerm",
-    module = "toggleterm"
   }
   use { "lewis6991/impatient.nvim",
     config = function()
@@ -150,7 +78,7 @@ return packer.startup(function(use)
   use { "lukas-reineke/indent-blankline.nvim",
     opt = true,
     setup = function()
-      on_file_open "indent-blankline.nvim"
+      require "user.utils".on_file_open "indent-blankline.nvim"
     end,
     config = function()
       require "user.indentline"
@@ -161,21 +89,21 @@ return packer.startup(function(use)
   use { "folke/tokyonight.nvim" }
 
   -- cmp plugins
-  use { "hrsh7th/nvim-cmp",
+  use { "hrsh7th/nvim-cmp", -- The completion plugin
     after = "friendly-snippets",
     config = function()
       require "user.cmp"
     end,
-  } -- The completion plugin
+  }
   use { "hrsh7th/cmp-buffer",
     after = "cmp-nvim-lsp"
-  } -- buffer completions
+  }
   use { "hrsh7th/cmp-path",
     after = "cmp-buffer"
-  } -- path completions
+  }
   use { "saadparwaiz1/cmp_luasnip",
     after = "LuaSnip"
-  } -- snippet completions
+  }
   use { "hrsh7th/cmp-nvim-lsp",
     after = "cmp-nvim-lua"
   }
@@ -183,26 +111,26 @@ return packer.startup(function(use)
     after = "cmp_luasnip"
   }
 
-  -- snippets
+  -- Snippets
   use { "L3MON4D3/LuaSnip",
     wants = "friendly-snippets",
     after = "nvim-cmp"
-  } --snippet engine
+  }
   use { "rafamadriz/friendly-snippets",
     module = { "cmp", "cmp_nvim_lsp" },
     event = "InsertEnter"
-  } -- a bunch of snippets to use
+  }
 
   -- LSP
   use { "neovim/nvim-lspconfig",
     opt = true,
     setup = function()
-      on_file_open("nvim-lspconfig")
+      require "user.utils".on_file_open("nvim-lspconfig")
     end,
     config = function()
       require "user.lsp"
     end
-  } -- enable LSP
+  }
   use { "jose-elias-alvarez/null-ls.nvim",
     after = "nvim-lspconfig",
     config = function()
@@ -217,7 +145,7 @@ return packer.startup(function(use)
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
+    module = "telescope",
     config = function()
       require "user.telescope"
     end
@@ -228,7 +156,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     module = "nvim-treesitter",
     setup = function()
-      on_file_open "nvim-treesitter"
+      require "user.utils".on_file_open "nvim-treesitter"
     end,
     cmd = {
       "TSInstall",
@@ -247,7 +175,7 @@ return packer.startup(function(use)
   use { "lewis6991/gitsigns.nvim",
     ft = "gitcommit",
     setup = function()
-      gitsigns()
+      require "user.utils".gitsigns()
     end,
     config = function()
       require "user.gitsigns"
@@ -256,7 +184,7 @@ return packer.startup(function(use)
 
   -- DAP
   use { "mfussenegger/nvim-dap",
-    module = "dap", 
+    module = "dap",
     config = function()
       require "user.dap"
     end
@@ -266,40 +194,20 @@ return packer.startup(function(use)
     module = "dapui"
   }
 
-  -- MikaelElkiaer/
   use { "chaoren/vim-wordmotion" } -- camel/pascal/snake/kebab case motions
-  use { "XXiaoA/auto-save.nvim",
+  use { "XXiaoA/auto-save.nvim", -- Auto-save on InsertLeave
     config = function()
-      require('auto-save').setup {
-        condition = function(buf)
-          local fn = vim.fn
-          local utils = require("auto-save.utils.data")
-
-          if fn.getbufvar(buf, "&modifiable") == 1
-              and
-              utils.not_in(fn.getbufvar(buf, "&filetype"), {})
-              and
-              utils.not_in(fn.expand("%:t"), {
-                "plugins.lua",
-                "auto-save.lua",
-              })
-          then
-            return true -- met condition(s), can save
-          end
-          return false -- can't save
-        end,
-      }
+      require "user.auto-save"
     end
   }
-  use {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+  use { "nvim-treesitter/nvim-treesitter-textobjects", -- More context-based navigation
     requires = "nvim-treesitter",
     after = "nvim-treesitter"
   }
-  use { "wellle/targets.vim" } -- more text objects for quicker manipulation
+  use { "wellle/targets.vim" } -- More text objects, for quicker manipulation
   use {
-    "Hoffs/omnisharp-extended-lsp.nvim", -- goto definition for external symbols
-    requires = { { "nvim-telescope/telescope.nvim" } }
+    "Hoffs/omnisharp-extended-lsp.nvim", -- Go to definition for external symbols
+    requires = { "nvim-telescope/telescope.nvim" }
   }
   use { "vim-test/vim-test",
     cmd = { "TestClass", "TestFile", "TestLast", "TestNearest", "TestSuite", "TestVisit" }
@@ -309,10 +217,11 @@ return packer.startup(function(use)
   } -- scratchpad for scripting
   use {
     'nvim-telescope/telescope-ui-select.nvim', -- use telescope for various ui inputs
-    requires = { { "nvim-telescope/telescope.nvim" } },
+    requires = { "nvim-telescope/telescope.nvim" },
     config = function()
-      require("telescope").load_extension("ui-select")
-    end
+      require "telescope".load_extension("ui-select")
+    end,
+    fn = { vim.ui.select }
   }
   use {
     "danymat/neogen", -- generate c# xml doc
@@ -332,9 +241,12 @@ return packer.startup(function(use)
   }
   use { "hrsh7th/cmp-nvim-lsp-signature-help" } -- lsp signature (method overloads etc.)
   use { "folke/which-key.nvim",
-    disable = true,
+    opt = true,
     module = "which-key",
-    keys = { "<leader>", "'", '"', "`" }
+    keys = { "<leader>", "'", '"', "`", "g" },
+    config = function()
+      require "user.which-key"
+    end
   } -- mini cheatsheet for keymaps on demand
   use { "ggandor/leap.nvim", -- simple and powerful search-based navigation
     config = function()
@@ -380,6 +292,7 @@ return packer.startup(function(use)
         },
       }
     end,
+    cmd = "Lspsaga"
   })
   use({
     "iamcco/markdown-preview.nvim", -- markdown browser preview and sync
@@ -402,14 +315,8 @@ return packer.startup(function(use)
     config = function()
       require("mason").setup()
     end,
-    cmd = {
-      "Mason",
-      "MasonInstall",
-      "MasonInstallAll",
-      "MasonUninstall",
-      "MasonUninstallAll",
-      "MasonLog",
-    }
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    module = "mason"
   }
   use {
     "williamboman/mason-lspconfig.nvim",
@@ -418,7 +325,7 @@ return packer.startup(function(use)
       "neovim/nvim-lspconfig"
     },
     setup = function()
-      on_file_open("nvim-lspconfig")
+      require "user.utils".on_file_open("nvim-lspconfig")
     end
   }
   use {
@@ -452,14 +359,13 @@ return packer.startup(function(use)
       'nvim-telescope/telescope-file-browser.nvim',
       'rmagatti/auto-session'
     },
-    after = { "telescope.nvim", "auto-session" },
+    after = { "telescope.nvim", "telescope-file-browser.nvim", "auto-session" },
     config = function()
       require "telescope".load_extension "reprosjession"
     end
   }
   use {
     'rmagatti/auto-session',
-    module = "auto-session",
     config = function()
       require("auto-session").setup {
         cwd_change_handling = {
@@ -480,4 +386,12 @@ return packer.startup(function(use)
   if packer_bootstrap then
     require("packer").sync()
   end
-end)
+end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
+  }
+})
