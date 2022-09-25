@@ -380,6 +380,10 @@ return packer.startup({ function(use)
     requires = { 'towolf/vim-helm' },
     ft = "helm"
   }
+  use { "valorl/vcslink.nvim",
+    module = "vcslink",
+    cmd = { "VcsLinkCopy", "VcsLinkBrowse" }
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
