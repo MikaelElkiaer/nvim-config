@@ -40,8 +40,8 @@ keymap("v", ">", ">gv", opts)
 -- Plugins --
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>ff", ":Telescope find_files hidden=true<CR>", opts)
+keymap("n", "<leader>ft", ":lua require'telescope.builtin'.live_grep({ additional_args = function(opts) return {'--hidden'} end})<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
 -- Comment
