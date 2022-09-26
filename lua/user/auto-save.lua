@@ -12,6 +12,8 @@ auto_save.setup {
         and utils.not_in(vim.fn.expand("%:t"), {
           "plugins.lua",
           "auto-save.lua",
+          "picom.conf",
+          "wezterm.lua"
         })
     then
       return true
