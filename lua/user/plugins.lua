@@ -369,6 +369,7 @@ return packer.startup({ function(use)
     'rmagatti/auto-session',
     config = function()
       require("auto-session").setup {
+        log_level = "error",
         cwd_change_handling = {
           restore_upcoming_session = true
         }
