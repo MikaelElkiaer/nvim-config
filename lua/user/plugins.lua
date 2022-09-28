@@ -385,6 +385,9 @@ return packer.startup({ function(use)
     module = "vcslink",
     cmd = { "VcsLinkCopy", "VcsLinkBrowse" }
   }
+  use { "dstein64/vim-startuptime",
+    cmd = "StartupTime"
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
