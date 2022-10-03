@@ -67,11 +67,23 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
   end
 
+  if server == "yamlls" then
+    local yamlls_opts = {
+      on_attach = function(client, bufnr)
+        if vim.bo[bufnr].filetype == "helm" then
+          vim.diagnostic.disable()
+        end
+      end
+    }
+    opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
+  end
+
   if server == "helm_ls" then
-    opts = {
+    local helmls_opts = {
       cmd = { "helm_ls", "serve" },
       filetypes = { 'helm' },
     }
+    opts = vim.tbl_deep_extend("force", helmls_opts, opts)
   end
 
   lspconfig[server].setup(opts)
