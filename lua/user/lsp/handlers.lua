@@ -87,6 +87,13 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
+  if client.name == "yamlls" then
+    local ft = vim.bo[bufnr].filetype
+    if ft == "" or ft == "helm" then
+      client.stop()
+    end
+  end
+
   lsp_keymaps(bufnr)
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then
