@@ -73,8 +73,8 @@ keymap("n", "<leader>fL", ":Telescope file_browser initial_mode=normal hidden=tr
 keymap("n", "<leader>fp", ":Telescope reprosjession root_dir=" .. vim.loop.os_homedir() .. "/Repositories<CR>", opts)
 
 -- TUIs
-keymap("n", "<leader><leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-keymap("n", "<leader><leader>d", "<cmd>lua _LAZYDOCKER_TOGGLE()<CR>", opts)
+keymap("n", "<leader><leader>g", "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' }):toggle()<CR>", opts)
+keymap("n", "<leader><leader>d", "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazydocker', hidden = true, direction = 'float', dir='%:p:h' }):toggle()<CR>", opts)
 keymap("n", "<leader><leader><cr>", "<cmd>ToggleTerm<CR>", opts)
 
 -- vim-test
