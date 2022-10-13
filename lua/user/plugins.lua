@@ -25,9 +25,10 @@ if not status_ok then
 end
 
 return packer.startup({ function(use)
-  use { "wbthomason/packer.nvim", -- Packer can manage itself 
+  use { "wbthomason/packer.nvim", -- Packer can manage itself
     module = "packer",
-    cmd = { "PackerSnapshot", "PackerSnapshotRollback", "PackerSnapshotDelete", "PackerInstall", "PackerUpdate", "PackerSync", "PackerClean", "PackerCompile", "PackerStatus", "PackerProfile", "PackerLoad" },
+    cmd = { "PackerSnapshot", "PackerSnapshotRollback", "PackerSnapshotDelete", "PackerInstall", "PackerUpdate",
+      "PackerSync", "PackerClean", "PackerCompile", "PackerStatus", "PackerProfile", "PackerLoad" },
     config = function()
       require "user.plugins"
     end
@@ -86,7 +87,15 @@ return packer.startup({ function(use)
   }
 
   -- Colorschemes
-  use { "folke/tokyonight.nvim" }
+  use {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+      require("catppuccin").setup()
+      vim.api.nvim_command "colorscheme catppuccin"
+    end
+  }
 
   -- cmp plugins
   use { "hrsh7th/nvim-cmp", -- The completion plugin
