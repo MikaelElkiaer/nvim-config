@@ -125,10 +125,6 @@ vim.keymap.set("x", "L", '<cmd>STSSelectChildNode<cr>', opts)
 vim.keymap.set("x", "<A-j>", '<cmd>STSSwapNextVisual<cr>', opts)
 vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
 
--- nvim-ufo
-vim.keymap.set('n', 'zR', '<cmd>lua require("ufo").openAllFolds()<cr>', opts)
-vim.keymap.set('n', 'zM', '<cmd>lua require("ufo").closeAllFolds()<cr>', opts)
-
 -- rest-nvim
 vim.keymap.set('n', '<leader>rh', '<cmd>lua require("rest-nvim").run()<cr>', opts)
 vim.keymap.set('n', '<leader>rph', '<cmd>lua require("rest-nvim").run(true)<cr>', opts)

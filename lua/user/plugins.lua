@@ -269,12 +269,6 @@ return packer.startup({ function(use)
       require("scope").setup()
     end
   }
-  use { 'kevinhwang91/nvim-ufo', -- lsp-based folds
-    requires = 'kevinhwang91/promise-async',
-    config = function()
-      require('ufo').setup()
-    end
-  }
   use { 'nvim-treesitter/nvim-treesitter-context', -- display parent context for nested constructs
     requires = 'nvim-treesitter/nvim-treesitter'
   }
