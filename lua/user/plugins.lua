@@ -339,6 +339,7 @@ return packer.startup({ function(use)
     config = function()
       require("rest-nvim").setup {}
     end,
+    ft = "http",
     module = "rest-nvim"
   }
   use {
