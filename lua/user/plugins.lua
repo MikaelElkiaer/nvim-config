@@ -88,12 +88,15 @@ return packer.startup({ function(use)
 
   -- Colorschemes
   use {
-    "catppuccin/nvim",
-    as = "catppuccin",
+    "ellisonleao/gruvbox.nvim",
     config = function()
-      vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-      require("catppuccin").setup()
-      vim.api.nvim_command "colorscheme catppuccin"
+      vim.o.background = "dark"
+      require("gruvbox").setup {
+        bold = false,
+        italic = false,
+        contrast = "hard"
+      }
+      vim.api.nvim_command "colorscheme gruvbox"
     end
   }
 
