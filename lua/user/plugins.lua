@@ -398,6 +398,10 @@ return packer.startup({ function(use)
   use { "dstein64/vim-startuptime",
     cmd = "StartupTime"
   }
+  use { "milkias17/reloader.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    cmd = { "Reload" }
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
