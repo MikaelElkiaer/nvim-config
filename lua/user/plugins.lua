@@ -181,6 +181,9 @@ return packer.startup({ function(use)
     },
     config = function()
       require "user.treesitter"
+    end,
+    run = function()
+      require('nvim-treesitter.install').update({ with_sync = true })
     end
   }
 
