@@ -94,7 +94,8 @@ return packer.startup({ function(use)
       require("gruvbox").setup {
         bold = false,
         italic = false,
-        contrast = "hard"
+        contrast = "hard",
+        invert_tabline = true,
       }
       vim.api.nvim_command "colorscheme gruvbox"
     end
