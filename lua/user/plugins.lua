@@ -382,6 +382,9 @@ return packer.startup({ function(use)
         log_level = "error",
         cwd_change_handling = {
           restore_upcoming_session = true
+        },
+        auto_session_suppress_dirs = {
+          "/home/*"
         }
       }
     end
