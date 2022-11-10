@@ -158,7 +158,7 @@ return packer.startup({ function(use)
   -- Telescope
   use { "nvim-telescope/telescope.nvim",
     module = "telescope",
-    cmd = "Telescope",
+    cmd = "Telescope*",
     config = function()
       require "user.telescope"
     end
