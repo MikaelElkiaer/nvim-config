@@ -20,9 +20,6 @@ local servers = {
 
 mason_lspconfig.setup {
   automatic_installation = {
-    exclude = {
-      "omnisharp"
-    }
   }
 }
 

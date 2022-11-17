@@ -136,6 +136,9 @@ return packer.startup({ function(use)
 
   -- LSP
   use { "neovim/nvim-lspconfig",
+    after = {
+      "mason-lspconfig.nvim",
+    },
     opt = true,
     setup = function()
       require "user.utils".on_file_open("nvim-lspconfig")
@@ -144,12 +147,12 @@ return packer.startup({ function(use)
       require "user.lsp"
     end
   }
-  use { "jose-elias-alvarez/null-ls.nvim",
+  use { "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
     after = "nvim-lspconfig",
     config = function()
       require "user.lsp.null-ls"
     end
-  } -- for formatters and linters
+  }
   use { "RRethy/vim-illuminate",
     config = function()
       require "user.illuminate"
@@ -331,9 +334,8 @@ return packer.startup({ function(use)
   }
   use {
     "williamboman/mason-lspconfig.nvim",
-    requires = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig"
+    after = {
+      "mason.nvim",
     },
     setup = function()
       require "user.utils".on_file_open("nvim-lspconfig")
@@ -405,6 +407,17 @@ return packer.startup({ function(use)
   use { "milkias17/reloader.nvim",
     requires = { "nvim-lua/plenary.nvim" },
     cmd = { "Reload" }
+  }
+  use {
+    "jayp0521/mason-null-ls.nvim",
+    after = {
+      "null-ls.nvim"
+    },
+    config = function()
+      require("mason-null-ls").setup {
+        automatic_installation = true,
+      }
+    end
   }
   -- /MikaelElkiaer
 
