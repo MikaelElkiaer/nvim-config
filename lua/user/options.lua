@@ -72,13 +72,13 @@ vim.g["codi#aliases"] = {
   ["sh"] = "bash"
 }
 vim.g["codi#autocmd"] = "InsertLeave"
-vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=csx')
-vim.api.nvim_command('au BufRead,BufNewFile *.cheat set filetype=bash')
-vim.api.nvim_command('au BufRead,BufNewFile *.hsh set filetype=hush')
 vim.filetype.add({
   extension = {
     keymap = 'devicetree',
-    overlay = 'devicetree'
+    overlay = 'devicetree',
+    csx = 'csx',
+    cheat = 'bash',
+    hsh = 'hush'
   }
 })
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
