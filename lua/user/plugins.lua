@@ -27,7 +27,8 @@ end
 return packer.startup({ function(use)
   use { "wbthomason/packer.nvim", -- Packer can manage itself
     module = "packer",
-    cmd = "Packer*",
+    cmd = { "PackerSnapshot", "PackerSnapshotRollback", "PackerSnapshotDelete", "PackerInstall", "PackerUpdate",
+      "PackerSync", "PackerClean", "PackerCompile", "PackerStatus", "PackerProfile", "PackerLoad" },
     config = function()
       require "user.plugins"
     end
@@ -175,7 +176,12 @@ return packer.startup({ function(use)
       require "user.utils".on_file_open "nvim-treesitter"
     end,
     cmd = {
-      "TS*",
+      "TSInstall",
+      "TSBufEnable",
+      "TSBufDisable",
+      "TSEnable",
+      "TSDisable",
+      "TSModuleInfo"
     },
     config = function()
       require "user.treesitter"
@@ -286,7 +292,7 @@ return packer.startup({ function(use)
     config = function()
       require('git-conflict').setup()
     end,
-    cmd = "GitConflict*"
+    cmd = { "GitConflictListQf" }
   }
   use({
     "glepnir/lspsaga.nvim", -- lsp UI enhancements
@@ -323,7 +329,7 @@ return packer.startup({ function(use)
     config = function()
       require("mason").setup()
     end,
-    cmd = "Mason*",
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     module = "mason"
   }
   use {
