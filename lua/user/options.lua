@@ -81,5 +81,5 @@ vim.filetype.add({
     hsh = 'hush'
   }
 })
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.g.rooter_cd_cmd = 'lcd'
