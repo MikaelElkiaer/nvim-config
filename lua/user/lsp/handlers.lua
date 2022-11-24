@@ -72,10 +72,11 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
   vim.keymap.set("n", "<leader>ls", "<Cmd>Lspsaga signature_help<CR>", { silent = true })
   vim.keymap.set("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", { silent = true })
-  vim.keymap.set("n", "<leader>lp", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+  vim.keymap.set("n", "<leader>lp", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
   vim.keymap.set("n", "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
   vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
   vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+  vim.keymap.set("n","<leader>lo", "<cmd>LSoutlineToggle<CR>",{ silent = true })
 end
 
 M.on_attach = function(client, bufnr)

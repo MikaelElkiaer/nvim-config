@@ -279,9 +279,6 @@ return packer.startup({ function(use)
       require("scope").setup()
     end
   }
-  use { 'nvim-treesitter/nvim-treesitter-context', -- display parent context for nested constructs
-    requires = 'nvim-treesitter/nvim-treesitter'
-  }
   use { "ziontee113/syntax-tree-surfer", -- navigate and move constructs
     config = function()
       require('syntax-tree-surfer').setup {}
@@ -296,7 +293,7 @@ return packer.startup({ function(use)
   }
   use({
     "glepnir/lspsaga.nvim", -- lsp UI enhancements
-    branch = "main",
+    opt = true,
     config = function()
       local saga = require("lspsaga")
       saga.init_lsp_saga {
@@ -304,9 +301,14 @@ return packer.startup({ function(use)
           sign = false,
           enable_in_insert = false,
         },
+        symbol_in_winbar = {
+          enable = true
+        }
       }
     end,
-    cmd = "Lspsaga"
+    setup = function()
+      require "user.utils".on_file_open("lspsaga.nvim")
+    end
   })
   use({
     "iamcco/markdown-preview.nvim", -- markdown browser preview and sync
@@ -418,6 +420,15 @@ return packer.startup({ function(use)
         automatic_installation = true,
       }
     end
+  }
+  use { 'fgheng/winbar.nvim',
+    opt = true,
+    setup = function()
+      require "user.utils".on_file_open "winbar.nvim"
+    end,
+    config = function()
+      require "winbar".setup {}
+    end,
   }
   -- /MikaelElkiaer
 
