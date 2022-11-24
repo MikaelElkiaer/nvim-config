@@ -15,7 +15,8 @@ local servers = {
   "omnisharp",
   "dockerls",
   "terraformls",
-  "helm_ls"
+  "helm_ls",
+  "gopls"
 }
 
 mason_lspconfig.setup {
