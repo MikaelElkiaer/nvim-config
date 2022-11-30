@@ -232,9 +232,6 @@ return packer.startup({ function(use)
   use { "vim-test/vim-test",
     cmd = { "TestClass", "TestFile", "TestLast", "TestNearest", "TestSuite", "TestVisit" }
   } -- run tests based on context
-  use { "metakirby5/codi.vim",
-    cmd = { "Codi", "CodiNew" }
-  } -- scratchpad for scripting
   use {
     'nvim-telescope/telescope-ui-select.nvim', -- use telescope for various ui inputs
     requires = { "nvim-telescope/telescope.nvim" },
@@ -315,16 +312,20 @@ return packer.startup({ function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
   })
   use({
-    'arjunmahishi/run-code.nvim', -- run code from file (incl. markdown code blocks)
+    'arjunmahishi/flow.nvim', -- run code from file (incl. markdown code blocks)
     config = function()
-      require('run-code').setup {
+      require('flow').setup {
         output = {
           buffer = true,
           split_cmd = '100vsplit',
+        },
+        filetype_cmd_map = {
+          sh = "bash <<-EOF\n%s\nEOF",
+          csx = "dotnet script eval <<-EOF\n%s\nEOF",
         }
       }
     end,
-    cmd = { "RunCodeFile", "RunCodeBlock", "RunCodeSelected" }
+    cmd = { "FlowRunFile", "FlowRunSelected" }
   })
   use {
     "williamboman/mason.nvim",
@@ -429,6 +430,14 @@ return packer.startup({ function(use)
     config = function()
       require "winbar".setup {}
     end,
+  }
+  use { "LintaoAmons/scratch.nvim",
+    cmd = { "Scratch", "ScratchWithName", "ScratchOpen", "ScratchOpenFzf" },
+    config = function()
+      require("scratch").setup {
+        filetypes = { "csx", "hush", "sh" },   -- filetypes to select from
+      }
+    end
   }
   -- /MikaelElkiaer
 

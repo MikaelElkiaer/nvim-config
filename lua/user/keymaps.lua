@@ -129,8 +129,11 @@ vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
 vim.keymap.set('n', '<leader>rh', '<cmd>lua require("rest-nvim").run()<cr>', opts)
 vim.keymap.set('n', '<leader>rph', '<cmd>lua require("rest-nvim").run(true)<cr>', opts)
 
--- run code and codi
-vim.keymap.set('n', '<leader>rcf', '<cmd>RunCodeFile<cr>', opts)
-vim.keymap.set('n', '<leader>rcb', '<cmd>RunCodeBlock<cr>', opts)
-vim.keymap.set('n', '<leader>rcs', '<cmd>RunCodeSelected<cr>', opts)
-vim.keymap.set('n', '<leader>rC', '<cmd>Codi<cr>', opts)
+-- run code
+vim.keymap.set('n', '<leader>rc', '<cmd>FlowRunFile<cr>', opts)
+vim.keymap.set('v', '<leader>rc', '<cmd>FlowRunSelected<cr>', opts)
+-- scratch for temporary code
+vim.keymap.set("n", "<leader>rss", "<cmd>Scratch<cr>", opts)
+vim.keymap.set("n", "<leader>rsn", "<cmd>ScratchWithName<cr>", opts)
+vim.keymap.set("n", "<leader>rso", "<cmd>ScratchOpen<cr>", opts)
+vim.keymap.set("n", "<leader>rsO", "<cmd>ScratchOpenFzf<cr>", opts)
