@@ -439,6 +439,9 @@ return packer.startup({ function(use)
       }
     end
   }
+  use { 'eandrju/cellular-automaton.nvim',
+    cmd = { "CellularAutomaton" }
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim

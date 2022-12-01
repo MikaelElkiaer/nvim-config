@@ -137,3 +137,6 @@ vim.keymap.set("n", "<leader>rss", "<cmd>Scratch<cr>", opts)
 vim.keymap.set("n", "<leader>rsn", "<cmd>ScratchWithName<cr>", opts)
 vim.keymap.set("n", "<leader>rso", "<cmd>ScratchOpen<cr>", opts)
 vim.keymap.set("n", "<leader>rsO", "<cmd>ScratchOpenFzf<cr>", opts)
+
+-- cellular-automation
+vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
