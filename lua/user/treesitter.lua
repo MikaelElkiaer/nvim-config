@@ -3,8 +3,20 @@ if not status_ok then
 	return
 end
 
-local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
-ft_to_parser.csx = "c_sharp"
+local parsers = require "nvim-treesitter.parsers"
+parsers.filetype_to_parsername.csx = "c_sharp"
+
+local parser_configs = parsers.get_parser_configs()
+parser_configs.hush = {
+  install_info = {
+    url = "https://github.com/mikaelelkiaer/tree-sitter-hush", -- local path or git repo
+    files = {"src/parser.c"},
+    -- optional entries:
+    branch = "main", -- default branch in case of git repo if different from master
+    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+  },
+}
 
 configs.setup({
 	ensure_installed = "all", -- one of "all" or a list of languages
