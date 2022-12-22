@@ -127,16 +127,16 @@ vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
 
 -- rest-nvim
 vim.keymap.set('n', '<leader>rh', '<cmd>lua require("rest-nvim").run()<cr>', opts)
-vim.keymap.set('n', '<leader>rph', '<cmd>lua require("rest-nvim").run(true)<cr>', opts)
+vim.keymap.set('n', '<leader>rH', '<cmd>lua require("rest-nvim").run(true)<cr>', opts)
 
 -- run code
 vim.keymap.set('n', '<leader>rc', '<cmd>FlowRunFile<cr>', opts)
 vim.keymap.set('v', '<leader>rc', '<cmd>FlowRunSelected<cr>', opts)
 -- scratch for temporary code
-vim.keymap.set("n", "<leader>rss", "<cmd>Scratch<cr>", opts)
-vim.keymap.set("n", "<leader>rsn", "<cmd>ScratchWithName<cr>", opts)
-vim.keymap.set("n", "<leader>rso", "<cmd>ScratchOpen<cr>", opts)
-vim.keymap.set("n", "<leader>rsO", "<cmd>ScratchOpenFzf<cr>", opts)
+vim.keymap.set("n", "<leader>sn", "<cmd>Scratch<cr>", opts)
+vim.keymap.set("n", "<leader>sN", "<cmd>ScratchWithName<cr>", opts)
+vim.keymap.set("n", "<leader>so", "<cmd>ScratchOpen<cr>", opts)
+vim.keymap.set("n", "<leader>sO", "<cmd>ScratchOpenFzf<cr>", opts)
 
 -- cellular-automation
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
