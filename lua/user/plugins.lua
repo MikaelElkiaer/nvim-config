@@ -442,6 +442,12 @@ return packer.startup({ function(use)
   use { 'eandrju/cellular-automaton.nvim',
     cmd = { "CellularAutomaton" }
   }
+  use { 'nvim-treesitter/playground',
+    cmd = { "TSPlaygroundToggle" },
+    config = function ()
+      require("nvim-treesitter.configs").setup {}
+    end
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
