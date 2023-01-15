@@ -63,3 +63,6 @@ vim.filetype.add({
 })
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.g.rooter_cd_cmd = 'lcd'
+
+--Remap space as leader key
+vim.g.mapleader = " "
