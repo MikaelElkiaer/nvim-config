@@ -66,3 +66,4 @@ vim.g.rooter_cd_cmd = 'lcd'
 
 --Remap space as leader key
 vim.g.mapleader = " "
+vim.o.background = "dark"
