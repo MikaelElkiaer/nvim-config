@@ -448,6 +448,9 @@ return packer.startup({ function(use)
       require("nvim-treesitter.configs").setup {}
     end
   }
+  use { 'taybart/b64.nvim',
+    cmd = { "B64Encode", "B64Decode" }
+  }
   -- /MikaelElkiaer
 
   -- Automatically set up your configuration after cloning packer.nvim
