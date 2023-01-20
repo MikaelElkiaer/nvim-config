@@ -11,6 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "lazy ui" })
+
 require("lazy").setup({
   spec = {
     { import = "plugins" },
@@ -20,7 +22,8 @@ require("lazy").setup({
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "gruvbox", "habamax" } },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  change_detection = { notify = false },
+  checker = { enabled = true, notify = false, }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
@@ -37,3 +40,5 @@ require("lazy").setup({
     },
   },
 })
+
+vim.cmd.colorscheme("gruvbox")
