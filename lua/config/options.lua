@@ -38,20 +38,14 @@ vim.opt.fillchars.eob=" "
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
-
--- MikaelElkiaer/
 vim.opt.mouse = "n"                             -- allow the mouse to be used in neovim
 vim.opt.timeoutlen = 500                        -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.numberwidth = 2                         -- set number column width to 2 {default 4}
 vim.opt.wrap = true                             -- display lines as one long line
-vim.g.wordmotion_prefix = "<BS>"
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevel = 99                            -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldenable = true
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.g["test#csharp#runner"] = "dotnettest"
-vim.g["test#strategy"] = "neovim"
-vim.g["test#neovim#term_position"] = "below 15"
 vim.filetype.add({
   extension = {
     keymap = 'devicetree',
@@ -62,7 +56,6 @@ vim.filetype.add({
   }
 })
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.g.rooter_cd_cmd = 'lcd'
 
 --Remap space as leader key
 vim.g.mapleader = " "

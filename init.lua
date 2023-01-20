@@ -1,4 +1,4 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.autocommands"
+require "config.options"
+require "config.keymaps"
+require "config.autocommands"
+require "config.lazy"
