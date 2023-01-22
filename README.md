@@ -1,8 +1,6 @@
 # Neovim Config
 
-My personal Neovim config.
-
-Originally forked from https://github.com/LunarVim/nvim-basic-ide, but has now diverged quite a bit.
+My personal Neovim config based on https://github.com/LazyVim/starter.
 
 It has mainly been configured for software development, focusing on:
 

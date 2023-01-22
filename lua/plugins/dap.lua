@@ -32,18 +32,25 @@ return {
       vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
       dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
+        dapui.open({})
       end
 
       dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
+        dapui.close({})
       end
 
       dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
+        dapui.close({})
       end
     end,
     dependencies = { "rcarriga/nvim-dap-ui" },
+    init = function()
+      local wk = require("which-key")
+      wk.register({
+        mode = { "n", "v" },
+        ["<leader>d"] = { name = "+dap" },
+      })
+    end,
     keys = {
       { "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "toggle breakpoint" },
       { "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", desc = "continue" },
