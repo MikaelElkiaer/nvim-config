@@ -31,8 +31,8 @@ return {
       })
     end,
     keys = {
-      { "<leader>Be", "<cmd>B64Encode<cr>", desc = "encode" },
-      { "<leader>Bd", "<cmd>B64Decode<cr>", desc = "decode" }
+      { "<leader>Be", ':<c-u>lua require("b64").encode()<cr>', desc = "encode", mode = "v" },
+      { "<leader>Bd", ':<c-u>lua require("b64").decode()<cr>', desc = "decode", mode = "v" }
     }
   },
   {
