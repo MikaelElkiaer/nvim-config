@@ -7,12 +7,12 @@ return {
         local utils = require("auto-save.utils.data")
 
         return vim.fn.getbufvar(buf, "&modifiable") == 1
-          and utils.not_in(vim.fn.getbufvar(buf, "&filetype"), {})
-          and not string.match(vim.fn.getcwd(), "%/nvim%-config$")
-          and utils.not_in(vim.fn.expand("%:t"), {
-            "picom.conf",
-            "wezterm.lua",
-          })
+            and utils.not_in(vim.fn.getbufvar(buf, "&filetype"), {})
+            and not string.match(vim.fn.getcwd(), "%/nvim%-config$")
+            and utils.not_in(vim.fn.expand("%:t"), {
+              "picom.conf",
+              "wezterm.lua",
+            })
       end,
       execution_message = {
         message = function()
@@ -67,10 +67,10 @@ return {
   },
   {
     "airblade/vim-rooter",
-    event = "VeryLazy",
     init = function()
       vim.g.rooter_cd_cmd = "lcd"
     end,
+    lazy = false,
   },
   {
     "rmagatti/auto-session",
