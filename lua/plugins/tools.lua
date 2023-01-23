@@ -56,7 +56,7 @@ return {
   -- run code from file (incl. markdown code blocks)
   {
     'arjunmahishi/flow.nvim',
-    cmd = { "FlowRunFile", "FlowRunSelected" },
+    cmd = { "FlowRunFile", "FlowRunSelected", "RunCodeBlock" },
     init = function()
       local wk = require("which-key")
       wk.register({
@@ -65,8 +65,9 @@ return {
       })
     end,
     keys = {
-      { '<leader>rc', '<cmd>FlowRunFile<cr>', desc = "code (file)" },
+      { '<leader>rC', '<cmd>FlowRunFile<cr>', desc = "code (file)" },
       { '<leader>rc', '<cmd>FlowRunSelected<cr>', desc = "code (selection)", mode = "v" },
+      { '<leader>rc', '<cmd>RunCodeBlock<cr>', desc = "code (markdown)" },
     },
     opts = {
       output = {
