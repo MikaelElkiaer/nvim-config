@@ -25,6 +25,7 @@ return {
         filetypes = { "helm" },
       })
       local more_opts = {
+        autoformat = false,
         ---@type lspconfig.options
         servers = {
           omnisharp = {
