@@ -20,22 +20,20 @@ return {
           },
         }
       end
+      require("lspconfig").helm_ls.setup({
+        cmd = { "helm_ls", "serve" },
+        filetypes = { "helm" },
+      })
       local more_opts = {
         ---@type lspconfig.options
         servers = {
-          -- pyright will be automatically installed with mason and loaded with lspconfig
-          helm_ls = {
-            cmd = { "helm_ls", "serve" },
-            filetypes = { "helm" },
-            mason = false,
-          },
           omnisharp = {
             filetypes = { "cs", "csx" },
             handlers = {
               ["textDocument/definition"] = require("omnisharp_extended").handler,
             },
             root_dir = function(fname)
-              if fname:sub(-#".csx") == ".csx" then
+              if fname:sub(- #".csx") == ".csx" then
                 return require("lspconfig").util.path.dirname(fname)
               end
               return vim.fn.getcwd()
