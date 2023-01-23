@@ -2,12 +2,8 @@ return {
   {
     "cuducos/yaml.nvim",
     cmd = "YAMLYank",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim",
-    },
     keys = {
-      { "<leader>y", "<cmd>YAMLYank<cr>", desc = "yank yaml key/value" },
+      { "<leader>y", '<cmd>lua require("yaml_nvim").yank_all()<cr>', desc = "yank yaml key/value" },
     },
   },
   {
