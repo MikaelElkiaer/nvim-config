@@ -1,6 +1,6 @@
 return {
   {
-    "cuducos/yaml.nvim",
+    "MikaelElkiaer/yaml.nvim",
     cmd = "YAMLYank",
     keys = {
       { "<leader>y", '<cmd>lua require("yaml_nvim").yank_all()<cr>', desc = "yank yaml key/value" },
