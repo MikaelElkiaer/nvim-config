@@ -4,22 +4,17 @@ return {
     keys = {
       { "<leader><space>", false },
     },
-    opts = function(_, opts)
-      local actions = require("telescope.actions")
-      local add_opts = {
-        defaults = {
-          file_ignore_patterns = { ".git/", "node_modules/" },
-
-          mappings = {
-            i = {
-              ["<C-j>"] = actions.move_selection_next,
-              ["<C-k>"] = actions.move_selection_previous,
-            },
+    opts = {
+      defaults = {
+        file_ignore_patterns = { ".git/", "node_modules/" },
+        mappings = {
+          i = {
+            ["<C-j>"] = require("telescope.actions").move_selection_next,
+            ["<C-k>"] = require("telescope.actions").move_selection_previous,
           },
         },
-      }
-      vim.tbl_deep_extend("force", opts, add_opts)
-    end,
+      },
+    }
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
@@ -33,6 +28,7 @@ return {
         local current_picker = action_state.get_current_picker(prompt_bufnr)
         local entry = action_state.get_selected_entry()
       end
+
       local opts = {
         extensions = {
           file_browser = {
