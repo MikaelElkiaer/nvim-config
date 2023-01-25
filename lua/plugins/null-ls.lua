@@ -1,8 +1,13 @@
 return {
   {
     "jose-elias-alvarez/null-ls.nvim",
-    config = function(_, opts)
-      local null_ls = require("null-ls")
+    dependencies = {
+      {
+        "jayp0521/mason-null-ls.nvim",
+        opts = { automatic_installation = true },
+      },
+    },
+    opts = function(_, opts)
       local helpers = require("null-ls.helpers")
       local methods = require("null-ls.methods")
 
@@ -34,20 +39,11 @@ return {
         factory = helpers.generator_factory,
       })
 
-      local more_opts = {
-        sources = {
-          diagnostics_hush,
-        },
+      local sources = {
+        diagnostics_hush,
       }
-      vim.tbl_deep_extend("force", opts, more_opts)
+
+      vim.list_extend(opts.sources, sources)
     end,
-    dependencies = {
-      {
-        "jayp0521/mason-null-ls.nvim",
-        opts = { automatic_installation = true },
-      },
-    },
-    event = "BufReadPre",
-    requires = { "neovim/nvim-lspconfig" },
   },
 }
