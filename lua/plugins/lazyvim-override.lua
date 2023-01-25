@@ -1,5 +1,9 @@
 return {
   {
+    "LazyVim/LazyVim",
+    opts = { colorscheme = "gruvbox" },
+  },
+  {
     "folke/persistence.nvim",
     enabled = false,
   },
