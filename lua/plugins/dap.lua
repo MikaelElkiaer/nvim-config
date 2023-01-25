@@ -45,11 +45,7 @@ return {
     end,
     dependencies = { "rcarriga/nvim-dap-ui" },
     init = function()
-      local wk = require("which-key")
-      wk.register({
-        mode = { "n", "v" },
-        ["<leader>d"] = { name = "+dap" },
-      })
+      require("utils").create_keymap_group("<leader>d", "+dap")
     end,
     keys = {
       { "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "toggle breakpoint" },

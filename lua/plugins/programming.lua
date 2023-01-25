@@ -24,11 +24,7 @@ return {
       vim.g["test#strategy"] = "neovim"
       vim.g["test#neovim#term_position"] = "below 15"
 
-      local wk = require("which-key")
-      wk.register({
-        mode = { "n", "v" },
-        ["<leader>t"] = { name = "+test" },
-      })
+      require("utils").create_keymap_group("<leader>t", "+test")
     end,
     keys = {
       { "<leader>tn", "<cmd>TestNearest<CR>", desc = "nearest" },

@@ -4,11 +4,7 @@ return {
     "LintaoAmons/scratch.nvim",
     cmd = { "Scratch", "ScratchWithName", "ScratchOpen", "ScratchOpenFzf" },
     init = function()
-      local wk = require("which-key")
-      wk.register({
-        mode = { "n", "v" },
-        ["<leader>S"] = { name = "+scratch" },
-      })
+      require("utils").create_keymap_group("<leader>S", "+scratch")
     end,
     keys = {
       { "<leader>Sn", "<cmd>Scratch<cr>", desc = "New" },
@@ -24,11 +20,7 @@ return {
     'taybart/b64.nvim',
     cmd = { "B64Encode", "B64Decode" },
     init = function()
-      local wk = require("which-key")
-      wk.register({
-        mode = { "n", "v" },
-        ["<leader>B"] = { name = "+base64" },
-      })
+      require("utils").create_keymap_group("<leader>B", "+base64")
     end,
     keys = {
       { "<leader>Be", ':<c-u>lua require("b64").encode()<cr>', desc = "encode", mode = "v" },
@@ -41,11 +33,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     ft = "http",
     init = function()
-      local wk = require("which-key")
-      wk.register({
-        mode = { "n", "v" },
-        ["<leader>r"] = { name = "+run" },
-      })
+      require("utils").create_keymap_group("<leader>r", "+run")
     end,
     keys = {
       { '<leader>rh', '<cmd>lua require("rest-nvim").run()<cr>', desc = "http request" },
@@ -58,11 +46,7 @@ return {
     'arjunmahishi/flow.nvim',
     cmd = { "FlowRunFile", "FlowRunSelected", "RunCodeBlock" },
     init = function()
-      local wk = require("which-key")
-      wk.register({
-        mode = { "n", "v" },
-        ["<leader>r"] = { name = "+run" },
-      })
+      require("utils").create_keymap_group("<leader>r", "+run")
     end,
     keys = {
       { '<leader>rC', '<cmd>FlowRunFile<cr>', desc = "code (file)" },
