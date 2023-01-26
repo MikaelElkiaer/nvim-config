@@ -1,67 +1,48 @@
+require("utils").create_keymap_group("<leader>r", "+run")
+
 return {
   -- Create scratch buffers
   {
     "LintaoAmons/scratch.nvim",
     cmd = { "Scratch", "ScratchWithName", "ScratchOpen", "ScratchOpenFzf" },
-    init = function()
-      require("utils").create_keymap_group("<leader>S", "+scratch")
-    end,
     keys = {
-      { "<leader>Sn", "<cmd>Scratch<cr>", desc = "New" },
-      { "<leader>SN", "<cmd>ScratchWithName<cr>", desc = "New with name" },
-      { "<leader>So", "<cmd>ScratchOpen<cr>", desc = "Open" },
-      { "<leader>SO", "<cmd>ScratchOpenFzf<cr>", desc = "Open with fzf" },
+      { "<leader>rn", "<cmd>Scratch<cr>", desc = "new scratch" },
+      { "<leader>rN", "<cmd>ScratchWithName<cr>", desc = "new scratch (named)" },
+      { "<leader>ro", "<cmd>ScratchOpen<cr>", desc = "open scratch" },
+      { "<leader>rO", "<cmd>ScratchOpenFzf<cr>", desc = "open scratch (fzf)" },
     },
     opts = {
       filetypes = { "csx", "hush", "sh" }, -- filetypes to select from
     },
   },
-  {
-    'taybart/b64.nvim',
-    cmd = { "B64Encode", "B64Decode" },
-    init = function()
-      require("utils").create_keymap_group("<leader>B", "+base64")
-    end,
-    keys = {
-      { "<leader>Be", ':<c-u>lua require("b64").encode()<cr>', desc = "encode", mode = "v" },
-      { "<leader>Bd", ':<c-u>lua require("b64").decode()<cr>', desc = "decode", mode = "v" }
-    }
-  },
+  -- run http requests
   {
     "blackadress/rest.nvim",
     branch = "response_body_stored",
     dependencies = { "nvim-lua/plenary.nvim" },
-    ft = "http",
-    init = function()
-      require("utils").create_keymap_group("<leader>r", "+run")
-    end,
     keys = {
-      { '<leader>rh', '<cmd>lua require("rest-nvim").run()<cr>', desc = "http request" },
-      { '<leader>rH', '<cmd>lua require("rest-nvim").run(true)<cr>', desc = "http request (preview)" },
+      { "<leader>rh", '<cmd>lua require("rest-nvim").run()<cr>', desc = "http request" },
+      { "<leader>rH", '<cmd>lua require("rest-nvim").run(true)<cr>', desc = "http request (preview)" },
     },
     opts = true,
   },
   -- run code from file (incl. markdown code blocks)
   {
-    'arjunmahishi/flow.nvim',
-    cmd = { "FlowRunFile", "FlowRunSelected", "RunCodeBlock" },
-    init = function()
-      require("utils").create_keymap_group("<leader>r", "+run")
-    end,
+    "michaelb/sniprun",
+    build = "bash install.sh",
     keys = {
-      { '<leader>rC', '<cmd>FlowRunFile<cr>', desc = "code (file)" },
-      { '<leader>rc', '<cmd>FlowRunSelected<cr>', desc = "code (selection)", mode = "v" },
-      { '<leader>rc', '<cmd>RunCodeBlock<cr>', desc = "code (markdown)" },
+      { "<leader>rs", '<cmd>lua require("sniprun").run("n")<cr>', desc = "run snip" },
+      { "<leader>rs", '<cmd>lua require("sniprun").run("v")<cr>', desc = "run snip", mode = "x" },
+      { "<leader>rl", '<cmd>lua require("sniprun.live_mode").toggle()<cr>', desc = "live snip toggle" },
+      { "<leader>rr", '<cmd>lua require("sniprun").reset()<cr>', desc = "reset snip" },
+      { "<leader>rc", '<cmd>lua require("sniprun.display").close_all()<cr>', desc = "close snip" },
+      { "<leader>rC", '<cmd>lua require("sniprun").clear_repl()<cr>', desc = "clear snip repl" },
+      { "<leader>ri", '<cmd>lua require("sniprun").info()<cr>', desc = "snip info" },
     },
     opts = {
-      output = {
-        buffer = true,
-        split_cmd = '100vsplit',
+      display = {
+        "VirtualText",
       },
-      filetype_cmd_map = {
-        sh = "bash <<-EOF\n%s\nEOF",
-        csx = "dotnet script eval <<-EOF\n%s\nEOF",
-      }
     },
   },
 }
