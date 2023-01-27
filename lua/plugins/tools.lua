@@ -31,7 +31,8 @@ return {
     "michaelb/sniprun",
     build = "bash install.sh",
     keys = {
-      { "<leader>rs", '<cmd>lua require("sniprun").run("n")<cr>', desc = "run snip" },
+      { "<leader>rs", '<cmd>lua require("sniprun").run()<cr>', desc = "run snip" },
+      { "<leader>rS", '<cmd>lua require("sniprun").run("n")<cr>', desc = "run snip (file)" },
       { "<leader>rs", '<cmd>lua require("sniprun").run("v")<cr>', desc = "run snip", mode = "x" },
       { "<leader>rl", '<cmd>lua require("sniprun.live_mode").toggle()<cr>', desc = "live snip toggle" },
       { "<leader>rr", '<cmd>lua require("sniprun").reset()<cr>', desc = "reset snip" },
@@ -41,7 +42,7 @@ return {
     },
     opts = {
       display = {
-        "VirtualText",
+        "TerminalWithCode",
       },
     },
   },
