@@ -4,6 +4,7 @@
   "alpha-nvim": { "branch": "main", "commit": "21a0f2520ad3a7c32c0822f943368dc063a569fb" },
   "auto-save.nvim": { "branch": "main", "commit": "4b59610e1318f8a89501cee9d47a0e8650f0a4d5" },
   "auto-session": { "branch": "main", "commit": "c8b2f4048f846387361bd04cc185bf1aa7d2e3d1" },
+  "base64.nvim": { "branch": "main", "commit": "64d670f113dc1c3ae83be5d07cb8355e04c09fe8" },
   "bufferline.nvim": { "branch": "main", "commit": "c7492a76ce8218e3335f027af44930576b561013" },
   "catppuccin": { "branch": "main", "commit": "6368edcd0b5e5cb5d9fb7cdee9d62cffe3e14f0e" },
   "cellular-automaton.nvim": { "branch": "main", "commit": "679943b8e1e5ef79aaeeaf4b00782c52eb4e928f" },
