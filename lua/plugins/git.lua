@@ -13,6 +13,15 @@ return {
       { "]C", "<cmd>GitConflictNextConflict<cr>", desc = "next conflict" },
       { "[C", "<cmd>GitConflictPrevConflict<cr>", desc = "previous conflict" },
     },
-    opts = true,
+    opts = {
+      default_mappings = {
+        ours = "Co",
+        theirs = "Ct",
+        none = "C0",
+        both = "Cb",
+        next = "Cn",
+        prev = "Cp",
+      },
+    },
   },
 }
