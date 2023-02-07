@@ -76,5 +76,6 @@
   "vim-test": { "branch": "master", "commit": "048f15403d9edfa513a50fafd7b107306c5512e4" },
   "vim-wordmotion": { "branch": "master", "commit": "5dd613ed68a0ecf0fc6c11cd4098c03583786bf0" },
   "which-key.nvim": { "branch": "main", "commit": "684e96c5e8477f1ee9b3f2e9a12d802fd12c5531" },
+  "wpm.nvim": { "branch": "main", "commit": "968c213143311cd07acb299ebe5445f68ae57a67" },
   "yaml.nvim": { "branch": "main", "commit": "c2f0e7fe9d9233c2846f19074406d69eff8a258f" }
 }
