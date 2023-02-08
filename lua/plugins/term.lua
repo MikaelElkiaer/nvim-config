@@ -49,6 +49,9 @@ return {
         border = "curved",
       },
       autochdir = true,
+      env = {
+        EDITOR = "nvr -l",
+      },
     },
   },
 }
