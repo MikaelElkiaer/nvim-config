@@ -119,4 +119,16 @@ return {
       },
     },
   },
+  {
+    "L3MON4D3/LuaSnip",
+    keys = {
+      {
+        "<C-n>",
+        function()
+          _ = require("luasnip").choice_active() and require("luasnip.extras.select_choice")()
+        end,
+        mode = { "i", "s" },
+      },
+    },
+  },
 }
