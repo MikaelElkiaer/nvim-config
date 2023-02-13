@@ -10,15 +10,14 @@ vim.filetype.add({
     hsh = 'hush'
   }
 })
-vim.o.foldenable = true
+vim.o.foldenable = false
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.backup = false -- creates a backup file
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
-vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.nofoldenable = true
+vim.opt.foldmethod = "expr"
 vim.opt.guifont = "Noto Sans Mono:h10" -- the font used in graphical neovim applications
 -- vim.opt.iskeyword:append("-")
 vim.opt.number = true -- set numbered lines
