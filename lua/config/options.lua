@@ -3,12 +3,13 @@
 -- Add any additional options here
 vim.filetype.add({
   extension = {
-    keymap = 'devicetree',
-    overlay = 'devicetree',
-    csx = 'csx',
-    cheat = 'bash',
-    hsh = 'hush'
-  }
+    keymap = "devicetree",
+    overlay = "devicetree",
+    csx = "csx",
+    cheat = "bash",
+    hsh = "hush",
+    json = "jsonc",
+  },
 })
 vim.o.foldenable = false
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
