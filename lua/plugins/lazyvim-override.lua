@@ -13,6 +13,9 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
+    },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
@@ -21,6 +24,8 @@ return {
         ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-k>"] = cmp.mapping.select_prev_item(),
       })
+
+      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "nvim_lsp_signature_help" } }))
     end,
   },
   {
