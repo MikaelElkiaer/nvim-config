@@ -22,6 +22,13 @@ return {
             return vim.fn.getcwd()
           end,
         },
+        yamlls = {
+          settings = {
+            yaml = {
+              keyOrdering = false,
+            },
+          },
+        },
       },
       setup = {
         helm_ls = function(_, _)
