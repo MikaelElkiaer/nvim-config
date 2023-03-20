@@ -7,7 +7,12 @@ return {
     end,
     opts = {
       bold = false,
-      italic = false,
+      italic = {
+        strings = false,
+        comments = false,
+        operators = false,
+        folds = false,
+      },
       contrast = "hard",
       invert_tabline = true,
     },
@@ -17,6 +22,6 @@ return {
     config = function()
       require("scope").setup()
     end,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
 }
