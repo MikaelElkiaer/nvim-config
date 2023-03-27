@@ -53,4 +53,20 @@ return {
       { "<leader>Be", '<cmd>lua require("base64").encode()<cr>', desc = "base64 encode", mode = "x" },
     },
   },
+  {
+    "codethread/qmk.nvim",
+    config = function()
+      ---@type qmk.UserConfig
+      local conf = {
+        name = "LAYOUT_split_3x6_3",
+        layout = {
+          "x x x x x x _ _ _ x x x x x x",
+          "x x x x x x _ _ _ x x x x x x",
+          "x x x x x x _ _ _ x x x x x x",
+          "_ _ _ _ x x x _ x x x _ _ _ _",
+        },
+      }
+      require("qmk").setup(conf)
+    end,
+  },
 }
