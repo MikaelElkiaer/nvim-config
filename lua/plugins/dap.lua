@@ -4,30 +4,17 @@ return {
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
+      local dap_vscode = require("dap.ext.vscode")
 
-      dap.adapters.netcoredbg = {
-        type = 'executable',
-        command = '/usr/bin/netcoredbg',
-        args = { '--interpreter=vscode' }
-      }
-      dap.configurations.cs = {
-        {
-          type = "netcoredbg",
-          name = "launch - netcoredbg",
-          request = "launch",
-          program = function()
-            return vim.fn.input('Path to dll', vim.fn.getcwd(), 'file')
-          end,
-        },
-        {
-          type = "netcoredbg",
-          name = "attach - netcoredbg",
-          request = "attach",
-          processId = require('dap.utils').pick_process,
-        },
+      dap.adapters.coreclr = {
+        args = { "--interpreter=vscode", "--server" },
+        command = "netcoredbg",
+        type = "executable",
       }
 
-      dapui.setup {}
+      dap_vscode.load_launchjs(nil, { coreclr = { "cs" } })
+
+      dapui.setup({})
 
       vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
@@ -58,6 +45,6 @@ return {
       { "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", desc = "toggle ui" },
       { "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", desc = "terminate" },
       { "<leader>dk", "<cmd>lua require('dap.ui.widgets').hover()<cr>", desc = "hover" },
-    }
+    },
   },
 }
