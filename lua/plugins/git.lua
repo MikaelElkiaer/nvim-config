@@ -2,7 +2,16 @@ return {
   -- grab VCS (GitHub etc.) links from current line
   {
     "valorl/vcslink.nvim",
-    cmd = { "VcsLinkCopy", "VcsLinkBrowse" },
+    cmd = { "VcsLinkLineCopy", "VcsLinkLineBrowse", "VcsLinkBufCopy", "VcsLinkBufBrowse" },
+    init = function()
+      require("utils").create_keymap_group("<leader>gl", "+link")
+    end,
+    keys = {
+      { "<leader>glc", "<cmd>VcsLinkLineCopy<cr>", desc = "copy line" },
+      { "<leader>glC", "<cmd>VcsLineBufCopy<cr>", desc = "copy buffer" },
+      { "<leader>glb", "<cmd>VcsLinkLineBrowse<cr>", desc = "browse line" },
+      { "<leader>glB", "<cmd>VcsLinkBufBrowse<cr>", desc = "browse buffer" },
+    },
   },
   -- navigation and simple view for git conflicts
   {
