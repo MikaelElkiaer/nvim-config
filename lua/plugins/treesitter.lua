@@ -1,8 +1,15 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      {
+        "pfeiferj/nvim-hurl",
+        branch = "main",
+        config = true,
+        event = "BufEnter *.hurl",
+      },
+    },
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
       local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
       parser_configs.hush = {
         install_info = {
@@ -14,6 +21,12 @@ return {
           requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
         },
       }
+
+      vim.list_extend(opts.ensure_installed, {
+        "hurl",
+        "hush",
+      })
+      require("nvim-treesitter.configs").setup(opts)
     end,
   },
   {
