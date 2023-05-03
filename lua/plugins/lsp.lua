@@ -18,7 +18,6 @@ return {
           handlers = {
             ["textDocument/definition"] = require("omnisharp_extended").handler,
           },
-          mason = false,
           on_attach = function(client, bufnr)
             --INFO: https://github.com/OmniSharp/omnisharp-roslyn/issues/2483#issuecomment-1492605642
             local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
