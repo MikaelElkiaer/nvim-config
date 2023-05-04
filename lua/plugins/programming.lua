@@ -17,7 +17,8 @@ return {
     { "towolf/vim-helm", ft = "helm" },
   },
   -- run tests based on context
-  { "vim-test/vim-test",
+  {
+    "vim-test/vim-test",
     cmd = { "TestClass", "TestFile", "TestLast", "TestNearest", "TestSuite", "TestVisit" },
     init = function()
       vim.g["test#csharp#runner"] = "dotnettest"
@@ -43,10 +44,10 @@ return {
       languages = {
         cs = {
           template = {
-            annotation_convention = "xmldoc"
-          }
-        }
-      }
+            annotation_convention = "xmldoc",
+          },
+        },
+      },
     },
   },
 }
