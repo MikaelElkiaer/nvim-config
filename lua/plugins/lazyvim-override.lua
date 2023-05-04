@@ -110,4 +110,14 @@ return {
       end,
     },
   },
+  {
+    "folke/noice.nvim",
+    opts = {
+      lsp = {
+        hover = {
+          enabled = false,
+        },
+      },
+    },
+  },
 }
