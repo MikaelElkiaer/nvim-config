@@ -13,6 +13,7 @@ return {
             "picom.conf",
             "wezterm.lua",
           })
+          and not string.match(vim.fn.expand("%"), "^oil://")
       end,
       execution_message = {
         message = function()

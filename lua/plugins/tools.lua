@@ -66,4 +66,17 @@ return {
       },
     },
   },
+  {
+    "stevearc/oil.nvim",
+    cmd = { "Oil " },
+    config = true,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+      {
+        "<leader>o",
+        '<cmd>lua require("oil").open()<CR>',
+        desc = "Open parent directory",
+      },
+    },
+  },
 }
