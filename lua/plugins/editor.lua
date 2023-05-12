@@ -75,6 +75,8 @@ return {
   },
   {
     "rmagatti/auto-session",
+    -- WARN: Breaks after this commit
+    commit = "21033c6815f249a7839c3a85fc8a6b44d74925c9",
     event = "VimEnter",
     opts = {
       log_level = "error",
