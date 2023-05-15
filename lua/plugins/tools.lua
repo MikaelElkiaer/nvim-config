@@ -26,23 +26,22 @@ return {
     },
     opts = true,
   },
-  -- run code from file (incl. markdown code blocks)
   {
-    "michaelb/sniprun",
-    build = "bash install.sh",
+    "arjunmahishi/flow.nvim", -- run code from file (incl. markdown code blocks)
+    cmd = { "FlowRunFile", "FlowRunMDBlock", "FlowRunSelected" },
     keys = {
-      { "<leader>rs", '<cmd>lua require("sniprun").run()<cr>', desc = "run snip" },
-      { "<leader>rS", '<cmd>lua require("sniprun").run("n")<cr>', desc = "run snip (file)" },
-      { "<leader>rs", '<cmd>lua require("sniprun").run("v")<cr>', desc = "run snip", mode = "x" },
-      { "<leader>rl", '<cmd>lua require("sniprun.live_mode").toggle()<cr>', desc = "live snip toggle" },
-      { "<leader>rr", '<cmd>lua require("sniprun").reset()<cr>', desc = "reset snip" },
-      { "<leader>rc", '<cmd>lua require("sniprun.display").close_all()<cr>', desc = "close snip" },
-      { "<leader>rC", '<cmd>lua require("sniprun").clear_repl()<cr>', desc = "clear snip repl" },
-      { "<leader>ri", '<cmd>lua require("sniprun").info()<cr>', desc = "snip info" },
+      { "<leader>rR", "<cmd>FlowRunFile<cr>", desc = "run file" },
+      { "<leader>rr", "<cmd>FlowRunMDBlock<cr>", desc = "run block" },
+      { "<leader>rr", "<cmd>FlowRunSelected<cr>", desc = "run selected", mode = "v" },
     },
     opts = {
-      display = {
-        "TerminalWithCode",
+      filetype_cmd_map = {
+        csx = "dotnet script eval <<-EOF\n%s\nEOF",
+        hurl = "hurl <<-EOF\n%s\nEOF",
+      },
+      output = {
+        buffer = true,
+        split_cmd = "100vsplit",
       },
     },
   },
