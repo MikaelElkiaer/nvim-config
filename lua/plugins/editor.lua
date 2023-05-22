@@ -2,6 +2,13 @@ return {
   {
     "XXiaoA/auto-save.nvim",
     event = "BufReadPre",
+    keys = {
+      {
+        "<leader>ua",
+        "<cmd>ASToggle<cr>",
+        desc = "Toggle auto-save",
+      },
+    },
     opts = {
       condition = function(buf)
         local utils = require("auto-save.utils.data")
