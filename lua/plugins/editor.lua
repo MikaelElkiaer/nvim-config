@@ -145,4 +145,9 @@ return {
     "cpea2506/relative-toggle.nvim",
     enabled = false,
   },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    opts = {},
+  },
 }

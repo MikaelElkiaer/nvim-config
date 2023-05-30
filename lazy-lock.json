@@ -11,6 +11,7 @@
   "cmp-nvim-lsp-signature-help": { "branch": "main", "commit": "3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
+  "copilot.lua": { "branch": "master", "commit": "77e3a4907928f0813024e573b882dc879dfc0c6b" },
   "dial.nvim": { "branch": "master", "commit": "747d6fd009dbc1904627868125e16cfa7c524b0d" },
   "dressing.nvim": { "branch": "master", "commit": "f19cbd56f7f8cad212c58a7285d09c5d9c273896" },
   "duck.nvim": { "branch": "main", "commit": "b1a3b4e52eec886bf4ce5ed692a2162d504d9632" },
