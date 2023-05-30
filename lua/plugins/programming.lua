@@ -1,9 +1,14 @@
 return {
   {
-    "MikaelElkiaer/yaml.nvim",
-    cmd = "YAMLYank",
+    "cuducos/yaml.nvim",
+    cmd = { "YAMLYank", "YAMLYankKey", "YAMLYankValue" },
+    config = function(_, _)
+      require("yaml_nvim")
+    end,
     keys = {
-      { "<leader>y", '<cmd>lua require("yaml_nvim").yank_all()<cr>', desc = "yank yaml key/value" },
+      { "<leader>yy", "<cmd>YAMLYank +<cr>", desc = "yank yaml path and value" },
+      { "<leader>yk", "<cmd>YAMLYankKey +<cr>", desc = "yank yaml path" },
+      { "<leader>yv", "<cmd>YAMLYankValue +<cr>", desc = "yank yaml value" },
     },
   },
   {
