@@ -150,4 +150,10 @@ return {
     cmd = "Copilot",
     opts = {},
   },
+  {
+    "axkirillov/hbac.nvim",
+    opts = {
+      threshold = 7,
+    },
+  },
 }
