@@ -14,6 +14,8 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
+      -- Disable snippets in completion
+      { "saadparwaiz1/cmp_luasnip", enabled = false },
       { "hrsh7th/cmp-nvim-lsp-signature-help" },
       {
         "zbirenbaum/copilot-cmp",
