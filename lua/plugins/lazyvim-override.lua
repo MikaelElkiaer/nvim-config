@@ -26,9 +26,15 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
 
+      -- Disable auto selection of first item in completion
+      opts.completion = {
+        completeopt = "menu,menuone,noinsert,noselect",
+      }
+
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
       })
 
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
