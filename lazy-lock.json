@@ -2,7 +2,7 @@
   "LazyVim": { "branch": "main", "commit": "00339b7b56df6b783b1d3df2543acfc90e9704a3" },
   "LuaSnip": { "branch": "master", "commit": "a13af80734eb28f744de6c875330c9d3c24b5f3b" },
   "auto-save.nvim": { "branch": "main", "commit": "4b59610e1318f8a89501cee9d47a0e8650f0a4d5" },
-  "auto-session": { "branch": "main", "commit": "21033c6815f249a7839c3a85fc8a6b44d74925c9" },
+  "auto-session": { "branch": "main", "commit": "d91509611981759419ee2fe5e2ef436d5ec8d0eb" },
   "base64.nvim": { "branch": "main", "commit": "41a9a948be5299de0038f301524630aee5a9fa63" },
   "bufferline.nvim": { "branch": "main", "commit": "02d795081e6a24ec1fd506c513491543793d0780" },
   "cellular-automaton.nvim": { "branch": "main", "commit": "679943b8e1e5ef79aaeeaf4b00782c52eb4e928f" },
