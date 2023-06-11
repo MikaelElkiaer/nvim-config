@@ -32,8 +32,8 @@ return {
       }
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       })
 
@@ -41,6 +41,22 @@ return {
         { name = "copilot" },
         { name = "nvim_lsp_signature_help" },
       }))
+
+      cmp.event:on("menu_opened", function()
+        vim.api.nvim_create_autocmd("InsertCharPre", {
+          callback = function(_)
+            if (cmp.get_selected_entry()) ~= nil then
+              local c = vim.v.char
+              vim.v.char = ""
+              vim.schedule(function()
+                cmp.confirm({ select = false })
+                vim.api.nvim_feedkeys(c, "n", false)
+              end)
+            end
+          end,
+          once = true,
+        })
+      end)
     end,
   },
   {
