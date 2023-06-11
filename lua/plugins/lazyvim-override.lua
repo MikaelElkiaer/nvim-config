@@ -42,14 +42,22 @@ return {
         { name = "nvim_lsp_signature_help" },
       }))
 
+      -- callback for whenever cmp is triggered
       cmp.event:on("menu_opened", function()
+        -- autocmd callback for before a char is inserted
         vim.api.nvim_create_autocmd("InsertCharPre", {
           callback = function(_)
+            -- if no entry is selected do nothing
             if (cmp.get_selected_entry()) ~= nil then
+              -- store the to-be-inserted char
               local c = vim.v.char
+              -- clear the to-be-inserted char
               vim.v.char = ""
+              -- vim schedule to circumvent `textlock`
               vim.schedule(function()
+                -- confirm cmp selection - i. e. insert selected text
                 cmp.confirm({ select = false })
+                -- insert the stored char
                 vim.api.nvim_feedkeys(c, "n", false)
               end)
             end
