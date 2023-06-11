@@ -3,6 +3,12 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "Hoffs/omnisharp-extended-lsp.nvim",
+      {
+        "someone-stole-my-name/yaml-companion.nvim",
+        config = function(_, _)
+          require("telescope").load_extension("yaml_schema")
+        end,
+      },
     },
     opts = function(_, opts)
       opts.autoformat = false
@@ -41,13 +47,15 @@ return {
             return vim.fn.getcwd()
           end,
         },
-        yamlls = {
-          settings = {
-            yaml = {
-              keyOrdering = false,
+        yamlls = require("yaml-companion").setup({
+          lspconfig = {
+            settings = {
+              yaml = {
+                keyOrdering = false,
+              },
             },
           },
-        },
+        }),
       })
       opts.setup = vim.tbl_extend("force", opts.setup, {
         helm_ls = function(_, _)
