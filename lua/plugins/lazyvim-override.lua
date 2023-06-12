@@ -26,7 +26,7 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
 
-      -- Disable auto selection of first item in completion
+      -- Disable auto selection of first item in completion (1)
       opts.completion = {
         completeopt = "menu,menuone,noinsert,noselect",
       }
@@ -36,6 +36,9 @@ return {
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       })
+
+      -- Disable auto selection of first item in completion (2)
+      opts.preselect = require('cmp').PreselectMode.None
 
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
         { name = "copilot" },
