@@ -38,7 +38,7 @@ return {
       })
 
       -- Disable auto selection of first item in completion (2)
-      opts.preselect = require('cmp').PreselectMode.None
+      opts.preselect = require("cmp").PreselectMode.None
 
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
         { name = "copilot" },
@@ -79,10 +79,6 @@ return {
     enabled = false,
   },
   {
-    "goolord/alpha-nvim",
-    enabled = false,
-  },
-  {
     "akinsho/bufferline.nvim",
     opts = {
       options = {
@@ -98,5 +94,14 @@ return {
     "catppuccin/nvim",
     enabled = false,
     name = "catppuccin",
+  },
+  {
+    "echasnovski/mini.bufremove",
+    opts = {
+      on_last_removed = function(_)
+        vim.cmd("SessionDelete")
+        vim.cmd("Alpha")
+      end,
+    },
   },
 }

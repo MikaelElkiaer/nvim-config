@@ -91,6 +91,7 @@ return {
       auto_session_suppress_dirs = {
         "/home/*",
       },
+      bypass_session_save_file_types = { "alpha", "noice", "notify" },
     },
   },
   {
