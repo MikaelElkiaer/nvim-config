@@ -11,8 +11,6 @@ vim.filetype.add({
     json = "jsonc",
   },
 })
-vim.o.foldenable = false
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.backup = false -- creates a backup file
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
@@ -21,6 +19,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldmethod = "expr"
 vim.opt.guifont = "Noto Sans Mono:h10" -- the font used in graphical neovim applications
 -- vim.opt.iskeyword:append("-")
+vim.opt.foldenable = false -- do not fold by default
 vim.opt.number = true -- set numbered lines
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.undofile = true -- enable persistent undo
