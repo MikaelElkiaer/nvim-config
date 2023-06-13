@@ -32,7 +32,8 @@ return {
   {
     "nvim-treesitter/playground",
     cmd = "TSPlaygroundToggle",
-    opts = true,
+    main = "nvim-treesitter.configs",
+    opts = {},
   },
   {
     "ziontee113/syntax-tree-surfer",
