@@ -97,8 +97,9 @@ return {
   },
   {
     "echasnovski/mini.bufremove",
+    dev = true,
     opts = {
-      on_last_removed = function(_)
+      on_delete_last_fallback = function(_)
         vim.cmd("SessionDelete")
         vim.cmd("Alpha")
       end,
