@@ -100,6 +100,8 @@ return {
     dev = true,
     opts = {
       on_delete_last_fallback = function(_)
+        local orig_cwd = os.getenv("PWD")
+        vim.fn.chdir(orig_cwd)
         vim.cmd("SessionDelete")
         vim.cmd("Alpha")
       end,
