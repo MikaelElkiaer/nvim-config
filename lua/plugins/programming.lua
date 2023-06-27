@@ -6,9 +6,10 @@ return {
       require("yaml_nvim")
     end,
     keys = {
-      { "<leader>yy", "<cmd>YAMLYank +<cr>", desc = "yank yaml path and value" },
-      { "<leader>yk", "<cmd>YAMLYankKey +<cr>", desc = "yank yaml path" },
-      { "<leader>yv", "<cmd>YAMLYankValue +<cr>", desc = "yank yaml value" },
+      { "<leader>yy", "<cmd>YAMLYank y<cr>", desc = "yank yaml key and value" },
+      { "<leader>yk", "<cmd>YAMLYankKey y<cr>", desc = "yank yaml key" },
+      { "<leader>yv", "<cmd>YAMLYankValue y<cr>", desc = "yank yaml value" },
+      { "<leader>yp", "\"yp", desc = "paste yaml value" },
     },
   },
   {
