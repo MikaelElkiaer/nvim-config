@@ -80,6 +80,9 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
+    keys = {
+      { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close all other buffers" },
+    },
     opts = {
       options = {
         always_show_bufferline = true,
