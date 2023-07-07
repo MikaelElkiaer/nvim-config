@@ -183,16 +183,4 @@ return {
       threshold = 7,
     },
   },
-  {
-    "m4xshen/hardtime.nvim",
-    event = "VeryLazy",
-    opts = {
-      disabled_keys = {
-        ["<UP>"] = { "n" },
-        ["<DOWN>"] = { "n" },
-        ["<LEFT>"] = { "n" },
-        ["<RIGHT>"] = { "n" },
-      },
-    },
-  },
 }
