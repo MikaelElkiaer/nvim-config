@@ -8,6 +8,9 @@ return {
         config = function(_, _)
           require("telescope").load_extension("yaml_schema")
         end,
+        keys = {
+          { "<leader>ys", "<cmd>Telescope yaml_schema<cr>", "Select yaml schema for buffer" }
+        }
       },
     },
     opts = function(_, opts)
