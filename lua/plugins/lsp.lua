@@ -36,7 +36,8 @@ return {
             if fname:sub(-#".csx") == ".csx" then
               return require("lspconfig").util.path.dirname(fname)
             end
-            return vim.fn.getcwd()
+            local root = require("lspconfig.util").root_pattern("*.sln")(fname)
+            return root or vim.fn.getcwd()
           end,
         },
         yamlls = require("yaml-companion").setup({
