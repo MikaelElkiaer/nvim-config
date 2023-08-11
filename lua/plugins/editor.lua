@@ -169,6 +169,9 @@ return {
       },
     },
     opts = {
+      filetypes = {
+        yaml = true
+      },
       panel = {
         enabled = false,
       },
