@@ -70,4 +70,28 @@ return {
       })
     end,
   },
+  {
+    "glepnir/lspsaga.nvim",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+    event = "LspAttach",
+    init = function()
+      require("lazyvim.util").on_attach(function(_, buffer)
+        vim.keymap.set("n", "<leader>cc", "<cmd>Lspsaga finder<CR>", { buffer = buffer, silent = true })
+        vim.keymap.set("n", "<leader>cp", "<cmd>Lspsaga peek_type_definition<CR>", { buffer = buffer, silent = true })
+        vim.keymap.set("n", "<leader>co", "<cmd>Lspsaga outline<CR>", { buffer = buffer, silent = true })
+      end)
+    end,
+    opts = {
+      lightbulb = {
+        enable = false,
+      },
+      symbol_in_winbar = {
+        enable = false,
+      },
+    },
+  },
 }
