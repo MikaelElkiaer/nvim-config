@@ -31,6 +31,9 @@ return {
         next = "Cn",
         prev = "Cp",
       },
+      list_opener = function()
+        require("trouble").open("quickfix")
+      end,
     },
   },
 }
