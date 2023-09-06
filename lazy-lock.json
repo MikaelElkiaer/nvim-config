@@ -33,6 +33,7 @@
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "6148b51db945b55b3b725da39eaea6441e59dff8" },
   "mason.nvim": { "branch": "main", "commit": "0942198fb9a998b6ccee36fb8dd7495eb8ba659c" },
   "mini.ai": { "branch": "main", "commit": "7ae226f331885e6f30e9a8229e113debc59308ae" },
+  "mini.bufremove": { "branch": "main", "commit": "7821606e35c1ac931b56d8e3155f45ffe76ee7e5" },
   "mini.comment": { "branch": "main", "commit": "877acea5b2a32ff55f808fc0ebe9aa898648318c" },
   "mini.indentscope": { "branch": "main", "commit": "f60e9b51a6214c73a170ffc5445ce91560981031" },
   "neoconf.nvim": { "branch": "main", "commit": "1075bd7f23d244f14d691c261b14c38209abf02d" },

@@ -1,3 +1,17 @@
+local on_buffer_delete = function()
+  local buf_id = vim.api.nvim_get_current_buf()
+  local is_empty = vim.api.nvim_buf_get_name(buf_id) == "" and vim.bo[buf_id].filetype == ""
+  if not is_empty then
+    return
+  end
+
+  local orig_cwd = os.getenv("PWD")
+  vim.fn.chdir(orig_cwd)
+  vim.cmd("SessionDelete")
+  vim.cmd("Alpha")
+  vim.api.nvim_buf_delete(buf_id, {})
+end
+
 return {
   {
     "LazyVim/LazyVim",
@@ -100,14 +114,23 @@ return {
   },
   {
     "echasnovski/mini.bufremove",
-    dev = true,
-    opts = {
-      on_delete_last_fallback = function(_)
-        local orig_cwd = os.getenv("PWD")
-        vim.fn.chdir(orig_cwd)
-        vim.cmd("SessionDelete")
-        vim.cmd("Alpha")
-      end,
+    keys = {
+      {
+        "<leader>bd",
+        function(...)
+          require("mini.bufremove").delete(...)
+          on_buffer_delete()
+        end,
+        desc = "Delete Buffer",
+      },
+      {
+        "<leader>bD",
+        function(...)
+          require("mini.bufremove").wipeout(...)
+          on_buffer_delete()
+        end,
+        desc = "Delete Buffer (Force)",
+      },
     },
   },
   {
