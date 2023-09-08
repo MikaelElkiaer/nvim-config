@@ -8,7 +8,7 @@ local on_buffer_delete = function()
   local orig_cwd = os.getenv("PWD")
   vim.fn.chdir(orig_cwd)
   vim.cmd("SessionDelete")
-  vim.cmd("Alpha")
+  require("mini.starter").open()
   vim.api.nvim_buf_delete(buf_id, {})
 end
 
@@ -143,4 +143,5 @@ return {
       },
     },
   },
+  { import = "lazyvim.plugins.extras.ui.mini-starter" },
 }
