@@ -144,4 +144,15 @@ return {
     },
   },
   { import = "lazyvim.plugins.extras.ui.mini-starter" },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "Issafalcon/neotest-dotnet",
+    },
+    opts = function(_, opts)
+      opts.adapters = {
+        ["neotest-dotnet"] = {},
+      }
+    end,
+  },
 }
