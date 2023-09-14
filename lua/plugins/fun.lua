@@ -37,4 +37,12 @@ return {
       table.insert(opts.sections.lualine_x, wpm.historic_graph)
     end,
   },
+  {
+    "NStefan002/speedtyper.nvim",
+    branch = "main",
+    cmd = "Speedtyper",
+    opts = {
+      -- your config
+    },
+  },
 }
