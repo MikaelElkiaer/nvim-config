@@ -62,7 +62,8 @@ return {
 
       -- callback for whenever cmp is triggered
       cmp.event:on("menu_opened", function()
-        return -- INFO: Disabled until timing issues are resolved
+        -- INFO: Disabled until timing issues are resolved
+        do return end
         -- autocmd callback for before a char is inserted
         vim.api.nvim_create_autocmd("InsertCharPre", {
           callback = function(_)
