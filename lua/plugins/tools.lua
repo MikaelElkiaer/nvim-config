@@ -96,6 +96,10 @@ return {
         desc = "Toggle task list (Overseer)",
       },
     },
-    opts = {},
+    opts = {
+      task_list = {
+        direction = "bottom",
+      },
+    },
   },
 }
