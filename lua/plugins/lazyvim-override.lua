@@ -49,6 +49,7 @@ return {
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
       })
 
       -- Disable auto selection of first item in completion (2)
@@ -61,6 +62,7 @@ return {
 
       -- callback for whenever cmp is triggered
       cmp.event:on("menu_opened", function()
+        return -- INFO: Disabled until timing issues are resolved
         -- autocmd callback for before a char is inserted
         vim.api.nvim_create_autocmd("InsertCharPre", {
           callback = function(_)
