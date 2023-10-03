@@ -43,3 +43,6 @@ luac.out
 plugin/packer_compiled.lua
 java-debug/
 vscode-java-test/
+
+# Kept on orphan branch 'lazy-lock'
+lazy-lock.json
