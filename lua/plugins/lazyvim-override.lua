@@ -31,10 +31,6 @@ return {
       -- Disable snippets in completion
       { "saadparwaiz1/cmp_luasnip", enabled = false },
       { "hrsh7th/cmp-nvim-lsp-signature-help" },
-      {
-        "zbirenbaum/copilot-cmp",
-        opts = {},
-      },
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -56,14 +52,15 @@ return {
       opts.preselect = require("cmp").PreselectMode.None
 
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
-        { name = "copilot" },
         { name = "nvim_lsp_signature_help" },
       }))
 
       -- callback for whenever cmp is triggered
       cmp.event:on("menu_opened", function()
         -- INFO: Disabled until timing issues are resolved
-        do return end
+        do
+          return
+        end
         -- autocmd callback for before a char is inserted
         vim.api.nvim_create_autocmd("InsertCharPre", {
           callback = function(_)

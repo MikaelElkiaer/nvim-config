@@ -170,13 +170,14 @@ return {
     },
     opts = {
       filetypes = {
-        yaml = true
+        yaml = true,
       },
       panel = {
         enabled = false,
       },
       suggestion = {
-        enabled = false,
+        auto_trigger = true,
+        enabled = true,
       },
     },
   },
