@@ -11,6 +11,7 @@ vim.filetype.add({
     json = "jsonc",
   },
 })
+vim.g.autoformat = false
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.backup = false -- creates a backup file
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files

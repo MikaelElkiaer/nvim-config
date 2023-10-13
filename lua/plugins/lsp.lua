@@ -14,7 +14,6 @@ return {
       },
     },
     opts = function(_, opts)
-      opts.autoformat = false
       ---@type lspconfig.options
       opts.servers = vim.tbl_extend("force", opts.servers, {
         helm_ls = {
@@ -79,7 +78,7 @@ return {
     },
     event = "LspAttach",
     init = function()
-      require("lazyvim.util").on_attach(function(_, buffer)
+      require("lazyvim.util").lsp.on_attach(function(_, buffer)
         vim.keymap.set("n", "<leader>cc", "<cmd>Lspsaga finder<CR>", { buffer = buffer, silent = true })
         vim.keymap.set("n", "<leader>cp", "<cmd>Lspsaga peek_type_definition<CR>", { buffer = buffer, silent = true })
         vim.keymap.set("n", "<leader>co", "<cmd>Lspsaga outline<CR>", { buffer = buffer, silent = true })
