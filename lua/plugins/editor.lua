@@ -170,7 +170,7 @@ return {
       {
         "<M-h>",
         function()
-          return require("copilot.suggestion").prev()
+          return require("copilot.suggestion").next()
         end,
         desc = "Select previous Copilot suggestion",
         mode = "i"
@@ -184,7 +184,7 @@ return {
         enabled = false,
       },
       suggestion = {
-        auto_trigger = false,
+        auto_trigger = true,
         enabled = true,
       },
     },
