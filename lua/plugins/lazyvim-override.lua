@@ -37,9 +37,9 @@ return {
       local cmp = require("cmp")
 
       -- Disable auto selection of first item in completion (1)
-      opts.completion = {
+      opts.completion = vim.tbl_extend("force", opts.completion, {
         completeopt = "menu,menuone,noinsert,noselect",
-      }
+      })
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
@@ -153,5 +153,28 @@ return {
         ["neotest-dotnet"] = {},
       }
     end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters = {
+        hush = {
+          args = { "--check" },
+          cmd = "hush",
+          ignore_exitcode = true,
+          name = "hush",
+          parser = require("lint.parser").from_pattern(
+            [[^(.*): (.*) %(line (%d+), column (%d+)%) %- (.*)$]],
+            { "severity", "file", "lnum", "col", "message" },
+            { ["Error"] = vim.diagnostic.severity.ERROR }
+          ),
+          stdin = false,
+          stream = "stderr",
+        },
+      },
+      linters_by_ft = {
+        hush = { "hush" },
+      },
+    },
   },
 }
