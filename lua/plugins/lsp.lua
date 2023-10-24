@@ -39,15 +39,6 @@ return {
             return root or vim.fn.getcwd()
           end,
         },
-        yamlls = require("yaml-companion").setup({
-          lspconfig = {
-            settings = {
-              yaml = {
-                keyOrdering = false,
-              },
-            },
-          },
-        }),
       })
       opts.setup = vim.tbl_extend("force", opts.setup, {
         helm_ls = function(_, _)

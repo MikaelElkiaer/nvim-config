@@ -13,13 +13,6 @@ return {
     },
   },
   {
-    "iamcco/markdown-preview.nvim",
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-    ft = "markdown",
-  },
-  {
     { "towolf/vim-helm", ft = "helm" },
   },
   -- generate c# xml doc
