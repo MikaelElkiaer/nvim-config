@@ -95,40 +95,6 @@ return {
     },
   },
   {
-    "windwp/nvim-autopairs",
-    config = function(_, opts)
-      local nvim_autopairs = require("nvim-autopairs")
-      nvim_autopairs.setup(opts)
-
-      local cmp_status_ok, cmp = pcall(require, "cmp")
-      if not cmp_status_ok then
-        return
-      end
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-    end,
-    opts = {
-      check_ts = true,
-    },
-  },
-  {
-    "kylechui/nvim-surround",
-    opts = {
-      keymaps = {
-        insert = nil,
-        insert_line = nil,
-        normal = "gzs",
-        normal_cur = "gzss",
-        normal_line = "gzS",
-        normal_cur_line = "gzSS",
-        visual = "gzs",
-        visual_line = "gzS",
-        delete = "gzd",
-        change = "gzc",
-      },
-    },
-  },
-  {
     "L3MON4D3/LuaSnip",
     keys = {
       {
@@ -139,10 +105,6 @@ return {
         mode = { "i", "s" },
       },
     },
-  },
-  {
-    "cpea2506/relative-toggle.nvim",
-    enabled = false,
   },
   {
     "zbirenbaum/copilot.lua",

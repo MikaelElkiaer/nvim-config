@@ -85,14 +85,6 @@ return {
     end,
   },
   {
-    "echasnovski/mini.pairs",
-    enabled = false,
-  },
-  {
-    "echasnovski/mini.surround",
-    enabled = false,
-  },
-  {
     "akinsho/bufferline.nvim",
     keys = {
       { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close all other buffers" },
