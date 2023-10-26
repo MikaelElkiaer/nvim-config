@@ -46,3 +46,4 @@ vscode-java-test/
 
 # Kept on orphan branch 'lazy-lock'
 lazy-lock.json
+lazy-lock.json.bak
