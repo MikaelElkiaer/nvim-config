@@ -9,8 +9,8 @@ return {
           require("telescope").load_extension("yaml_schema")
         end,
         keys = {
-          { "<leader>ys", "<cmd>Telescope yaml_schema<cr>", "Select yaml schema for buffer" }
-        }
+          { "<leader>ys", "<cmd>Telescope yaml_schema<cr>", "Select yaml schema for buffer" },
+        },
       },
     },
     opts = function(_, opts)
@@ -39,6 +39,7 @@ return {
             return root or vim.fn.getcwd()
           end,
         },
+        yamlls = require("yaml-companion").setup({}),
       })
       opts.setup = vim.tbl_extend("force", opts.setup, {
         helm_ls = function(_, _)
