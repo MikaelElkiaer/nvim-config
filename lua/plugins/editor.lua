@@ -125,7 +125,7 @@ return {
     -- end,
     keys = {
       {
-        "<leader>up",
+        "<leader>uP",
         "<cmd>Copilot toggle<cr>",
         { desc = "Toggle Copilot" },
       },
