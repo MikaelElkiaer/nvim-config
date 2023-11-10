@@ -19,8 +19,8 @@ return {
     cmd = { "GitConflictListQf", "GitConflictNextConflict", "GitConflictPrevConflict" },
     keys = {
       { "<leader>gC", "<cmd>GitConflictListQf<cr>", desc = "conflicts" },
-      { "]C", "<cmd>GitConflictNextConflict<cr>", desc = "next conflict" },
-      { "[C", "<cmd>GitConflictPrevConflict<cr>", desc = "previous conflict" },
+      { "]g", "<cmd>GitConflictNextConflict<cr>", desc = "next conflict" },
+      { "[g", "<cmd>GitConflictPrevConflict<cr>", desc = "previous conflict" },
     },
     opts = {
       default_mappings = {
