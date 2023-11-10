@@ -131,9 +131,11 @@ return {
       },
       {
         "<M-h>",
-        require("copilot.suggestion").next,
+        function()
+          _ = require("copilot.suggestion").next()
+        end,
         desc = "Select previous Copilot suggestion",
-        mode = "i"
+        mode = "i",
       },
     },
     opts = {
