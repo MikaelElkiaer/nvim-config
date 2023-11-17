@@ -58,7 +58,7 @@ return {
     end,
     keys = {
       {
-        "<leader><space>",
+        "<leader><space>f",
         "<cmd>Telescope file_browser path=%:p:h initial_mode=normal hidden=true respect_gitignore=false<cr>",
         desc = "File browser",
       },
