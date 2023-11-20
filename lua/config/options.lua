@@ -5,6 +5,7 @@ vim.filetype.add({
   extension = {
     keymap = "devicetree",
     overlay = "devicetree",
+    bats = "bash",
     csx = "csx",
     cheat = "bash",
     hsh = "hush",
