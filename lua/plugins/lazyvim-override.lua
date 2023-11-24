@@ -169,4 +169,12 @@ return {
       },
     },
   },
+  -- TODO: Remove temporary fix
+  -- see https://github.com/LazyVim/LazyVim/issues/2039#issuecomment-1822808701
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      _extmark_signs = false,
+    },
+  },
 }
