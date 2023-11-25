@@ -30,12 +30,6 @@ return {
     end,
   },
   {
-    "nvim-treesitter/playground",
-    cmd = "TSPlaygroundToggle",
-    main = "nvim-treesitter.configs",
-    opts = {},
-  },
-  {
     "ziontee113/syntax-tree-surfer",
     cmd = { "STSSelectMasterNode", "STSSelectCurrentNode" },
     keys = {
