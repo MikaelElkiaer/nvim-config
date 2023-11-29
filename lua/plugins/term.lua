@@ -28,12 +28,12 @@ return {
       },
       {
         "<leader><space>d",
-        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazydocker', hidden = true, direction = 'float', dir='%:p:h' }):toggle()<CR>",
+        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazydocker', hidden = true, direction = 'float', dir=vim.fn.getcwd() }):toggle()<CR>",
         desc = "lazydocker",
       },
       {
         "<leader><space>k",
-        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'k9s', hidden = true, direction = 'float', dir='%:p:h' }):toggle()<CR>",
+        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'k9s', hidden = true, direction = 'float', dir=vim.fn.getcwd() }):toggle()<CR>",
         desc = "k9s",
       },
     },
