@@ -177,4 +177,8 @@ return {
       _extmark_signs = false,
     },
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && yarn install",
+  },
 }
