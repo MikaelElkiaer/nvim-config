@@ -22,7 +22,7 @@ return {
     keys = {
       { "<leader><cr>", "<cmd>ToggleTerm<CR>", desc = "Terminal" },
       {
-        "<leader>gg",
+        "<leader><space>g",
         "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' }):toggle()<CR>",
         desc = "lazygit",
       },
