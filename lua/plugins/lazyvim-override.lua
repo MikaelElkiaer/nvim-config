@@ -181,4 +181,12 @@ return {
     "iamcco/markdown-preview.nvim",
     build = "cd app && yarn install",
   },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        xml = { "xmlformat" },
+      },
+    },
+  },
 }
