@@ -108,7 +108,6 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
     -- config = function(_, opts)
     --   require("copilot").setup(opts)
     --
@@ -141,9 +140,6 @@ return {
     opts = {
       filetypes = {
         yaml = true,
-      },
-      panel = {
-        enabled = false,
       },
       suggestion = {
         auto_trigger = true,
