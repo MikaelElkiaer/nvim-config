@@ -26,18 +26,6 @@ return {
     },
   },
   {
-    "nvim-lualine/lualine.nvim",
-    dependencies = {
-      { "jcdickinson/wpm.nvim", opts = true },
-    },
-    event = "VeryLazy",
-    opts = function(_, opts)
-      local wpm = require("wpm")
-      table.insert(opts.sections.lualine_x, wpm.wpm)
-      table.insert(opts.sections.lualine_x, wpm.historic_graph)
-    end,
-  },
-  {
     "NStefan002/speedtyper.nvim",
     branch = "main",
     cmd = "Speedtyper",
