@@ -68,17 +68,17 @@ return {
   {
     "stevearc/oil.nvim",
     cmd = { "Oil " },
-    config = {
-      view_options = {
-        show_hidden = true,
-      },
-    },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
       {
         "<leader>o",
         '<cmd>lua require("oil").open()<CR>',
         desc = "Open parent directory",
+      },
+    },
+    opts = {
+      view_options = {
+        show_hidden = true,
       },
     },
   },
