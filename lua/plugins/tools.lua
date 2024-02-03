@@ -11,9 +11,6 @@ return {
       { "<leader>ro", "<cmd>ScratchOpen<cr>", desc = "open scratch" },
       { "<leader>rO", "<cmd>ScratchOpenFzf<cr>", desc = "open scratch (fzf)" },
     },
-    opts = {
-      filetypes = { "bash", "csx", "hush" },
-    },
   },
   -- run http requests
   {
