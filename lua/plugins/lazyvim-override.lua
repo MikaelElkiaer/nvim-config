@@ -41,6 +41,11 @@ return {
         completeopt = "menu,menuone,noinsert,noselect",
       })
 
+      -- Disable ghost text to not clash with copilot
+      opts.experimental = vim.tbl_extend("force", opts.experimental, {
+        ghost_text = false,
+      })
+
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
