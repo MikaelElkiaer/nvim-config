@@ -5,11 +5,11 @@
 -- Run actionlint when changing a GitHub Actions workflow file
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()
-    local lint, _ = pcall(require, "lint")
-    if not lint then
+    local success, lint = pcall(require, "lint")
+    if not success then
       return
     end
-    require("lint").try_lint("actionlint")
+    lint.try_lint("actionlint")
   end,
   pattern = "*.github/workflows/*.yaml",
 })
