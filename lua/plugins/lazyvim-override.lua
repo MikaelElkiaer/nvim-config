@@ -187,4 +187,10 @@ return {
     "zbirenbaum/copilot-cmp",
     enabled = false,
   },
+  {
+    "rrethy/vim-illuminate",
+    opts = {
+      min_count_to_highlight = 2,
+    },
+  },
 }
