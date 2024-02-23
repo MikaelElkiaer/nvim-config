@@ -81,20 +81,6 @@ return {
     lazy = false,
   },
   {
-    "rmagatti/auto-session",
-    event = "VimEnter",
-    opts = {
-      log_level = "error",
-      cwd_change_handling = {
-        restore_upcoming_session = true,
-      },
-      auto_session_suppress_dirs = {
-        "/home/*",
-      },
-      bypass_session_save_file_types = { "alpha", "noice", "notify" },
-    },
-  },
-  {
     "L3MON4D3/LuaSnip",
     keys = {
       {
@@ -126,7 +112,7 @@ return {
       {
         "<leader>uP",
         "<cmd>Copilot toggle<cr>",
-        { desc = "Toggle Copilot" },
+        desc = "Toggle Copilot",
       },
       {
         "<M-h>",

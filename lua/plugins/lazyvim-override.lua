@@ -7,7 +7,6 @@ local on_buffer_delete = function()
 
   local orig_cwd = os.getenv("PWD")
   vim.fn.chdir(orig_cwd)
-  vim.cmd("SessionDelete")
   require("mini.starter").open()
   vim.api.nvim_buf_delete(buf_id, {})
 end
@@ -16,10 +15,6 @@ return {
   {
     "LazyVim/LazyVim",
     opts = { colorscheme = "gruvbox" },
-  },
-  {
-    "folke/persistence.nvim",
-    enabled = false,
   },
   {
     "neo-tree.nvim",
