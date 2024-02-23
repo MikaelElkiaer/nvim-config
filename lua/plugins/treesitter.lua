@@ -21,6 +21,16 @@ return {
           requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
         },
       }
+      parser_configs.gotmpl = {
+        install_info = {
+          url = "https://github.com/MikaelElkiaer/tree-sitter-go-template",
+          files = { "src/parser.c" },
+          generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+          requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+        },
+        filetype = "gotmpl",
+        used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
+      }
 
       vim.list_extend(opts.ensure_installed, {
         "hurl",
