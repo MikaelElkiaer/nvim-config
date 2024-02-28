@@ -10,7 +10,6 @@ vim.filetype.add({
     cheat = "bash",
     hsh = "hush",
     json = "jsonc",
-    gotmpl = "gotmpl",
   },
 })
 vim.g.autoformat = false
