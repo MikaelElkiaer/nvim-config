@@ -13,3 +13,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   end,
   pattern = "*.github/workflows/*.yaml",
 })
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  callback = function()
+    vim.bo.filetype = "yaml"
+  end,
+  pattern = vim.fn.expand("~") .. "/.kube/config*",
+})
