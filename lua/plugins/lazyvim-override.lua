@@ -186,6 +186,9 @@ return {
   },
   {
     "rrethy/vim-illuminate",
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+    end,
     opts = {
       min_count_to_highlight = 2,
     },
