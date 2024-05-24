@@ -6,7 +6,9 @@ local on_buffer_delete = function()
   end
 
   local orig_cwd = os.getenv("PWD")
-  vim.fn.chdir(orig_cwd)
+  if orig_cwd ~= nil then
+    vim.fn.chdir(orig_cwd)
+  end
   require("mini.starter").open()
   vim.api.nvim_buf_delete(buf_id, {})
 end
