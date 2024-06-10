@@ -14,15 +14,23 @@ return {
         function()
           require("duck").hatch("🐢", 0.8)
         end,
-        desc = "Turtle hatch",
+        desc = "hatch turtle",
       },
       {
         "<leader>Z",
         function()
           require("duck").cook()
         end,
-        desc = "Turtle cook",
+        desc = "cook turtle",
       },
+    },
+  },
+  {
+    "NStefan002/speedtyper.nvim",
+    branch = "main",
+    cmd = "Speedtyper",
+    opts = {
+      -- your config
     },
   },
 }

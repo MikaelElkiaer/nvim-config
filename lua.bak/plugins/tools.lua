@@ -1,6 +1,7 @@
 require("utils").create_keymap_group("<leader>r", "+run")
 
 return {
+  -- Create scratch buffers
   {
     "LintaoAmons/scratch.nvim",
     cmd = { "Scratch", "ScratchWithName", "ScratchOpen", "ScratchOpenFzf" },
@@ -10,6 +11,17 @@ return {
       { "<leader>ro", "<cmd>ScratchOpen<cr>", desc = "open scratch" },
       { "<leader>rO", "<cmd>ScratchOpenFzf<cr>", desc = "open scratch (fzf)" },
     },
+  },
+  -- run http requests
+  {
+    "blackadress/rest.nvim",
+    branch = "response_body_stored",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>rh", '<cmd>lua require("rest-nvim").run()<cr>', desc = "http request" },
+      { "<leader>rH", '<cmd>lua require("rest-nvim").run(true)<cr>', desc = "http request (preview)" },
+    },
+    opts = true,
   },
   {
     "arjunmahishi/flow.nvim", -- run code from file (incl. markdown code blocks)
@@ -35,6 +47,36 @@ return {
     keys = {
       { "<leader>Bd", '<cmd>lua require("base64").decode()<cr>', desc = "base64 decode", mode = "x" },
       { "<leader>Be", '<cmd>lua require("base64").encode()<cr>', desc = "base64 encode", mode = "x" },
+    },
+  },
+  {
+    "codethread/qmk.nvim",
+    enabled = false,
+    opts = {
+      name = "LAYOUT_split_3x6_3",
+      layout = {
+        "x x x x x x _ _ _ x x x x x x",
+        "x x x x x x _ _ _ x x x x x x",
+        "x x x x x x _ _ _ x x x x x x",
+        "_ _ _ _ x x x _ x x x _ _ _ _",
+      },
+    },
+  },
+  {
+    "stevearc/oil.nvim",
+    cmd = { "Oil " },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+      {
+        "<leader>o",
+        '<cmd>lua require("oil").open()<CR>',
+        desc = "Open parent directory",
+      },
+    },
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
     },
   },
   {
