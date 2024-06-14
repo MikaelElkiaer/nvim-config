@@ -1,4 +1,5 @@
 return {
+  -- grab VCS (GitHub etc.) links from current line
   {
     "valorl/vcslink.nvim",
     cmd = { "VcsLinkLineCopy", "VcsLinkLineBrowse", "VcsLinkBufCopy", "VcsLinkBufBrowse" },
@@ -12,6 +13,7 @@ return {
       { "<leader>glB", "<cmd>VcsLinkBufBrowse<cr>", desc = "browse buffer" },
     },
   },
+  -- navigation and simple view for git conflicts
   {
     "akinsho/git-conflict.nvim",
     cmd = { "GitConflictListQf", "GitConflictNextConflict", "GitConflictPrevConflict" },
@@ -36,10 +38,11 @@ return {
   },
   {
     "pwntester/octo.nvim",
-    cmd = { "Octo" },
+    -- cmd = { "Octa" },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
+      -- OR 'ibhagwan/fzf-lua',
       "nvim-tree/nvim-web-devicons",
     },
     opts = {},

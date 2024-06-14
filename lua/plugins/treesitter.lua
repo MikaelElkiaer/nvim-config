@@ -1,43 +1,39 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      {
-        "pfeiferj/nvim-hurl",
-        branch = "main",
-        config = true,
-        event = "BufEnter *.hurl",
+    build = ":TSUpdate",
+    event = { "BufEnter", "VeryLazy" },
+    lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
+    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+    opts = {
+      auto_install = true,
+      highlight = { enable = true },
+      indent = { enable = true },
+      textobjects = {
+        move = {
+          enable = true,
+          goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
+          goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
+          goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
+          goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
+        },
       },
     },
-    config = function(_, opts)
-      local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_configs.hush = {
-        install_info = {
-          url = "https://github.com/MikaelElkiaer/tree-sitter-hush",
-          files = { "src/parser.c" },
-          -- optional entries:
-          branch = "main", -- default branch in case of git repo if different from master
-          generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-          requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-        },
-      }
-      parser_configs.gotmpl = {
-        install_info = {
-          url = "https://github.com/MikaelElkiaer/tree-sitter-go-template",
-          files = { "src/parser.c" },
-          generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-          requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-        },
-        filetype = "gotmpl",
-        used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
-      }
-
-      vim.list_extend(opts.ensure_installed, {
-        "hurl",
-        "hush",
-      })
-      require("nvim-treesitter.configs").setup(opts)
-    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufEnter",
+    opts = { mode = "cursor", max_lines = 3 },
+    keys = {
+      {
+        "<leader>ut",
+        function()
+          local tsc = require("treesitter-context")
+          tsc.toggle()
+        end,
+        desc = "Toggle Treesitter Context",
+      },
+    },
   },
   {
     "ziontee113/syntax-tree-surfer",
@@ -51,6 +47,8 @@ return {
           vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot"
           return "g@l"
         end,
+        desc = "Swap prev - master",
+        expr = true,
       },
       {
         "vD",
@@ -58,6 +56,8 @@ return {
           vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot"
           return "g@l"
         end,
+        desc = "Swap next - master",
+        expr = true,
       },
       -- Swap Current Node at the Cursor with it's siblings, Dot Repeatable
       {
@@ -66,6 +66,8 @@ return {
           vim.opt.opfunc = "v:lua.STSSwapCurrentNodeNextNormal_Dot"
           return "g@l"
         end,
+        desc = "Swap next - current",
+        expr = true,
       },
       {
         "vu",
@@ -73,18 +75,20 @@ return {
           vim.opt.opfunc = "v:lua.STSSwapCurrentNodePrevNormal_Dot"
           return "g@l"
         end,
+        desc = "Swap prev - current",
+        expr = true,
       },
       -- Visual Selection from Normal Mode
-      { "vx", "<cmd>STSSelectMasterNode<cr>" },
-      { "vn", "<cmd>STSSelectCurrentNode<cr>" },
+      { "vx", "<cmd>STSSelectMasterNode<cr>", desc = "Select - master" },
+      { "vn", "<cmd>STSSelectCurrentNode<cr>", desc = "Select - current" },
       -- Select Nodes in Visual Mode
-      { "J", "<cmd>STSSelectNextSiblingNode<cr>", mode = "x" },
-      { "K", "<cmd>STSSelectPrevSiblingNode<cr>", mode = "x" },
-      { "H", "<cmd>STSSelectParentNode<cr>", mode = "x" },
-      { "L", "<cmd>STSSelectChildNode<cr>", mode = "x" },
+      { "J", "<cmd>STSSelectNextSiblingNode<cr>", mode = "x", desc = "Select - next" },
+      { "K", "<cmd>STSSelectPrevSiblingNode<cr>", mode = "x", desc = "Select - prev" },
+      { "H", "<cmd>STSSelectParentNode<cr>", mode = "x", desc = "Select - parent" },
+      { "L", "<cmd>STSSelectChildNode<cr>", mode = "x", desc = "Select - child" },
       -- Swapping Nodes in Visual Mode
-      { "<A-j>", "<cmd>STSSwapNextVisual<cr>", mode = "x" },
-      { "<A-k>", "<cmd>STSSwapPrevVisual<cr>", mode = "x" },
+      { "<A-j>", "<cmd>STSSwapNextVisual<cr>", mode = "x", desc = "Swap next" },
+      { "<A-k>", "<cmd>STSSwapPrevVisual<cr>", mode = "x", desc = "Swap prev" },
     },
     opts = true,
   },

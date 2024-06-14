@@ -1,7 +1,7 @@
 return {
   {
-    "XXiaoA/auto-save.nvim",
-    event = "BufReadPre",
+    "okuuva/auto-save.nvim",
+    event = { "InsertLeave", "TextChanged" },
     keys = {
       {
         "<leader>ua",
@@ -27,6 +27,54 @@ return {
           return ""
         end,
       },
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    cmd = { "TodoTelescope" },
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    event = "BufEnter",
+    config = true,
+    keys = {
+      {
+        "]t",
+        function()
+          require("todo-comments").jump_next()
+        end,
+        desc = "Todo next",
+      },
+      {
+        "[t",
+        function()
+          require("todo-comments").jump_prev()
+        end,
+        desc = "Todo prev",
+      },
+      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+    },
+  },
+  {
+    "chaoren/vim-wordmotion",
+    event = "VeryLazy",
+    init = function()
+      vim.g.wordmotion_prefix = "<bs>"
+    end,
+    keys = { "<bs>" },
+  },
+  {
+    "echasnovski/mini.ai",
+    event = "BufReadPost",
+  },
+  {
+    "rrethy/vim-illuminate",
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+    end,
+    event = "BufEnter",
+    opts = {
+      min_count_to_highlight = 2,
     },
   },
   {
@@ -63,96 +111,30 @@ return {
     end,
   },
   {
-    "chaoren/vim-wordmotion",
-    init = function()
-      vim.g.wordmotion_prefix = "<BS>"
-    end,
-    keys = { "<BS>" },
-  },
-  {
-    "wellle/targets.vim",
-    event = "BufReadPost",
-  },
-  {
-    "airblade/vim-rooter",
-    init = function()
-      vim.g.rooter_cd_cmd = "lcd"
-    end,
-    lazy = false,
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    keys = {
-      {
-        "<C-n>",
-        function()
-          _ = require("luasnip").choice_active() and require("luasnip.extras.select_choice")()
-        end,
-        mode = { "i", "s" },
-      },
-    },
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    -- config = function(_, opts)
-    --   require("copilot").setup(opts)
-    --
-    --   local cmp_status_ok, cmp = pcall(require, "cmp")
-    --   if cmp_status_ok then
-    --     cmp.event:on("menu_opened", function()
-    --       vim.b.copilot_suggestion_hidden = true
-    --     end)
-    --
-    --     cmp.event:on("menu_closed", function()
-    --       vim.b.copilot_suggestion_hidden = false
-    --     end)
-    --   end
-    -- end,
-    keys = {
-      {
-        "<leader>uP",
-        "<cmd>Copilot toggle<cr>",
-        desc = "Toggle Copilot",
-      },
-      {
-        "<M-h>",
-        function()
-          _ = require("copilot.suggestion").next()
-        end,
-        desc = "Select next Copilot suggestion",
-        mode = "i",
-      },
-      {
-        "<M-j>",
-        function()
-          _ = require("copilot.suggestion").accept_word()
-        end,
-        desc = "Accept Copilot suggestion - word only",
-        mode = "i",
-      },
-      {
-        "<M-k>",
-        function()
-          _ = require("copilot.suggestion").prev()
-        end,
-        desc = "Select previous Copilot suggestion",
-        mode = "i",
-      },
-    },
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufEnter",
     opts = {
-      filetypes = {
-        yaml = true,
+      indent = {
+        char = "│",
+        tab_char = "│",
       },
-      suggestion = {
-        auto_trigger = true,
-        enabled = true,
+      scope = { show_start = false, show_end = false },
+      exclude = {
+        filetypes = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "trouble",
+          "lazy",
+          "mason",
+          "notify",
+          "toggleterm",
+          "lazyterm",
+        },
       },
     },
-  },
-  {
-    "axkirillov/hbac.nvim",
-    opts = {
-      threshold = 7,
-    },
+    main = "ibl",
   },
 }
