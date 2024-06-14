@@ -59,9 +59,9 @@ return {
     "chaoren/vim-wordmotion",
     event = "VeryLazy",
     init = function()
-      vim.g.wordmotion_prefix = "<bs>"
+      vim.g.wordmotion_prefix = "<tab>"
     end,
-    keys = { "<bs>" },
+    keys = { "<tab>" },
   },
   {
     "echasnovski/mini.ai",

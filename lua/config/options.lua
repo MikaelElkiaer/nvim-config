@@ -11,7 +11,7 @@ vim.filetype.add({
 })
 vim.g.autoformat = false
 vim.g.mapleader = " "
-vim.g.maplocalleader = "<BS>"
+vim.g.maplocalleader = "<tab>"
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.backup = false
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
