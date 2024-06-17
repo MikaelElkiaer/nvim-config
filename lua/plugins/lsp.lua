@@ -1,8 +1,9 @@
-local function on_attach(client, bufnr)
-  vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })
+local function on_attach(_, bufnr)
+  -- TODO: Re-enable after 0.11
+	-- vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })
+  -- vim.keymap.set("i", "<c-space>", vim.lsp.completion.trigger, { buffer = bufnr, desc = "trigger completion" })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "goto definition" })
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "goto Declaration" })
-  vim.keymap.set("i", "<c-space>", vim.lsp.completion.trigger, { buffer = bufnr, desc = "trigger completion" })
 end
 
 return {
