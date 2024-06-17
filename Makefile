@@ -1,3 +1,6 @@
+init:
+	ln -sfn $$PWD $$HOME/.config/nvim
+
 update-lazy-lock:
 	cp ./lazy-lock.json ./lazy-lock.json.bak
 	git stash -u
