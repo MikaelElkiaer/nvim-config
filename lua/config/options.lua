@@ -18,6 +18,7 @@ vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 vim.opt.completeopt = "menu,menuone,noinsert,noselect"
 vim.opt.conceallevel = 0
 vim.opt.cursorline = true
+vim.opt.expandtab = true
 vim.opt.fileencoding = "utf-8"
 vim.opt.foldenable = false
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
