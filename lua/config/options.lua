@@ -24,6 +24,7 @@ vim.opt.foldenable = false
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldmethod = "expr"
 vim.opt.ignorecase = true
+vim.opt.laststatus = 0 -- Hide default status bar
 vim.opt.list = true
 vim.opt.number = true
 vim.opt.relativenumber = true
