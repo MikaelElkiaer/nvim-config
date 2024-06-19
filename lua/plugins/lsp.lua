@@ -70,14 +70,6 @@ return {
     "neovim/nvim-lspconfig",
     config = function(_, _)
       local lspconfig = require("lspconfig")
-      local configs = require("lspconfig.configs")
-      -- if not configs.helm_ls then
-      --   configs.helm_ls = {
-      --     default_config = {
-      --       cmd = { "helm_ls", "serve" },
-      --     },
-      --   }
-      -- end
       lspconfig.bashls.setup({
         on_attach = on_attach,
       })
