@@ -1,6 +1,6 @@
 local function on_attach(_, bufnr)
   -- TODO: Re-enable after 0.11
-	-- vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })
+  -- vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })
   -- vim.keymap.set("i", "<c-space>", vim.lsp.completion.trigger, { buffer = bufnr, desc = "trigger completion" })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "goto definition" })
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "goto Declaration" })
@@ -69,18 +69,13 @@ return {
     config = function(_, _)
       local lspconfig = require("lspconfig")
       local configs = require("lspconfig.configs")
-      if not configs.helm_ls then
-        configs.helm_ls = {
-          default_config = {
-            cmd = { "helm_ls", "serve" },
-            filetypes = { "helm" },
-            root_dir = function(fname)
-              local util = require("lspconfig.util")
-              return util.root_pattern("Chart.yaml")(fname)
-            end,
-          },
-        }
-      end
+      -- if not configs.helm_ls then
+      --   configs.helm_ls = {
+      --     default_config = {
+      --       cmd = { "helm_ls", "serve" },
+      --     },
+      --   }
+      -- end
       lspconfig.bashls.setup({
         on_attach = on_attach,
       })
