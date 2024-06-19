@@ -52,7 +52,7 @@ return {
         end,
         desc = "Todo prev",
       },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "todos" },
     },
   },
   {
