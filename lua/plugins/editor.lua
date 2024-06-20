@@ -137,4 +137,28 @@ return {
     },
     main = "ibl",
   },
+  {
+    "ggandor/flit.nvim",
+    dependencies = {
+      "ggandor/leap.nvim",
+      "tpope/vim-repeat",
+    },
+    keys = {
+      { "f", nil, desc = "find" },
+      { "F", nil, desc = "find backwards" },
+      { "t", nil, desc = "till" },
+      { "T", nil, desc = "till backwards" },
+    },
+    opts = true,
+  },
+  {
+    "ggandor/leap.nvim",
+    dependencies = {
+      "tpope/vim-repeat",
+    },
+    keys = {
+      { "s", "<Plug>(leap-forward)", desc = "leap", mode = { "n", "x", "o" } },
+      { "S", "<Plug>(leap-backward)", desc = "leap backward", mode = { "n", "x", "o" } },
+    },
+  },
 }
