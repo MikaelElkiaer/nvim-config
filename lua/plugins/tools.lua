@@ -73,7 +73,7 @@ return {
     end,
     event = "VeryLazy",
     keys = {
-      { "<leader>Cb", ":CopilotChatBuffer ", desc = "CopilotChat - Chat with current buffer" },
+      { "<leader>Cb", ":CopilotChat ", desc = "CopilotChat - Chat with current buffer" },
       { "<leader>Ce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
       { "<leader>Ct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
       {
