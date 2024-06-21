@@ -27,7 +27,6 @@ vim.opt.ignorecase = true
 vim.opt.laststatus = 0 -- Hide default status bar
 vim.opt.list = true
 vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
 vim.opt.swapfile = false
