@@ -53,10 +53,7 @@ return {
       float_opts = {
         border = "curved",
       },
-      autochdir = true,
-      env = {
-        EDITOR = "nvr -l",
-      },
+      autochdir = true
     },
   },
 }
