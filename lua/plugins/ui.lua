@@ -27,11 +27,6 @@ return {
     end,
   },
   {
-    "echasnovski/mini.starter",
-    event = "VimEnter",
-    opts = true,
-  },
-  {
     "echasnovski/mini.misc",
     event = "VimEnter",
     init = function()
@@ -73,6 +68,27 @@ return {
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
+    opts = true,
+  },
+  {
+    "nvimdev/dashboard-nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    event = "VimEnter",
+    opts = {
+      config = {
+        project = {
+          action = function(_)
+            require("persistence").load()
+          end,
+        },
+      },
+    },
+  },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
     opts = true,
   },
 }

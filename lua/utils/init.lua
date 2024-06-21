@@ -22,8 +22,9 @@ M.on_buffer_delete = function()
   if orig_cwd ~= nil then
     vim.fn.chdir(orig_cwd)
   end
-  require("mini.starter").open()
+  -- WARN: Delete final buffer before opening dashboard
   vim.api.nvim_buf_delete(buf_id, {})
+  require("dashboard"):instance()
 end
 
 return M
