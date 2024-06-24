@@ -29,6 +29,8 @@ return {
         lua = { "stylua" },
         markdown = { "mdformat" },
         sh = { "shfmt" },
+        toml = { "taplo" },
+        yaml = { "yq" },
         xml = { "xmlformat" },
       },
     },
