@@ -15,9 +15,6 @@ return {
     init = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
-    dependencies = {
-      "mason.nvim",
-    },
     keys = {
       {
         "<leader>cf",
@@ -137,23 +134,6 @@ return {
     event = "BufEnter",
     keys = {
       { "<leader>cl", "<cmd>LspInfo<cr>", desc = "LSP Info" },
-    },
-  },
-  {
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-    build = ":MasonUpdate",
-    opts = true,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig",
-    },
-    opts = {
-      automatic_installation = true,
     },
   },
 }
