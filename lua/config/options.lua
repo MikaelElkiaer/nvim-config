@@ -1,7 +1,7 @@
 vim.filetype.add({
   extension = {
     bats = "bash",
-    cheat = "bash",
+    cheat = "cheat",
     csx = "csx",
     hsh = "hush",
     json = "jsonc",
@@ -41,3 +41,4 @@ vim.opt.virtualedit = "block"
 vim.opt.wrap = true
 vim.opt.writebackup = false
 vim.treesitter.language.register("c_sharp", "csx")
+vim.treesitter.language.register("bash", "cheat")
