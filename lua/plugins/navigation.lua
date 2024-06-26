@@ -8,6 +8,7 @@ return {
       { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "files" },
       { "<leader>fF", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", desc = "files ignored" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "grep" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "recent files" },
       { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "symbols" },
     },
     opts = function()
