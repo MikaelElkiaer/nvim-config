@@ -13,34 +13,35 @@ return {
     },
   },
   {
-    "akinsho/git-conflict.nvim",
-    cmd = { "GitConflictListQf", "GitConflictNextConflict", "GitConflictPrevConflict" },
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen " },
     keys = {
-      { "<leader>gC", "<cmd>GitConflictListQf<cr>", desc = "conflicts" },
-      { "]g", "<cmd>GitConflictNextConflict<cr>", desc = "next conflict" },
-      { "[g", "<cmd>GitConflictPrevConflict<cr>", desc = "previous conflict" },
-    },
-    opts = {
-      default_mappings = {
-        ours = "Co",
-        theirs = "Ct",
-        none = "C0",
-        both = "Cb",
-        next = "Cn",
-        prev = "Cp",
+      {
+        "<leader>gdo",
+        "<cmd>DiffviewOpen<cr>",
+        desc = "diffview open",
       },
-      list_opener = function()
-        require("trouble").open("quickfix")
-      end,
     },
   },
   {
     "pwntester/octo.nvim",
-    cmd = { "Octo" },
+    cmd = { "Octo " },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
+    },
+    keys = {
+      {
+        "<leader>goi",
+        "<cmd>Octo issue list<cr>",
+        desc = "octo issue",
+      },
+      {
+        "<leader>gop",
+        "<cmd>Octo pr<cr>",
+        desc = "octo PR",
+      },
     },
     opts = {},
   },
