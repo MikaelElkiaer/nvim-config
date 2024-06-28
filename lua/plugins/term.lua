@@ -23,22 +23,30 @@ return {
       { "<leader><cr>", "<cmd>ToggleTerm<CR>", desc = "Terminal" },
       {
         "<leader><space>d",
-        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazydocker', hidden = true, direction = 'float', dir=vim.fn.getcwd() }):toggle()<CR>",
+        function()
+          require("utils"):create_tui("lazydocker")
+        end,
         desc = "lazydocker",
       },
       {
         "<leader><space>g",
-        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' }):toggle()<CR>",
+        function()
+          require("utils"):create_tui("lazygit")
+        end,
         desc = "lazygit",
       },
       {
         "<leader><space>h",
-        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'gh-dash', hidden = true, direction = 'float' }):toggle()<CR>",
+        function()
+          require("utils"):create_tui("gh-dash")
+        end,
         desc = "hub",
       },
       {
         "<leader><space>k",
-        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'k9s', hidden = true, direction = 'float', dir=vim.fn.getcwd() }):toggle()<CR>",
+        function()
+          require("utils"):create_tui("k9s")
+        end,
         desc = "k9s",
       },
     },
