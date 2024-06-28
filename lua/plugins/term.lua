@@ -22,14 +22,19 @@ return {
     keys = {
       { "<leader><cr>", "<cmd>ToggleTerm<CR>", desc = "Terminal" },
       {
+        "<leader><space>d",
+        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazydocker', hidden = true, direction = 'float', dir=vim.fn.getcwd() }):toggle()<CR>",
+        desc = "lazydocker",
+      },
+      {
         "<leader><space>g",
         "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' }):toggle()<CR>",
         desc = "lazygit",
       },
       {
-        "<leader><space>d",
-        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'lazydocker', hidden = true, direction = 'float', dir=vim.fn.getcwd() }):toggle()<CR>",
-        desc = "lazydocker",
+        "<leader><space>h",
+        "<cmd>lua require'toggleterm.terminal'.Terminal:new({ cmd = 'gh-dash', hidden = true, direction = 'float' }):toggle()<CR>",
+        desc = "hub",
       },
       {
         "<leader><space>k",
