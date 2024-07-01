@@ -51,4 +51,21 @@ return {
     },
     priority = 1001,
   },
+  {
+    "moyiz/git-dev.nvim",
+    cmd = { "GitDevOpen", "GitDevToggleUI", "GitDevRecents", "GitDevCleanAll" },
+    keys = {
+      {
+        "<leader>gro",
+        function()
+          vim.cmd({ cmd = "GitDevOpen", args = { vim.fn.input("Repo: ") } })
+        end,
+        desc = "git repo open",
+      },
+      { "<leader>grt", "<cmd>GitDevToggleUI<cr>", desc = "git repo toggle" },
+      { "<leader>grr", "<cmd>GitDevRecents<cr>", desc = "git repo recents" },
+      { "<leader>grc", "<cmd>GitDevCleanAll<cr>", desc = "git repo clean" },
+    },
+    opts = {},
+  },
 }
