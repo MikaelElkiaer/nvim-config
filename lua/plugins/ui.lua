@@ -72,6 +72,9 @@ return {
   },
   {
     "nvimdev/dashboard-nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
     opts = function()
       local logo = [[
@@ -99,7 +102,7 @@ return {
           header = vim.split(logo, "\n"),
         -- stylua: ignore
         center = {
-          { action = 'Oil ',                                           desc = " Browse Files",    icon = " ", key = "o" },
+          { action = 'Oil ',                                           desc = " Browse Files",    icon = " ", key = "o" },
           { action = 'Telescope git_files',                            desc = " Find File",       icon = " ", key = "f" },
           { action = 'Telescope oldfiles',                             desc = " Recent Files",    icon = " ", key = "r" },
           { action = 'lua require("persistence").load()',              desc = " Restore Session", icon = " ", key = "s" },
