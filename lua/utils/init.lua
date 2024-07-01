@@ -12,15 +12,15 @@ M.create_tui = function(self, cmd)
       dir = dir,
       direction = "float",
       hidden = true,
-      on_open = function(term)
-        vim.cmd("startinsert!")
-        -- stylua: ignore
-        -- Override q to keep TUI process alive
-        vim.api.nvim_buf_set_keymap(term.bufnr, "t", "q", '<cmd>close<cr>', { noremap = true, silent = true })
-      end,
-      on_close = function(_)
-        vim.cmd("startinsert!")
-      end,
+      -- on_open = function(term)
+      --   vim.cmd("startinsert!")
+      --   -- stylua: ignore
+      --   -- Override q to keep TUI process alive
+      --   vim.api.nvim_buf_set_keymap(term.bufnr, "t", "q", '<cmd>close<cr>', { noremap = true, silent = true })
+      -- end,
+      -- on_close = function(_)
+      --   vim.cmd("startinsert!")
+      -- end,
     })
   c[dir]:toggle()
   self._terms[cmd] = c
