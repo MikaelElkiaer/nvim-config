@@ -26,6 +26,7 @@ return {
     },
     opts = {
       formatters_by_ft = {
+        go = { "gofmt" },
         lua = { "stylua" },
         markdown = { "mdformat" },
         sh = { "shfmt" },
