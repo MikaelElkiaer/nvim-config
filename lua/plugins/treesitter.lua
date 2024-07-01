@@ -3,6 +3,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
     event = { "BufEnter", "VeryLazy" },
     lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
     main = "nvim-treesitter.configs", -- setup must be called on this module
