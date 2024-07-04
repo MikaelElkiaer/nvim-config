@@ -65,6 +65,7 @@ return {
     },
     opts = {
       filetypes = {
+        markdown = true,
         yaml = true,
       },
       suggestion = {
