@@ -29,6 +29,7 @@ vim.opt.list = true
 vim.opt.number = true
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
