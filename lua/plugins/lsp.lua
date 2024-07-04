@@ -29,6 +29,7 @@ return {
         go = { "gofmt" },
         lua = { "stylua" },
         markdown = { "mdformat" },
+        nix = { "nixfmt" },
         sh = { "shfmt" },
         toml = { "taplo" },
         yaml = { "yq" },
@@ -94,6 +95,9 @@ return {
             },
           },
         },
+      })
+      lspconfig.nil_ls.setup({
+        on_attach = on_attach,
       })
       lspconfig.omnisharp.setup({
         filetypes = { "cs", "csx" },
