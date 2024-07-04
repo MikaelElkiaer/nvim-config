@@ -28,7 +28,7 @@ return {
       formatters_by_ft = {
         go = { "gofmt" },
         lua = { "stylua" },
-        markdown = { "mdformat" },
+        markdown = { "markdownlint-cli2" },
         nix = { "nixfmt" },
         sh = { "shfmt" },
         toml = { "taplo" },
@@ -42,24 +42,22 @@ return {
     event = { "BufWritePost", "BufReadPost", "InsertLeave" },
     config = function(plugin, _)
       local lint = require("lint")
-      vim.tbl_extend("force", lint.linters, {
-        hush = {
-          args = { "--check" },
-          cmd = "hush",
-          ignore_exitcode = true,
-          name = "hush",
-          parser = require("lint.parser").from_pattern(
-            [[^(.*): (.*) %(line (%d+), column (%d+)%) %- (.*)$]],
-            { "severity", "file", "lnum", "col", "message" },
-            { ["Error"] = vim.diagnostic.severity.ERROR }
-          ),
-          stdin = false,
-          stream = "stderr",
-        },
-      })
-      vim.tbl_extend("force", lint.linters_by_ft, {
-        hush = { "hush" },
-      })
+      lint.linters.hush = {
+        args = { "--check" },
+        cmd = "hush",
+        ignore_exitcode = true,
+        name = "hush",
+        parser = require("lint.parser").from_pattern(
+          [[^(.*): (.*) %(line (%d+), column (%d+)%) %- (.*)$]],
+          { "severity", "file", "lnum", "col", "message" },
+          { ["Error"] = vim.diagnostic.severity.ERROR }
+        ),
+        stdin = false,
+        stream = "stderr",
+      }
+      lint.linters_by_ft.hush = { "hush" }
+      lint.linters_by_ft.markdown = { "markdownlint-cli2" }
+      lint.linters_by_ft.text = {}
       vim.api.nvim_create_autocmd(plugin.event, {
         callback = function()
           require("lint").try_lint()
@@ -95,6 +93,9 @@ return {
             },
           },
         },
+      })
+      lspconfig.marksman.setup({
+        on_attach = on_attach,
       })
       lspconfig.nil_ls.setup({
         on_attach = on_attach,
