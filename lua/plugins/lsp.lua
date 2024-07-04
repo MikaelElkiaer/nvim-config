@@ -100,35 +100,19 @@ return {
       lspconfig.nil_ls.setup({
         on_attach = on_attach,
       })
-      lspconfig.omnisharp.setup({
-        filetypes = { "cs", "csx" },
+      lspconfig.csharp_ls.setup({
         handlers = {
-          ["textDocument/definition"] = require("omnisharp_extended").handler,
+          ["textDocument/definition"] = require("csharpls_extended").handler,
+          ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
         },
-        on_attach = function(_, bufnr)
-          on_attach(_, bufnr)
-          -- Use omnisharp_extended for decompilation
-          vim.keymap.set(
-            "n",
-            "gd",
-            require("omnisharp_extended").telescope_lsp_definitions,
-            { buffer = bufnr, desc = "goto definition" }
-          )
-        end,
-        root_dir = function(fname)
-          if fname:sub(-#".csx") == ".csx" then
-            return require("lspconfig").util.path.dirname(fname)
-          end
-          local root = require("lspconfig.util").root_pattern("*.sln")(fname)
-          return root or vim.fn.getcwd()
-        end,
+        on_attach = on_attach,
       })
       lspconfig.yamlls.setup(require("yaml-companion").setup({
         on_attach = on_attach,
       }))
     end,
     dependencies = {
-      "Hoffs/omnisharp-extended-lsp.nvim",
+      "Decodetalkers/csharpls-extended-lsp.nvim",
       {
         "someone-stole-my-name/yaml-companion.nvim",
         config = function(_, _)
