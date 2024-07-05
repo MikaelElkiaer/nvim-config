@@ -56,9 +56,11 @@ return {
         stdin = false,
         stream = "stderr",
       }
-      lint.linters_by_ft.hush = { "hush" }
-      lint.linters_by_ft.markdown = { "markdownlint-cli2" }
-      lint.linters_by_ft.text = {}
+      lint.linters_by_ft = {
+        dockerfile = { "hadolint" },
+        hush = { "hush" },
+        markdown = { "markdownlint-cli2" },
+      }
       vim.api.nvim_create_autocmd(plugin.event, {
         callback = function()
           require("lint").try_lint()
