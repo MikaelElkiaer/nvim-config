@@ -26,6 +26,7 @@ return {
     },
     opts = {
       formatters_by_ft = {
+        cs = { "csharpier" },
         go = { "gofmt" },
         lua = { "stylua" },
         markdown = { "markdownlint-cli2" },
