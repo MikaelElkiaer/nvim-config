@@ -31,9 +31,10 @@ M.create_keymap_group = function(key, name, mode)
   if not success then
     return
   end
-  wk.register({
+  wk.add({
+    key,
     mode = mode or { "n", "v" },
-    [key] = { name = name },
+    group = name,
   })
 end
 
