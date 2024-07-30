@@ -112,12 +112,11 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
     event = "BufEnter",
     opts = {
-      indent = {
-        char = "│",
-        tab_char = "│",
-      },
       scope = {
         include = {
           node_type = { lua = { "table_constructor" } },
