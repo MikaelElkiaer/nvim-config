@@ -74,6 +74,9 @@ return {
     end,
     event = "BufEnter",
     opts = {
+      filetypes_denylist = {
+        "oil",
+      },
       min_count_to_highlight = 2,
     },
   },
