@@ -4,3 +4,5 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and 
 -- better indenting
 vim.keymap.set("v", "<", "<gv", { desc = "Indent decrease" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent increase" })
+
+vim.keymap.set("n", "<leader>m", ":Man ", { desc = "Open manpage" })
