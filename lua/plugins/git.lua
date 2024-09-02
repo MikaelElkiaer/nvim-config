@@ -51,6 +51,10 @@ return {
     keys = {
       { "<leader>gb", "<cmd>BlameToggle<cr>", desc = "git blame" },
     },
-    opts = true,
+    opts = {
+      mappings = {
+        close = "gq",
+      },
+    },
   },
 }
