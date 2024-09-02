@@ -103,19 +103,23 @@ return {
       lspconfig.nil_ls.setup({
         on_attach = on_attach,
       })
-      lspconfig.csharp_ls.setup({
-        handlers = {
-          ["textDocument/definition"] = require("csharpls_extended").handler,
-          ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
-        },
-        on_attach = on_attach,
-      })
       lspconfig.yamlls.setup(require("yaml-companion").setup({
         on_attach = on_attach,
       }))
     end,
     dependencies = {
-      "Decodetalkers/csharpls-extended-lsp.nvim",
+      {
+        "seblj/roslyn.nvim",
+        config = function(_, opts)
+          opts.config = {
+            on_attach = on_attach,
+          }
+          require("roslyn").setup(opts)
+        end,
+        opts = {
+          exe = { "Microsoft.CodeAnalysis.LanguageServer" },
+        },
+      },
       {
         "someone-stole-my-name/yaml-companion.nvim",
         config = function(_, _)
