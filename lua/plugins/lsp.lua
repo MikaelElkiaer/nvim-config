@@ -1,18 +1,6 @@
 require("utils").create_keymap_group("<leader>c", "+code")
 require("utils").create_keymap_group("<leader>y", "+yaml")
 
-local function on_attach(_, bufnr)
-  -- TODO: Re-enable after 0.11
-  -- vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })
-  -- vim.keymap.set("i", "<c-space>", vim.lsp.completion.trigger, { buffer = bufnr, desc = "trigger completion" })
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "goto definition" })
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "goto Declaration" })
-  vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = bufnr, desc = "goto Implementation" })
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "goto references" })
-  vim.keymap.set({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "code action" })
-  vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = bufnr, desc = "rename" })
-end
-
 return {
   {
     "stevearc/conform.nvim",
@@ -76,42 +64,16 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function(_, _)
+    config = function(_, opts)
       local lspconfig = require("lspconfig")
-      lspconfig.bashls.setup({
-        on_attach = on_attach,
-      })
-      lspconfig.dockerls.setup({
-        on_attach = on_attach,
-      })
-      lspconfig.gopls.setup({
-        on_attach = on_attach,
-      })
-      lspconfig.helm_ls.setup({
-        on_attach = on_attach,
-      })
-      lspconfig.jsonls.setup({
-        on_attach = on_attach,
-      })
-      lspconfig.lua_ls.setup({
-        on_attach = on_attach,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-          },
-        },
-      })
-      lspconfig.marksman.setup({
-        on_attach = on_attach,
-      })
-      lspconfig.nil_ls.setup({
-        on_attach = on_attach,
-      })
-      lspconfig.yamlls.setup(require("yaml-companion").setup({
-        on_attach = on_attach,
-      }))
+      local blink = require("blink.cmp")
+      for server, config in pairs(opts.servers) do
+        if type(config) == "function" then
+          config = config({})
+        end
+        config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
     end,
     dependencies = {
       {
@@ -135,10 +97,34 @@ return {
           { "<leader>ys", "<cmd>Telescope yaml_schema<cr>", desc = "YAML schema picker" },
         },
       },
+      "saghen/blink.cmp",
     },
     event = "BufEnter",
     keys = {
       { "<leader>cl", "<cmd>LspInfo<cr>", desc = "LSP Info" },
+    },
+    opts = {
+      servers = {
+        bashls = {},
+        dockerls = {},
+        gopls = {},
+        helm_ls = {},
+        jsonls = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+            },
+          },
+        },
+        yamlls = function(config)
+          return require("yaml-companion").setup(config)
+        end,
+        marksman = {},
+        nil_ls = {},
+      },
     },
   },
   {
@@ -153,4 +139,46 @@ return {
     },
   },
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  {
+    "saghen/blink.cmp",
+    -- lazy loading handled internally
+    lazy = false,
+    -- use a release tag to download pre-built binaries
+    version = "v0.*",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
+      },
+      completion = {
+        documentation = {
+          window = {
+            border = "rounded",
+          },
+        },
+        list = {
+          selection = "manual",
+        },
+        menu = {
+          auto_show = false,
+          border = "rounded",
+          winhighlight = "Pmenu:BlinkCmpMenu,Pmenu:BlinkCmpMenuBorder,PmenuSel:BlinkCmpMenuSelection,Search:None",
+        },
+      },
+      keymap = {
+        preset = "default",
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+      },
+      -- Conflicts with noice.nvim
+      signature = { enabled = false },
+      sources = {
+        completion = {
+          enabled_providers = { "lsp", "path", "buffer" },
+        },
+      },
+    },
+  },
 }
