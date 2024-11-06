@@ -41,7 +41,7 @@ return {
       {
         "<leader><space>h",
         function()
-          require("utils"):create_tui("gh-dash")
+          require("utils"):create_tui("gh-dash-repo")
         end,
         desc = "hub",
       },
