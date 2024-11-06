@@ -4,19 +4,19 @@ local function on_attach(_, bufnr)
   -- vim.keymap.set("i", "<c-space>", vim.lsp.completion.trigger, { buffer = bufnr, desc = "trigger completion" })
   vim.keymap.set("i", "<C-space>", function()
     return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-X><C-O>"
-  end, { buffer = bufnr, desc = "trigger completion", expr = true, remap = true })
+  end, { buffer = bufnr, desc = "trigger completion", expr = true })
   vim.keymap.set("i", "<esc>", function()
     return vim.fn.pumvisible() == 1 and "<C-e>" or "<esc>"
-  end, { buffer = bufnr, desc = "cancel completion", expr = true, remap = true })
+  end, { buffer = bufnr, desc = "cancel completion", expr = true })
   vim.keymap.set("i", "<cr>", function()
     return vim.fn.pumvisible() == 1 and "<C-y>" or "<cr>"
-  end, { buffer = bufnr, desc = "confirm completion", expr = true, remap = true })
+  end, { buffer = bufnr, desc = "confirm completion", expr = true })
   vim.keymap.set("i", "<C-k>", function()
     return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
-  end, { buffer = bufnr, desc = "previous completion", expr = true, remap = true })
+  end, { buffer = bufnr, desc = "previous completion", expr = true })
   vim.keymap.set("i", "<C-j>", function()
     return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
-  end, { buffer = bufnr, desc = "previous completion", expr = true, remap = true })
+  end, { buffer = bufnr, desc = "previous completion", expr = true })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "goto definition" })
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "goto Declaration" })
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "code action" })
