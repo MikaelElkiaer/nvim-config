@@ -7,7 +7,7 @@ return {
     end,
     keys = {
       { "<leader>glc", "<cmd>VcsLinkLineCopy<cr>", desc = "copy line" },
-      { "<leader>glC", "<cmd>VcsLineBufCopy<cr>", desc = "copy buffer" },
+      { "<leader>glC", "<cmd>VcsLinkBufCopy<cr>", desc = "copy buffer" },
       { "<leader>glb", "<cmd>VcsLinkLineBrowse<cr>", desc = "browse line" },
       { "<leader>glB", "<cmd>VcsLinkBufBrowse<cr>", desc = "browse buffer" },
     },
