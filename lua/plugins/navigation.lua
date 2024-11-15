@@ -19,7 +19,7 @@ return {
         function()
           require("telescope.builtin").live_grep({ additional_args = { "--hidden", "--no-ignore" } })
         end,
-        desc = "grep - no-ignore",
+        desc = "grep - all",
       },
       { "<leader>fr", "<cmd>Telescope oldfiles only_cwd=true<cr>", desc = "recent files" },
       { "<leader>fR", "<cmd>Telescope oldfiles only_cwd=false<cr>", desc = "recent files - all" },
