@@ -10,14 +10,14 @@ return {
       {
         "<leader>fg",
         function()
-          require("telescope.builtin").live_grep({ additional_args = { "--hidden" } })
+          require("telescope.builtin").live_grep({ additional_args = { "--hidden", "--glob=!.git" } })
         end,
         desc = "grep",
       },
       {
         "<leader>fG",
         function()
-          require("telescope.builtin").live_grep({ additional_args = { "--hidden", "--no-ignore" } })
+          require("telescope.builtin").live_grep({ additional_args = { "--unrestricted", "--unrestricted" } })
         end,
         desc = "grep - all",
       },
