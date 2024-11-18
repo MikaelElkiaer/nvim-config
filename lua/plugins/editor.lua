@@ -47,7 +47,8 @@ return {
         end,
         desc = "Todo prev",
       },
-      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "todos" },
+      { "<leader>ft", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "todos" },
+      { "<leader>fT", "<cmd>TodoTelescope<cr>", desc = "todos" },
     },
   },
   {
