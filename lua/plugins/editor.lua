@@ -198,6 +198,16 @@ return {
         change = "gsc",
         change_line = "gsC",
       },
+      aliases = {
+        ["("] = ")",
+        ["{"] = "}",
+        ["["] = "]",
+      },
+      surrounds = {
+        ["("] = false,
+        ["{"] = false,
+        ["["] = false,
+      },
     },
   },
 }
