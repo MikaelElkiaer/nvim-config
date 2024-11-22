@@ -44,6 +44,22 @@ return {
         end,
         desc = "Delete Buffer (Force)",
       },
+      {
+        "<leader>ba",
+        function()
+          vim.cmd("bufdo bdelete")
+          require("utils").on_buffer_delete()
+        end,
+        desc = "Delete buffers - All",
+      },
+      {
+        "<leader>bA",
+        function()
+          vim.cmd("bufdo bwipeout")
+          require("utils").on_buffer_delete()
+        end,
+        desc = "Delete buffers - All (Force)",
+      },
     },
     opts = true,
   },
