@@ -181,4 +181,33 @@ return {
       },
     },
   },
+  {
+    "nvimdev/lspsaga.nvim",
+    cmd = "Lspsaga",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+    keys = {
+      { "gd", "<cmd>Lspsaga peek_definition<cr>", desc = "lspsaga - peek definition" },
+      { "gD", "<cmd>Lspsaga goto_definition<cr>", desc = "lspsaga - goto definition" },
+      { "K", "<cmd>Lspsaga hover_doc<cr>", desc = "lspsaga - hover doc" },
+      { "<leader>cc", "<cmd>Lspsaga finder<cr>", desc = "lspsaga - finder" },
+      { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "lspsaga - code actions", mode = { "n", "x" } },
+      { "<leader>cr", "<cmd>Lspsaga rename<cr>", desc = "lspsaga - rename" },
+    },
+    opts = {
+      code_action = {
+        keys = {
+          quit = { "q", "<esc>" },
+        },
+      },
+      lightbulb = {
+        enable = false,
+      },
+      symbol_in_winbar = {
+        enable = false,
+      },
+    },
+  },
 }
