@@ -43,8 +43,11 @@ vim.opt.wrap = true
 vim.opt.writebackup = false
 vim.treesitter.language.register("c_sharp", "csx")
 vim.treesitter.language.register("bash", "cheat")
--- LSP diagnostics
+-- Improved diagnostics styling
 vim.diagnostic.config({
+  float = {
+    border = "single",
+  },
   virtual_text = false,
 })
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
