@@ -43,3 +43,12 @@ vim.opt.wrap = true
 vim.opt.writebackup = false
 vim.treesitter.language.register("c_sharp", "csx")
 vim.treesitter.language.register("bash", "cheat")
+-- LSP diagnostics
+vim.diagnostic.config({
+  virtual_text = false,
+})
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
