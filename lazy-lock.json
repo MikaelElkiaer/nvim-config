@@ -1,5 +1,5 @@
 {
-  "CopilotChat.nvim": { "branch": "canary", "commit": "49d3440831df1ec03d33a3aa242f543993fdcf9e" },
+  "CopilotChat.nvim": { "branch": "canary", "commit": "6b24e85210008569fcbc889c525cbc7828deafc2" },
   "auto-save.nvim": { "branch": "main", "commit": "5fbcaac0a2698c87a9a1bd2083cb6949505cca12" },
   "base64.nvim": { "branch": "main", "commit": "41a9a948be5299de0038f301524630aee5a9fa63" },
   "blame.nvim": { "branch": "main", "commit": "39bb4cda9e658d053a43919b10ca52c0a4d738e1" },
@@ -31,7 +31,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "c646154d6e4db9b2979eeb517d0b817ad00c9c47" },
   "nvim-notify": { "branch": "master", "commit": "fbef5d32be8466dd76544a257d3f3dce20082a07" },
   "nvim-surround": { "branch": "main", "commit": "dca2e998ff26681ee422b92c6ed39b3d2908d8a9" },
-  "nvim-treesitter": { "branch": "master", "commit": "2d816bb49e3c9c919b5113f6fb3cfe13e589652d" },
+  "nvim-treesitter": { "branch": "master", "commit": "fcd2a5fea91deac818f26a6412a624798af45033" },
   "nvim-treesitter-context": { "branch": "master", "commit": "8e412ebe97d84504b68a071ecf9bb68413b13632" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "ad8f0a472148c3e0ae9851e26a722ee4e29b1595" },
   "nvim-web-devicons": { "branch": "master", "commit": "f09be61d05bebcba85bb47be1931322d51b95644" },
