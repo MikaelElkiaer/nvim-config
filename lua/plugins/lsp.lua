@@ -7,6 +7,8 @@ local function on_attach(_, bufnr)
   -- vim.keymap.set("i", "<c-space>", vim.lsp.completion.trigger, { buffer = bufnr, desc = "trigger completion" })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "goto definition" })
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "goto Declaration" })
+  vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = bufnr, desc = "goto Implementation" })
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "goto references" })
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "code action" })
   vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = bufnr, desc = "rename" })
 end
