@@ -1,16 +1,10 @@
 require("utils").create_keymap_group("<leader>c", "+code")
 require("utils").create_keymap_group("<leader>y", "+yaml")
 
-local function on_attach(_, bufnr)
+local function on_attach(_, _)
   -- TODO: Re-enable after 0.11
   -- vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })
   -- vim.keymap.set("i", "<c-space>", vim.lsp.completion.trigger, { buffer = bufnr, desc = "trigger completion" })
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "goto definition" })
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "goto Declaration" })
-  vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = bufnr, desc = "goto Implementation" })
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "goto references" })
-  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "code action" })
-  vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = bufnr, desc = "rename" })
 end
 
 return {
@@ -153,4 +147,30 @@ return {
     },
   },
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  {
+    "nvimdev/lspsaga.nvim",
+    cmd = "Lspsaga",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+    keys = {
+      { "gd", "<cmd>Lspsaga peek_definition<cr>", desc = "lspsaga - peek definition" },
+      { "gD", "<cmd>Lspsaga goto_definition<cr>", desc = "lspsaga - goto definition" },
+      { "K", "<cmd>Lspsaga hover_doc<cr>", desc = "lspsaga - hover doc" },
+      { "<leader>cc", "<cmd>Lspsaga finder<cr>", desc = "lspsaga - finder" },
+      { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "lspsaga - code actions", mode = { "n", "x" } },
+      { "<leader>cr", "<cmd>Lspsaga rename<cr>", desc = "lspsaga - rename" },
+    },
+    opts = {
+      code_action = {
+        keys = {
+          quit = { "q", "<esc>" },
+        },
+      },
+      lightbulb = {
+        enable = false,
+      },
+    },
+  },
 }
