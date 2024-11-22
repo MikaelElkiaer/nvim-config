@@ -36,19 +36,33 @@ return {
       {
         "]t",
         function()
-          require("todo-comments").jump_next()
+          require("todo-comments").jump_next({keywords = { "TODO" }})
         end,
         desc = "Todo next",
       },
       {
+        "]T",
+        function()
+          require("todo-comments").jump_next()
+        end,
+        desc = "Todo next - all",
+      },
+      {
         "[t",
         function()
-          require("todo-comments").jump_prev()
+          require("todo-comments").jump_prev({keywords = { "TODO" }})
         end,
         desc = "Todo prev",
       },
+      {
+        "[T",
+        function()
+          require("todo-comments").jump_prev()
+        end,
+        desc = "Todo prev - all",
+      },
       { "<leader>ft", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "todos" },
-      { "<leader>fT", "<cmd>TodoTelescope<cr>", desc = "todos" },
+      { "<leader>fT", "<cmd>TodoTelescope<cr>", desc = "todos - all" },
     },
   },
   {
