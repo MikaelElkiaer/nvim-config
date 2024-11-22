@@ -1,3 +1,5 @@
+require("utils").create_keymap_group("<leader>", "+term")
+
 return {
   {
     "akinsho/toggleterm.nvim",

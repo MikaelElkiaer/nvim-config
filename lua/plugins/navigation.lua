@@ -1,3 +1,5 @@
+require("utils").create_keymap_group("<leader>f", "+find")
+
 return {
   {
     "nvim-telescope/telescope.nvim",

@@ -1,3 +1,5 @@
+require("utils").create_keymap_group("<leader>b", "+buffers")
+
 return {
   {
     "akinsho/bufferline.nvim",

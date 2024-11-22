@@ -1,3 +1,6 @@
+require("utils").create_keymap_group("<leader>c", "+code")
+require("utils").create_keymap_group("<leader>y", "+yaml")
+
 local function on_attach(_, bufnr)
   -- TODO: Re-enable after 0.11
   -- vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })

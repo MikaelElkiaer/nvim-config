@@ -1,3 +1,5 @@
+require("utils").create_keymap_group("<leader>u", "+ui")
+
 return {
   {
     "folke/which-key.nvim",

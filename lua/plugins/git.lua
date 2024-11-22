@@ -1,3 +1,5 @@
+require("utils").create_keymap_group("<leader>g", "+git")
+
 return {
   {
     "valorl/vcslink.nvim",
