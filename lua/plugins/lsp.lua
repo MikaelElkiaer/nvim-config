@@ -33,6 +33,7 @@ return {
       formatters_by_ft = {
         cs = { "csharpier" },
         go = { "gofmt" },
+        jsonc = { "jq" },
         lua = { "stylua" },
         markdown = { "markdownlint-cli2" },
         nix = { "nixfmt" },
