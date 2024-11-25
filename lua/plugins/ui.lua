@@ -21,7 +21,7 @@ return {
         { "gs", group = "surround" },
         { "z", group = "fold" },
       },
-      win = { border = "single" },
+      win = { border = "rounded" },
     },
     config = function(_, opts)
       local wk = require("which-key")

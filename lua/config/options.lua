@@ -46,7 +46,7 @@ vim.treesitter.language.register("bash", "cheat")
 -- Improved diagnostics styling
 vim.diagnostic.config({
   float = {
-    border = "single",
+    border = "rounded",
   },
   virtual_text = false,
 })
