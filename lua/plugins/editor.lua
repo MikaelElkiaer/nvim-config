@@ -11,16 +11,15 @@ return {
     },
     opts = {
       condition = function(buf)
-        local utils = require("auto-save.utils.data")
-
         return vim.fn.getbufvar(buf, "&modifiable") == 1
-          and utils.not_in(vim.fn.getbufvar(buf, "&filetype"), {})
+          -- Nvim config
           and not string.match(vim.fn.getcwd(), "%/nvim%-config$")
-          and utils.not_in(vim.fn.expand("%:t"), {
-            "picom.conf",
-            "wezterm.lua",
-          })
+          -- Auto-reloading config files
+          and vim.list_contains({ "alacritty.toml", "picom.conf", "wezterm.lua" }, vim.fn.expand("%:t"))
+          -- Oil buffers
           and not string.match(vim.fn.expand("%"), "^oil://")
+          -- Live editing of kubernetes resources
+          and not string.match(vim.fn.expand("%"), "/tmp/kubectl-edit-.*%.yaml")
       end,
     },
   },
@@ -36,7 +35,7 @@ return {
       {
         "]t",
         function()
-          require("todo-comments").jump_next({keywords = { "TODO" }})
+          require("todo-comments").jump_next({ keywords = { "TODO" } })
         end,
         desc = "Todo next",
       },
@@ -50,7 +49,7 @@ return {
       {
         "[t",
         function()
-          require("todo-comments").jump_prev({keywords = { "TODO" }})
+          require("todo-comments").jump_prev({ keywords = { "TODO" } })
         end,
         desc = "Todo prev",
       },
