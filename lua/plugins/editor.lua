@@ -15,7 +15,7 @@ return {
           -- Nvim config
           and not string.match(vim.fn.getcwd(), "%/nvim%-config$")
           -- Auto-reloading config files
-          and vim.list_contains({ "alacritty.toml", "picom.conf", "wezterm.lua" }, vim.fn.expand("%:t"))
+          and not vim.list_contains({ "alacritty.toml", "picom.conf", "wezterm.lua" }, vim.fn.expand("%:t"))
           -- Oil buffers
           and not string.match(vim.fn.expand("%"), "^oil://")
           -- Live editing of kubernetes resources
