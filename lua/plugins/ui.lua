@@ -158,6 +158,9 @@ return {
           filter = { event = "msg_showmode" },
         },
       },
+      presets = {
+        lsp_doc_border = true,
+      },
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
