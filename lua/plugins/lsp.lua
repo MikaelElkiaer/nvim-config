@@ -88,16 +88,8 @@ return {
           exe = { "Microsoft.CodeAnalysis.LanguageServer" },
         },
       },
-      {
-        "someone-stole-my-name/yaml-companion.nvim",
-        config = function(_, _)
-          require("telescope").load_extension("yaml_schema")
-        end,
-        keys = {
-          { "<leader>ys", "<cmd>Telescope yaml_schema<cr>", desc = "YAML schema picker" },
-        },
-      },
       "saghen/blink.cmp",
+      "someone-stole-my-name/yaml-companion.nvim",
     },
     event = "BufEnter",
     keys = {
@@ -125,6 +117,19 @@ return {
         marksman = {},
         nil_ls = {},
       },
+    },
+  },
+  {
+    "someone-stole-my-name/yaml-companion.nvim",
+    config = function(_, _)
+      require("telescope").load_extension("yaml_schema")
+    end,
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    keys = {
+      { "<leader>ys", "<cmd>Telescope yaml_schema<cr>", desc = "YAML schema picker" },
     },
   },
   {
