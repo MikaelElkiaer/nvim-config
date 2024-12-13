@@ -76,18 +76,6 @@ return {
       end
     end,
     dependencies = {
-      {
-        "seblj/roslyn.nvim",
-        config = function(_, opts)
-          opts.config = {
-            on_attach = on_attach,
-          }
-          require("roslyn").setup(opts)
-        end,
-        opts = {
-          exe = { "Microsoft.CodeAnalysis.LanguageServer" },
-        },
-      },
       "saghen/blink.cmp",
       "someone-stole-my-name/yaml-companion.nvim",
     },
@@ -117,6 +105,24 @@ return {
         marksman = {},
         nil_ls = {},
       },
+    },
+  },
+  {
+    "seblj/roslyn.nvim",
+    config = function(_, opts)
+      local blink_ok, blink = pcall(require, "blink.cmp")
+      if blink_ok then
+        vim.tbl_extend("force", opts, {
+          config = {
+            capabilities = blink.get_lsp_capabilities(opts.config and opts.config.capabilities),
+          },
+        })
+      end
+      require("roslyn").setup(opts)
+    end,
+    ft = "cs",
+    opts = {
+      exe = { "Microsoft.CodeAnalysis.LanguageServer" },
     },
   },
   {
