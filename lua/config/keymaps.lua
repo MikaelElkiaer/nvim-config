@@ -8,6 +8,15 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent increase" })
 vim.keymap.set("n", "<leader>m", ":Man ", { desc = "Open manpage" })
 
 vim.keymap.set("n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show diagnostics" })
+vim.keymap.set("n", "[d", function()
+  vim.diagnostic.goto_prev()
+  vim.diagnostic.open_float({ focus = false, scope = "cursor" })
+end, { desc = "Go to previous diagnostic and display" })
+
+vim.keymap.set("n", "]d", function()
+  vim.diagnostic.goto_next()
+  vim.diagnostic.open_float({ focus = false, scope = "cursor" })
+end, { desc = "Go to next diagnostic and display" })
 
 vim.keymap.set("i", "<C-space>", function()
   return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-X><C-O>"
