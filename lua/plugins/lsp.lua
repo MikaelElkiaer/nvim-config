@@ -1,6 +1,41 @@
 require("utils").create_keymap_group("<leader>c", "+code")
 require("utils").create_keymap_group("<leader>y", "+yaml")
 
+local function on_attach(client, bufnr)
+  local has_lspsaga = vim.fn.exists(":Lspsaga") == 2
+  local goto_definition = has_lspsaga and "<cmd>Lspsaga goto_definition<cr>" or vim.lsp.buf.definition
+  local goto_implementation = vim.lsp.buf.implementation
+  local goto_references = vim.lsp.buf.references
+  local peek_definition = has_lspsaga and "<cmd>Lspsaga peek_definition<cr>"
+  local hover_doc = has_lspsaga and "<cmd>Lspsaga hover_doc<cr>" or vim.lsp.buf.hover
+  local code_action = has_lspsaga and "<cmd>Lspsaga code_action<cr>" or vim.lsp.buf.code_action
+  local rename = has_lspsaga and "<cmd>Lspsaga rename<cr>" or vim.lsp.buf.rename
+
+  if client.server_capabilities.definitionProvider then
+    if goto_definition then
+      vim.keymap.set("n", "gd", goto_definition, { buffer = bufnr, desc = "definition" })
+    end
+    if peek_definition then
+      vim.keymap.set("n", "gD", peek_definition, { buffer = bufnr, desc = "definition - peek" })
+    end
+  end
+  if client.server_capabilities.codeActionProvider and code_action then
+    vim.keymap.set({ "n", "x" }, "<leader>ca", code_action, { buffer = bufnr, desc = "code actions" })
+  end
+  if client.server_capabilities.hoverProvider and hover_doc then
+    vim.keymap.set("n", "K", hover_doc, { buffer = bufnr, desc = "hover doc" })
+  end
+  if client.server_capabilities.implementationProvider and goto_implementation then
+    vim.keymap.set("n", "gi", goto_implementation, { buffer = bufnr, desc = "implementation" })
+  end
+  if client.server_capabilities.referencesProvider and goto_references then
+    vim.keymap.set("n", "gr", goto_references, { buffer = bufnr, desc = "references" })
+  end
+  if client.server_capabilities.renameProvider and rename then
+    vim.keymap.set("n", "<leader>cr", rename, { buffer = bufnr, desc = "rename" })
+  end
+end
+
 return {
   {
     "stevearc/conform.nvim",
@@ -72,6 +107,7 @@ return {
           config = config({})
         end
         config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+        config.on_attach = on_attach
         lspconfig[server].setup(config)
       end
     end,
@@ -196,16 +232,13 @@ return {
     "nvimdev/lspsaga.nvim",
     cmd = "Lspsaga",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter", -- optional
-      "nvim-tree/nvim-web-devicons", -- optional
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "gd", "<cmd>Lspsaga peek_definition<cr>", desc = "lspsaga - peek definition" },
-      { "gD", "<cmd>Lspsaga goto_definition<cr>", desc = "lspsaga - goto definition" },
-      { "K", "<cmd>Lspsaga hover_doc<cr>", desc = "lspsaga - hover doc" },
-      { "<leader>cc", "<cmd>Lspsaga finder<cr>", desc = "lspsaga - finder" },
-      { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "lspsaga - code actions", mode = { "n", "x" } },
-      { "<leader>cr", "<cmd>Lspsaga rename<cr>", desc = "lspsaga - rename" },
+      { "<leader>cc", "<cmd>Lspsaga finder<cr>", desc = "lspsaga" },
+      { "<leader>cd", "<cmd>Lspsaga show_buf_diagnostics<cr>", desc = "diagnostics - buffer" },
+      { "<leader>cD", "<cmd>Lspsaga show_workspace_diagnostics<cr>", desc = "diagnostics - workspace" },
     },
     opts = {
       code_action = {
