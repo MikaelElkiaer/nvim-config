@@ -7,6 +7,7 @@ return {
     cmd = "Telescope",
     keys = {
       { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "buffers" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "diagnostics" },
       { "<leader>ff", "<cmd>Telescope git_files show_untracked=true<cr>", desc = "files" },
       { "<leader>fF", "<cmd>Telescope find_files hidden=true<cr>", desc = "files - all" },
       {

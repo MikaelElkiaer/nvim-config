@@ -237,8 +237,6 @@ return {
     },
     keys = {
       { "<leader>cc", "<cmd>Lspsaga finder<cr>", desc = "lspsaga" },
-      { "<leader>cd", "<cmd>Lspsaga show_buf_diagnostics<cr>", desc = "diagnostics - buffer" },
-      { "<leader>cD", "<cmd>Lspsaga show_workspace_diagnostics<cr>", desc = "diagnostics - workspace" },
     },
     opts = {
       code_action = {
