@@ -1,5 +1,4 @@
 require("utils").create_keymap_group("<leader>c", "+code")
-require("utils").create_keymap_group("<leader>y", "+yaml")
 
 local function on_attach(client, bufnr)
   local has_lspsaga = vim.fn.exists(":Lspsaga") == 2
@@ -171,7 +170,7 @@ return {
       { "nvim-telescope/telescope.nvim" },
     },
     keys = {
-      { "<leader>ys", "<cmd>Telescope yaml_schema<cr>", desc = "YAML schema picker" },
+      { "<leader>cy", "<cmd>Telescope yaml_schema<cr>", desc = "YAML schema picker" },
     },
   },
   {
