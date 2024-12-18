@@ -33,3 +33,5 @@ end, { desc = "previous completion", expr = true })
 vim.keymap.set("i", "<C-j>", function()
   return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
 end, { desc = "previous completion", expr = true })
+
+vim.keymap.set({"n", "x"}, "<leader>y", '"+y', { desc = "+ Yank - clipboard" })
