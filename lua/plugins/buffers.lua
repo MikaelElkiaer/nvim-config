@@ -1,4 +1,4 @@
-require("utils").create_keymap_group("<leader>b", "+buffers")
+require("utils"):create_keymap_group("<leader>b", "+buffers")
 
 return {
   {

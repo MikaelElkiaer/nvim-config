@@ -1,11 +1,11 @@
-require("utils").create_keymap_group("<leader>g", "+git")
+require("utils"):create_keymap_group("<leader>g", "+git")
 
 return {
   {
     "valorl/vcslink.nvim",
     cmd = { "VcsLinkLineCopy", "VcsLinkLineBrowse", "VcsLinkBufCopy", "VcsLinkBufBrowse" },
     init = function()
-      require("utils").create_keymap_group("<leader>gl", "+link")
+      require("utils"):create_keymap_group("<leader>gl", "+link")
     end,
     keys = {
       { "<leader>glc", "<cmd>VcsLinkLineCopy<cr>", desc = "copy line" },

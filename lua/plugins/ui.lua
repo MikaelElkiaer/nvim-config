@@ -1,31 +1,16 @@
-require("utils").create_keymap_group("<leader>u", "+ui")
+require("utils"):create_keymap_group("<leader>u", "+ui")
 
 return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
-      plugins = { spelling = true },
-      defaults = {
-        mode = { "n", "v" },
-        { "<leader>b", group = "buffer" },
-        { "<leader>c", group = "code" },
-        { "<leader>f", group = "file/find" },
-        { "<leader>g", group = "git" },
-        { "<leader>gr", group = "lsp" },
-        { "<leader>u", group = "ui" },
-        { "<leader>w", group = "windows" },
-        { "[", group = "prev" },
-        { "]", group = "next" },
-        { "g", group = "goto" },
-        { "gs", group = "surround" },
-        { "z", group = "fold" },
-      },
       win = { border = "rounded" },
     },
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
+      wk.add(require("utils"):get_keymap_groups())
     end,
   },
   {

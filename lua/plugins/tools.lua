@@ -1,5 +1,5 @@
-require("utils").create_keymap_group("<leader>r", "+run")
-require("utils").create_keymap_group("<leader>C", "+copilot")
+require("utils"):create_keymap_group("<leader>r", "+run")
+require("utils"):create_keymap_group("<leader>C", "+copilot")
 
 return {
   {

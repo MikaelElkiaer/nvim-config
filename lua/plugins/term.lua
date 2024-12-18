@@ -1,4 +1,4 @@
-require("utils").create_keymap_group("<leader>", "+term")
+require("utils"):create_keymap_group("<leader><leader>", "+term")
 
 return {
   {

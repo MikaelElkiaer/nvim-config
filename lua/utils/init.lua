@@ -1,6 +1,7 @@
 local M = {}
 
 M._terms = {}
+M._keymap_groups = {}
 
 M.create_tui = function(self, cmd)
   local toggleterm = require("toggleterm.terminal")
@@ -26,16 +27,16 @@ M.create_tui = function(self, cmd)
   self._terms[cmd] = c
 end
 
-M.create_keymap_group = function(key, name, mode)
-  local success, wk = pcall(require, "which-key")
-  if not success then
-    return
-  end
-  wk.add({
+M.create_keymap_group = function(self, key, name)
+  self._keymap_groups = self._keymap_groups or {}
+  table.insert(self._keymap_groups, {
     key,
-    mode = mode or { "n", "v" },
     group = name,
   })
+end
+
+M.get_keymap_groups = function(self)
+  return self._keymap_groups
 end
 
 M.on_buffer_delete = function()
