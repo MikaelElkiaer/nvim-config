@@ -157,6 +157,9 @@ return {
     end,
     ft = "cs",
     opts = {
+      config = {
+        on_attach = on_attach,
+      },
       exe = { "Microsoft.CodeAnalysis.LanguageServer" },
     },
   },
