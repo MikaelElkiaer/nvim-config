@@ -224,8 +224,10 @@ return {
       -- Conflicts with noice.nvim
       signature = { enabled = false },
       sources = {
-        completion = {
-          enabled_providers = { "lsp", "path", "buffer" },
+        default = {
+          "lsp",
+          "path",
+          "buffer",
         },
       },
     },
