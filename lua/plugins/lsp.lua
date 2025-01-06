@@ -113,10 +113,11 @@ return {
       local capabilities_factory = get_capabilities_factory()
       for server, config in pairs(opts.servers) do
         if type(config) == "function" then
-          config = config({})
+          config = config({ on_attach = on_attach })
+        else
+          config.on_attach = on_attach
         end
         config.capabilities = capabilities_factory(config.capabilities)
-        config.on_attach = on_attach
         lspconfig[server].setup(config)
       end
     end,
