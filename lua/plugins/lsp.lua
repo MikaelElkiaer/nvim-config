@@ -35,6 +35,15 @@ local function on_attach(client, bufnr)
   end
 end
 
+local function get_capabilities_factory()
+  local blink_ok, blink = pcall(require, "blink.cmp")
+  if blink_ok then
+    return blink.get_lsp_capabilities
+  end
+
+  return function(_) end
+end
+
 return {
   {
     "stevearc/conform.nvim",
@@ -100,18 +109,17 @@ return {
     "neovim/nvim-lspconfig",
     config = function(_, opts)
       local lspconfig = require("lspconfig")
-      local blink = require("blink.cmp")
+      local capabilities_factory = get_capabilities_factory()
       for server, config in pairs(opts.servers) do
         if type(config) == "function" then
           config = config({})
         end
-        config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+        config.capabilities = capabilities_factory(config.capabilities)
         config.on_attach = on_attach
         lspconfig[server].setup(config)
       end
     end,
     dependencies = {
-      "saghen/blink.cmp",
       "someone-stole-my-name/yaml-companion.nvim",
     },
     event = "BufEnter",
@@ -145,14 +153,12 @@ return {
   {
     "seblj/roslyn.nvim",
     config = function(_, opts)
-      local blink_ok, blink = pcall(require, "blink.cmp")
-      if blink_ok then
-        vim.tbl_extend("force", opts, {
-          config = {
-            capabilities = blink.get_lsp_capabilities(opts.config and opts.config.capabilities),
-          },
-        })
-      end
+      local capabilities_factory = get_capabilities_factory()
+      vim.tbl_extend("force", opts, {
+        config = {
+          capabilities = capabilities_factory(opts.config and opts.config.capabilities),
+        },
+      })
       require("roslyn").setup(opts)
     end,
     ft = "cs",
