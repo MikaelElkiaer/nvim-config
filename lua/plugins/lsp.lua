@@ -58,6 +58,7 @@ return {
           require("conform").format()
         end,
         desc = "format",
+        mode = { "n", "x" },
       },
     },
     opts = {
