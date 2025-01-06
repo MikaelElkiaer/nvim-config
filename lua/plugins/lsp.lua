@@ -197,6 +197,7 @@ return {
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   {
     "saghen/blink.cmp",
+    enabled = false,
     -- lazy loading handled internally
     lazy = false,
     -- use a release tag to download pre-built binaries
