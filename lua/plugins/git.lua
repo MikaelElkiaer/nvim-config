@@ -26,6 +26,21 @@ return {
         "<cmd>DiffviewOpen<cr>",
         desc = "diffview open",
       },
+      {
+        "<leader>gdc",
+        "<cmd>DiffviewClose<cr>",
+        desc = "diffview close",
+      },
+      {
+        "<leader>gdh",
+        "<cmd>DiffviewFileHistory %<cr>",
+        desc = "diffview history",
+      },
+      {
+        "<leader>gdH",
+        "<cmd>DiffviewFileHistory<cr>",
+        desc = "diffview history - all",
+      },
     },
   },
   {
