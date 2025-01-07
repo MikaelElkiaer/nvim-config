@@ -17,6 +17,9 @@ return {
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen " },
+    init = function()
+      require("utils"):create_keymap_group("<leader>gd", "+diff")
+    end,
     keys = {
       {
         "<leader>gdo",
@@ -33,6 +36,9 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
+    init = function()
+      require("utils"):create_keymap_group("<leader>go", "+octo")
+    end,
     keys = {
       {
         "<leader>goi",
