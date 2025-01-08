@@ -66,7 +66,13 @@ return {
         desc = "octo PR",
       },
     },
-    opts = {},
+    opts = {
+      gh_env = {
+        -- INFO: Needed for gh to access keyring
+        -- - see https://github.com/pwntester/octo.nvim/issues/568
+        DBUS_SESSION_BUS_ADDRESS = vim.env["DBUS_SESSION_BUS_ADDRESS"]
+      }
+    },
   },
   {
     "FabijanZulj/blame.nvim",
