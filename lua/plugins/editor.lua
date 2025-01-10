@@ -9,19 +9,38 @@ return {
         desc = "Toggle auto-save",
       },
     },
-    opts = {
-      condition = function(buf)
-        return vim.fn.getbufvar(buf, "&modifiable") == 1
-          -- Nvim config
-          and not string.match(vim.fn.getcwd(), "%/nvim%-config$")
-          -- Auto-reloading config files
-          and not vim.list_contains({ "alacritty.toml", "picom.conf", "wezterm.lua" }, vim.fn.expand("%:t"))
-          -- Oil buffers
-          and not string.match(vim.fn.expand("%"), "^oil://")
-          -- Live editing of kubernetes resources
-          and not string.match(vim.fn.expand("%"), "/tmp/kubectl-edit-.*%.yaml")
-      end,
-    },
+    opts = function(_, opts)
+      local group = vim.api.nvim_create_augroup("autosave", {})
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "AutoSaveEnable",
+        group = group,
+        callback = function(_)
+          vim.notify("AutoSave enabled", vim.log.levels.INFO)
+        end,
+      })
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "AutoSaveDisable",
+        group = group,
+        callback = function(_)
+          vim.notify("AutoSave disabled", vim.log.levels.INFO)
+        end,
+      })
+      vim.tbl_extend("force", opts, {
+        condition = function(buf)
+          return vim.fn.getbufvar(buf, "&modifiable") == 1
+            -- Nvim config
+            and not string.match(vim.fn.getcwd(), "%/nvim%-config$")
+            -- Auto-reloading config files
+            and not vim.list_contains({ "alacritty.toml", "picom.conf", "wezterm.lua" }, vim.fn.expand("%:t"))
+            -- Oil buffers
+            and not string.match(vim.fn.expand("%"), "^oil://")
+            -- Live editing of kubernetes resources
+            and not string.match(vim.fn.expand("%"), "/tmp/kubectl-edit-.*%.yaml")
+            -- Octo buffers
+            and not string.match(vim.fn.expand("%"), "^octo://")
+        end,
+      })
+    end,
   },
   {
     "folke/todo-comments.nvim",
