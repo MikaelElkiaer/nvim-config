@@ -51,19 +51,11 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
-    init = function()
-      require("utils"):create_keymap_group("<leader>go", "+octo")
-    end,
     keys = {
       {
-        "<leader>goi",
-        "<cmd>Octo issue list<cr>",
-        desc = "octo issue",
-      },
-      {
-        "<leader>gop",
-        "<cmd>Octo pr<cr>",
-        desc = "octo PR",
+        "<leader>go",
+        ":Octo ",
+        desc = "octo",
       },
     },
     opts = {
