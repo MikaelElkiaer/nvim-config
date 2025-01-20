@@ -22,7 +22,7 @@ vim.keymap.set("i", "<C-space>", function()
   return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-X><C-O>"
 end, { desc = "trigger completion", expr = true })
 vim.keymap.set("i", "<esc>", function()
-  return vim.fn.pumvisible() == 1 and "<C-e>" or "<esc>"
+  return vim.fn.pumvisible() == 1 and "<C-e><esc>" or "<esc>"
 end, { desc = "cancel completion", expr = true })
 vim.keymap.set("i", "<cr>", function()
   return vim.fn.pumvisible() == 1 and "<C-y>" or "<cr>"
