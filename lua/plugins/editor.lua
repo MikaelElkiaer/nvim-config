@@ -25,7 +25,7 @@ return {
           vim.notify("AutoSave disabled", vim.log.levels.INFO)
         end,
       })
-      vim.tbl_extend("force", opts, {
+      return vim.tbl_extend("force", opts, {
         condition = function(buf)
           return vim.fn.getbufvar(buf, "&modifiable") == 1
             -- Nvim config
