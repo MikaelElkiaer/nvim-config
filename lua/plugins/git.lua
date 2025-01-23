@@ -50,25 +50,53 @@ return {
   },
   {
     "pwntester/octo.nvim",
-    cmd = { "Octo " },
+    cmd = { "Octo", "Octo " },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
+    init = function()
+      require("utils"):create_keymap_group("<leader>go", "+octo")
+    end,
     keys = {
       {
-        "<leader>go",
+        "<leader>goo",
         ":Octo ",
-        desc = "octo",
+        desc = "octo cmd",
+      },
+      {
+        "<leader>goil",
+        "<cmd>Octo issue list<cr>",
+        desc = "octo issue list",
+      },
+      {
+        "<leader>goic",
+        "<cmd>Octo issue create<cr>",
+        desc = "octo issue create",
+      },
+      {
+        "<leader>gopl",
+        "<cmd>Octo pr list<cr>",
+        desc = "octo pr list",
+      },
+      {
+        "<leader>gopc",
+        "<cmd>Octo pr create<cr>",
+        desc = "octo pr create",
+      },
+      {
+        "<leader>gor",
+        "<cmd>Octo review<cr>",
+        desc = "octo review",
       },
     },
     opts = {
       gh_env = {
         -- INFO: Needed for gh to access keyring
         -- - see https://github.com/pwntester/octo.nvim/issues/568
-        DBUS_SESSION_BUS_ADDRESS = vim.env["DBUS_SESSION_BUS_ADDRESS"]
-      }
+        DBUS_SESSION_BUS_ADDRESS = vim.env["DBUS_SESSION_BUS_ADDRESS"],
+      },
     },
   },
   {
