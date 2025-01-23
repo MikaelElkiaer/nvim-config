@@ -16,11 +16,16 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen " },
+    cmd = { "DiffViewOpen", "DiffviewOpen " },
     init = function()
       require("utils"):create_keymap_group("<leader>gd", "+diff")
     end,
     keys = {
+      {
+        "<leader>gdd",
+        ":DiffviewOpen ",
+        desc = "diffview cmdopen",
+      },
       {
         "<leader>gdo",
         "<cmd>DiffviewOpen<cr>",
