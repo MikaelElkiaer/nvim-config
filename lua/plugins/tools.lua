@@ -69,7 +69,7 @@ return {
       -- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
       -- temperature = 0.1,
     },
-    branch = "canary",
+    branch = "main",
     build = "make tiktoken",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
