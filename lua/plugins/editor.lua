@@ -38,6 +38,8 @@ return {
             and not string.match(vim.fn.expand("%"), "/tmp/kubectl-edit-.*%.yaml")
             -- Octo buffers
             and not string.match(vim.fn.expand("%"), "^octo://")
+            -- Gitcommit
+            and not vim.cmd("echo &filetype") == "gitcommit"
         end,
       })
     end,
