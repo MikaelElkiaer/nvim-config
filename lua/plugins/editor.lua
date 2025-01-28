@@ -39,7 +39,7 @@ return {
             -- Octo buffers
             and not string.match(vim.fn.expand("%"), "^octo://")
             -- Gitcommit
-            and not vim.cmd("echo &filetype") == "gitcommit"
+            and not (vim.bo.filetype == "gitcommit")
         end,
       })
     end,
