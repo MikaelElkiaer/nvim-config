@@ -41,7 +41,9 @@ local function get_capabilities_factory()
     return blink.get_lsp_capabilities
   end
 
-  return function(_) end
+  return function(capabilities)
+    return capabilities
+  end
 end
 
 return {
@@ -113,11 +115,12 @@ return {
       local capabilities_factory = get_capabilities_factory()
       for server, config in pairs(opts.servers) do
         if type(config) == "function" then
-          config = config({ on_attach = on_attach })
+          local capabilities = capabilities_factory({})
+          config = config({ lspconfig = { capabilities = capabilities, on_attach = on_attach } })
         else
+          config.capabilities = capabilities_factory(config.capabilities)
           config.on_attach = on_attach
         end
-        config.capabilities = capabilities_factory(config.capabilities)
         lspconfig[server].setup(config)
       end
     end,
@@ -145,6 +148,30 @@ return {
           },
         },
         yamlls = function(config)
+          config = vim.tbl_extend("force", config, {
+            lspconfig = {
+              settings = {
+                yaml = {
+                  customTags = {
+                    "!override mapping",
+                    "!override scalar",
+                    "!override sequence",
+                    "!reset mapping",
+                    "!reset scalar",
+                    "!reset sequence",
+                  },
+                },
+              },
+            },
+            -- TODO: This does not work as expected
+            -- - see https://github.com/someone-stole-my-name/yaml-companion.nvim/issues/12
+            schemas = {
+              {
+                name = "Kubernetes 1.32.1",
+                uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.1-standalone-strict/all.json",
+              },
+            },
+          })
           return require("yaml-companion").setup(config)
         end,
         marksman = {},
