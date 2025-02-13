@@ -81,8 +81,8 @@ return {
       { "<leader>Ct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
       {
         "<leader>CT",
-        "<cmd>CopilotChatVsplitToggle<cr>",
-        desc = "CopilotChat - Toggle Vsplit", -- Toggle vertical split
+        "<cmd>CopilotChatToggle<cr>",
+        desc = "CopilotChat - Toggle",
       },
       {
         "<leader>Cv",
