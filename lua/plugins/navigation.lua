@@ -58,14 +58,4 @@ return {
       },
     },
   },
-  {
-    "willothy/flatten.nvim",
-    lazy = false,
-    opts = {
-      window = {
-        open = "alternate",
-      },
-    },
-    priority = 1001,
-  },
 }
