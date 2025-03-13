@@ -13,12 +13,17 @@ return {
       { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Buffer move prev" },
       { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Buffer move next" },
     },
-    opts = {
-      options = {
-        diagnostics = "nvim_lsp",
-        always_show_bufferline = true,
-      },
-    },
+    opts = function()
+      local bufferline = require("bufferline")
+      return {
+        options = {
+          always_show_bufferline = true,
+          diagnostics = "nvim_lsp",
+          show_buffer_close_icons = false,
+          style_preset = bufferline.style_preset.no_italic,
+        },
+      }
+    end,
   },
   {
     "tiagovla/scope.nvim",
