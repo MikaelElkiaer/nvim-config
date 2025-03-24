@@ -67,6 +67,7 @@ return {
       formatters_by_ft = {
         cs = { "csharpier" },
         go = { "gofmt" },
+        javascript = { "prettierd" },
         jsonc = { "jq" },
         lua = { "stylua" },
         markdown = { "markdownlint-cli2" },
@@ -147,6 +148,7 @@ return {
             },
           },
         },
+        ts_ls = {},
         yamlls = function(config)
           config = vim.tbl_extend("force", config, {
             lspconfig = {
