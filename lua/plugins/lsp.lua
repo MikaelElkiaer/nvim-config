@@ -100,6 +100,7 @@ return {
       }
       lint.linters_by_ft = {
         dockerfile = { "hadolint" },
+        html = { "htmlhint" },
         hush = { "hush" },
         markdown = { "markdownlint-cli2" },
       }
@@ -139,7 +140,6 @@ return {
         dockerls = {},
         gopls = {},
         helm_ls = {},
-        html = {},
         jsonls = {},
         lua_ls = {
           settings = {
