@@ -67,6 +67,7 @@ return {
       formatters_by_ft = {
         cs = { "csharpier" },
         go = { "gofmt" },
+        html = { "html_beautify" },
         javascript = { "prettierd" },
         jsonc = { "jq" },
         lua = { "stylua" },
@@ -138,6 +139,7 @@ return {
         dockerls = {},
         gopls = {},
         helm_ls = {},
+        html = {},
         jsonls = {},
         lua_ls = {
           settings = {
