@@ -1,4 +1,4 @@
-require("utils"):create_keymap_group("<leader>u", "+ui")
+require("utils.init"):create_keymap_group("<leader>u", "+ui")
 
 return {
   {
@@ -10,7 +10,7 @@ return {
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
-      wk.add(require("utils"):get_keymap_groups())
+      wk.add(require("utils.init"):get_keymap_groups())
     end,
   },
   {

@@ -1,4 +1,4 @@
-require("utils"):create_keymap_group("<leader>b", "+buffers")
+require("utils.init"):create_keymap_group("<leader>b", "+buffers")
 
 return {
   {
@@ -38,7 +38,7 @@ return {
         "<leader>bd",
         function(...)
           require("mini.bufremove").delete(...)
-          require("utils").on_buffer_delete()
+          require("utils.init").on_buffer_delete()
         end,
         desc = "Delete Buffer",
       },
@@ -46,7 +46,7 @@ return {
         "<leader>bD",
         function(...)
           require("mini.bufremove").wipeout(...)
-          require("utils").on_buffer_delete()
+          require("utils.init").on_buffer_delete()
         end,
         desc = "Delete Buffer (Force)",
       },
@@ -54,7 +54,7 @@ return {
         "<leader>ba",
         function()
           vim.cmd("bufdo bdelete")
-          require("utils").on_buffer_delete()
+          require("utils.init").on_buffer_delete()
         end,
         desc = "Delete buffers - All",
       },
@@ -62,7 +62,7 @@ return {
         "<leader>bA",
         function()
           vim.cmd("bufdo bwipeout")
-          require("utils").on_buffer_delete()
+          require("utils.init").on_buffer_delete()
         end,
         desc = "Delete buffers - All (Force)",
       },

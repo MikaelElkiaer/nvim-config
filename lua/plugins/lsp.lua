@@ -1,4 +1,4 @@
-require("utils"):create_keymap_group("<leader>c", "+code")
+require("utils.init"):create_keymap_group("<leader>c", "+code")
 
 local function on_attach(client, bufnr)
   local has_lspsaga = vim.fn.exists(":Lspsaga") == 2

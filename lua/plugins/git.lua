@@ -1,11 +1,11 @@
-require("utils"):create_keymap_group("<leader>g", "+git")
+require("utils.init"):create_keymap_group("<leader>g", "+git")
 
 return {
   {
     "valorl/vcslink.nvim",
     cmd = { "VcsLinkLineCopy", "VcsLinkLineBrowse", "VcsLinkBufCopy", "VcsLinkBufBrowse" },
     init = function()
-      require("utils"):create_keymap_group("<leader>gl", "+link")
+      require("utils.init"):create_keymap_group("<leader>gl", "+link")
     end,
     keys = {
       { "<leader>glc", "<cmd>VcsLinkLineCopy<cr>", desc = "copy line" },
@@ -18,7 +18,7 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffViewOpen", "DiffviewOpen " },
     init = function()
-      require("utils"):create_keymap_group("<leader>gd", "+diff")
+      require("utils.init"):create_keymap_group("<leader>gd", "+diff")
     end,
     keys = {
       {
@@ -57,7 +57,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     init = function()
-      require("utils"):create_keymap_group("<leader>go", "+octo")
+      require("utils.init"):create_keymap_group("<leader>go", "+octo")
     end,
     keys = {
       {

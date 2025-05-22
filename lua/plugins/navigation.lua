@@ -1,4 +1,4 @@
-require("utils"):create_keymap_group("<leader>f", "+find")
+require("utils.init"):create_keymap_group("<leader>f", "+find")
 
 return {
   {

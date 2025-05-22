@@ -1,4 +1,4 @@
-require("utils"):create_keymap_group("<leader><leader>", "+term")
+require("utils.init"):create_keymap_group("<leader><leader>", "+term")
 
 return {
   {
@@ -29,28 +29,28 @@ return {
       {
         "<leader><space>d",
         function()
-          require("utils"):create_tui("lazydocker")
+          require("utils.init"):create_tui("lazydocker")
         end,
         desc = "lazydocker",
       },
       {
         "<leader><space>g",
         function()
-          require("utils"):create_tui("lazygit")
+          require("utils.init"):create_tui("lazygit")
         end,
         desc = "lazygit",
       },
       {
         "<leader><space>h",
         function()
-          require("utils"):create_tui("gh-dash-repo")
+          require("utils.init"):create_tui("gh-dash-repo")
         end,
         desc = "hub",
       },
       {
         "<leader><space>k",
         function()
-          require("utils"):create_tui("k9s")
+          require("utils.init"):create_tui("k9s")
         end,
         desc = "k9s",
       },
