@@ -16,7 +16,6 @@ return {
         folds = false,
       },
       contrast = "hard",
-      invert_tabline = true,
       transparent_mode = true,
     },
     priority = 1000,
