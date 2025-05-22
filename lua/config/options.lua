@@ -47,12 +47,14 @@ vim.diagnostic.config({
   float = {
     border = "rounded",
   },
+  signs = {
+    active = true,
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰅚",
+      [vim.diagnostic.severity.WARN] = "󰀪",
+      [vim.diagnostic.severity.HINT] = "󰐙",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
   virtual_text = false,
 })
-do
-  local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-  for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  end
-end
