@@ -187,20 +187,28 @@ return {
     "seblj/roslyn.nvim",
     config = function(_, opts)
       local capabilities_factory = get_capabilities_factory()
-      vim.tbl_extend("force", opts, {
-        config = {
-          capabilities = capabilities_factory(opts.config and opts.config.capabilities),
+      vim.lsp.config("roslyn", {
+        capabilities = capabilities_factory(opts.config and opts.config.capabilities),
+        cmd = {
+          "Microsoft.CodeAnalysis.LanguageServer",
+          "--logLevel=Information",
+          "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+          "--stdio",
+        },
+        on_attach = on_attach,
+        settings = {
+          ["csharp|inlay_hints"] = {
+            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            csharp_enable_inlay_hints_for_implicit_variable_types = true,
+          },
+          ["csharp|code_lens"] = {
+            dotnet_enable_references_code_lens = true,
+          },
         },
       })
       require("roslyn").setup(opts)
     end,
     ft = "cs",
-    opts = {
-      config = {
-        on_attach = on_attach,
-      },
-      exe = { "Microsoft.CodeAnalysis.LanguageServer" },
-    },
   },
   {
     "someone-stole-my-name/yaml-companion.nvim",
