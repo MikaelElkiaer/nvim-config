@@ -150,6 +150,7 @@ return {
             },
           },
         },
+        terraform_lsp = {},
         ts_ls = {},
         yamlls = function(config)
           config = vim.tbl_extend("force", config, {
