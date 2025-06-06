@@ -260,4 +260,21 @@ return {
       },
     },
   },
+  {
+    { "towolf/vim-helm", ft = "helm" },
+  },
+  {
+    "danymat/neogen",
+    cmd = { "Neogen" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {
+      languages = {
+        cs = {
+          template = {
+            annotation_convention = "xmldoc",
+          },
+        },
+      },
+    },
+  },
 }
