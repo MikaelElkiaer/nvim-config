@@ -237,51 +237,6 @@ return {
   },
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   {
-    "saghen/blink.cmp",
-    enabled = false,
-    -- lazy loading handled internally
-    lazy = false,
-    -- use a release tag to download pre-built binaries
-    version = "v0.*",
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts = {
-      appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = "mono",
-      },
-      completion = {
-        documentation = {
-          window = {
-            border = "rounded",
-          },
-        },
-        list = {
-          selection = "manual",
-        },
-        menu = {
-          auto_show = false,
-          border = "rounded",
-          winhighlight = "Pmenu:BlinkCmpMenu,Pmenu:BlinkCmpMenuBorder,PmenuSel:BlinkCmpMenuSelection,Search:None",
-        },
-      },
-      keymap = {
-        preset = "default",
-        ["<C-k>"] = { "select_prev", "fallback" },
-        ["<C-j>"] = { "select_next", "fallback" },
-      },
-      -- Conflicts with noice.nvim
-      signature = { enabled = false },
-      sources = {
-        default = {
-          "lsp",
-          "path",
-          "buffer",
-        },
-      },
-    },
-  },
-  {
     "nvimdev/lspsaga.nvim",
     cmd = "Lspsaga",
     dependencies = {

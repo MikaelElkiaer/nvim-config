@@ -18,24 +18,27 @@ vim.keymap.set("n", "]d", function()
   vim.diagnostic.open_float({ focus = false, scope = "cursor" })
 end, { desc = "Go to next diagnostic and display" })
 
-vim.keymap.set("i", "<C-space>", function()
-  return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-X><C-O>"
-end, { desc = "trigger completion", expr = true })
-vim.keymap.set("i", "<esc>", function()
-  return vim.fn.pumvisible() == 1 and "<C-e><esc>" or "<esc>"
-end, { desc = "cancel completion", expr = true })
-vim.keymap.set("i", "<cr>", function()
-  return vim.fn.pumvisible() == 1 and "<C-y>" or "<cr>"
-end, { desc = "confirm completion", expr = true })
-vim.keymap.set("i", "<C-k>", function()
-  return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
-end, { desc = "previous completion", expr = true })
-vim.keymap.set("i", "<C-j>", function()
-  return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
-end, { desc = "previous completion", expr = true })
+local blink_ok, _ = pcall(require, "blink.cmp")
+if not blink_ok then
+  vim.keymap.set("i", "<C-space>", function()
+    return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-X><C-O>"
+  end, { desc = "trigger completion", expr = true })
+  vim.keymap.set("i", "<esc>", function()
+    return vim.fn.pumvisible() == 1 and "<C-e><esc>" or "<esc>"
+  end, { desc = "cancel completion", expr = true })
+  vim.keymap.set("i", "<cr>", function()
+    return vim.fn.pumvisible() == 1 and "<C-y>" or "<cr>"
+  end, { desc = "confirm completion", expr = true })
+  vim.keymap.set("i", "<C-k>", function()
+    return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
+  end, { desc = "previous completion", expr = true })
+  vim.keymap.set("i", "<C-j>", function()
+    return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
+  end, { desc = "previous completion", expr = true })
+end
 
-vim.keymap.set({"n", "x"}, "<leader>y", '"+y', { desc = "+ Yank - clipboard" })
-vim.keymap.set({"n", "x"}, "<leader>Y", '"+Y', { desc = "+ Yank - clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>y", '"+y', { desc = "+ Yank - clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>Y", '"+Y', { desc = "+ Yank - clipboard" })
 vim.keymap.set("n", "<leader>p", '"+p', { desc = "+ Paste - clipboard" })
 vim.keymap.set("n", "<leader>P", '"+P', { desc = "+ Paste - clipboard" })
 
