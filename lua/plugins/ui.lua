@@ -138,12 +138,6 @@ return {
       cmdline = {
         view = "cmdline",
       },
-      routes = {
-        {
-          view = "cmdline",
-          filter = { event = "msg_showmode" },
-        },
-      },
       presets = {
         lsp_doc_border = true,
       },
