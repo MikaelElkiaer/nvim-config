@@ -41,6 +41,22 @@ return {
         end,
         desc = "Delete buffers - All (Force)",
       },
+      {
+        "<leader>bo",
+        function()
+          vim.cmd(":execute 'bufdo if bufnr() != ' . bufnr('%') . ' | bdelete! | endif'")
+          require("utils.init").on_buffer_delete()
+        end,
+        desc = "Delete buffers - Others",
+      },
+      {
+        "<leader>bO",
+        function()
+          vim.cmd(":execute 'bufdo if bufnr() != ' . bufnr('%') . ' | bwipeout! | endif'")
+          require("utils.init").on_buffer_delete()
+        end,
+        desc = "Delete buffers - Others (Force)",
+      },
     },
     opts = true,
   },
