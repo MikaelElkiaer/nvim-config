@@ -175,8 +175,8 @@ return {
         lualine_a = { "mode" },
         lualine_b = { { "filename", path = 1 } },
         lualine_c = {
-          "diff",
-          "diagnostics",
+          { "diff" },
+          { "diagnostics", icons_enabled = true },
         },
         lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_z = { "location" },
