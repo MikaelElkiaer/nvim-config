@@ -155,8 +155,8 @@ return {
       options = {
         icons_enabled = false,
         theme = "auto",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        component_separators = { left = "│", right = "│" },
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = {},
           winbar = {},
@@ -173,7 +173,19 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { { "filename", path = 1 } },
+        lualine_b = {
+          { "filename", component_separators = { right = "" }, path = 1 },
+          {
+            "buffer_count",
+            draw_empty = false,
+            fmt = function()
+              local count = #vim.fn.getbufinfo({ buflisted = 1 })
+              if count > 1 then
+                return "(+" .. count - 1 .. ")"
+              end
+            end,
+          },
+        },
         lualine_c = {
           { "diff" },
           { "diagnostics", icons_enabled = true },
