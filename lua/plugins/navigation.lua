@@ -43,7 +43,7 @@ return {
   },
   {
     "stevearc/oil.nvim",
-    cmd = { "Oil " },
+    cmd = { "Oil" },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
       {
