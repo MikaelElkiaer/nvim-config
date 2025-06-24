@@ -40,60 +40,42 @@ return {
     },
   },
   {
-    "ziontee113/syntax-tree-surfer",
-    cmd = { "STSSelectMasterNode", "STSSelectCurrentNode" },
+    "aaronik/treewalker.nvim",
     keys = {
-      -- Normal Mode Swapping:
-      -- Swap The Master Node relative to the cursor with it's siblings, Dot Repeatable
-      {
-        "vU",
-        function()
-          vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot"
-          return "g@l"
-        end,
-        desc = "Swap prev - master",
-        expr = true,
-      },
-      {
-        "vD",
-        function()
-          vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot"
-          return "g@l"
-        end,
-        desc = "Swap next - master",
-        expr = true,
-      },
-      -- Swap Current Node at the Cursor with it's siblings, Dot Repeatable
-      {
-        "vd",
-        function()
-          vim.opt.opfunc = "v:lua.STSSwapCurrentNodeNextNormal_Dot"
-          return "g@l"
-        end,
-        desc = "Swap next - current",
-        expr = true,
-      },
-      {
-        "vu",
-        function()
-          vim.opt.opfunc = "v:lua.STSSwapCurrentNodePrevNormal_Dot"
-          return "g@l"
-        end,
-        desc = "Swap prev - current",
-        expr = true,
-      },
-      -- Visual Selection from Normal Mode
-      { "vx", "<cmd>STSSelectMasterNode<cr>", desc = "Select - master" },
-      { "vn", "<cmd>STSSelectCurrentNode<cr>", desc = "Select - current" },
-      -- Select Nodes in Visual Mode
-      { "J", "<cmd>STSSelectNextSiblingNode<cr>", mode = "x", desc = "Select - next" },
-      { "K", "<cmd>STSSelectPrevSiblingNode<cr>", mode = "x", desc = "Select - prev" },
-      { "H", "<cmd>STSSelectParentNode<cr>", mode = "x", desc = "Select - parent" },
-      { "L", "<cmd>STSSelectChildNode<cr>", mode = "x", desc = "Select - child" },
-      -- Swapping Nodes in Visual Mode
-      { "<A-j>", "<cmd>STSSwapNextVisual<cr>", mode = "x", desc = "Swap next" },
-      { "<A-k>", "<cmd>STSSwapPrevVisual<cr>", mode = "x", desc = "Swap prev" },
+      -- movement
+      { "<C-k>", "<cmd>Treewalker Up<cr>", mode = { "n", "v" } },
+      { "<C-j>", "<cmd>Treewalker Down<cr>", mode = { "n", "v" } },
+      { "<C-h>", "<cmd>Treewalker Left<cr>", mode = { "n", "v" } },
+      { "<C-l>", "<cmd>Treewalker Right<cr>", mode = { "n", "v" } },
+
+      -- swapping
+      { "<M-k>", "<cmd>Treewalker SwapUp<cr>", mode = { "n" } },
+      { "<M-j>", "<cmd>Treewalker SwapDown<cr>", mode = { "n" } },
+      { "<M-h>", "<cmd>Treewalker SwapLeft<cr>", mode = { "n" } },
+      { "<M-l>", "<cmd>Treewalker SwapRight<cr>", mode = { "n" } },
     },
-    opts = true,
+    -- The following options are the defaults.
+    -- Treewalker aims for sane defaults, so these are each individually optional,
+    -- and setup() does not need to be called, so the whole opts block is optional as well.
+    opts = {
+      -- Whether to briefly highlight the node after jumping to it
+      highlight = true,
+
+      -- How long should above highlight last (in ms)
+      highlight_duration = 250,
+
+      -- The color of the above highlight. Must be a valid vim highlight group.
+      -- (see :h highlight-group for options)
+      highlight_group = "CursorLine",
+
+      -- Whether the plugin adds movements to the jumplist -- true | false | 'left'
+      --  true: All movements more than 1 line are added to the jumplist. This is the default,
+      --        and is meant to cover most use cases. It's modeled on how { and } natively add
+      --        to the jumplist.
+      --  false: Treewalker does not add to the jumplist at all
+      --  "left": Treewalker only adds :Treewalker Left to the jumplist. This is usually the most
+      --          likely one to be confusing, so it has its own mode.
+      jumplist = true,
+    },
   },
 }
