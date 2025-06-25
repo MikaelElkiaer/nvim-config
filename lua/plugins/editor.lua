@@ -51,7 +51,6 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     event = "BufEnter",
-    config = true,
     keys = {
       {
         "]t",
@@ -83,6 +82,9 @@ return {
       },
       { "<leader>ft", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "todos" },
       { "<leader>fT", "<cmd>TodoTelescope<cr>", desc = "todos - all" },
+    },
+    opts = {
+      signs = false,
     },
   },
   {
