@@ -41,6 +41,7 @@ return {
   },
   {
     "aaronik/treewalker.nvim",
+    cmd = "Treewalker",
     keys = {
       -- movement
       { "<C-k>", "<cmd>Treewalker Up<cr>", mode = { "n", "v" } },
