@@ -223,4 +223,23 @@ return {
       extensions = {},
     },
   },
+  {
+    "axkirillov/hbac.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    event = "BufEnter",
+    keys = {
+      {
+        "<leader>fb",
+        function()
+          require("telescope").extensions.hbac.buffers()
+        end,
+        desc = "buffers (hbac)",
+      },
+    },
+    opts = {
+      threshold = 5,
+    },
+  },
 }
