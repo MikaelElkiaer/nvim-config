@@ -16,6 +16,14 @@ return {
         folds = false,
       },
       contrast = "hard",
+      overrides = {
+        -- No color
+        CursorLineNr = { link = "CursorLine" },
+        -- Align with heirline.nvim and gitmux
+        GitSignsChangeNr = { link = "GruvboxYellow" },
+        -- A bit darker
+        StatusLine = { link = "StatusLineNC" },
+      },
       transparent_mode = true,
     },
     priority = 1000,
