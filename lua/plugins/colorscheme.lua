@@ -19,6 +19,8 @@ return {
       overrides = {
         -- No color
         CursorLineNr = { link = "CursorLine" },
+        -- Align with heirline.nvim and gitmux
+        GitSignsChangeNr = { link = "GruvboxYellow" },
         -- A bit darker
         StatusLine = { link = "StatusLineNC" },
       },
