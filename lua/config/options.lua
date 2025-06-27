@@ -28,6 +28,7 @@ vim.opt.list = true
 vim.opt.number = true
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
+vim.opt.showtabline = 1 -- Show only on multiple tabs
 vim.opt.smartindent = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true

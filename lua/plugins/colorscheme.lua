@@ -16,6 +16,10 @@ return {
         folds = false,
       },
       contrast = "hard",
+      overrides = {
+        -- A bit darker
+        StatusLine = { link = "StatusLineNC" },
+      },
       transparent_mode = true,
     },
     priority = 1000,
