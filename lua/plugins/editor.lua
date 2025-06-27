@@ -28,8 +28,6 @@ return {
       return vim.tbl_extend("force", opts, {
         condition = function(buf)
           return vim.fn.getbufvar(buf, "&modifiable") == 1
-            -- Nvim config
-            and not string.match(vim.fn.getcwd(), "%/nvim%-config$")
             -- Auto-reloading config files
             and not vim.list_contains({ "alacritty.toml", "picom.conf", "wezterm.lua" }, vim.fn.expand("%:t"))
             -- Oil buffers
