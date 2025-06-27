@@ -17,6 +17,8 @@ return {
       },
       contrast = "hard",
       overrides = {
+        -- No color
+        CursorLineNr = { link = "CursorLine" },
         -- A bit darker
         StatusLine = { link = "StatusLineNC" },
       },
