@@ -52,6 +52,34 @@ return {
       update = { "BufEnter", "TabEnter" },
     })
 
+    local columnEnd = {
+      provider = function(_)
+        return "%)"
+      end,
+    }
+
+    local columnStartLeft = {
+      init = function(self)
+        local width = vim.o.columns
+        self.maxWidth = math.floor(width * 0.3)
+      end,
+      provider = function(self)
+        return "%-" .. self.maxWidth .. "("
+      end,
+      update = { "VimResized" },
+    }
+
+    local columnStartRight = {
+      init = function(self)
+        local width = vim.o.columns
+        self.maxWidth = math.floor(width * 0.3)
+      end,
+      provider = function(self)
+        return "%" .. self.maxWidth .. "("
+      end,
+      update = { "VimResized" },
+    }
+
     local diagnostics = {
 
       condition = conditions.has_diagnostics,
@@ -137,14 +165,23 @@ return {
           self.filename = vim.fn.fnamemodify(self.filename, ":t")
         end
       end,
-      provider = function(self)
-        local filepath = vim.fn.fnamemodify(self.filename, ":.")
-        -- if not conditions.width_percent_below(#filepath, 0.25) then
-        --   filepath = vim.fn.pathshorten(filepath)
-        -- end
-        return filepath
-      end,
-      hl = { fg = "light" },
+      {
+        provider = function(self)
+          local folder = vim.fn.fnamemodify(self.filename, ":.:h")
+          if not conditions.width_percent_below(#folder, 0.3) then
+            folder = vim.fn.pathshorten(folder)
+          end
+          return folder .. "/"
+        end,
+        hl = { fg = "gray" },
+      },
+      {
+        provider = function(self)
+          local filename = vim.fn.fnamemodify(self.filename, ":.:t")
+          return filename
+        end,
+        hl = { fg = "light" },
+      },
     }
 
     local gitDiff = {
@@ -262,23 +299,13 @@ return {
           t = "purple",
         },
       },
-      -- We can now access the value of mode() that, by now, would have been
-      -- computed by `init()` and use it to index our strings dictionary.
-      -- note how `static` fields become just regular attributes once the
-      -- component is instantiated.
-      -- To be extra meticulous, we can also add some vim statusline syntax to
-      -- control the padding and make sure our string is always at least 2
-      -- characters long. Plus a nice Icon.
       provider = function(self)
         return "%-3( " .. self.mode_names[self.mode] .. "%)"
       end,
-      -- Same goes for the highlight. Now the foreground will change according to the current mode.
       hl = function(self)
-        local mode = self.mode:sub(1, 1) -- get only the first mode character
+        local mode = self.mode:sub(1, 1)
         return { bg = self.mode_colors[mode], fg = "dark" }
       end,
-      -- Re-evaluate the component only on ModeChanged event!
-      -- Also allows the statusline to be re-evaluated when entering operator-pending mode
       update = {
         "ModeChanged",
         pattern = "*:*",
@@ -289,7 +316,7 @@ return {
     }
 
     local ruler = {
-      provider = "%l:%c",
+      provider = ":%l:%c",
       hl = { fg = "gray" },
     }
 
@@ -306,17 +333,14 @@ return {
       opts = {
         colors = colors,
       },
-      -- TODO: Make widths dynamic
       -- stylua: ignore
       statusline = {
         -- INFO: left
-        { provider = "%-40(" }, mode, space, fileName, space, ruler, fileFlags, { provider = "%)" },
-        align,
+        columnStartLeft, mode, space, fileName, ruler, fileFlags, columnEnd,
         -- INFO: center
-        bufList,
+        align, bufList, align,
         -- INFO: right
-        align,
-        { provider = "%40(" }, gitDiff, diagnostics, fileEncoding, fileFormat, space, lsp, space, { provider = "%)" },
+        columnStartRight, gitDiff, diagnostics, fileEncoding, fileFormat, space, lsp, space, columnEnd,
       },
       tabline = {
         { provider = "%=", hl = { bg = "dark" } },
