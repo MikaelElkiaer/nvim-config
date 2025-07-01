@@ -250,6 +250,7 @@ return {
     -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    ft = { "markdown", "codecompanion" },
     keys = {
       { "<leader>um", "<cmd>RenderMarkdown toggle<cr>", desc = "Toggle Render Markdown" },
     },
@@ -257,6 +258,7 @@ return {
     ---@type render.md.UserConfig
     opts = {
       enabled = false,
+      file_types = { "markdown", "codecompanion" },
     },
   },
   {
@@ -311,6 +313,9 @@ return {
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
         default = { "lsp", "path", "buffer" },
+        per_filetype = {
+          codecompanion = { "codecompanion" },
+        },
       },
 
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
