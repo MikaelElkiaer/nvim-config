@@ -257,7 +257,6 @@ return {
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
-      enabled = false,
       file_types = { "markdown", "codecompanion" },
     },
   },
