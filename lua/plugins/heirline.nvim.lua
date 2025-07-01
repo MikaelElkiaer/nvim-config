@@ -21,36 +21,54 @@ return {
     local align = { provider = "%=" }
     local space = { provider = " " }
 
-    local bufList = utils.make_buflist({
-      init = function(self)
-        local bufnr = self.bufnr
-        local name = vim.api.nvim_buf_get_name(bufnr)
-        self.filename = name:match("^.+/(.+)$")
-        if not self.filename then
-          self.filename = "[No Name]"
-        end
-        local extension = vim.fn.fnamemodify(self.filename, ":e")
-        self.icon, self.icon_color =
-          require("nvim-web-devicons").get_icon_color(self.filename, extension, { default = true })
-      end,
+    local bufList = utils.make_buflist(
       {
-        provider = function(self)
-          return self.icon
+        init = function(self)
+          local bufnr = self.bufnr
+          local name = vim.api.nvim_buf_get_name(bufnr)
+          self.filename = name:match("^.+/(.+)$")
+          if not self.filename then
+            self.filename = "[No Name]"
+          end
+          local extension = vim.fn.fnamemodify(self.filename, ":e")
+          self.icon, self.icon_color =
+            require("nvim-web-devicons").get_icon_color(self.filename, extension, { default = true })
         end,
-        hl = function(self)
-          return { fg = self.icon_color }
-        end,
+        {
+          provider = function(self)
+            return self.icon
+          end,
+          hl = function(self)
+            return { fg = self.icon_color }
+          end,
+        },
+        {
+          provider = function(self)
+            return " " .. self.filename .. " "
+          end,
+        },
+        hl = { fg = "gray" },
+        update = { "BufEnter", "TabEnter" },
       },
-      {
-        provider = function(self)
-          return " " .. self.filename .. " "
-        end,
-      },
-      hl = function(self)
-        return { fg = self.is_active and "light" or "gray" }
+      nil,
+      nil,
+      function()
+        local bufnr = vim.api.nvim_get_current_buf()
+        local buffers = vim.tbl_filter(function(buf)
+          return buf ~= bufnr
+            and vim.api.nvim_get_option_value("buflisted", { buf = buf })
+        end, vim.api.nvim_list_bufs())
+        table.sort(buffers, function(a, b)
+          if (a > bufnr and b > bufnr) or (a < bufnr and b < bufnr) then
+            return a < b
+          else
+            return a > bufnr
+          end
+        end)
+        return buffers
       end,
-      update = { "BufEnter", "TabEnter" },
-    })
+      false
+    )
 
     local columnEnd = {
       provider = function(_)
@@ -164,7 +182,18 @@ return {
         elseif vim.bo.filetype == "help" then
           self.filename = vim.fn.fnamemodify(self.filename, ":t")
         end
+        local extension = vim.fn.fnamemodify(self.filename, ":e")
+        self.icon, self.icon_color =
+          require("nvim-web-devicons").get_icon_color(self.filename, extension, { default = true })
       end,
+      {
+        provider = function(self)
+          return self.icon .. " "
+        end,
+        hl = function(self)
+          return { fg = self.icon_color }
+        end,
+      },
       {
         provider = function(self)
           local folder = vim.fn.fnamemodify(self.filename, ":.:h")
@@ -237,6 +266,7 @@ return {
         for _, server in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
           table.insert(names, server.name)
         end
+        table.sort(names)
         return " " .. table.concat(names, " ")
       end,
       hl = { fg = "light" },
