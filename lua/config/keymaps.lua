@@ -37,10 +37,10 @@ if not blink_ok then
   end, { desc = "previous completion", expr = true })
 end
 
-vim.keymap.set({ "n", "x" }, "<leader>y", '"+y', { desc = "+ Yank - clipboard" })
-vim.keymap.set({ "n", "x" }, "<leader>Y", '"+Y', { desc = "+ Yank - clipboard" })
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "+ Paste - clipboard" })
-vim.keymap.set("n", "<leader>P", '"+P', { desc = "+ Paste - clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>y", '"+y', { desc = "Yank - clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>Y", '"+Y', { desc = "Yank - clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste - clipboard" })
+vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste - clipboard" })
 
 vim.keymap.set("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
 vim.keymap.set("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
