@@ -69,6 +69,11 @@ return {
       -- (see :h highlight-group for options)
       highlight_group = "CursorLine",
 
+      -- Whether to create a visual selection after a movement to a node.
+      -- If true, highlight is disabled and a visual selection is made in
+      -- its place.
+      select = true,
+
       -- Whether the plugin adds movements to the jumplist -- true | false | 'left'
       --  true: All movements more than 1 line are added to the jumplist. This is the default,
       --        and is meant to cover most use cases. It's modeled on how { and } natively add
