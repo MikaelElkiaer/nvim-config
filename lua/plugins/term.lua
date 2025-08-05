@@ -66,7 +66,7 @@ return {
       persist_size = true,
       persist_mode = false,
       close_on_exit = true,
-      shell = vim.o.shell,
+      shell = "~/.nix-profile/bin/bash",
       float_opts = {
         border = "curved",
       },
