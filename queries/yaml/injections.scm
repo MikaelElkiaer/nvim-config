@@ -11,6 +11,36 @@
     ; - would cause stack overflow when injection language is "yaml"
     (#offset! @injection.content 0 1 0 0))
 
+; Inject language based on key file extension
+(block_mapping_pair
+  key: (flow_node) @injection.language
+  ; Extract language string
+  ; TODO: Handle more than 1 dot
+  ; - figure out why `[^.]` cannot be replaced by `.`
+  (#gsub! @injection.language "^[^.]*\.([^.]+)$" "%1")
+  ; Skip if no match
+  (#not-eq? @injection.language "")
+  value: [
+    (block_node
+      (block_scalar) @injection.content
+      (#offset! @injection.content 0 1 0 0))
+    (flow_node
+      (plain_scalar
+        (string_scalar) @injection.content))
+    (block_node
+      (block_sequence
+        (block_sequence_item
+          (flow_node
+            (plain_scalar
+              (string_scalar) @injection.content)))))
+    (block_node
+      (block_sequence
+        (block_sequence_item
+          (block_node
+            (block_scalar) @injection.content
+            (#offset! @injection.content 0 1 0 0)))))
+  ])
+
 ; Inject language `helm` for `$tplYaml` blocks
 (block_mapping_pair
   key: (flow_node) @_key
