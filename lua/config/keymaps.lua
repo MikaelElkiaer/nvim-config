@@ -44,3 +44,15 @@ vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste - clipboard" })
 
 vim.keymap.set("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
 vim.keymap.set("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+
+vim.keymap.set("n", "vn", function()
+  local ts_utils = require("nvim-treesitter.ts_utils")
+  local node = ts_utils.get_node_at_cursor()
+  if not node then
+    return
+  end
+  local start_row, start_col, end_row, end_col = node:range()
+  vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
+  vim.cmd("normal! v")
+  vim.api.nvim_win_set_cursor(0, { end_row + 1, end_col - 1 })
+end, { desc = "Select current Treesitter node" })
