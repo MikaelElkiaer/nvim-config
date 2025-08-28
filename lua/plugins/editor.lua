@@ -94,7 +94,7 @@ return {
     keys = { "<bs>" },
   },
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     event = "BufReadPost",
   },
   {

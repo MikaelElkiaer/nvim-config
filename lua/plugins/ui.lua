@@ -14,7 +14,7 @@ return {
     end,
   },
   {
-    "echasnovski/mini.misc",
+    "nvim-mini/mini.misc",
     event = "VimEnter",
     init = function()
       local mini = require("mini.misc")
