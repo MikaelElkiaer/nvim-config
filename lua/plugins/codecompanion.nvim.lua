@@ -15,7 +15,7 @@ return {
     },
     keys = {
       { "<leader>aa", "<cmd>CodeCompanionActions<cr>", desc = "Action palette" },
-      { "<leader>ac", "<cmd>CodeCompanionChat<cr>", desc = "Chat" },
+      { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat" },
       { "<leader>ai", ":CodeCompanion ", desc = "Inline", mode = { "n", "v" } },
     },
     opts = {},
