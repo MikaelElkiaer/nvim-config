@@ -98,6 +98,15 @@ return {
       update = { "VimResized" },
     }
 
+    local dap_status = {
+      {
+        hl = { fg = "red" },
+        provider = function()
+          return " " .. require("dap").status()
+        end,
+      },
+    }
+
     local diagnostics = {
 
       condition = conditions.has_diagnostics,
@@ -359,24 +368,66 @@ return {
       end,
     })
 
+    local left = {
+      columnStartLeft,
+      mode,
+      space,
+      fileName,
+      ruler,
+      fileFlags,
+      columnEnd,
+    }
+
+    local center = {
+      align,
+      bufList,
+      align,
+    }
+
+    local right_dap = {
+      condition = function()
+        local session = require("dap").session()
+        return session ~= nil
+      end,
+      dap_status,
+    }
+
+    local right_default = {
+      condition = function()
+        local session = require("dap").session()
+        return session == nil
+      end,
+      columnStartRight,
+      gitDiff,
+      diagnostics,
+      fileEncoding,
+      fileFormat,
+      space,
+      lsp,
+      space,
+      columnEnd,
+    }
+
+    local statusline = {
+      left,
+      center,
+      right_default,
+      right_dap,
+    }
+
+    local tabline = {
+      { provider = "%=", hl = { bg = "dark" } },
+      tabList,
+      { provider = "%=", hl = { bg = "dark" } },
+    }
+
     return {
       opts = {
         colors = colors,
       },
       -- stylua: ignore
-      statusline = {
-        -- INFO: left
-        columnStartLeft, mode, space, fileName, ruler, fileFlags, columnEnd,
-        -- INFO: center
-        align, bufList, align,
-        -- INFO: right
-        columnStartRight, gitDiff, diagnostics, fileEncoding, fileFormat, space, lsp, space, columnEnd,
-      },
-      tabline = {
-        { provider = "%=", hl = { bg = "dark" } },
-        tabList,
-        { provider = "%=", hl = { bg = "dark" } },
-      },
+      statusline = statusline,
+      tabline = tabline,
     }
   end,
 }
