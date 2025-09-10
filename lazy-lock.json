@@ -24,7 +24,6 @@
   "lspsaga.nvim": { "branch": "main", "commit": "8efe00d6aed9db6449969f889170f1a7e43101a1" },
   "luvit-meta": { "branch": "main", "commit": "1df30b60b1b4aecfebc785aa98943db6c6989716" },
   "mini.ai": { "branch": "main", "commit": "45a26d032d8703f280c69c2ed9fb4e1bfc8f24f9" },
-  "mini.bufremove": { "branch": "main", "commit": "e60941ab23eb0679f0da0e92ac0b572425756dc2" },
   "mini.misc": { "branch": "main", "commit": "b48a5527e26e3d1840be317e52b1f3db5c364f35" },
   "neogen": { "branch": "main", "commit": "d7f9461727751fb07f82011051338a9aba07581d" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
