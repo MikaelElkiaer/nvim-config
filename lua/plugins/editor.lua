@@ -144,38 +144,6 @@ return {
     end,
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    event = "BufEnter",
-    opts = {
-      scope = {
-        include = {
-          node_type = { lua = { "table_constructor" } },
-        },
-        show_start = false,
-        show_end = false,
-      },
-      exclude = {
-        filetypes = {
-          "help",
-          "alpha",
-          "dashboard",
-          "neo-tree",
-          "Trouble",
-          "trouble",
-          "lazy",
-          "mason",
-          "notify",
-          "toggleterm",
-          "lazyterm",
-        },
-      },
-    },
-    main = "ibl",
-  },
-  {
     "ggandor/flit.nvim",
     dependencies = {
       "ggandor/leap.nvim",
