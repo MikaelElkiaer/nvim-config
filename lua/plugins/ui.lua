@@ -91,8 +91,8 @@ return {
         -- stylua: ignore
         center = {
           { action = 'Oil ',                                           desc = " Browse Files",    icon = " ", key = "o" },
-          { action = 'Telescope git_files',                            desc = " Find File",       icon = " ", key = "f" },
-          { action = 'Telescope oldfiles',                             desc = " Recent Files",    icon = " ", key = "r" },
+          { action = 'lua Snacks.picker.files()',                      desc = " Find File",       icon = " ", key = "f" },
+          { action = 'lua Snacks.picker.recent()',                             desc = " Recent Files",    icon = " ", key = "r" },
           { action = 'lua require("persistence").load()',              desc = " Restore Session", icon = " ", key = "s" },
           { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
           { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
@@ -149,19 +149,7 @@ return {
   },
   {
     "axkirillov/hbac.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
     event = "BufEnter",
-    keys = {
-      {
-        "<leader>fb",
-        function()
-          require("telescope").extensions.hbac.buffers()
-        end,
-        desc = "buffers (hbac)",
-      },
-    },
     opts = {
       threshold = 5,
     },

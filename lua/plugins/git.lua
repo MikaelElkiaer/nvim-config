@@ -53,8 +53,8 @@ return {
     cmd = { "Octo", "Octo " },
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
+      "folke/snacks.nvim",
     },
     init = function()
       require("utils.init"):create_keymap_group("<leader>go", "+octo")
@@ -91,7 +91,9 @@ return {
         desc = "octo review",
       },
     },
-    opts = true,
+    opts = {
+      picker = "snacks",
+    },
   },
   {
     "FabijanZulj/blame.nvim",

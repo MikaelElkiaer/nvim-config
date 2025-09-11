@@ -213,16 +213,19 @@ return {
   },
   {
     "someone-stole-my-name/yaml-companion.nvim",
-    config = function(_, _)
-      require("telescope").load_extension("yaml_schema")
-    end,
     dependencies = {
       { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim" },
     },
     keys = {
-      { "<leader>cy", "<cmd>Telescope yaml_schema<cr>", desc = "YAML schema picker" },
+      {
+        "<leader>cy",
+        function()
+          require("yaml-companion").open_ui_select()
+        end,
+        desc = "YAML schema picker",
+      },
     },
+    opts = {},
   },
   {
     "folke/lazydev.nvim",

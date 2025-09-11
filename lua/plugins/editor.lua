@@ -44,10 +44,7 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    cmd = { "TodoTelescope" },
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
+    dependencies = { "folke/snacks.nvim" },
     event = "BufEnter",
     keys = {
       {
@@ -78,8 +75,20 @@ return {
         end,
         desc = "Todo prev - all",
       },
-      { "<leader>ft", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "todos" },
-      { "<leader>fT", "<cmd>TodoTelescope<cr>", desc = "todos - all" },
+      {
+        "<leader>ft",
+        function()
+          Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+        end,
+        desc = "Todo/Fix/Fixme",
+      },
+      {
+        "<leader>fT",
+        function()
+          Snacks.picker.todo_comments()
+        end,
+        desc = "Todo (all)",
+      },
     },
     opts = {
       signs = false,
