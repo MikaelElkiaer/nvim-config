@@ -97,6 +97,14 @@ return {
       { "<leader>dB", ":lua require('dap-view').show_view('breakpoints')<CR>", desc = "show breakpoints" },
       { "<leader>du", "<cmd>lua require'dap-view'.toggle()<cr>", desc = "toggle dap view" },
     },
-    opts = {},
+    ---@type dapview.Config
+    opts = {
+      winbar = {
+        controls = {
+          enabled = true,
+        },
+        default_section = "scopes",
+      },
+    },
   },
 }
