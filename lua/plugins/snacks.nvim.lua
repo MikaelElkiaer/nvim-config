@@ -1,15 +1,6 @@
 require("utils.init"):create_keymap_group("<leader>b", "+buffers")
 require("utils.init"):create_keymap_group("<leader>f", "+find")
 
-local indent_ignored = {
-  "help",
-  "dashboard",
-  "lazy",
-  "notify",
-  "toggleterm",
-  "wk", -- which-key
-}
-
 return {
   "folke/snacks.nvim",
   keys = {
@@ -37,15 +28,6 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    indent = {
-      filter = function(buf)
-        if vim.tbl_contains(indent_ignored, vim.bo[buf].filetype) then
-          return false
-        end
-
-        return true
-      end,
-    },
     picker = {
       layout = {
         preset = "custom",
