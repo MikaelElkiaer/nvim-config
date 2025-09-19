@@ -8,10 +8,10 @@ return {
     -- Find
     { "<leader>,", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>ff", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+    { "<leader>ff", function() Snacks.picker.git_files({untracked=true}) end, desc = "Find Git Files" },
     { "<leader>fF", function() Snacks.picker.files({hidden=true}) end, desc = "Find Files" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
-    { "<leader>fg", function() Snacks.picker.git_grep() end, desc = "Grep" },
+    { "<leader>fg", function() Snacks.picker.git_grep({untracked=true}) end, desc = "Grep" },
     { "<leader>fG", function() Snacks.picker.grep({hidden=true}) end, desc = "Grep Open Buffers" },
     { "<leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
     { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
