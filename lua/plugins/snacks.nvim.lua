@@ -9,7 +9,7 @@ return {
     { "<leader>,", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>ff", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
-    { "<leader>fF", function() Snacks.picker.files() end, desc = "Find Files" },
+    { "<leader>fF", function() Snacks.picker.files({hidden=true}) end, desc = "Find Files" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     { "<leader>fg", function() Snacks.picker.git_grep() end, desc = "Grep" },
     { "<leader>fG", function() Snacks.picker.grep({hidden=true}) end, desc = "Grep Open Buffers" },
