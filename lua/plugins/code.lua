@@ -150,6 +150,7 @@ return {
             },
           },
         },
+        pylsp = {},
         terraform_lsp = {},
         ts_ls = {},
         yamlls = function(config)
