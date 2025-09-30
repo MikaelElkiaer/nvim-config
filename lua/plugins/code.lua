@@ -2,11 +2,9 @@ require("utils.init"):create_keymap_group("<leader>c", "+code")
 
 local function on_attach(client, bufnr)
   local has_lspsaga = vim.fn.exists(":Lspsaga") == 2
-  local goto_definition = has_lspsaga and "<cmd>Lspsaga goto_definition<cr>" or vim.lsp.buf.definition
-  local goto_implementation = vim.lsp.buf.implementation
-  local goto_references = vim.lsp.buf.references
+  local goto_definition = has_lspsaga and "<cmd>Lspsaga goto_definition<cr>"
   local peek_definition = has_lspsaga and "<cmd>Lspsaga peek_definition<cr>"
-  local hover_doc = has_lspsaga and "<cmd>Lspsaga hover_doc<cr>" or vim.lsp.buf.hover
+  local hover_doc = has_lspsaga and "<cmd>Lspsaga hover_doc<cr>"
   local code_action = has_lspsaga and "<cmd>Lspsaga code_action<cr>" or vim.lsp.buf.code_action
   local rename = has_lspsaga and "<cmd>Lspsaga rename<cr>" or vim.lsp.buf.rename
 
@@ -23,12 +21,6 @@ local function on_attach(client, bufnr)
   end
   if client.server_capabilities.hoverProvider and hover_doc then
     vim.keymap.set("n", "K", hover_doc, { buffer = bufnr, desc = "hover doc" })
-  end
-  if client.server_capabilities.implementationProvider and goto_implementation then
-    vim.keymap.set("n", "gi", goto_implementation, { buffer = bufnr, desc = "implementation" })
-  end
-  if client.server_capabilities.referencesProvider and goto_references then
-    vim.keymap.set("n", "gr", goto_references, { buffer = bufnr, desc = "references" })
   end
   if client.server_capabilities.renameProvider and rename then
     vim.keymap.set("n", "<leader>cr", rename, { buffer = bufnr, desc = "rename" })
