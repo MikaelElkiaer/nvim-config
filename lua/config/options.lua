@@ -39,6 +39,7 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = "" -- Transparent (i. e. show syntax-highlighted text)
 vim.opt.foldmethod = "expr"
 vim.opt.ignorecase = true
+vim.opt.jumpoptions:remove("clean")
 vim.opt.laststatus = 3 -- Show global statusbar
 vim.opt.list = true
 vim.opt.number = true
