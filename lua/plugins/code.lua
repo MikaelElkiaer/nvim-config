@@ -106,7 +106,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function(_, opts)
-      local lspconfig = require("lspconfig")
       local capabilities_factory = get_capabilities_factory()
       for server, config in pairs(opts.servers) do
         if type(config) == "function" then
@@ -116,7 +115,8 @@ return {
           config.capabilities = capabilities_factory(config.capabilities)
           config.on_attach = on_attach
         end
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
       end
     end,
     dependencies = {
