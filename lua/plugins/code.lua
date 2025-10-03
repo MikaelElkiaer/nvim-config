@@ -119,9 +119,6 @@ return {
         vim.lsp.enable(server)
       end
     end,
-    dependencies = {
-      "someone-stole-my-name/yaml-companion.nvim",
-    },
     event = "BufEnter",
     keys = {
       { "<leader>cl", "<cmd>LspInfo<cr>", desc = "LSP Info" },
@@ -145,33 +142,20 @@ return {
         pylsp = {},
         terraform_lsp = {},
         ts_ls = {},
-        yamlls = function(config)
-          config = vim.tbl_extend("force", config, {
-            lspconfig = {
-              settings = {
-                yaml = {
-                  customTags = {
-                    "!override mapping",
-                    "!override scalar",
-                    "!override sequence",
-                    "!reset mapping",
-                    "!reset scalar",
-                    "!reset sequence",
-                  },
-                },
+        yamlls = {
+          settings = {
+            yaml = {
+              customTags = {
+                "!override mapping",
+                "!override scalar",
+                "!override sequence",
+                "!reset mapping",
+                "!reset scalar",
+                "!reset sequence",
               },
             },
-            -- TODO: This does not work as expected
-            -- - see https://github.com/someone-stole-my-name/yaml-companion.nvim/issues/12
-            schemas = {
-              {
-                name = "Kubernetes 1.32.1",
-                uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.1-standalone-strict/all.json",
-              },
-            },
-          })
-          return require("yaml-companion").setup(config)
-        end,
+          },
+        },
         marksman = {},
         nil_ls = {},
       },
@@ -203,22 +187,6 @@ return {
       require("roslyn").setup(opts)
     end,
     ft = "cs",
-  },
-  {
-    "someone-stole-my-name/yaml-companion.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-    },
-    keys = {
-      {
-        "<leader>cy",
-        function()
-          require("yaml-companion").open_ui_select()
-        end,
-        desc = "YAML schema picker",
-      },
-    },
-    opts = {},
   },
   {
     "folke/lazydev.nvim",
