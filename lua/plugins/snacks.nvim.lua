@@ -29,6 +29,11 @@ return {
   ---@type snacks.Config
   opts = {
     picker = {
+      formatters = {
+        file = {
+          truncate = 100,
+        },
+      },
       layout = {
         preset = "custom",
       },
