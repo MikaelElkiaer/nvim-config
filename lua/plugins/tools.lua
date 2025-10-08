@@ -4,7 +4,7 @@ return {
   {
     "LintaoAmons/scratch.nvim",
     cmd = { "Scratch", "ScratchWithName", "ScratchOpen", "ScratchOpenFzf" },
-    dependencies = { "ibhagwan/fzf-lua" },
+    -- dependencies = { "ibhagwan/fzf-lua" },
     keys = {
       { "<leader>rn", "<cmd>Scratch<cr>", desc = "new scratch" },
       { "<leader>rN", "<cmd>ScratchWithName<cr>", desc = "new scratch (named)" },
