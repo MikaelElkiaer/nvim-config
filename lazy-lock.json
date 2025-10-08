@@ -20,6 +20,7 @@
   "hbac.nvim": { "branch": "main", "commit": "2c85485ea28e5e3754650829e0bca612960e1b73" },
   "heirline.nvim": { "branch": "master", "commit": "fae936abb5e0345b85c3a03ecf38525b0828b992" },
   "hlchunk.nvim": { "branch": "main", "commit": "474ec5d0f220158afa83aaefab32402e710d3032" },
+  "kubeschema.nvim": { "branch": "main", "commit": "c10733786763704842b38646776e1e841e494e15" },
   "lazy.nvim": { "branch": "main", "commit": "59334064f8604ca073791c25dcc5c9698865406e" },
   "lazydev.nvim": { "branch": "main", "commit": "258d2a5ef4a3e3d6d9ba9da72c9725c53e9afcbd" },
   "leap.nvim": { "branch": "main", "commit": "ce65ca3563647a73c7e5555e0c94eed1317d2d83" },
