@@ -4,11 +4,11 @@ return {
   opts = {
     chunk = {
       chars = {
-        horizontal_line = "—", -- "Em", not "En" dash
+        horizontal_line = "─", -- U+2500 (box drawing, not dash)
         vertical_line = "│",
         left_top = "╭",
         left_bottom = "╰",
-        right_arrow = "—", -- "Em", not "En" dash
+        right_arrow = "─", -- U+2500 (box drawing, not dash)
       },
       duration = 0,
       enable = true,
