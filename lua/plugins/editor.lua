@@ -228,9 +228,8 @@ return {
     opts = {
       keymap = {
         preset = "none",
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e>"] = { "hide", "fallback" },
-        ["<CR>"] = { "select_and_accept", "fallback" },
+        ["<C-e>"] = { "show", "hide", "fallback" },
+        ["<C-y>"] = { "select_and_accept", "fallback" },
 
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
@@ -249,7 +248,7 @@ return {
 
       -- (Default) Only show the documentation popup when manually triggered
       completion = {
-        documentation = { auto_show = false },
+        documentation = { auto_show = true },
         list = {
           selection = {
             preselect = false,
