@@ -23,6 +23,8 @@ return {
         GitSignsChangeNr = { link = "GruvboxYellow" },
         -- A bit darker
         StatusLine = { link = "StatusLineNC" },
+        -- Default "NormalFloat" is not visible
+        TreesitterContext = { link = "CursorLine" },
       },
       transparent_mode = true,
     },
