@@ -55,10 +55,7 @@ return {
         desc = "Toggle task list (Overseer)",
       },
     },
-    opts = {
-      task_list = {
-        direction = "bottom",
-      },
-    },
+    lazy = false,
+    opts = {},
   },
 }
