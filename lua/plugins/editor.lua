@@ -211,6 +211,11 @@ return {
     ---@type render.md.UserConfig
     opts = {
       file_types = { "markdown", "codecompanion" },
+      html = {
+        comment = {
+          conceal = false,
+        },
+      },
     },
   },
   {
