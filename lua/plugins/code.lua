@@ -144,6 +144,7 @@ return {
         gopls = {},
         helm_ls = {},
         jsonls = {},
+        jsonnet_ls = {},
         lua_ls = {
           settings = {
             Lua = {
