@@ -42,13 +42,13 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "gemini_cli",
+          adapter = "copilot",
         },
         inline = {
-          adapter = "gemini_cli",
+          adapter = "copilot",
         },
         cmd = {
-          adapter = "gemini_cli",
+          adapter = "copilot",
         },
       },
     },
