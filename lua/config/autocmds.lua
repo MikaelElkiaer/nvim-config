@@ -32,3 +32,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo[event.buf].buflisted = false
   end,
 })
+
+-- Notify user to restart Neovim after Lazy config reload
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LazyReload",
+  callback = function()
+    vim.notify("Lazy configuration reloaded. Restart Neovim to apply changes.", vim.log.levels.WARN, {
+      timeout = false,
+    })
+  end,
+})
