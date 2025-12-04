@@ -3,19 +3,13 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   branch = "stable", -- Use stable branch for production
   keys = {
-    { "<leader>e", "<cmd>lua require('fyler').toggle()<cr>", desc = "Fyler" },
-    { "<leader>E", "<cmd>Fyler<cr>", desc = "Fyler - split" },
+    { "<leader>e", "<cmd>lua require('fyler').toggle({kind='split_left'})<cr>", desc = "Fyler - toggle" },
+    { "<leader>E", "<cmd>Fyler kind=float<cr>", desc = "Fyler - float" },
   },
   lazy = false, -- Necessary for `default_explorer` to work properly
   opts = {
     integrations = {
       icon = "nvim_web_devicons",
-    },
-    -- WARN: Does not work
-    views = {
-      win = {
-        kind = "split_left",
-      },
     },
   },
 }
