@@ -56,6 +56,7 @@ vim.opt.termguicolors = true
 vim.opt.timeoutlen = vim.g.vscode and 1000 or 300
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
+vim.opt.updatetime = 500
 vim.opt.virtualedit = "block"
 vim.opt.wrap = true
 vim.opt.writebackup = false
