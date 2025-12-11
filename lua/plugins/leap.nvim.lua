@@ -1,5 +1,5 @@
 return {
-  "ggandor/leap.nvim",
+  "https://codeberg.org/andyg/leap.nvim",
   config = function()
     do
       -- Returns an argument table for `leap()`, tailored for f/t-motions.
