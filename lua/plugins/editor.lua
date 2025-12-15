@@ -156,7 +156,7 @@ return {
     "kylechui/nvim-surround",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     },
     keys = {
       { "<C-g>sa", nil, desc = "add", mode = "i" },
