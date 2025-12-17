@@ -3,33 +3,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     build = ":TSUpdate",
-    config = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("treesitter.setup", {}),
-        callback = function(args)
-          local buf = args.buf
-          local filetype = args.match
-
-          local language = vim.treesitter.language.get_lang(filetype) or filetype
-          if not vim.treesitter.language.add(language) then
-            return
-          end
-
-          -- replicate `fold = { enable = true }`
-          vim.wo.foldmethod = "expr"
-          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-          vim.wo.foldtext = "" -- Transparent (i. e. show syntax-highlighted text)
-
-          -- replicate `highlight = { enable = true }`
-          vim.treesitter.start(buf, language)
-
-          -- replicate `indent = { enable = true }`
-          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
-          -- `incremental_selection = { enable = true }` cannot be easily replicated
-        end,
-      })
-    end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -89,6 +62,37 @@ return {
       --  "left": Treewalker only adds :Treewalker Left to the jumplist. This is usually the most
       --          likely one to be confusing, so it has its own mode.
       jumplist = true,
+    },
+  },
+  {
+    "MeanderingProgrammer/treesitter-modules.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
+    ---@module 'treesitter-modules'
+    ---@type ts.mod.UserConfig
+    opts = {
+      -- automatically install missing parsers when entering buffer
+      auto_install = true,
+      fold = {
+        enable = true,
+      },
+      highlight = {
+        enable = true,
+      },
+      incremental_selection = {
+        enable = true,
+        -- set value to `false` to disable individual mapping
+        -- node_decremental captures both node_incremental and scope_incremental
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "gnn",
+          scope_incremental = "gnc",
+          node_decremental = "gnm",
+        },
+      },
+      indent = {
+        enable = true,
+      },
     },
   },
 }
