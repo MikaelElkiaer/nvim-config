@@ -58,3 +58,6 @@ vim.keymap.set("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
 --   vim.cmd("normal! v")
 --   vim.api.nvim_win_set_cursor(0, { end_row + 1, end_col - 1 })
 -- end, { desc = "Select current Treesitter node" })
+
+vim.keymap.set("n", "<leader>s", ":w<cr>", { desc = "Save file" })
+vim.keymap.set("n", "<leader>S", ":wa<cr>", { desc = "Save all files" })
