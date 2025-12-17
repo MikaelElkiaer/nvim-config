@@ -33,6 +33,7 @@ return {
           local extension = vim.fn.fnamemodify(self.filename, ":e")
           self.icon, self.icon_color =
             require("nvim-web-devicons").get_icon_color(self.filename, extension, { default = true })
+          self.isModified = vim.api.nvim_get_option_value("modified", { buf = bufnr })
         end,
         {
           provider = function(self)
@@ -46,6 +47,11 @@ return {
           provider = function(self)
             return " " .. self.filename .. " "
           end,
+        },
+        {
+          condition = function(self) return self.isModified end,
+          provider =  "[+] ",
+          hl = { fg = "red" },
         },
         hl = { fg = "gray" },
         update = { "BufEnter", "TabEnter" },
