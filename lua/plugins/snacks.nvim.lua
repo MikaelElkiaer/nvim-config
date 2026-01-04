@@ -16,6 +16,7 @@ return {
     { "<leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
     { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
     { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+    { "<leader>fx", function() Snacks.picker() end, desc = "Find picker" },
     -- Buffers
     { "<leader>bd", function() Snacks.bufdelete(); require("utils.init").on_buffer_delete() end, desc = "Delete buffer" },
     { "<leader>bD", function() Snacks.bufdelete({ force = true }); require("utils.init").on_buffer_delete() end, desc = "Delete buffer (force)" },
