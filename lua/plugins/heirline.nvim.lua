@@ -54,7 +54,7 @@ return {
           hl = { fg = "red" },
         },
         hl = { fg = "gray" },
-        update = { "BufEnter", "TabEnter" },
+        update = { "BufEnter", "BufWrite", "TabEnter" },
       },
       nil,
       nil,
