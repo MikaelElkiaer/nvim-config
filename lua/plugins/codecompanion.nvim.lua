@@ -40,7 +40,7 @@ return {
           end,
         },
       },
-      strategies = {
+      interactions = {
         chat = {
           adapter = "copilot",
         },
