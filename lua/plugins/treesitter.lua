@@ -52,7 +52,7 @@ return {
       -- Whether to create a visual selection after a movement to a node.
       -- If true, highlight is disabled and a visual selection is made in
       -- its place.
-      select = true,
+      select = false,
 
       -- Whether the plugin adds movements to the jumplist -- true | false | 'left'
       --  true: All movements more than 1 line are added to the jumplist. This is the default,
@@ -62,6 +62,13 @@ return {
       --  "left": Treewalker only adds :Treewalker Left to the jumplist. This is usually the most
       --          likely one to be confusing, so it has its own mode.
       jumplist = true,
+
+      -- Whether movement, when inside the scope of some node, should be confined to that scope.
+      -- When true, when moving through neighboring nodes inside some node, you won't be able to
+      -- move outside of that scope via :Treewalker Up/Down. When false, if on a node at the end
+      -- of a scope, movement will bring you to the next node of similar indentation/number of
+      -- ancestor nodes, even when it is outside of the scope you're currently in.
+      scope_confined = true,
     },
   },
   {
