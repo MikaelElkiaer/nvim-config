@@ -92,9 +92,9 @@ return {
         -- node_decremental captures both node_incremental and scope_incremental
         keymaps = {
           init_selection = "gnn",
-          node_incremental = "gnn",
-          scope_incremental = "gnc",
-          node_decremental = "gnm",
+          node_incremental = "<c-h>",
+          scope_incremental = "<c-k>",
+          node_decremental = "<c-l>",
         },
       },
       indent = {
