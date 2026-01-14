@@ -100,3 +100,11 @@
             (#set! injection.language "bash")
             (#offset! @injection.content 0 1 0 0)))))
   ])
+
+; Inject language `promql` in any `expr` block
+; TODO: Limit by ensuring parent sequence `rules`
+((block_mapping_pair
+    key: (flow_node) @key_name
+    value: (block_node (block_scalar) @injection.content))
+  (#match? @key_name "^expr$")
+  (#set! injection.language "promql"))
