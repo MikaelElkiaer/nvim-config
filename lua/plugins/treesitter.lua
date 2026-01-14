@@ -68,7 +68,7 @@ return {
       -- move outside of that scope via :Treewalker Up/Down. When false, if on a node at the end
       -- of a scope, movement will bring you to the next node of similar indentation/number of
       -- ancestor nodes, even when it is outside of the scope you're currently in.
-      scope_confined = true,
+      scope_confined = false,
     },
   },
   {
@@ -91,7 +91,7 @@ return {
         -- set value to `false` to disable individual mapping
         -- node_decremental captures both node_incremental and scope_incremental
         keymaps = {
-          init_selection = "gnn",
+          init_selection = "vn",
           node_incremental = "<c-h>",
           scope_incremental = "<c-k>",
           node_decremental = "<c-l>",
