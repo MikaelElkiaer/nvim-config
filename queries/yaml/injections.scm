@@ -23,7 +23,9 @@
   value: [
     (block_node
       (block_scalar) @injection.content
-      (#offset! @injection.content 0 1 0 0))
+      ; TODO: Figure out why offset only works for |- and >-
+      ; - and no longer seems to be needed at all
+      (#offset! @injection.content 0 0 0 0))
     (flow_node
       (plain_scalar
         (string_scalar) @injection.content))
