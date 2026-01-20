@@ -25,6 +25,10 @@ return {
         StatusLine = { link = "StatusLineNC" },
         -- Default "NormalFloat" is not visible
         TreesitterContext = { link = "CursorLine" },
+        -- Defaults are not distinct
+        FlashCurrent = { link = "@text.todo" },
+        FlashLabel = { link = "@text.danger.comment" },
+        FlashMatch = { link = "@text.danger" },
       },
       transparent_mode = true,
     },
