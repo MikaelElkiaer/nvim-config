@@ -110,6 +110,7 @@ return {
         provider = function()
           return " " .. require("dap").status()
         end,
+        update = { "User", pattern = "DapProgressUpdate" },
       },
     }
 
