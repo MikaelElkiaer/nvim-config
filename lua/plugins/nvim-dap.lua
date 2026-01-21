@@ -77,34 +77,32 @@ return {
       end
     end,
     dependencies = {
-      "igorlfs/nvim-dap-view",
-      "leoluz/nvim-dap-go",
+      {
+        "igorlfs/nvim-dap-view",
+        keys = {
+          { "<leader>dB", ":lua require('dap-view').show_view('breakpoints')<CR>", desc = "show breakpoints" },
+          { "<leader>du", "<cmd>lua require'dap-view'.toggle()<cr>", desc = "toggle dap view" },
+        },
+        ---@type dapview.Config
+        opts = {
+          winbar = {
+            controls = {
+              enabled = true,
+            },
+            default_section = "scopes",
+          },
+        },
+      },
+      {
+        "leoluz/nvim-dap-go",
+        opts = {},
+      },
     },
     keys = {
       { "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "toggle breakpoint" },
       { "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", desc = "continue" },
       { "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", desc = "run last" },
       { "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", desc = "terminate" },
-    },
-  },
-  {
-    "leoluz/nvim-dap-go",
-    opts = {},
-  },
-  {
-    "igorlfs/nvim-dap-view",
-    keys = {
-      { "<leader>dB", ":lua require('dap-view').show_view('breakpoints')<CR>", desc = "show breakpoints" },
-      { "<leader>du", "<cmd>lua require'dap-view'.toggle()<cr>", desc = "toggle dap view" },
-    },
-    ---@type dapview.Config
-    opts = {
-      winbar = {
-        controls = {
-          enabled = true,
-        },
-        default_section = "scopes",
-      },
     },
   },
 }
