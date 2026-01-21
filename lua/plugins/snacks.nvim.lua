@@ -6,7 +6,7 @@ return {
   keys = {
     -- stylua: ignore start
     -- Find
-    { "<leader>,", function() Snacks.picker.smart({cwd_bonus=false, frequency=false}) end, desc = "Smart Find Files" },
+    { "<leader>,", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>ff", function() Snacks.picker.git_files({untracked=true}) end, desc = "Find Git Files" },
     { "<leader>fF", function() Snacks.picker.files({hidden=true}) end, desc = "Find Files" },
