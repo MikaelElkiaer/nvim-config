@@ -29,6 +29,7 @@ return {
         FlashCurrent = { link = "@text.todo" },
         FlashLabel = { link = "@text.danger.comment" },
         FlashMatch = { link = "@text.danger" },
+        CopilotEldritchHLGroup = { link = "GruvboxRed" },
       },
       transparent_mode = true,
     },

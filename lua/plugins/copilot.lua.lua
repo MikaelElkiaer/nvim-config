@@ -1,6 +1,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    dependencies = { "samiulsami/copilot-eldritch.nvim", opts = true },
     keys = {
       {
         "<leader>uC",
