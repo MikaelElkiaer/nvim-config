@@ -17,7 +17,7 @@ return {
       },
       contrast = "hard",
       overrides = {
-        -- No color
+        -- No color to discern from GitSignsChangeNr
         CursorLineNr = { link = "CursorLine" },
         -- Align with heirline.nvim and gitmux
         GitSignsChangeNr = { link = "GruvboxYellow" },
@@ -30,6 +30,8 @@ return {
         FlashLabel = { link = "@text.danger.comment" },
         FlashMatch = { link = "@text.danger" },
         CopilotEldritchHLGroup = { link = "GruvboxRed" },
+        -- Same color as lines
+        TreesitterContextLineNumber = { link = "CursorLine" },
       },
       transparent_mode = true,
     },
