@@ -40,6 +40,7 @@ vim.opt.jumpoptions:remove("clean")
 vim.opt.laststatus = 3 -- Show global statusbar
 vim.opt.list = true
 vim.opt.number = true
+vim.opt.scrolloff = 10
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
 vim.opt.showtabline = 1 -- Show only on multiple tabs
