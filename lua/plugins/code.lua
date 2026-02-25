@@ -96,6 +96,7 @@ return {
         html = { "htmlhint" },
         hush = { "hush" },
         markdown = { "markdownlint-cli2" },
+        yaml = { "yamllint" },
       }
       vim.api.nvim_create_autocmd(plugin.event, {
         callback = function()
