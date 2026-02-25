@@ -120,13 +120,6 @@ return {
         vim.lsp.enable(server)
       end
     end,
-    dependencies = {
-      {
-        "cenk1cenk2/schema-companion.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {},
-      },
-    },
     event = "BufEnter",
     keys = {
       { "<leader>cl", "<cmd>LspInfo<cr>", desc = "LSP Info" },
@@ -136,7 +129,13 @@ return {
         bashls = {},
         dockerls = {},
         gopls = {},
-        helm_ls = {},
+        helm_ls = {
+          settings = {
+            yamlls = {
+              path = { "yaml-schema-router" },
+            }
+          }
+        },
         jsonls = {},
         jsonnet_ls = {},
         lua_ls = {
@@ -153,6 +152,7 @@ return {
         ts_ls = {},
         yamlls = function()
           return {
+            cmd = { "yaml-schema-router" },
             settings = {
               yaml = {
                 customTags = {
