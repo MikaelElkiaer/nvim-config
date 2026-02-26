@@ -42,3 +42,11 @@ vim.api.nvim_create_autocmd("User", {
     })
   end,
 })
+
+-- Disable indentkeys for yaml files to prevent unwanted auto-indentation
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "yaml",
+  callback = function()
+    vim.opt_local.indentkeys:remove({ "0#", "<:>" })
+  end,
+})
