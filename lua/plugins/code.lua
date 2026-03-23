@@ -132,10 +132,15 @@ return {
         gopls = {},
         helm_ls = {
           settings = {
-            yamlls = {
-              path = { "yaml-schema-router" },
-            }
-          }
+            ["helm-ls"] = {
+              valuesFiles = {
+                additionalValuesFilesGlobPattern = "*values*.yaml",
+              },
+              yamlls = {
+                path = { "yaml-schema-router" },
+              },
+            },
+          },
         },
         jsonls = {},
         jsonnet_ls = {},
@@ -237,7 +242,14 @@ return {
     },
   },
   {
-    { "towolf/vim-helm", ft = "helm" },
+    "qvalentin/helm-ls.nvim",
+    ft = "helm",
+    opts = {
+      conceal_templates = {
+        -- enable the replacement of templates with virtual text of their current values
+        enabled = false, -- tree-sitter must be setup for this feature
+      },
+    },
   },
   {
     "danymat/neogen",
