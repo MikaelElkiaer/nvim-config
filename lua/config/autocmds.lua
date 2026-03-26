@@ -50,3 +50,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.indentkeys:remove({ "0#", "<:>" })
   end,
 })
+
+-- Fix formatoptions
+-- needs to be done here as they are often overridden
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions:remove("r") -- Do not automatically insert comment leader on linebreak
+    vim.opt.formatoptions:remove("t") -- Do not automatically hardwrap based on textwidth (max_line_length)
+  end,
+})
