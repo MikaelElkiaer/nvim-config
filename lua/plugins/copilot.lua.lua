@@ -2,6 +2,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     dependencies = { "samiulsami/copilot-eldritch.nvim", opts = true },
+    event = "BufEnter",
     keys = {
       {
         "<leader>uC",
