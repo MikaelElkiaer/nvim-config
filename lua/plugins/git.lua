@@ -2,16 +2,24 @@ require("utils.init"):create_keymap_group("<leader>g", "+git")
 
 return {
   {
-    "valorl/vcslink.nvim",
-    cmd = { "VcsLinkLineCopy", "VcsLinkLineBrowse", "VcsLinkBufCopy", "VcsLinkBufBrowse" },
-    init = function()
-      require("utils.init"):create_keymap_group("<leader>gl", "+link")
-    end,
+    "juacker/git-link.nvim",
     keys = {
-      { "<leader>glc", "<cmd>VcsLinkLineCopy<cr>", desc = "copy line" },
-      { "<leader>glC", "<cmd>VcsLinkBufCopy<cr>", desc = "copy buffer" },
-      { "<leader>glb", "<cmd>VcsLinkLineBrowse<cr>", desc = "browse line" },
-      { "<leader>glB", "<cmd>VcsLinkBufBrowse<cr>", desc = "browse buffer" },
+      {
+        "<leader>glc",
+        function()
+          require("git-link.main").copy_line_url()
+        end,
+        desc = "Copy code link to clipboard",
+        mode = { "n", "x" },
+      },
+      {
+        "<leader>glo",
+        function()
+          require("git-link.main").open_line_url()
+        end,
+        desc = "Open code link in browser",
+        mode = { "n", "x" },
+      },
     },
   },
   {
