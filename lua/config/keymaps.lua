@@ -9,13 +9,11 @@ vim.keymap.set("n", "<leader>M", ":Man ", { desc = "Open manpage" })
 
 vim.keymap.set("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show diagnostics" })
 vim.keymap.set("n", "[d", function()
-  vim.diagnostic.goto_prev()
-  vim.diagnostic.open_float({ focus = false, scope = "cursor" })
+  vim.diagnostic.jump({count=1, float=true})
 end, { desc = "Go to previous diagnostic and display" })
 
 vim.keymap.set("n", "]d", function()
-  vim.diagnostic.goto_next()
-  vim.diagnostic.open_float({ focus = false, scope = "cursor" })
+  vim.diagnostic.jump({count=-1, float=true})
 end, { desc = "Go to next diagnostic and display" })
 
 -- WARN: Does not work, probably due to lazy loading
