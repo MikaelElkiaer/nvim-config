@@ -61,3 +61,5 @@ vim.keymap.set("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
 
 vim.keymap.set("n", "<leader>s", ":w<cr>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>S", ":wa<cr>", { desc = "Save all files" })
+
+vim.keymap.set("n", "<leader>U", "<cmd>packadd nvim.undotree<cr><cmd>Undotree<cr>", { desc = "Undo tree" })
