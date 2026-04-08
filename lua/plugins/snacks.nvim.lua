@@ -5,7 +5,7 @@ return {
   "folke/snacks.nvim",
   keys = {
     -- stylua: ignore start
-    -- Find
+    -- picker
     { "<leader>,", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>ff", function() Snacks.picker.git_files({untracked=true}) end, desc = "Find Git Files" },
@@ -19,18 +19,23 @@ return {
     { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
     { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
     { "<leader>fx", function() Snacks.picker() end, desc = "Find picker" },
-    -- Buffers
+    -- bufdelete
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete buffer" },
     { "<leader>bD", function() Snacks.bufdelete({ force = true }) end, desc = "Delete buffer (force)" },
     { "<leader>ba", function() Snacks.bufdelete.all() end, desc = "Delete buffers - all" },
     { "<leader>bA", function() Snacks.bufdelete.all({ force = true }) end, desc = "Delete buffers - all (force)" },
     { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete buffers - others" },
     { "<leader>bO", function() Snacks.bufdelete.other({ force = true }) end, desc = "Delete buffers - others (force)" },
+    -- notifier
+    { "<leader>un", function() Snacks.notifier.hide() end, desc = "Hide notifications" },
     -- stylua: ignore end
   },
   lazy = false,
   ---@type snacks.Config
   opts = {
+    notifier = {
+      enabled = true,
+    },
     picker = {
       formatters = {
         file = {
@@ -58,6 +63,7 @@ return {
           },
         },
       },
+      ui_select = true,
     },
   },
   priority = 1000,
