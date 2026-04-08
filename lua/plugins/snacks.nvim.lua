@@ -20,12 +20,12 @@ return {
     { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
     { "<leader>fx", function() Snacks.picker() end, desc = "Find picker" },
     -- Buffers
-    { "<leader>bd", function() Snacks.bufdelete(); require("utils.init").on_buffer_delete() end, desc = "Delete buffer" },
-    { "<leader>bD", function() Snacks.bufdelete({ force = true }); require("utils.init").on_buffer_delete() end, desc = "Delete buffer (force)" },
-    { "<leader>ba", function() Snacks.bufdelete.all(); require("utils.init").on_buffer_delete() end, desc = "Delete buffers - all" },
-    { "<leader>bA", function() Snacks.bufdelete.all({ force = true }); require("utils.init").on_buffer_delete() end, desc = "Delete buffers - all (force)" },
-    { "<leader>bo", function() Snacks.bufdelete.other(); require("utils.init").on_buffer_delete() end, desc = "Delete buffers - others" },
-    { "<leader>bO", function() Snacks.bufdelete.other({ force = true }); require("utils.init").on_buffer_delete() end, desc = "Delete buffers - others (force)" },
+    { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete buffer" },
+    { "<leader>bD", function() Snacks.bufdelete({ force = true }) end, desc = "Delete buffer (force)" },
+    { "<leader>ba", function() Snacks.bufdelete.all() end, desc = "Delete buffers - all" },
+    { "<leader>bA", function() Snacks.bufdelete.all({ force = true }) end, desc = "Delete buffers - all (force)" },
+    { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete buffers - others" },
+    { "<leader>bO", function() Snacks.bufdelete.other({ force = true }) end, desc = "Delete buffers - others (force)" },
     -- stylua: ignore end
   },
   lazy = false,

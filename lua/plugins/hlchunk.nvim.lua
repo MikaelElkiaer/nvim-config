@@ -25,7 +25,6 @@ return {
     },
     exclude_filetypes = {
       "help",
-      "dashboard",
       "lazy",
       "notify",
       "toggleterm",
