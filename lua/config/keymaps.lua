@@ -61,3 +61,5 @@ vim.keymap.set("n", "<leader>s", ":w<cr>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>S", ":wa<cr>", { desc = "Save all files" })
 
 vim.keymap.set("n", "<leader>U", "<cmd>packadd nvim.undotree<cr><cmd>Undotree<cr>", { desc = "Undo tree" })
+
+vim.keymap.set("n", "<leader>R", '<cmd>lua require("persistence").save()<cr><cmd>restart lua require("persistence").load()<cr>', { desc = "Restart Neovim and restore session" })
