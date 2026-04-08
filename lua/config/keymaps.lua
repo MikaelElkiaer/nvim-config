@@ -9,11 +9,11 @@ vim.keymap.set("n", "<leader>M", ":Man ", { desc = "Open manpage" })
 
 vim.keymap.set("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show diagnostics" })
 vim.keymap.set("n", "[d", function()
-  vim.diagnostic.jump({count=1, float=true})
+  vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to previous diagnostic and display" })
 
 vim.keymap.set("n", "]d", function()
-  vim.diagnostic.jump({count=-1, float=true})
+  vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Go to next diagnostic and display" })
 
 -- WARN: Does not work, probably due to lazy loading
@@ -62,4 +62,9 @@ vim.keymap.set("n", "<leader>S", ":wa<cr>", { desc = "Save all files" })
 
 vim.keymap.set("n", "<leader>U", "<cmd>packadd nvim.undotree<cr><cmd>Undotree<cr>", { desc = "Undo tree" })
 
-vim.keymap.set("n", "<leader>R", '<cmd>lua require("persistence").save()<cr><cmd>restart lua require("persistence").load()<cr>', { desc = "Restart Neovim and restore session" })
+vim.keymap.set(
+  "n",
+  "<leader>R",
+  '<cmd>lua require("persistence").save()<cr><cmd>restart lua require("persistence").load()<cr>',
+  { desc = "Restart Neovim and restore session" }
+)
