@@ -26,6 +26,18 @@ return {
   {
     "folke/persistence.nvim",
     event = "BufReadPre",
+    keys = {
+      {
+        "<leader>R",
+        '<cmd>lua require("persistence").save()<cr><cmd>restart lua require("persistence").load()<cr>',
+        { desc = "Restart Neovim and restore session" },
+      },
+      {
+        "<leader>r",
+        '<cmd>lua require("persistence").load()<cr>',
+        { desc = "Restore session" },
+      },
+    },
     opts = true,
   },
   {
