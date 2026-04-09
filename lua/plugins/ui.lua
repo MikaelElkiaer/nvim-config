@@ -28,14 +28,14 @@ return {
     event = "BufReadPre",
     keys = {
       {
-        "<leader>R",
+        "<leader>X",
         '<cmd>lua require("persistence").save()<cr><cmd>restart lua require("persistence").load()<cr>',
-        { desc = "Restart Neovim and restore session" },
+        desc = "Restart and restore session",
       },
       {
-        "<leader>r",
+        "<leader>R",
         '<cmd>lua require("persistence").load()<cr>',
-        { desc = "Restore session" },
+        desc = "Restore session",
       },
     },
     opts = true,
