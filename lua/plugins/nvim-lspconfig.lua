@@ -1,5 +1,3 @@
-require("utils.init"):create_keymap_group("<leader>c", "+code")
-
 local function get_capabilities_factory()
   local blink_ok, blink = pcall(require, "blink.cmp")
   if blink_ok then

@@ -1,5 +1,3 @@
-require("utils.init"):create_keymap_group("<leader>a", "+ai")
-
 return {
   {
     "olimorris/codecompanion.nvim",

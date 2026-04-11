@@ -1,5 +1,3 @@
-require("utils.init"):create_keymap_group("<leader>d", "+dap")
-
 local function init(has_dapview)
   vim.keymap.set("n", "<LocalLeader>b", ":lua require('dap').toggle_breakpoint()<CR>", { desc = "toggle breakpoint" })
   vim.keymap.set("n", "<LocalLeader>c", ":lua require('dap').continue()<CR>", { desc = "continue" })

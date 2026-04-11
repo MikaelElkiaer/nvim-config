@@ -6,9 +6,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     "folke/snacks.nvim",
   },
-  init = function()
-    require("utils.init"):create_keymap_group("<leader>go", "+octo")
-  end,
   keys = {
     {
       "<leader>goo",

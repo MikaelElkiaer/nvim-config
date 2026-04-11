@@ -1,6 +1,3 @@
-require("utils.init"):create_keymap_group("<leader>b", "+buffers")
-require("utils.init"):create_keymap_group("<leader>f", "+find")
-
 return {
   "folke/snacks.nvim",
   keys = {

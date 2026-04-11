@@ -28,7 +28,6 @@ return {
       "lazy",
       "notify",
       "toggleterm",
-      "wk", -- which-key
     },
   },
 }

@@ -1,5 +1,3 @@
-require("utils.init"):create_keymap_group("<leader>r", "+run")
-
 return {
   "stevearc/overseer.nvim",
   keys = {

@@ -1,9 +1,6 @@
 return {
   "sindrets/diffview.nvim",
   cmd = { "DiffViewOpen", "DiffviewOpen " },
-  init = function()
-    require("utils.init"):create_keymap_group("<leader>gd", "+diff")
-  end,
   keys = {
     {
       "<leader>gdd",

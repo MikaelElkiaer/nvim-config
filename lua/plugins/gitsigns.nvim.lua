@@ -1,5 +1,3 @@
-require("utils.init"):create_keymap_group("<leader>g", "+git")
-
 return {
   {
     "lewis6991/gitsigns.nvim",
