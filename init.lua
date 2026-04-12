@@ -1,5 +1,188 @@
--- bootstrap
-require("config.autocmds")
-require("config.options")
-require("config.keymaps")
-require("config.lazy")
+vim.diagnostic.config({
+  float = {
+    border = "rounded",
+  },
+  signs = {
+    active = true,
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰅚",
+      [vim.diagnostic.severity.WARN] = "󰀪",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+  virtual_text = false,
+})
+vim.filetype.add({
+  extension = {
+    bats = "bash",
+    cheat = "cheat",
+    csx = "csx",
+    hsh = "hush",
+    json = "jsonc",
+    keymap = "devicetree",
+    overlay = "devicetree",
+  },
+})
+vim.g.autoformat = false
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.backup = false
+vim.opt.completeopt = "menu,menuone,noinsert,noselect"
+vim.opt.conceallevel = 0
+vim.opt.cursorline = true
+vim.opt.expandtab = true
+vim.opt.fileencoding = "utf-8"
+vim.opt.foldenable = false
+vim.opt.ignorecase = true
+vim.opt.jumpoptions:remove("clean")
+vim.opt.laststatus = 3 -- Show global statusbar
+vim.opt.list = true
+vim.opt.number = true
+vim.opt.scrolloff = 10
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 2
+vim.opt.showtabline = 1 -- Show only on multiple tabs
+vim.opt.smartindent = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.statusline = "%f %{mode()} %{reg_recording()}"
+vim.opt.swapfile = false
+vim.opt.tabstop = 2
+vim.opt.termguicolors = true
+vim.opt.timeoutlen = vim.g.vscode and 1000 or 300
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.updatetime = 500
+vim.opt.virtualedit = "block"
+vim.opt.wrap = true
+vim.opt.writebackup = false
+vim.treesitter.language.register("c_sharp", "csx")
+vim.treesitter.language.register("bash", "cheat")
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
+-- Treat kubeconfigs as yaml
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  callback = function()
+    vim.bo.filetype = "yaml"
+  end,
+  pattern = vim.fn.expand("~") .. "/.kube/config*",
+})
+
+-- Check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  group = vim.api.nvim_create_augroup("checktime", { clear = true }),
+  callback = function()
+    if vim.o.buftype ~= "nofile" then
+      vim.cmd("checktime")
+    end
+  end,
+})
+
+-- make it easier to close man-files when opened inline
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("man_unlisted", { clear = true }),
+  pattern = { "man" },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+  end,
+})
+
+-- Notify user to restart Neovim after config reload
+vim.api.nvim_create_autocmd("User", {
+  pattern = "ConfigReload",
+  callback = function()
+    vim.notify("Configuration reloaded. Restart Neovim to apply changes.", vim.log.levels.WARN, {
+      timeout = false,
+    })
+  end,
+})
+
+-- Disable indentkeys for yaml files to prevent unwanted auto-indentation
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "yaml",
+  callback = function()
+    vim.opt_local.indentkeys:remove({ "0#", "<:>" })
+  end,
+})
+
+-- Fix formatoptions
+-- needs to be done here as they are often overridden
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions:remove("r") -- Do not automatically insert comment leader on linebreak
+    vim.opt.formatoptions:remove("t") -- Do not automatically hardwrap based on textwidth (max_line_length)
+  end,
+})
+
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
+
+-- better indenting
+vim.keymap.set("v", "<", "<gv", { desc = "Indent decrease" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent increase" })
+
+vim.keymap.set("n", "<leader>M", ":Man ", { desc = "Open manpage" })
+
+vim.keymap.set("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show diagnostics" })
+vim.keymap.set("n", "[d", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to previous diagnostic and display" })
+
+vim.keymap.set("n", "]d", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to next diagnostic and display" })
+
+-- WARN: Does not work, probably due to lazy loading
+-- local blink_ok, _ = pcall(require, "blink.cmp")
+-- if not blink_ok then
+--   vim.keymap.set("i", "<C-space>", function()
+--     return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-X><C-O>"
+--   end, { desc = "trigger completion", expr = true })
+--   vim.keymap.set("i", "<esc>", function()
+--     return vim.fn.pumvisible() == 1 and "<C-e><esc>" or "<esc>"
+--   end, { desc = "cancel completion", expr = true })
+--   vim.keymap.set("i", "<cr>", function()
+--     return vim.fn.pumvisible() == 1 and "<C-y>" or "<cr>"
+--   end, { desc = "confirm completion", expr = true })
+--   vim.keymap.set("i", "<C-k>", function()
+--     return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
+--   end, { desc = "previous completion", expr = true })
+--   vim.keymap.set("i", "<C-j>", function()
+--     return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
+--   end, { desc = "previous completion", expr = true })
+-- end
+
+vim.keymap.set({ "n", "x" }, "<leader>y", '"+y', { desc = "Yank - clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>Y", '"+Y', { desc = "Yank - clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste - clipboard" })
+vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste - clipboard" })
+
+vim.keymap.set("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+
+-- WARN: Does not work after move to treesitter main branch
+-- vim.keymap.set("n", "vn", function()
+--   local ts_utils = require("nvim-treesitter.ts_utils")
+--   local node = ts_utils.get_node_at_cursor()
+--   if not node then
+--     return
+--   end
+--   local start_row, start_col, end_row, end_col = node:range()
+--   vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
+--   vim.cmd("normal! v")
+--   vim.api.nvim_win_set_cursor(0, { end_row + 1, end_col - 1 })
+-- end, { desc = "Select current Treesitter node" })
+
+vim.keymap.set("n", "<leader>s", ":w<cr>", { desc = "Save file" })
+vim.keymap.set("n", "<leader>S", ":wa<cr>", { desc = "Save all files" })
+
+vim.keymap.set("n", "<leader>U", "<cmd>packadd nvim.undotree<cr><cmd>Undotree<cr>", { desc = "Undo tree" })
