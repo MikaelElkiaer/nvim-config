@@ -42,7 +42,6 @@
   "quicker.nvim": { "branch": "master", "commit": "063cc44da1eef8681bbd653b29d3bc961780886a" },
   "render-markdown.nvim": { "branch": "main", "commit": "35c19259bbb8ea0894fa525246c0a6b040314eaa" },
   "scope.nvim": { "branch": "main", "commit": "228aabdb1b9cc74f0c0ccec88e79873857236e49" },
-  "scratch.nvim": { "branch": "main", "commit": "1e78854fd3140411b231d5b6f9b3559b1ba5de77" },
   "smart-paste.nvim": { "branch": "main", "commit": "328f90f7f4535f58d5bd987edb48588836efdecc" },
   "snacks.nvim": { "branch": "main", "commit": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e" },
   "text-case.nvim": { "branch": "main", "commit": "e898cfd46fa6cde0e83abb624a16e67d2ffc6457" },
