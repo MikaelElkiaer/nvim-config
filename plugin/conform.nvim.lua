@@ -10,6 +10,7 @@ require("conform").setup({
     html = { "html_beautify" },
     javascript = { "prettierd" },
     jsonc = { "jq" },
+    jsonnet = { "jsonnetfmt" },
     lua = { "stylua" },
     markdown = { "markdownlint-cli2" },
     nix = { "nixfmt" },
