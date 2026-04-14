@@ -97,9 +97,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Notify user to restart Neovim after config reload
-vim.api.nvim_create_autocmd("User", {
-  pattern = "ConfigReload",
-  callback = function()
+vim.api.nvim_create_autocmd("BufWritePost", {
+  group = vim.api.nvim_create_augroup("ConfigUpdateNotify", { clear = true }),
+  pattern = vim.uv.fs_realpath(vim.fn.stdpath("config")) .. "*.lua",
+  callback = function(_)
     vim.notify("Configuration reloaded. Restart Neovim to apply changes.", vim.log.levels.WARN, {
       timeout = false,
     })
