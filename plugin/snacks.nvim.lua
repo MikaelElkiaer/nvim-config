@@ -50,6 +50,7 @@ vim.keymap.set("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, { 
 vim.keymap.set("n", "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
 vim.keymap.set({ "n", "x" }, "<leader>fw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or word" })
 vim.keymap.set("n", "<leader>fx", function() Snacks.picker() end, { desc = "Find picker" })
+vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Find keymaps" })
 -- bufdelete
 vim.keymap.set("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>bD", function() Snacks.bufdelete({ force = true }) end, { desc = "Delete buffer (force)" })
