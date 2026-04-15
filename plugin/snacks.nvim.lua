@@ -35,6 +35,28 @@ require("snacks").setup({
   },
 })
 
+local on_buf_delete = function()
+  local buf_id = vim.api.nvim_get_current_buf()
+  local is_empty = vim.api.nvim_buf_get_name(buf_id) == "" and vim.bo[buf_id].filetype == ""
+  if not is_empty then
+    return
+  end
+
+  local orig_cwd = os.getenv("PWD")
+  if orig_cwd ~= nil then
+    vim.fn.chdir(orig_cwd)
+  end
+  -- WARN: Delete final buffer before opening oil
+  vim.api.nvim_buf_delete(buf_id, {})
+
+  local has_oil, oil = pcall(require, "oil")
+  if has_oil then
+    oil.open()
+  else
+    vim.notify("No oil.nvim found, unable to open file explorer", vim.log.levels.WARN)
+  end
+end
+
 -- stylua: ignore start
 -- picker
 vim.keymap.set("n", "<leader>,", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
@@ -52,12 +74,12 @@ vim.keymap.set({ "n", "x" }, "<leader>fw", function() Snacks.picker.grep_word() 
 vim.keymap.set("n", "<leader>fx", function() Snacks.picker() end, { desc = "Find picker" })
 vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Find keymaps" })
 -- bufdelete
-vim.keymap.set("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>bd", function() Snacks.bufdelete(); on_buf_delete() end, { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>bD", function() Snacks.bufdelete({ force = true }) end, { desc = "Delete buffer (force)" })
-vim.keymap.set("n", "<leader>ba", function() Snacks.bufdelete.all() end, { desc = "Delete buffers - all" })
-vim.keymap.set("n", "<leader>bA", function() Snacks.bufdelete.all({ force = true }) end, { desc = "Delete buffers - all (force)" })
-vim.keymap.set("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Delete buffers - others" })
-vim.keymap.set("n", "<leader>bO", function() Snacks.bufdelete.other({ force = true }) end, { desc = "Delete buffers - others (force)" })
+vim.keymap.set("n", "<leader>ba", function() Snacks.bufdelete.all(); on_buf_delete() end, { desc = "Delete buffers - all" })
+vim.keymap.set("n", "<leader>bA", function() Snacks.bufdelete.all({ force = true }); on_buf_delete() end, { desc = "Delete buffers - all (force)" })
+vim.keymap.set("n", "<leader>bo", function() Snacks.bufdelete.other(); on_buf_delete() end, { desc = "Delete buffers - others" })
+vim.keymap.set("n", "<leader>bO", function() Snacks.bufdelete.other({ force = true }); on_buf_delete() end, { desc = "Delete buffers - others (force)" })
 -- notifier
 vim.keymap.set("n", "<leader>un", function() Snacks.notifier.hide() end, { desc = "Hide notifications" })
 -- stylua: ignore end
