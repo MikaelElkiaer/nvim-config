@@ -22,7 +22,7 @@
         "/^nvim-pack-lock\\.json$/"
       ],
       "matchStrings": [
-        "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentValue>[^\"]+)\"[^}]*?\"src\": \"(?<packageName>https?://(?:www\\.)?github\\.com/[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\"\\s+\\}"
+        "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^}]*?\"src\": \"(?<packageName>https?://(?:www\\.)?github\\.com/[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\"\\s+\\}"
       ],
       "datasourceTemplate": "git-refs"
     }
