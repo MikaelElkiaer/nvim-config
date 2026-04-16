@@ -14,7 +14,7 @@
       "src": "https://github.com/eandrju/cellular-automaton.nvim"
     },
     "codecompanion.nvim": {
-      "rev": "1d01c5e8befb7f0cd283641289f8e798f8a0a01c",
+      "rev": "cdc69269cf4878983604d5c8093e2963753d1cfe",
       "src": "https://www.github.com/olimorris/codecompanion.nvim"
     },
     "conform.nvim": {
@@ -46,7 +46,7 @@
       "src": "https://github.com/juacker/git-link.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
+      "rev": "fc68586dbed6f98add38e02ce3fda233e7382096",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox.nvim": {
