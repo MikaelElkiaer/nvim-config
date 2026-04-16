@@ -25,7 +25,8 @@
         "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^}]*?\"src\": \"(?<packageName>https?://(?:www\\.)?github\\.com/[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\"\\s+\\}"
       ],
       "datasourceTemplate": "git-refs",
-      "currentValueTemplate": "main"
+      "currentValueTemplate": "main",
+      "versioningTemplate": "git"
     }
   ],
   "packageRules": [
@@ -40,4 +41,3 @@
     }
   ]
 }
-
