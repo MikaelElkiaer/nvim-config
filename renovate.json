@@ -24,7 +24,8 @@
       "matchStrings": [
         "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^}]*?\"src\": \"(?<packageName>https?://(?:www\\.)?github\\.com/[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\"\\s+\\}"
       ],
-      "datasourceTemplate": "git-refs"
+      "datasourceTemplate": "git-refs",
+      "currentValueTemplate": "main"
     }
   ],
   "packageRules": [
