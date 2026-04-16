@@ -11,9 +11,10 @@
         "/^nvim-pack-lock\\.json$/"
       ],
       "matchStrings": [
-        "\"(?<depName>[^\"]+)\": \\{[^{}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^{}]*?\"src\": \"https?://(?:www\\.)?github\\.com/(?<packageName>[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\"[^{}]*?\"version\": \"(?<currentValue>[^\"]+)\""
+        "\"(?<depName>[^\"]+)\": \\{[^{}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^{}]*?\"src\": \"https?://(?:www\\.)?github\\.com/(?<packageName>[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\",[^{}]*?\"version\": \"(?<currentValue>[^\"]+)\""
       ],
-      "datasourceTemplate": "github-tags"
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "semver"
     },
     {
       "customType": "regex",
@@ -21,7 +22,7 @@
         "/^nvim-pack-lock\\.json$/"
       ],
       "matchStrings": [
-        "\"(?<depName>[^\"]+)\": \\{[^{}]*?\"rev\": \"(?<currentValue>[^\"]+)\"[^{}]*?\"src\": \"https?://(?:www\\.)?github\\.com/(?<packageName>[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\"\\s+\\}"
+        "\"(?<depName>[^\"]+)\": \\{[^{}]*?\"rev\": \"(?<currentValue>[^\"]+)\"[^{}]*?\"src\": \"https?://(?:www\\.)?github\\.com/(?<packageName>[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\"\\n\\s+\\}"
       ],
       "datasourceTemplate": "github-commits"
     }
