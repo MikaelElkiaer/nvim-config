@@ -18,7 +18,7 @@
             "packageName": $v.src, \
             "currentDigest": $v.rev, \
             "currentValue": $v.version ? $replace($v.version, "\'", "") : "main", \
-            "datasource": "git-ref", \
+            "datasource": "git-refs", \
             "versioning": "exact" \
           } \
         })'
