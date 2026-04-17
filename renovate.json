@@ -6,38 +6,23 @@
   ],
   "customManagers": [
     {
-      "customType": "regex",
+      "customType": "jsonata",
       "managerFilePatterns": [
         "/^nvim-pack-lock\\.json$/"
       ],
       "matchStrings": [
-        "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^}]*?\"src\": \"https?://(?:www\\.)?github\\.com/(?<packageName>[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\",[^}]*?\"version\": \"(?<currentValue>[^\"]+)\""
-      ],
-      "datasourceTemplate": "github-tags",
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^nvim-pack-lock\\.json$/"
-      ],
-      "matchStrings": [
-        "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^}]*?\"src\": \"(?<packageName>https?://(?:www\\.)?github\\.com/[^/\"\\s]+/[^/\"\\s]+?)(?:\\.git)?\"\\s+\\}"
-      ],
-      "datasourceTemplate": "git-refs",
-      "currentValueTemplate": "main",
-      "versioningTemplate": "exact"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchFileNames": [
-        "nvim-pack-lock.json"
-      ],
-      "groupName": "neovim-plugins",
-      "schedule": [
-        "at any time"
+        'plugins.$each(function($v, $k) { \
+          { \
+            "depName": $k, \
+            "packageName": $v.src, \
+            "currentDigest": $v.rev, \
+            "currentValue": $v.version ? $replace($v.version, "\'", "") : "main", \
+            "datasource": "git-ref", \
+            "versioning": "exact" \
+          } \
+        })'
       ]
     }
   ]
 }
+
