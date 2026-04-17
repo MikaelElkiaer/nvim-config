@@ -7,7 +7,6 @@
   "customManagers": [
     {
       "customType": "regex",
-      "currentValueTemplate": "main",
       "datasourceTemplate": "git-refs",
       "managerFilePatterns": [
         "/^nvim-pack-lock\\.json$/"
