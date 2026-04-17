@@ -6,24 +6,16 @@
   ],
   "customManagers": [
     {
-      "customType": "jsonata",
-      "fileFormat": "json",
+      "customType": "regex",
+      "currentValueTemplate": "main",
+      "datasourceTemplate": "git-refs",
       "managerFilePatterns": [
         "/^nvim-pack-lock\\.json$/"
       ],
       "matchStrings": [
-        'plugins.$each(function($v, $k) { \
-          { \
-            "depName": $k, \
-            "packageName": $v.src, \
-            "currentDigest": $v.rev, \
-            "currentValue": $v.version ? $replace($v.version, "\'", "") : "main", \
-            "datasource": "git-refs", \
-            "versioning": "exact" \
-          } \
-        })'
-      ]
+        "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^}]*?\"src\": \"(?<packageName>[^\"]+)\",[^}]*?\"version\": \"'(?<currentValue>[^\"]+)'\""
+      ],
+      "versioningTemplate": "exact"
     }
   ]
 }
-
