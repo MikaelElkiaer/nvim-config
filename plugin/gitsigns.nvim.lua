@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/lewis6991/gitsigns.nvim",
+    version = "main",
+  },
+})
 
 require("gitsigns").setup({
   numhl = true,

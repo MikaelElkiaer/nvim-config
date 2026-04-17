@@ -1,5 +1,15 @@
-vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
-vim.pack.add({ "https://github.com/rebelot/heirline.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-tree/nvim-web-devicons",
+    version = "master",
+  },
+})
+vim.pack.add({
+  {
+    src = "https://github.com/rebelot/heirline.nvim",
+    version = "master",
+  },
+})
 
 local function get_opts()
   local conditions = require("heirline.conditions")

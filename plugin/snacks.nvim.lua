@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/folke/snacks.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/folke/snacks.nvim",
+    version = "main",
+  },
+})
 
 require("snacks").setup({
   notifier = {

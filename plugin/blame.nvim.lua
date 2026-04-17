@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/FabijanZulj/blame.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/FabijanZulj/blame.nvim",
+    version = "main",
+  },
+})
 
 require("blame").setup({
   mappings = {

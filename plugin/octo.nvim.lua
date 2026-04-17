@@ -1,7 +1,27 @@
-vim.pack.add({ "https://github.com/pwntester/octo.nvim" })
-vim.pack.add({ "https://github.com/nvim-lua/plenary.nvim" })
-vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
-vim.pack.add({ "https://github.com/folke/snacks.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/pwntester/octo.nvim",
+    version = "master",
+  },
+})
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-lua/plenary.nvim",
+    version = "master",
+  },
+})
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-tree/nvim-web-devicons",
+    version = "master",
+  },
+})
+vim.pack.add({
+  {
+    src = "https://github.com/folke/snacks.nvim",
+    version = "main",
+  },
+})
 
 require("octo").setup({
   picker = "snacks",

@@ -1,5 +1,15 @@
-vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
-vim.pack.add({ "https://github.com/stevearc/oil.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-tree/nvim-web-devicons",
+    version = "master",
+  },
+})
+vim.pack.add({
+  {
+    src = "https://github.com/stevearc/oil.nvim",
+    version = "master",
+  },
+})
 
 require("oil").setup({
   view_options = {

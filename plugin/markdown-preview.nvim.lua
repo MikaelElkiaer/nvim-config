@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/iamcco/markdown-preview.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/iamcco/markdown-preview.nvim",
+    version = "master",
+  },
+})
 
 -- markdown-preview doesn't have a lua .setup()
 

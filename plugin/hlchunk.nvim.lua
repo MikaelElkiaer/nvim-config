@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/shellRaining/hlchunk.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/shellRaining/hlchunk.nvim",
+    version = "main",
+  },
+})
 
 require("hlchunk").setup({
   chunk = {

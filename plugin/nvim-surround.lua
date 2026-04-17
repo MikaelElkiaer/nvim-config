@@ -1,6 +1,21 @@
-vim.pack.add({ "https://github.com/kylechui/nvim-surround" })
-vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
-vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" })
+vim.pack.add({
+  {
+    src = "https://github.com/kylechui/nvim-surround",
+    version = "main",
+  },
+})
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-treesitter/nvim-treesitter",
+    version = "main",
+  },
+})
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+    version = "main",
+  },
+})
 
 require("nvim-surround").setup({
   aliases = {

@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/mfussenegger/nvim-lint" })
+vim.pack.add({
+  {
+    src = "https://github.com/mfussenegger/nvim-lint",
+    version = "master",
+  },
+})
 
 local lint = require("lint")
 lint.linters.hush = {

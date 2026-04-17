@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/nvim-mini/mini.misc" })
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-mini/mini.misc",
+    version = "main",
+  },
+})
 
 local mini = require("mini.misc")
 mini.setup({})

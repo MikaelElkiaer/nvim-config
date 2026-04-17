@@ -1,3 +1,8 @@
-vim.pack.add({ "https://github.com/nemanjamalesija/smart-paste.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/nemanjamalesija/smart-paste.nvim",
+    version = "main",
+  },
+})
 
 require("smart-paste").setup({})

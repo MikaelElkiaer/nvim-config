@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/juacker/git-link.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/juacker/git-link.nvim",
+    version = "main",
+  },
+})
 
 -- git-link doesn't seem to have a standard .setup() in the spec, but we'll add it just in case if it's common
 -- Actually, the module name is git-link.main in the keys.

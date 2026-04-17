@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/monaqa/dial.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/monaqa/dial.nvim",
+    version = "master",
+  },
+})
 
 local augend = require("dial.augend")
 require("dial.config").augends:register_group({

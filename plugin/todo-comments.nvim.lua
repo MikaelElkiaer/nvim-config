@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/folke/todo-comments.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/folke/todo-comments.nvim",
+    version = "main",
+  },
+})
 
 require("todo-comments").setup({
   signs = false,

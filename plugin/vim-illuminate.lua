@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/rrethy/vim-illuminate" })
+vim.pack.add({
+  {
+    src = "https://github.com/rrethy/vim-illuminate",
+    version = "master",
+  },
+})
 
 require("illuminate").configure({
   filetypes_denylist = {

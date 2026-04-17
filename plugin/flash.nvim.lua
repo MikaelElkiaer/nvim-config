@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/folke/flash.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/folke/flash.nvim",
+    version = "main",
+  },
+})
 
 require("flash").setup({})
 

@@ -1,5 +1,15 @@
-vim.pack.add({ "https://github.com/zbirenbaum/copilot.lua" })
-vim.pack.add({ "https://github.com/samiulsami/copilot-eldritch.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/zbirenbaum/copilot.lua",
+    version = "master",
+  },
+})
+vim.pack.add({
+  {
+    src = "https://github.com/samiulsami/copilot-eldritch.nvim",
+    version = "master",
+  },
+})
 
 require("copilot").setup({
   filetypes = {

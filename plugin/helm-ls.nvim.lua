@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/qvalentin/helm-ls.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/qvalentin/helm-ls.nvim",
+    version = "main",
+  },
+})
 
 require("helm-ls").setup({
   conceal_templates = {
