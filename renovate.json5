@@ -13,7 +13,7 @@
         "/^nvim-pack-lock\\.json$/"
       ],
       "matchStrings": [
-        "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^}]*?\"src\": \"(?<packageName>[^\"]+)\",[^}]*?\"version\": \"'(?<currentValue>[^\"]+)'\""
+        "\"(?<depName>[^\"]+)\": \\{[^}]*?\"rev\": \"(?<currentDigest>[^\"]+)\"[^}]*?\"src\": \"(?<packageName>[^\"]+)\",[^}]*?\"version\": \"\'(?<currentValue>[^\'\"]+)\'\""
       ],
       "versioningTemplate": "exact"
     }
