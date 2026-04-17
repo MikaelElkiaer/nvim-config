@@ -7,7 +7,7 @@
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
-      "version": "1.0.0 - 2.0.0"
+      "version": "'v1.10.2'"
     },
     "cellular-automaton.nvim": {
       "rev": "1606e9d5d04ff254023c3f3c62842d065708d6d3",
@@ -51,7 +51,8 @@
     },
     "gruvbox.nvim": {
       "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
-      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+      "src": "https://github.com/ellisonleao/gruvbox.nvim",
+      "version": "'main'"
     },
     "heirline.nvim": {
       "rev": "fae936abb5e0345b85c3a03ecf38525b0828b992",

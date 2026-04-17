@@ -1,4 +1,9 @@
-vim.pack.add({ "https://github.com/ellisonleao/gruvbox.nvim" })
+vim.pack.add({
+  {
+    src = "https://github.com/ellisonleao/gruvbox.nvim",
+    version = "main",
+  },
+})
 
 require("gruvbox").setup({
   bold = false,
