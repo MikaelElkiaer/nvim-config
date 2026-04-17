@@ -56,7 +56,7 @@
       "version": "'main'"
     },
     "gitsigns.nvim": {
-      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
+      "rev": "fc68586dbed6f98add38e02ce3fda233e7382096",
       "src": "https://github.com/lewis6991/gitsigns.nvim",
       "version": "'main'"
     },
