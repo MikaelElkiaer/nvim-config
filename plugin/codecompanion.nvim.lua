@@ -13,7 +13,7 @@ vim.pack.add({
 vim.pack.add({
   {
     src = "https://www.github.com/olimorris/codecompanion.nvim",
-    version = "main",
+    version = "v19.10.0",
   },
 })
 
