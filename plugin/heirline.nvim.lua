@@ -247,15 +247,15 @@ local function get_opts()
 
   local gitDiff = {
     condition = function(self)
-      self.status_dict = vim.b.gitsigns_status_dict
+      self.status_dict = vim.b.minidiff_summary
       if not self.status_dict then
         return false
       end
-      self.is_untracked = not (self.status_dict.added or self.status_dict.removed or self.status_dict.changed)
+      self.is_untracked = not (self.status_dict.add or self.status_dict.delete or self.status_dict.change)
       if self.is_untracked then
         return true
       end
-      self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
+      self.has_changes = self.status_dict.add ~= 0 or self.status_dict.delete ~= 0 or self.status_dict.change ~= 0
       return self.has_changes
     end,
 
@@ -268,21 +268,21 @@ local function get_opts()
     },
     {
       provider = function(self)
-        local count = self.status_dict.added or 0
+        local count = self.status_dict.add or 0
         return count > 0 and (" +" .. count)
       end,
       hl = { fg = "green" },
     },
     {
       provider = function(self)
-        local count = self.status_dict.removed or 0
+        local count = self.status_dict.delete or 0
         return count > 0 and (" -" .. count)
       end,
       hl = { fg = "red" },
     },
     {
       provider = function(self)
-        local count = self.status_dict.changed or 0
+        local count = self.status_dict.change or 0
         return count > 0 and (" ±" .. count)
       end,
       hl = { fg = "yellow" },

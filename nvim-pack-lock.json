@@ -55,11 +55,6 @@
       "src": "https://github.com/juacker/git-link.nvim",
       "version": "'main'"
     },
-    "gitsigns.nvim": {
-      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
-      "src": "https://github.com/lewis6991/gitsigns.nvim",
-      "version": "'main'"
-    },
     "gruvbox.nvim": {
       "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
       "src": "https://github.com/ellisonleao/gruvbox.nvim",
@@ -93,6 +88,11 @@
     "mini.ai": {
       "rev": "43eb2074843950a3a25aae56a5f41362ec043bfa",
       "src": "https://github.com/nvim-mini/mini.ai",
+      "version": "'main'"
+    },
+    "mini.diff": {
+      "rev": "ab11575a6c147ecfba894d676d0c93e855021d34",
+      "src": "https://github.com/nvim-mini/mini.diff",
       "version": "'main'"
     },
     "mini.misc": {

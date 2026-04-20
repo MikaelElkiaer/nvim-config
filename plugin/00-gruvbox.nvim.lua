@@ -15,10 +15,10 @@ require("gruvbox").setup({
   },
   contrast = "hard",
   overrides = {
-    -- No color to discern from GitSignsChangeNr
+    -- No color to discern from MinikdiffSignChange
     CursorLineNr = { link = "CursorLine" },
     -- Align with heirline.nvim and gitmux
-    GitSignsChangeNr = { link = "GruvboxYellow" },
+    MiniDiffSignChange = { link = "GruvboxYellow" },
     -- A bit darker
     StatusLine = { link = "StatusLineNC" },
     -- Default "NormalFloat" is not visible
