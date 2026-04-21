@@ -16,7 +16,7 @@
       "version": "'main'"
     },
     "codecompanion.nvim": {
-      "rev": "1d01c5e8befb7f0cd283641289f8e798f8a0a01c",
+      "rev": "e003fac48f8af4fc2d4ece3ee2f6f1897f71b912",
       "src": "https://www.github.com/olimorris/codecompanion.nvim",
       "version": "'main'"
     },
@@ -31,7 +31,7 @@
       "version": "'master'"
     },
     "copilot.lua": {
-      "rev": "ad7e729e9a6348f7da482be0271d452dbc4c8e2c",
+      "rev": "aeca454727486d488a6ecbcde30db72e741e3524",
       "src": "https://github.com/zbirenbaum/copilot.lua",
       "version": "'master'"
     },
@@ -121,7 +121,7 @@
       "version": "'main'"
     },
     "nvim-dap-view": {
-      "rev": "1dd4ba2307245ca9517a4b9d99f3bf80830e4397",
+      "rev": "dd43736f30ed70571a02e8c560ab69746ad7a1ed",
       "src": "https://github.com/igorlfs/nvim-dap-view",
       "version": "'main'"
     },
@@ -131,7 +131,7 @@
       "version": "'master'"
     },
     "nvim-lspconfig": {
-      "rev": "b80f82f59544f0770981b5a6c7d129ca276dab36",
+      "rev": "e05fb8c3bd61d909dacff24f77f23beb644daf54",
       "src": "https://github.com/neovim/nvim-lspconfig",
       "version": "'master'"
     },
@@ -161,7 +161,7 @@
       "version": "'master'"
     },
     "octo.nvim": {
-      "rev": "19e7381c3487c94015fceaf8c35364e3ed44c4e0",
+      "rev": "0384ae6b308725d29e735b02c5797e46edee52d0",
       "src": "https://github.com/pwntester/octo.nvim",
       "version": "'master'"
     },
@@ -186,7 +186,7 @@
       "version": "'master'"
     },
     "render-markdown.nvim": {
-      "rev": "0fd43fb4b1f073931c4b481f5f3b7cea3749e190",
+      "rev": "d67113f11384c0dad96fced2f7b91f1fc811e97f",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim",
       "version": "'main'"
     },
