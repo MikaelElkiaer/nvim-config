@@ -10,6 +10,18 @@ require("snacks").setup({
     enabled = true,
   },
   picker = {
+    actions = {
+      open_oil = function(picker)
+        local dir = picker:dir()
+        local has_oil, oil = pcall(require, "oil")
+        if has_oil then
+          picker:close()
+          oil.open(dir)
+        else
+          vim.notify("No oil.nvim found, unable to open file explorer", vim.log.levels.WARN)
+        end
+      end,
+    },
     formatters = {
       file = {
         truncate = 100,
@@ -37,6 +49,18 @@ require("snacks").setup({
       },
     },
     ui_select = true,
+    win = {
+      input = {
+        keys = {
+          ["<c-o>"] = { "open_oil", mode = { "n", "i" } },
+        },
+      },
+      list = {
+        keys = {
+          ["<c-o>"] = { "open_oil", mode = { "n", "i" } },
+        },
+      },
+    },
   },
 })
 
