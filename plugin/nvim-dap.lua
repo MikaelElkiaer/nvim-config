@@ -3,14 +3,10 @@ vim.pack.add({
     src = "https://github.com/mfussenegger/nvim-dap",
     version = "master",
   },
-})
-vim.pack.add({
   {
     src = "https://github.com/igorlfs/nvim-dap-view",
     version = "main",
   },
-})
-vim.pack.add({
   {
     src = "https://github.com/leoluz/nvim-dap-go",
     version = "main",
