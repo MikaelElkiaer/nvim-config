@@ -215,6 +215,11 @@
       "src": "https://github.com/folke/todo-comments.nvim",
       "version": "'main'"
     },
+    "treewalker.nvim": {
+      "rev": "6fbceceb8966620da8970b727b6daa358b982805",
+      "src": "https://github.com/aaronik/treewalker.nvim",
+      "version": "'main'"
+    },
     "vim-illuminate": {
       "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
       "src": "https://github.com/rrethy/vim-illuminate",
