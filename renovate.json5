@@ -2,7 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "mergeConfidence:all-badges",
-    "config:best-practices"
+    "config:best-practices",
+    "helpers:githubDigestChangelogs" // Fetch changelogs for git-refs updates
   ],
   "customManagers": [
     {
