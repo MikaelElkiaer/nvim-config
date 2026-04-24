@@ -171,7 +171,20 @@ local has_notified = false
 local function watch_config_dir()
   local config_path = vim.fn.stdpath("config")
   local fswatch = vim.uv.new_fs_event()
+  if not fswatch then
+    vim.notify(
+      "Failed to create filesystem watcher for config directory.",
+      vim.log.levels.ERROR,
+      { title = "Config Watcher" }
+    )
+    return
+  end
   local timer = vim.uv.new_timer()
+  if not timer then
+    vim.notify("Failed to create timer for config watcher.", vim.log.levels.ERROR, { title = "Config Watcher" })
+    fswatch:close()
+    return
+  end
 
   vim.uv.fs_event_start(fswatch, config_path, { recursive = true }, function(err, filename, _)
     -- 1. If we already notified, immediately drop all future events
@@ -204,7 +217,7 @@ local function watch_config_dir()
             fswatch:stop()
           end
 
-          local msg = string.format("Config changed (%s).\nPlease restart Neovim.", filename)
+          local msg = string.format("Config changed - restart Neovim.", filename)
 
           vim.notify(msg, vim.log.levels.WARN, {
             title = "Config Watcher",
