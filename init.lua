@@ -165,3 +165,55 @@ vim.keymap.set("n", "<leader>S", ":wa<cr>", { desc = "Save all files" })
 vim.keymap.set("n", "<leader>U", "<cmd>packadd nvim.undotree<cr><cmd>Undotree<cr>", { desc = "Undo tree" })
 
 vim.keymap.set("n", "grd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
+
+local has_notified = false
+
+local function watch_config_dir()
+  local config_path = vim.fn.stdpath("config")
+  local fswatch = vim.uv.new_fs_event()
+  local timer = vim.uv.new_timer()
+
+  vim.uv.fs_event_start(fswatch, config_path, { recursive = true }, function(err, filename, _)
+    -- 1. If we already notified, immediately drop all future events
+    if err or not filename or has_notified then
+      return
+    end
+
+    if filename:match("^%.git[/\\]") or filename == ".git" then
+      return
+    end
+
+    timer:start(200, 0, function()
+      -- Double-check in case the timer was already queued
+      if has_notified then
+        return
+      end
+
+      vim.system({ "git", "check-ignore", "-q", filename }, { cwd = config_path }, function(obj)
+        -- 2. If ignored, or if another async check beat us to the punch, abort
+        if obj.code == 0 or has_notified then
+          return
+        end
+
+        -- 3. Lock it down immediately so no other events can trigger
+        has_notified = true
+
+        vim.schedule(function()
+          -- 4. Turn off the filesystem watcher entirely to save resources
+          if not fswatch:is_closing() then
+            fswatch:stop()
+          end
+
+          local msg = string.format("Config changed (%s).\nPlease restart Neovim.", filename)
+
+          vim.notify(msg, vim.log.levels.WARN, {
+            title = "Config Watcher",
+            timeout = false,
+          })
+        end)
+      end)
+    end)
+  end)
+end
+
+watch_config_dir()
