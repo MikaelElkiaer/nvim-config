@@ -1,14 +1,3 @@
-local function get_capabilities_factory()
-  local blink_ok, blink = pcall(require, "blink.cmp")
-  if blink_ok then
-    return blink.get_lsp_capabilities
-  end
-
-  return function(capabilities)
-    return capabilities
-  end
-end
-
 vim.pack.add({
   {
     src = "https://github.com/neovim/nvim-lspconfig",
@@ -16,69 +5,40 @@ vim.pack.add({
   },
 })
 
-local opts = {
-  servers = {
-    bashls = {},
-    dockerls = {},
-    gopls = {},
-    helm_ls = {
-      settings = {
-        ["helm-ls"] = {
-          valuesFiles = {
-            additionalValuesFilesGlobPattern = "*values*.yaml",
-          },
-          yamlls = {
-            path = { "yaml-schema-router" },
-          },
-        },
-      },
-    },
-    jsonls = {},
-    jsonnet_ls = {},
-    lua_ls = {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" },
-          },
-        },
-      },
-    },
-    pylsp = {},
-    terraform_lsp = {},
-    ts_ls = {},
-    yamlls = function()
-      return {
-        cmd = { "yaml-schema-router" },
-        settings = {
-          yaml = {
-            customTags = {
-              "!override mapping",
-              "!override scalar",
-              "!override sequence",
-              "!reset mapping",
-              "!reset scalar",
-              "!reset sequence",
-            },
-          },
-        },
-      }
-    end,
-    marksman = {},
-    nil_ls = {},
-  },
+local servers = {
+  "bashls",
+  "dockerls",
+  "gopls",
+  "helm_ls",
+  "jsonls",
+  "jsonnet_ls",
+  "lua_ls",
+  "marksman",
+  "nil_ls",
+  "pylsp",
+  "terraform_lsp",
+  "ts_ls",
+  "yamlls",
 }
 
-local capabilities_factory = get_capabilities_factory()
-for server, config in pairs(opts.servers) do
-  if type(config) == "function" then
-    local capabilities = capabilities_factory({})
-    config = config({ lspconfig = { capabilities = capabilities } })
-  else
-    config.capabilities = capabilities_factory(config.capabilities)
-  end
-  vim.lsp.config(server, config)
+for _, server in pairs(servers) do
+  vim.lsp.config(server, {
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+  })
   vim.lsp.enable(server)
 end
 
-vim.keymap.set("n", "<leader>cl", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+  callback = function(event)
+    local bufnr = event.buf
+
+    vim.keymap.set("n", "<leader>ci", "<cmd>LspInfo<cr>", { buffer = bufnr, remap = false, desc = "LSP Info" })
+    vim.keymap.set("n", "<leader>cc", function()
+      vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+    end, { buffer = bufnr, remap = false, desc = "Toggle inlay hints" })
+    vim.keymap.set("n", "<leader>ch", function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, { buffer = bufnr, remap = false, desc = "Toggle inlay hints" })
+  end,
+})
