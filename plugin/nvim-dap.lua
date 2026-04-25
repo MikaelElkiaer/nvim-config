@@ -11,6 +11,10 @@ vim.pack.add({
     src = "https://github.com/leoluz/nvim-dap-go",
     version = "main",
   },
+  {
+    src = "https://github.com/jbyuki/one-small-step-for-vimkind",
+    version = "main",
+  },
 })
 
 require("dap-view").setup({
@@ -96,6 +100,18 @@ dap.listeners.before.event_exited["config"] = function()
   close_dap(has_dapview)
 end
 
+dap.configurations.lua = {
+  {
+    type = "nlua",
+    request = "attach",
+    name = "Attach to running Neovim instance",
+  },
+}
+
+dap.adapters.nlua = function(callback, config)
+  callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+end
+
 -- global keys
 vim.keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { desc = "toggle breakpoint" })
 vim.keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", { desc = "continue" })
@@ -103,3 +119,7 @@ vim.keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", { desc
 vim.keymap.set("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", { desc = "terminate" })
 vim.keymap.set("n", "<leader>dB", ":lua require('dap-view').show_view('breakpoints')<CR>", { desc = "show breakpoints" })
 vim.keymap.set("n", "<leader>du", "<cmd>lua require'dap-view'.toggle()<cr>", { desc = "toggle dap view" })
+
+vim.keymap.set("n", "<leader>dv", function()
+  require("osv").launch({ port = 8086 })
+end, { desc = "vim", noremap = true })
