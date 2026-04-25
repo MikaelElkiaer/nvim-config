@@ -28,12 +28,20 @@ require("blink.cmp").setup({
 
   -- (Default) Only show the documentation popup when manually triggered
   completion = {
-    documentation = { auto_show = true },
+    documentation = {
+      auto_show = true,
+      window = {
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+      },
+    },
     list = {
       selection = {
         preselect = false,
         auto_insert = false,
       },
+    },
+    menu = {
+      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
     },
     trigger = { show_on_keyword = false, show_on_trigger_character = false },
   },
