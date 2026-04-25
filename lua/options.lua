@@ -1,3 +1,5 @@
+require("vim._core.ui2").enable()
+
 vim.diagnostic.config({
   float = {
     border = "rounded",
@@ -29,6 +31,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.backup = false
+vim.opt.cmdheight = 0
 vim.opt.completeopt = "menu,menuone,noinsert,noselect"
 vim.opt.conceallevel = 0
 vim.opt.cursorline = true
@@ -56,6 +59,7 @@ vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 500
 vim.opt.virtualedit = "block"
+vim.opt.winborder = "rounded"
 vim.opt.wrap = true
 vim.opt.writebackup = false
 vim.treesitter.language.register("c_sharp", "csx")
