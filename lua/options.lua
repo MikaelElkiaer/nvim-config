@@ -29,7 +29,6 @@ vim.filetype.add({
 vim.g.autoformat = false
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.backup = false
 vim.opt.cmdheight = 0
 vim.opt.completeopt = "menu,menuone,noinsert,noselect"
@@ -44,6 +43,7 @@ vim.opt.laststatus = 3 -- Show global statusbar
 vim.opt.list = true
 vim.opt.number = true
 vim.opt.scrolloff = 10
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
 vim.opt.showtabline = 1 -- Show only on multiple tabs
@@ -62,5 +62,5 @@ vim.opt.virtualedit = "block"
 vim.opt.winborder = "rounded"
 vim.opt.wrap = true
 vim.opt.writebackup = false
-vim.treesitter.language.register("c_sharp", "csx")
 vim.treesitter.language.register("bash", "cheat")
+vim.treesitter.language.register("c_sharp", "csx")
