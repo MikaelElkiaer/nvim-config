@@ -15,7 +15,7 @@ require("gruvbox").setup({
   },
   contrast = "hard",
   overrides = {
-    -- No color to discern from MinikdiffSignChange
+    -- Remove color to discern from MiniDiffSignChange
     CursorLineNr = { link = "CursorLine" },
     -- Align with heirline.nvim and gitmux
     MiniDiffSignChange = { link = "GruvboxYellow" },
