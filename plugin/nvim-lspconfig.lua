@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>ci", "<cmd>LspInfo<cr>", { buffer = bufnr, remap = false, desc = "LSP Info" })
     vim.keymap.set("n", "<leader>cc", function()
       vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
-    end, { buffer = bufnr, remap = false, desc = "Toggle inlay hints" })
+    end, { buffer = bufnr, remap = false, desc = "Toggle codelens" })
     vim.keymap.set("n", "<leader>ch", function()
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, { buffer = bufnr, remap = false, desc = "Toggle inlay hints" })
