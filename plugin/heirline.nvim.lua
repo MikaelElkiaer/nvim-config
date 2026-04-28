@@ -383,6 +383,16 @@ local function get_opts()
     },
   }
 
+  local recording = {
+    condition = function()
+      return vim.fn.reg_recording() ~= ""
+    end,
+    provider = function()
+      return "  @" .. vim.fn.reg_recording()
+    end,
+    hl = { fg = "orange" },
+  }
+
   local ruler = {
     provider = ":%l:%c",
     hl = { fg = "gray" },
@@ -404,6 +414,7 @@ local function get_opts()
     fileName,
     ruler,
     fileFlags,
+    recording,
     configUpdated,
     columnEnd,
   }
