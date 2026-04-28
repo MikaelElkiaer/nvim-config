@@ -50,3 +50,19 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.formatoptions:remove("t") -- Do not automatically hardwrap based on textwidth (max_line_length)
   end,
 })
+
+-- Set winhighlight for msg window to match the rest of the UI
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "msg",
+  callback = function()
+    local ui2 = require("vim._core.ui2")
+    local win = ui2.wins and ui2.wins.msg
+    if win and vim.api.nvim_win_is_valid(win) then
+      vim.api.nvim_set_option_value(
+        "winhighlight",
+        "Normal:NormalFloat,FloatBorder:FloatBorder",
+        { scope = "local", win = win }
+      )
+    end
+  end,
+})

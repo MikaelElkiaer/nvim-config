@@ -6,9 +6,6 @@ vim.pack.add({
 })
 
 require("snacks").setup({
-  notifier = {
-    enabled = true,
-  },
   picker = {
     actions = {
       open_oil = function(picker)
