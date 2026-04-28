@@ -113,6 +113,14 @@ local function get_opts()
     update = { "VimResized" },
   }
 
+  local configUpdated = {
+    condition = function()
+      return vim.g.config_updated
+    end,
+    provider = " 󰚰 Config Updated - Restart Neovim ",
+    hl = { fg = "red" },
+  }
+
   local dap_status = {
     {
       hl = { fg = "red" },
@@ -396,6 +404,7 @@ local function get_opts()
     fileName,
     ruler,
     fileFlags,
+    configUpdated,
     columnEnd,
   }
 

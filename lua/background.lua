@@ -1,6 +1,6 @@
-vim.schedule(function()
-  local has_notified = false
+vim.g.config_updated = false
 
+vim.schedule(function()
   local function watch_config_dir()
     local config_path = vim.fn.stdpath("config")
     local fswatch = vim.uv.new_fs_event()
@@ -21,7 +21,7 @@ vim.schedule(function()
 
     vim.uv.fs_event_start(fswatch, config_path, { recursive = true }, function(err, filename, _)
       -- 1. If we already notified, immediately drop all future events
-      if err or not filename or has_notified then
+      if err or not filename or vim.g.config_updated then
         return
       end
 
@@ -31,31 +31,24 @@ vim.schedule(function()
 
       timer:start(200, 0, function()
         -- Double-check in case the timer was already queued
-        if has_notified then
+        if vim.g.config_updated then
           return
         end
 
         vim.system({ "git", "check-ignore", "-q", filename }, { cwd = config_path }, function(obj)
           -- 2. If ignored, or if another async check beat us to the punch, abort
-          if obj.code == 0 or has_notified then
+          if obj.code == 0 or vim.g.config_updated then
             return
           end
 
           -- 3. Lock it down immediately so no other events can trigger
-          has_notified = true
+          vim.g.config_updated = true
 
           vim.schedule(function()
             -- 4. Turn off the filesystem watcher entirely to save resources
             if not fswatch:is_closing() then
               fswatch:stop()
             end
-
-            local msg = string.format("Config changed - restart Neovim.", filename)
-
-            vim.notify(msg, vim.log.levels.WARN, {
-              title = "Config Watcher",
-              timeout = false,
-            })
           end)
         end)
       end)
