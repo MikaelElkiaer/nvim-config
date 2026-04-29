@@ -16,12 +16,5 @@
       ],
       "versioningTemplate": "exact"
     }
-  ],
-  packageRules: [
-    {
-      changelogUrl: '{{sourceUrl}}/compare/{{currentDigest}}..{{newDigest}}',
-      matchSourceUrls: ['https://github.com/**'],
-      matchUpdateTypes: ['digest'],
-    },
-  ],
+  ]
 }
