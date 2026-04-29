@@ -66,3 +66,45 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+
+-- Listen for OSC 11 responses to detect terminal background color changes
+-- source: https://github.com/afonsofrancof/OSC11.nvim
+local parse_osc11_response = function(sequence)
+  local r, g, b = sequence:match("\027%]11;rgb:(%x+)/(%x+)/(%x+)")
+
+  if r and g and b then
+    -- Convert hex to decimal and calculate luminance
+    local rr = tonumber(r, 16) / 65535
+    local gg = tonumber(g, 16) / 65535
+    local bb = tonumber(b, 16) / 65535
+
+    -- Same luminance calculation as Neovim uses
+    local luminance = (0.299 * rr) + (0.587 * gg) + (0.114 * bb)
+
+    return luminance < 0.5 and "dark" or "light"
+  end
+
+  return nil
+end
+
+local handle_theme_change = function(theme)
+  vim.schedule(function()
+    if theme then
+      vim.o.background = theme
+    end
+
+    vim.cmd("redraw!")
+  end)
+end
+
+vim.api.nvim_create_autocmd("TermResponse", {
+  pattern = "*",
+  callback = function(args)
+    local sequence = args.data.sequence
+
+    local theme = parse_osc11_response(sequence)
+    if theme then
+      handle_theme_change(theme)
+    end
+  end,
+})
