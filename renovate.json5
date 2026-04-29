@@ -21,7 +21,7 @@
     {
       changelogUrl: '{{sourceUrl}}/compare/{{currentDigest}}..{{newDigest}}',
       matchSourceUrls: ['https://github.com/**'],
-      matchDatasources: ['git-refs'],
+      matchUpdateTypes: ['digest'],
     },
   ],
 }
