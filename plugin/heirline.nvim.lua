@@ -14,7 +14,7 @@ local function get_opts()
   local utils = require("heirline.utils")
 
   local colors = {
-    dark = utils.get_highlight("Search").bg,
+    dark = utils.get_highlight("Search").fg,
     light = utils.get_highlight("Normal").fg,
     red = utils.get_highlight("Statement").fg,
     green = utils.get_highlight("String").fg,
