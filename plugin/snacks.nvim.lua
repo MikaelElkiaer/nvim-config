@@ -61,6 +61,27 @@ require("snacks").setup({
   },
 })
 
+local function handle_oil_dir(opts)
+  local has_oil, oil = pcall(require, "oil")
+  if not has_oil then
+    return opts
+  end
+
+  local buf_id = vim.api.nvim_get_current_buf()
+
+  local is_oil = vim.bo[buf_id].filetype == "oil"
+  if not is_oil then
+    return opts
+  end
+
+  local dir = oil.get_current_dir(buf_id)
+  if dir == nil then
+    return opts
+  end
+
+  return vim.tbl_deep_extend("force", opts, { dirs = { dir } })
+end
+
 local on_buf_delete = function()
   local buf_id = vim.api.nvim_get_current_buf()
   local is_empty = vim.api.nvim_buf_get_name(buf_id) == "" and vim.bo[buf_id].filetype == ""
@@ -83,29 +104,86 @@ local on_buf_delete = function()
   end
 end
 
--- stylua: ignore start
 -- picker
-vim.keymap.set("n", "<leader>,", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
-vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-vim.keymap.set("n", "<leader>ff", function() Snacks.picker.git_files({ untracked = true }) end, { desc = "Find Git Files" })
-vim.keymap.set("n", "<leader>fF", function() Snacks.picker.files({ hidden = true }) end, { desc = "Find Files" })
-vim.keymap.set("n", "<leader>fhf", function() Snacks.picker.files({ hidden = false }) end, { desc = "Find Files - No hidden" })
-vim.keymap.set("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
-vim.keymap.set("n", "<leader>fg", function() Snacks.picker.grep({ hidden = true }) end, { desc = "Grep" })
-vim.keymap.set("n", "<leader>fG", function() Snacks.picker.grep({ ignored = true, hidden = true }) end, { desc = "Grep - All" })
-vim.keymap.set("n", "<leader>fhg", function() Snacks.picker.grep({ hidden = false }) end, { desc = "Grep - No hidden" })
-vim.keymap.set("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
-vim.keymap.set("n", "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
-vim.keymap.set({ "n", "x" }, "<leader>fw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or word" })
-vim.keymap.set("n", "<leader>fx", function() Snacks.picker() end, { desc = "Find picker" })
-vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Find keymaps" })
+vim.keymap.set("n", "<leader>,", function()
+  Snacks.picker.smart()
+end, { desc = "Smart Find Files" })
+vim.keymap.set("n", "<leader>fb", function()
+  Snacks.picker.buffers()
+end, { desc = "Buffers" })
+vim.keymap.set("n", "<leader>ff", function()
+  local opts = { hidden = true }
+  opts = handle_oil_dir(opts)
+  Snacks.picker.files(opts)
+end, { desc = "Find Files" })
+vim.keymap.set("n", "<leader>fF", function()
+  local opts = { ignored = true, hidden = true }
+  opts = handle_oil_dir(opts)
+  Snacks.picker.files(opts)
+end, { desc = "Find Files - With ignored" })
+vim.keymap.set("n", "<leader>fhf", function()
+  local opts = {}
+  opts = handle_oil_dir(opts)
+  Snacks.picker.files(opts)
+end, { desc = "Find Files - No hidden" })
+vim.keymap.set("n", "<leader>fr", function()
+  Snacks.picker.recent()
+end, { desc = "Recent" })
+vim.keymap.set("n", "<leader>fg", function()
+  local opts = { hidden = true }
+  opts = handle_oil_dir(opts)
+  Snacks.picker.grep(opts)
+end, { desc = "Grep" })
+vim.keymap.set("n", "<leader>fG", function()
+  local opts = { ignored = true, hidden = true }
+  opts = handle_oil_dir(opts)
+  Snacks.picker.grep(opts)
+end, { desc = "Grep - All" })
+vim.keymap.set("n", "<leader>fhg", function()
+  local opts = { hidden = false }
+  opts = handle_oil_dir(opts)
+  Snacks.picker.grep(opts)
+end, { desc = "Grep - No hidden" })
+vim.keymap.set("n", "<leader>fs", function()
+  Snacks.picker.lsp_symbols()
+end, { desc = "LSP Symbols" })
+vim.keymap.set("n", "<leader>fS", function()
+  Snacks.picker.lsp_workspace_symbols()
+end, { desc = "LSP Workspace Symbols" })
+vim.keymap.set({ "n", "x" }, "<leader>fw", function()
+  Snacks.picker.grep_word()
+end, { desc = "Visual selection or word" })
+vim.keymap.set("n", "<leader>fx", function()
+  Snacks.picker()
+end, { desc = "Find picker" })
+vim.keymap.set("n", "<leader>fk", function()
+  Snacks.picker.keymaps()
+end, { desc = "Find keymaps" })
 -- bufdelete
-vim.keymap.set("n", "<leader>bd", function() Snacks.bufdelete(); on_buf_delete() end, { desc = "Delete buffer" })
-vim.keymap.set("n", "<leader>bD", function() Snacks.bufdelete({ force = true }) end, { desc = "Delete buffer (force)" })
-vim.keymap.set("n", "<leader>ba", function() Snacks.bufdelete.all(); on_buf_delete() end, { desc = "Delete buffers - all" })
-vim.keymap.set("n", "<leader>bA", function() Snacks.bufdelete.all({ force = true }); on_buf_delete() end, { desc = "Delete buffers - all (force)" })
-vim.keymap.set("n", "<leader>bo", function() Snacks.bufdelete.other(); on_buf_delete() end, { desc = "Delete buffers - others" })
-vim.keymap.set("n", "<leader>bO", function() Snacks.bufdelete.other({ force = true }); on_buf_delete() end, { desc = "Delete buffers - others (force)" })
+vim.keymap.set("n", "<leader>bd", function()
+  Snacks.bufdelete()
+  on_buf_delete()
+end, { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>bD", function()
+  Snacks.bufdelete({ force = true })
+end, { desc = "Delete buffer (force)" })
+vim.keymap.set("n", "<leader>ba", function()
+  Snacks.bufdelete.all()
+  on_buf_delete()
+end, { desc = "Delete buffers - all" })
+vim.keymap.set("n", "<leader>bA", function()
+  Snacks.bufdelete.all({ force = true })
+  on_buf_delete()
+end, { desc = "Delete buffers - all (force)" })
+vim.keymap.set("n", "<leader>bo", function()
+  Snacks.bufdelete.other()
+  on_buf_delete()
+end, { desc = "Delete buffers - others" })
+vim.keymap.set("n", "<leader>bO", function()
+  Snacks.bufdelete.other({ force = true })
+  on_buf_delete()
+end, { desc = "Delete buffers - others (force)" })
 -- notifier
-vim.keymap.set("n", "<leader>un", function() Snacks.notifier.hide() end, { desc = "Hide notifications" })
--- stylua: ignore end
+vim.keymap.set("n", "<leader>un", function()
+  Snacks.notifier.hide()
+end, { desc = "Hide notifications" })
