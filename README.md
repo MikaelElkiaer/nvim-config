@@ -1,10 +1,11 @@
 # Neovim Config
 
+My personal Neovim configuration.
 It has mainly been configured for software development, focusing on:
 
 - bash
 - docker
-- dotnet
+- go
 - helm
 - markdown
-- yaml
+- yaml (Kubernetes)
