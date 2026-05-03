@@ -5,24 +5,24 @@ vim.pack.add({
   },
 })
 
--- TODO: Apply overrides without relying on gruvbox.nvim
--- overrides = {
---   -- Remove color to discern from MiniDiffSignChange
---   CursorLineNr = { link = "CursorLine" },
---   -- Align with heirline.nvim and gitmux
---   MiniDiffSignChange = { link = "GruvboxYellow" },
---   -- A bit darker
---   StatusLine = { link = "StatusLineNC" },
---   -- Default "NormalFloat" is not visible
---   TreesitterContext = { link = "CursorLine" },
---   -- Defaults are not distinct
---   FlashCurrent = { link = "@text.todo" },
---   FlashLabel = { link = "@text.danger.comment" },
---   FlashMatch = { link = "@text.danger" },
---   CopilotEldritchHLGroup = { link = "GruvboxRed" },
---   -- Same color as lines
---   TreesitterContextLineNumber = { link = "CursorLine" },
--- },
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  desc = "Avoid overwritten by loading color schemes later",
+  callback = function()
+    -- Align with heirline.nvim and gitmux
+    vim.api.nvim_set_hl(0, "MiniDiffSignChange", {
+      link = "DiagnosticWarn",
+    })
+    -- Dark background for floating windows
+    vim.api.nvim_set_hl(0, "NormalFloat", {
+      link = "Normal",
+    })
+    -- Transparent background for floating windows
+    vim.api.nvim_set_hl(0, "FloatBorder", {
+      bg = "none",
+    })
+  end,
+})
 
 vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_disable_italic_comment = true
