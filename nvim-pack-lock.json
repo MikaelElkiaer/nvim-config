@@ -225,6 +225,11 @@
       "src": "https://github.com/chaoren/vim-wordmotion",
       "version": "'master'"
     },
+    "wayfinder.nvim": {
+      "rev": "20ae04106040f2fb2a6ec0bfbd014e770b0f5505",
+      "src": "https://github.com/error311/wayfinder.nvim",
+      "version": "'main'"
+    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim",

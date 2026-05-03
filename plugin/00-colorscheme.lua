@@ -21,6 +21,25 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "FloatBorder", {
       bg = "none",
     })
+    -- Make selections visible
+    vim.api.nvim_set_hl(0, "WayfinderSelection", {
+      link = "TabLine",
+    })
+    vim.api.nvim_set_hl(0, "WayfinderSelectionLabel", {
+      link = "TabLine",
+    })
+    vim.api.nvim_set_hl(0, "WayfinderPreviewTarget", {
+      link = "TabLine",
+    })
+    vim.api.nvim_set_hl(0, "WayfinderSelectionMuted", {
+      link = "TabLine",
+    })
+    vim.api.nvim_set_hl(0, "WayfinderSelectionAccent", {
+      link = "TabLine",
+    })
+    vim.api.nvim_set_hl(0, "WayfinderSelectionPath", {
+      link = "TabLine",
+    })
   end,
 })
 
