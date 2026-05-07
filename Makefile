@@ -9,6 +9,10 @@ update:		## Update plugins
 		echo "[INF] No updates" >&2 || \
 		git commit -m "chore: Update plugins"
 
+test-renovate:	## Test renovate
+	LOG_LEVEL=debug , renovate --token $(gh auth token) --dry-run=full mikaelelkiaer/nvim-config
+	# LOG_LEVEL=debug , renovate --token "$(gh auth token)" --platform local
+
 init:		## Init
 	ln -sfn $$PWD $$HOME/.config/nvim
 
