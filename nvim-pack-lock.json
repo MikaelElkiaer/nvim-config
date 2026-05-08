@@ -71,7 +71,7 @@
       "version": "'main'"
     },
     "hlchunk.nvim": {
-      "rev": "46b078a71104471753640d1a66d435518ce6a0d4",
+      "rev": "06f51922ca43d5cdacf96725c106405fe064c59e",
       "src": "https://github.com/shellRaining/hlchunk.nvim",
       "version": "'main'"
     },
