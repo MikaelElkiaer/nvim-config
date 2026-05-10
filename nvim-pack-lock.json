@@ -111,7 +111,7 @@
       "version": "'main'"
     },
     "nvim-dap-view": {
-      "rev": "988c0cfa8740fcf6c0528ddf11e2651d2d0ae792",
+      "rev": "3701c85e2a92c56bde09183fe85e0bdc16c02eab",
       "src": "https://github.com/igorlfs/nvim-dap-view",
       "version": "'main'"
     },
