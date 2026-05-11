@@ -226,7 +226,7 @@
       "version": "'master'"
     },
     "wayfinder.nvim": {
-      "rev": "c5fafe5189b3b9ef1a7a4bee7498619e0aa1329d",
+      "rev": "b12b9edbff1f897ee4c312c9f0e1beb5eb28d4ab",
       "src": "https://github.com/error311/wayfinder.nvim",
       "version": "'main'"
     },
