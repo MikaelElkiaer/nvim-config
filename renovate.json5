@@ -14,8 +14,8 @@
                 "nvim-pack-lock.json",
             ],
             matchStrings: [
-                'src\\s*=\\s*"https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?<depName>[^"/]+?))(?:\\.git)?",[^}]*?version\\s*=\\s*"(?<currentValue>\\d+\\.\\d+[^"]*)"',
-                '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?:[^"/]+?))(?:\\.git)?",[^}]*?"version": "\'(?<currentValue>\\d+\\.\\d+[^"\']*)\'"',
+                'src\\s*=\\s*"https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?<depName>[^"/]+?))(?:\\.git)?",[^}]*?version\\s*=\\s*"(?<currentValue>v?\\d+\\.\\d+[^"]*)"',
+                '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?:[^"/]+?))(?:\\.git)?",[^}]*?"version": "\'(?<currentValue>v?\\d+\\.\\d+[^"\']*)\'"',
             ],
             versioningTemplate: "semver-coerced",
         },
