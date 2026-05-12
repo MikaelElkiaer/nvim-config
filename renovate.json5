@@ -1,54 +1,46 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "mergeConfidence:all-badges",
-    "config:best-practices"
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "description": "Update GitHub plugins following semver releases (Manifest + Lockfile)",
-      "managerFilePatterns": [
-        "plugin/*.lua",
-        "nvim-pack-lock.json"
-      ],
-      "matchStrings": [
-        'src\\s*=\\s*"https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?<depName>[^"/]+?))(?:\\.git)?",[^}]*?version\\s*=\\s*"(?<currentValue>\\d+\\.\\d+[^"]*)"',
-        '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?:[^"/]+?))(?:\\.git)?",[^}]*?"version": "\'(?<currentValue>\\d+\\.\\d+[^"\']*)\'"'
-      ],
-      "datasourceTemplate": "github-tags",
-      "versioningTemplate": "semver-coerced"
-    },
-    {
-      "customType": "regex",
-      "description": "Update plugins following branches (Manifest + Lockfile)",
-      "managerFilePatterns": [
-        "plugin/*.lua",
-        "nvim-pack-lock.json"
-      ],
-      "matchStrings": [
-        'src\\s*=\\s*"(?<packageName>https?://[^/]+/[^/]+/(?<depName>[^"/]+?)(?:\\.git)?)"[^}]*?version\\s*=\\s*"(?<currentValue>[^0-9^~][^"]+)"',
-        '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "(?<packageName>https?://[^/]+/[^/]+/[^"]+?)",[^}]*?"version": "\'(?<currentValue>[^0-9][^\']*)\'"'
-      ],
-      "datasourceTemplate": "git-refs",
-      "versioningTemplate": "exact"
-    }
+    $schema: "https://docs.renovatebot.com/renovate-schema.json",
+    extends: [
+        "mergeConfidence:all-badges",
+        "config:best-practices",
     ],
-    "packageRules": [
-    {
-      "matchManagers": ["regex"],
-      "pinDigests": true,
-      "groupName": "{{{depName}}}",
-      "groupSlug": "{{{depName}}}"
-    }
-    ]
-    }
-
-
-
-
-
-
-
-
-
+    customManagers: [
+        {
+            customType: "regex",
+            datasourceTemplate: "github-tags",
+            description: "Update GitHub plugins following semver releases (Manifest + Lockfile)",
+            managerFilePatterns: [
+                "plugin/*.lua",
+                "nvim-pack-lock.json",
+            ],
+            matchStrings: [
+                'src\\s*=\\s*"https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?<depName>[^"/]+?))(?:\\.git)?",[^}]*?version\\s*=\\s*"(?<currentValue>\\d+\\.\\d+[^"]*)"',
+                '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?:[^"/]+?))(?:\\.git)?",[^}]*?"version": "\'(?<currentValue>\\d+\\.\\d+[^"\']*)\'"',
+            ],
+            versioningTemplate: "semver-coerced",
+        },
+        {
+            customType: "regex",
+            datasourceTemplate: "git-refs",
+            description: "Update plugins following branches (Manifest + Lockfile)",
+            managerFilePatterns: [
+                "plugin/*.lua",
+                "nvim-pack-lock.json",
+            ],
+            matchStrings: [
+                'src\\s*=\\s*"(?<packageName>https?://[^/]+/[^/]+/(?<depName>[^"/]+?)(?:\\.git)?)"[^}]*?version\\s*=\\s*"(?<currentValue>[^0-9^~][^"]+)"',
+                '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "(?<packageName>https?://[^/]+/[^/]+/[^"]+?)",[^}]*?"version": "\'(?<currentValue>[^0-9][^\']*)\'"',
+            ],
+            versioningTemplate: "exact",
+        },
+    ],
+    packageRules: [
+        {
+            groupName: "{{{depName}}}",
+            groupSlug: "{{{depName}}}",
+            matchManagers: [
+                "regex",
+            ],
+        },
+    ],
+}
