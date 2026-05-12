@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/folke/todo-comments.nvim",
-    version = "main",
+    version = "v1.5.0",
   },
 })
 

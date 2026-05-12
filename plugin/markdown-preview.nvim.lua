@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/iamcco/markdown-preview.nvim",
-    version = "master",
+    version = "v0.0.10",
   },
 })
 

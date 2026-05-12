@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/johmsalas/text-case.nvim",
-    version = "main",
+    version = "v1.2.0",
   },
 })
 

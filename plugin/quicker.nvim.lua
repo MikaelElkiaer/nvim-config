@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/stevearc/quicker.nvim",
-    version = "master",
+    version = "v1.5.0",
   },
 })
 

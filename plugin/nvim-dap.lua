@@ -1,11 +1,11 @@
 vim.pack.add({
   {
     src = "https://github.com/mfussenegger/nvim-dap",
-    version = "master",
+    version = "0.10.0",
   },
   {
     src = "https://github.com/igorlfs/nvim-dap-view",
-    version = "main",
+    version = "v1.1.1",
   },
   {
     src = "https://github.com/leoluz/nvim-dap-go",

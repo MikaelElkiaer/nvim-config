@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/kylechui/nvim-surround",
-    version = "main",
+    version = "v4.0.5",
   },
   {
     src = "https://github.com/nvim-treesitter/nvim-treesitter",

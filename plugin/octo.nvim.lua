@@ -13,7 +13,7 @@ vim.pack.add({
   },
   {
     src = "https://github.com/folke/snacks.nvim",
-    version = "main",
+    version = "v2.31.0",
   },
 })
 

@@ -2,19 +2,53 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "mergeConfidence:all-badges",
-    "config:best-practices",
+    "config:best-practices"
   ],
   "customManagers": [
     {
       "customType": "regex",
-      "datasourceTemplate": "git-refs",
+      "description": "Update GitHub plugins following semver releases (Manifest + Lockfile)",
       "managerFilePatterns": [
-        "/^nvim-pack-lock\\.json$/"
+        "plugin/*.lua",
+        "nvim-pack-lock.json"
       ],
       "matchStrings": [
-        '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "(?<packageName>[^"]+)",[^}]*?"version": "\'(?<currentValue>[^\'"]+)\'"'
+        'src\\s*=\\s*"https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?<depName>[^"/]+?))(?:\\.git)?",[^}]*?version\\s*=\\s*"(?<currentValue>\\d+\\.\\d+[^"]*)"',
+        '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "https?://(?:www\\.)?github\\.com/(?<packageName>[^/]+/(?:[^"/]+?))(?:\\.git)?",[^}]*?"version": "\'(?<currentValue>\\d+\\.\\d+[^"\']*)\'"'
       ],
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "semver-coerced"
+    },
+    {
+      "customType": "regex",
+      "description": "Update plugins following branches (Manifest + Lockfile)",
+      "managerFilePatterns": [
+        "plugin/*.lua",
+        "nvim-pack-lock.json"
+      ],
+      "matchStrings": [
+        'src\\s*=\\s*"(?<packageName>https?://[^/]+/[^/]+/(?<depName>[^"/]+?)(?:\\.git)?)"[^}]*?version\\s*=\\s*"(?<currentValue>[^0-9^~][^"]+)"',
+        '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "(?<packageName>https?://[^/]+/[^/]+/[^"]+?)",[^}]*?"version": "\'(?<currentValue>[^0-9][^\']*)\'"'
+      ],
+      "datasourceTemplate": "git-refs",
       "versioningTemplate": "exact"
     }
-  ]
-}
+    ],
+    "packageRules": [
+    {
+      "matchManagers": ["regex"],
+      "pinDigests": true,
+      "groupName": "{{{depName}}}",
+      "groupSlug": "{{{depName}}}"
+    }
+    ]
+    }
+
+
+
+
+
+
+
+
+

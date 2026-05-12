@@ -5,7 +5,7 @@ vim.pack.add({
   },
   {
     src = "https://github.com/stevearc/oil.nvim",
-    version = "master",
+    version = "v2.15.0",
   },
 })
 

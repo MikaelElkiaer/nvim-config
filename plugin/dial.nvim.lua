@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/monaqa/dial.nvim",
-    version = "master",
+    version = "v0.5.1",
   },
 })
 

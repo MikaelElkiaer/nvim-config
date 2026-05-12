@@ -5,7 +5,7 @@ vim.pack.add({
   },
   {
     src = "https://github.com/rebelot/heirline.nvim",
-    version = "master",
+    version = "v1.0.8",
   },
 })
 
