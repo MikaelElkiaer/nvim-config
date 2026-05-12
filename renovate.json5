@@ -28,8 +28,8 @@
                 "nvim-pack-lock.json",
             ],
             matchStrings: [
-                'src\\s*=\\s*"(?<packageName>https?://[^/]+/[^/]+/(?<depName>[^"/]+?)(?:\\.git)?)"[^}]*?version\\s*=\\s*"(?<currentValue>[^0-9^~][^"]+)"',
-                '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "(?<packageName>https?://[^/]+/[^/]+/[^"]+?)",[^}]*?"version": "\'(?<currentValue>[^0-9][^\']*)\'"',
+                'src\\s*=\\s*"(?<packageName>https?://[^/]+/[^/]+/(?<depName>[^"/]+?)(?:\\.git)?)"[^}]*?version\\s*=\\s*"(?<currentValue>[^0-9vV^~][^"]*|[vV][^0-9][^"]*)"',
+                '"(?<depName>[^"]+)": {[^}]*?"rev": "(?<currentDigest>[^"]+)"[^}]*?"src": "(?<packageName>https?://[^/]+/[^/]+/[^"]+?)",[^}]*?"version": "\'(?<currentValue>[^0-9vV][^\']*|[vV][^0-9][^\']*)\'"',
             ],
             versioningTemplate: "exact",
         },
@@ -44,3 +44,5 @@
         },
     ],
 }
+
+
