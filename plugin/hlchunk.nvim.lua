@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/shellRaining/hlchunk.nvim",
-    version = "v1.3.0",
+    version = "main",
   },
 })
 

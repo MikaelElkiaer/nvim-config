@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/mfussenegger/nvim-dap",
-    version = "0.10.0",
+    version = "master",
   },
   {
     src = "https://github.com/igorlfs/nvim-dap-view",

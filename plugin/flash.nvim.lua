@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/folke/flash.nvim",
-    version = "v2.1.0",
+    version = "main",
   },
 })
 
