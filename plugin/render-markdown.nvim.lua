@@ -20,6 +20,7 @@ require("render-markdown").setup({
       conceal = false,
     },
   },
+  latex = { enabled = false },
 })
 
 vim.keymap.set("n", "<leader>um", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle Render Markdown" })
