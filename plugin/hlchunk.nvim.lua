@@ -20,7 +20,7 @@ require("hlchunk").setup({
       { link = "@comment" },
       { link = "@exception" },
     },
-    straight = true,
+    straight = false,
   },
   indent = {
     enable = true,
