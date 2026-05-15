@@ -3,11 +3,7 @@ help:		## Show this help
 	@sed -ne '/@sed/!s/## //p' $(MAKEFILE_LIST)
 
 update:		## Update plugins
-	NVIM= nvim --headless "+lua vim.pack.update(nil,{force=true})" +qa
-	@git add nvim-pack-lock.json
-	@git diff --cached --exit-code &>/dev/null && \
-		echo "[INF] No updates" >&2 || \
-		git commit -m "chore: Update plugins"
+	NVIM= nvim --headless "+lua vim.pack.update(nil,{force=true,target='lockfile'})" +qa
 
 test-renovate:	## Test renovate
 	LOG_LEVEL=debug , renovate --token $(gh auth token) --dry-run=full mikaelelkiaer/nvim-config
