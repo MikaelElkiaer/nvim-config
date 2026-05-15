@@ -183,7 +183,3 @@ vim.keymap.set("n", "<leader>bO", function()
   Snacks.bufdelete.other({ force = true })
   on_buf_delete()
 end, { desc = "Delete buffers - others (force)" })
--- notifier
-vim.keymap.set("n", "<leader>un", function()
-  Snacks.notifier.hide()
-end, { desc = "Hide notifications" })
