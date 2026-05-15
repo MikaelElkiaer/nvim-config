@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/error311/wayfinder.nvim",
-    version = "v0.2.8",
+    version = "v0.2.9",
   },
 })
 
