@@ -26,9 +26,9 @@
       "version": "'master'"
     },
     "copilot.lua": {
-      "rev": "3598fa89f2271141d62e7b1dfb4a82929f7eb23c",
+      "rev": "407349117f176789df6ec1c23bca72f34e15b4e8",
       "src": "https://github.com/zbirenbaum/copilot.lua",
-      "version": "'v2.0.3'"
+      "version": "'v2.0.4'"
     },
     "dial.nvim": {
       "rev": "f2634758455cfa52a8acea6f142dcd6271a1bf57",
