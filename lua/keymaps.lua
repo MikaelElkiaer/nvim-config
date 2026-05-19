@@ -45,3 +45,66 @@ vim.keymap.set("n", "<leader>S", ":wa<cr>", { desc = "Save all files" })
 vim.keymap.set("n", "<leader>U", "<cmd>packadd nvim.undotree<cr><cmd>Undotree<cr>", { desc = "Undo tree" })
 
 vim.keymap.set("n", "grd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
+
+-- Global table to store the state for the dot-repeat operator
+_G.conflict_resolver_state = { side = nil }
+
+-- The core resolution execution
+local function run_resolution()
+  local side = _G.conflict_resolver_state.side
+  if not side then
+    return
+  end
+
+  local bufnr = vim.api.nvim_get_current_buf()
+  local cursor_row = vim.api.nvim_win_get_cursor(0)[1]
+
+  -- 'bWnc' = Backwards, Without moving cursor, return line Number, accept match at Cursor
+  -- 'Wnc'  = Forwards, Without moving cursor, return line Number, accept match at Cursor
+  local start_line = vim.fn.search("^<<<<<<<", "bWnc")
+  local middle_line = vim.fn.search("^=======", "bWnc")
+  local end_line = vim.fn.search("^>>>>>>>", "Wnc")
+
+  -- If the middle marker is behind the start marker, scan forward instead (with 'c' flag)
+  if middle_line < start_line then
+    middle_line = vim.fn.search("^=======", "Wnc")
+  end
+
+  -- Validate that the cursor is trapped inside this specific conflict block boundaries
+  if start_line == 0 or end_line == 0 or middle_line == 0 or cursor_row < start_line or cursor_row > end_line then
+    print("Cursor is not inside a valid conflict block.")
+    return
+  end
+
+  -- Extract and replace lines atomically
+  if side == "ours" then
+    local lines_to_keep = vim.api.nvim_buf_get_lines(bufnr, start_line, middle_line - 1, false)
+    vim.api.nvim_buf_set_lines(bufnr, start_line - 1, end_line, false, lines_to_keep)
+    print("Resolved: Kept Ours")
+  elseif side == "theirs" then
+    local lines_to_keep = vim.api.nvim_buf_get_lines(bufnr, middle_line, end_line - 1, false)
+    vim.api.nvim_buf_set_lines(bufnr, start_line - 1, end_line, false, lines_to_keep)
+    print("Resolved: Kept Theirs")
+  end
+end
+
+-- Wrapper function that registers itself to Neovim's operatorfunc
+local function setup_repeatable_resolve(side)
+  _G.conflict_resolver_state.side = side
+
+  _G.ConflictResolveOperator = function()
+    run_resolution()
+  end
+
+  vim.o.operatorfunc = "v:lua.ConflictResolveOperator"
+  return "g@l"
+end
+
+-- Keymaps
+vim.keymap.set("n", "<leader>gco", function()
+  return setup_repeatable_resolve("ours")
+end, { expr = true, desc = "Conflict: Keep Ours (Repeatable)" })
+
+vim.keymap.set("n", "<leader>gct", function()
+  return setup_repeatable_resolve("theirs")
+end, { expr = true, desc = "Conflict: Keep Theirs (Repeatable)" })
