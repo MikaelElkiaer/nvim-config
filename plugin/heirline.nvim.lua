@@ -23,7 +23,7 @@ local function get_opts()
     orange = utils.get_highlight("Special").fg,
     purple = utils.get_highlight("Constant").fg,
     cyan = utils.get_highlight("Structure").fg,
-    yellow = utils.get_highlight("Search").fg,
+    yellow = utils.get_highlight("DiagnosticWarn").fg,
   }
 
   local align = { provider = "%=" }
@@ -111,14 +111,6 @@ local function get_opts()
       return "%" .. self.maxWidth .. "("
     end,
     update = { "VimResized" },
-  }
-
-  local configUpdated = {
-    condition = function()
-      return vim.g.config_updated
-    end,
-    provider = " 󰚰 Config Updated - Restart Neovim ",
-    hl = { fg = "red" },
   }
 
   local dap_status = {
@@ -265,7 +257,7 @@ local function get_opts()
       return self.has_changes
     end,
 
-    { provider = "  󰊢", hl = { fg = "light" } },
+    { provider = " 󰊢", hl = { fg = "light" } },
     {
       provider = function(self)
         return self.is_untracked and " ?"
@@ -407,6 +399,34 @@ local function get_opts()
     end,
   })
 
+  local updates = {
+    condition = function()
+      return vim.g.config_updated or vim.g.git_updates_available or vim.g.lockfile_unapplied
+    end,
+    { provider = " 󰚰" },
+    {
+      condition = function()
+        return vim.g.config_updated
+      end,
+      provider = " config",
+      hl = { fg = "red" },
+    },
+    {
+      condition = function()
+        return vim.g.git_updates_available
+      end,
+      provider = " remote",
+      hl = { fg = "orange" },
+    },
+    {
+      condition = function()
+        return vim.g.lockfile_unapplied
+      end,
+      provider = " plugins",
+      hl = { fg = "yellow" },
+    },
+  }
+
   local left = {
     columnStartLeft,
     mode,
@@ -414,8 +434,8 @@ local function get_opts()
     fileName,
     ruler,
     fileFlags,
+    updates,
     recording,
-    configUpdated,
     columnEnd,
   }
 
