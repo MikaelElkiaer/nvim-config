@@ -96,7 +96,7 @@
       "version": "'main'"
     },
     "nvim-dap": {
-      "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
+      "rev": "531771530d4f82ad2d21e436e3cc052d68d7aebb",
       "src": "https://github.com/mfussenegger/nvim-dap",
       "version": "'master'"
     },
