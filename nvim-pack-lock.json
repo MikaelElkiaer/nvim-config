@@ -85,14 +85,39 @@
       "src": "https://github.com/nvim-mini/mini.ai",
       "version": "'main'"
     },
+    "mini.bufremove": {
+      "rev": "4cfbb201b2760da79ca6e1a00e9f67cbc99cbb8f",
+      "src": "https://github.com/nvim-mini/mini.bufremove",
+      "version": "'main'"
+    },
+    "mini.clue": {
+      "rev": "0e37cddd6307eb40248e4226be65304e85df1d18",
+      "src": "https://github.com/nvim-mini/mini.clue",
+      "version": "'main'"
+    },
+    "mini.cursorword": {
+      "rev": "a01471856e462144ea53972f22a67e790be68ee6",
+      "src": "https://github.com/nvim-mini/mini.cursorword",
+      "version": "'main'"
+    },
     "mini.diff": {
       "rev": "5af2b6be4a4beb673f3196a414f6fd932bbedd48",
       "src": "https://github.com/nvim-mini/mini.diff",
       "version": "'main'"
     },
+    "mini.fuzzy": {
+      "rev": "2c0e7809e0c51dccb335d01f02d4f6b2b4d6fcdc",
+      "src": "https://github.com/nvim-mini/mini.fuzzy",
+      "version": "'main'"
+    },
     "mini.misc": {
       "rev": "37b585358662a90c360060da6c5e61810524542e",
       "src": "https://github.com/nvim-mini/mini.misc",
+      "version": "'main'"
+    },
+    "mini.surround": {
+      "rev": "c375ea503646fe8393593b5fb8a40406eaa437b2",
+      "src": "https://github.com/nvim-mini/mini.surround",
       "version": "'main'"
     },
     "nvim-dap": {
@@ -119,11 +144,6 @@
       "rev": "f6738ef65dabade340b473d4ff2a1ad3352c10e7",
       "src": "https://github.com/neovim/nvim-lspconfig",
       "version": "'v2.9.0'"
-    },
-    "nvim-surround": {
-      "rev": "2e93e154de9ff326def6480a4358bfc149d5da2c",
-      "src": "https://github.com/kylechui/nvim-surround",
-      "version": "'v4.0.5'"
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
@@ -210,11 +230,6 @@
       "src": "https://github.com/aaronik/treewalker.nvim",
       "version": "'main'"
     },
-    "vim-illuminate": {
-      "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
-      "src": "https://github.com/rrethy/vim-illuminate",
-      "version": "'master'"
-    },
     "vim-wordmotion": {
       "rev": "81d9bd298376ab0dc465c85d55afa4cb8d5f47a1",
       "src": "https://github.com/chaoren/vim-wordmotion",
@@ -224,11 +239,6 @@
       "rev": "33841c6f4aa47297e5629456c42f5cf036257d01",
       "src": "https://github.com/error311/wayfinder.nvim",
       "version": "'v0.2.9'"
-    },
-    "which-key.nvim": {
-      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
-      "src": "https://github.com/folke/which-key.nvim",
-      "version": "'main'"
     }
   }
 }
