@@ -1,0 +1,51 @@
+name: Renovate Commits View
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  commits-view:
+    if: github.actor == 'renovate[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Generate Commits View
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Fetch PR body and extract comparison link info
+          # Looking for: https://redirect.github.com/OWNER/REPO/compare/OLD..NEW
+          LINK=$(gh pr view $PR_NUMBER --json body --jq '.body' | grep -oE 'https://redirect\.github\.com/[^/]+/[^/]+/compare/[^/)]+' | head -n 1)
+
+          if [ -z "$LINK" ]; then
+            echo "No comparison link found."
+            exit 0
+          fi
+
+          OWNER_REPO=$(echo "$LINK" | sed -E 's|https://redirect\.github\.com/([^/]+/[^/]+)/compare/.*|\1|')
+          RANGE=$(echo "$LINK" | sed -E 's|https://redirect\.github\.com/[^/]+/[^/]+/compare/(.*)|\1|')
+          OLD_SHA=$(echo "$RANGE" | sed -E 's/^(.*)\.{2,3}.*$/\1/')
+          NEW_SHA=$(echo "$RANGE" | sed -E 's/^.*\.{2,3}(.*)$/\1/')
+
+          bash .github/scripts/renovate-commits.bash "$OWNER_REPO" "$OLD_SHA" "$NEW_SHA"
+      - name: Post or Update Comment
+        if: hashFiles('pr_comment.md') != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Find existing comment by marker
+          COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/$PR_NUMBER/comments --jq '.[] | select(.body | contains("<!-- renovate-commits-view -->")) | .id' | head -n 1)
+
+          if [ -n "$COMMENT_ID" ]; then
+            echo "Updating existing comment $COMMENT_ID"
+            gh api -X PATCH repos/${{ github.repository }}/issues/comments/$COMMENT_ID -F body=@pr_comment.md
+          else
+            echo "Creating new comment"
+            gh api -X POST repos/${{ github.repository }}/issues/$PR_NUMBER/comments -F body=@pr_comment.md
+          fi
