@@ -53,5 +53,6 @@ miniclue.setup({
       -- Compute window width automatically
       width = "auto",
     },
+    delay = 300,
   },
 })
