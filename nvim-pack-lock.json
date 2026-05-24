@@ -16,7 +16,7 @@
       "version": "'v19.13.0'"
     },
     "conform.nvim": {
-      "rev": "24c70347f6b2128679f47d2eb765156ef34bf9e0",
+      "rev": "40cd2942c8fb51d42329c7a2e4358f4e8160171b",
       "src": "https://github.com/stevearc/conform.nvim",
       "version": "'master'"
     },
