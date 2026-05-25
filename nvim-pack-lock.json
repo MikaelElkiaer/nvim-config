@@ -171,7 +171,7 @@
       "version": "'master'"
     },
     "oil.nvim": {
-      "rev": "dc151f0e9c7cebb66b8123c2d6edd6649ff2227d",
+      "rev": "b91ee5a77a6a9605d9c1aaf4fda74b66082c8297",
       "src": "https://github.com/stevearc/oil.nvim",
       "version": "'master'"
     },
