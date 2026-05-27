@@ -30,27 +30,27 @@ local on_buf_delete = function()
 end
 
 vim.keymap.set("n", "<leader>bd", function(...)
-  require("mini.bufremove").delete(...)
+  require("mini.bufremove").wipeout(...)
   on_buf_delete()
 end, { desc = "Delete Buffer" })
 
 vim.keymap.set("n", "<leader>bD", function(...)
-  require("mini.bufremove").wipeout(...)
+  require("mini.bufremove").wipeout(..., true)
   on_buf_delete()
 end, { desc = "Delete Buffer (Force)" })
 
 vim.keymap.set("n", "<leader>ba", function()
-  vim.cmd("bufdo bdelete")
+  vim.cmd("bufdo bwipeout")
   on_buf_delete()
 end, { desc = "Delete buffers - All" })
 
 vim.keymap.set("n", "<leader>bA", function()
-  vim.cmd("bufdo bwipeout")
+  vim.cmd("bufdo bwipeout!")
   on_buf_delete()
 end, { desc = "Delete buffers - All (Force)" })
 
 vim.keymap.set("n", "<leader>bo", function()
-  vim.cmd(":execute 'bufdo if bufnr() != ' . bufnr('%') . ' | bdelete! | endif'")
+  vim.cmd(":execute 'bufdo if bufnr() != ' . bufnr('%') . ' | bwipeout | endif'")
   on_buf_delete()
 end, { desc = "Delete buffers - Others" })
 
