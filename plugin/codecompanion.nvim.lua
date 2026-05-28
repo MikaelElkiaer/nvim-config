@@ -51,3 +51,13 @@ require("codecompanion").setup({
 vim.keymap.set("n", "<leader>aa", "<cmd>CodeCompanionActions<cr>", { desc = "Action palette" })
 vim.keymap.set("n", "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Chat" })
 vim.keymap.set({ "n", "v" }, "<leader>ai", ":CodeCompanion ", { desc = "Inline" })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "CodeCompanionChatDone",
+  group = vim.api.nvim_create_augroup("CodeCompanionNotify", { clear = true }),
+  callback = function()
+    io.stdout:write("\a")
+    io.stdout:write("\27]9;CodeCompanion chat done\a")
+    io.stdout:flush()
+  end,
+})
