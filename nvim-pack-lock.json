@@ -105,11 +105,6 @@
       "src": "https://github.com/nvim-mini/mini.diff",
       "version": "'main'"
     },
-    "mini.fuzzy": {
-      "rev": "2c0e7809e0c51dccb335d01f02d4f6b2b4d6fcdc",
-      "src": "https://github.com/nvim-mini/mini.fuzzy",
-      "version": "'main'"
-    },
     "mini.misc": {
       "rev": "eb2246ede307fc863a12e9d9b0fa4b7ca9b88188",
       "src": "https://github.com/nvim-mini/mini.misc",
@@ -154,11 +149,6 @@
       "rev": "b311b30818951d01f7b4bf650521b868b3fece16",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context",
       "version": "'master'"
-    },
-    "nvim-treesitter-textobjects": {
-      "rev": "851e865342e5a4cb1ae23d31caf6e991e1c99f1e",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-      "version": "'main'"
     },
     "nvim-web-devicons": {
       "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
