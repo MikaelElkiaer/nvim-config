@@ -10,10 +10,10 @@ delete:
     @just list-deleted | while read -r p; do NVIM= nvim --headless "+lua=vim.pack.del({\"$p\"})" +qa; echo; done
 
 list-out-of-date:
-    @{ echo 'return '; NVIM= nvim --headless "+lua=vim.pack.get()" +qa 2>&1;} | yq -p lua 'map(select(.active) | "\(.spec.name)\t\(.rev)")[]' | while read -r p r; do nr=$(p=$p yq -p json -o yaml '.plugins[strenv(p)].rev' nvim-pack-lock.json); [ $r = $nr ] || echo $p; done
+    @{ echo 'return '; NVIM= nvim --headless "+lua=vim.pack.get()" +qa 2>&1;} | yq -p lua 'map(select(.active) | "\(.spec.name)\t\(.path)\t\(.rev)")[]' | while read -r n p r; do or=$(git -C "$p" rev-parse HEAD); [ $r = $or ] || echo $n; done
 
 list-deleted:
-  @{ echo 'return '; NVIM= nvim --headless "+lua=vim.pack.get()" +qa 2>&1;} | yq -p lua 'map(select(.active != true) | .spec.name)[]'
+    @{ echo 'return '; NVIM= nvim --headless "+lua=vim.pack.get()" +qa 2>&1;} | yq -p lua 'map(select(.active != true) | .spec.name)[]'
 
 # Link to default nvim config location
 init:
