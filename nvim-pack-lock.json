@@ -45,6 +45,11 @@
       "src": "https://github.com/folke/flash.nvim",
       "version": "'main'"
     },
+    "fzf-lua": {
+      "rev": "fea9eedc6894c44d44cbb772a5cd11c93b82d7a1",
+      "src": "https://github.com/ibhagwan/fzf-lua",
+      "version": "'main'"
+    },
     "git-link.nvim": {
       "rev": "0a56c23821fbace9a8ceeec438d04ed73287872f",
       "src": "https://github.com/juacker/git-link.nvim",
@@ -199,11 +204,6 @@
       "rev": "7a461d3d83a6bee199d3f1c0b177f7f3e22fa371",
       "src": "https://github.com/nemanjamalesija/smart-paste.nvim",
       "version": "'main'"
-    },
-    "snacks.nvim": {
-      "rev": "e6fd58c82f2f3fcddd3fe81703d47d6d48fc7b9f",
-      "src": "https://github.com/folke/snacks.nvim",
-      "version": "'v2.31.0'"
     },
     "text-case.nvim": {
       "rev": "e898cfd46fa6cde0e83abb624a16e67d2ffc6457",

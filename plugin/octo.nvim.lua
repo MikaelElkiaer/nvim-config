@@ -11,14 +11,10 @@ vim.pack.add({
     src = "https://github.com/nvim-tree/nvim-web-devicons",
     version = "master",
   },
-  {
-    src = "https://github.com/folke/snacks.nvim",
-    version = "v2.31.0",
-  },
 })
 
 require("octo").setup({
-  picker = "snacks",
+  picker = "default",
 })
 
 vim.keymap.set("n", "<leader>goo", ":Octo ", { desc = "octo cmd" })
