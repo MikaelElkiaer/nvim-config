@@ -66,16 +66,6 @@ local function handle_oil_dir(opts)
 end
 
 -- picker
-vim.keymap.set("n", "<leader>,", function()
-  local fzf = require("fzf-lua")
-  local is_git = vim.fs.find(".git", { upward = true, path = vim.uv.cwd() })[1] ~= nil
-  if is_git then
-    fzf.git_files()
-  else
-    fzf.files()
-  end
-end, { desc = "Smart Find Files" })
-
 vim.keymap.set("n", "<leader>fb", function()
   require("fzf-lua").buffers()
 end, { desc = "Buffers" })
@@ -113,7 +103,3 @@ end, { desc = "Grep visual selection" })
 vim.keymap.set("n", "<leader>fx", function()
   require("fzf-lua").builtin()
 end, { desc = "Find picker" })
-
-vim.keymap.set("n", "<leader>fk", function()
-  require("fzf-lua").keymaps()
-end, { desc = "Find keymaps" })
