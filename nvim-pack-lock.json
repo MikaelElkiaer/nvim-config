@@ -224,11 +224,6 @@
       "rev": "81d9bd298376ab0dc465c85d55afa4cb8d5f47a1",
       "src": "https://github.com/chaoren/vim-wordmotion",
       "version": "'master'"
-    },
-    "wayfinder.nvim": {
-      "rev": "8d7e68151428554c0530032b90659f3c0008f3a9",
-      "src": "https://github.com/error311/wayfinder.nvim",
-      "version": "'v0.3.0'"
     }
   }
 }
