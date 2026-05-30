@@ -65,7 +65,14 @@ local function handle_oil_dir(opts)
   return vim.tbl_deep_extend("force", opts or {}, { cwd = dir })
 end
 
--- picker
+vim.keymap.set("n", "<leader><space>", function()
+  require("fzf-lua").global()
+end, { desc = "Global Search" })
+
+vim.keymap.set("n", "<leader>fl", function()
+  require("fzf-lua").lsp_finder()
+end, { desc = "LSP Finder" })
+
 vim.keymap.set("n", "<leader>fb", function()
   require("fzf-lua").buffers()
 end, { desc = "Buffers" })
