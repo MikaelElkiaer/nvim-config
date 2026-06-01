@@ -51,7 +51,7 @@
       "version": "'main'"
     },
     "git-link.nvim": {
-      "rev": "0a56c23821fbace9a8ceeec438d04ed73287872f",
+      "rev": "0b4b8f4b4dc293ccc3ec861eb9f8a213080f7845",
       "src": "https://github.com/juacker/git-link.nvim",
       "version": "'main'"
     },
