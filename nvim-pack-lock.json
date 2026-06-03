@@ -161,7 +161,7 @@
       "version": "'master'"
     },
     "octo.nvim": {
-      "rev": "b495047f0b9d35de3d8c6b84fad9de296d353b41",
+      "rev": "c86a43da3514dbe916eb96ecac4d776890078786",
       "src": "https://github.com/pwntester/octo.nvim",
       "version": "'master'"
     },
