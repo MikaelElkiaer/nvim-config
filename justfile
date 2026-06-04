@@ -4,7 +4,7 @@ default:
 
 # Apply packages based on current lockfile
 apply:
-    NVIM= nvim --headless "+lua vim.pack.update(nil,{force=true,target='lockfile'})" +qa
+    @just list-outdated | jq -R . | paste -sd, - | { read -r x; NVIM= nvim --headless "+lua vim.pack.update({$x},{force=true,target='lockfile'})" +qa; }
 
 # Delete packages that are no longer active
 delete:
@@ -15,7 +15,7 @@ init:
     ln -sfn $$PWD $$HOME/.config/nvim
 
 # List packages that have been updated but not yet applied
-list-out-of-date:
+list-outdated:
     @{ echo 'return '; NVIM= nvim --headless "+lua=vim.pack.get()" +qa 2>&1;} | yq -p lua 'map(select(.active) | "\(.spec.name)\t\(.path)\t\(.rev)")[]' | while read -r n p r; do or=$(git -C "$p" rev-parse HEAD); [ $r = $or ] || echo $n; done
 
 # List packages that are no longer active and should be deleted
