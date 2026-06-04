@@ -9,7 +9,7 @@ vim.pack.add({
   },
   {
     src = "https://www.github.com/olimorris/codecompanion.nvim",
-    version = "v19.13.0",
+    version = "v19.14.0",
   },
 })
 
