@@ -131,9 +131,9 @@
       "version": "'main'"
     },
     "nvim-dap-view": {
-      "rev": "e44892210cfa98d23bf22b82b345213d742b9bee",
+      "rev": "ba5c838e731003abefb8bc1c403c59aa5b3aa194",
       "src": "https://github.com/igorlfs/nvim-dap-view",
-      "version": "'v1.1.1'"
+      "version": "'v1.2.0'"
     },
     "nvim-lint": {
       "rev": "d48f3a76189d03b2239f6df1b2f7e3fa8353743b",
