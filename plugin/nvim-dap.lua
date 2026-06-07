@@ -5,7 +5,7 @@ vim.pack.add({
   },
   {
     src = "https://github.com/igorlfs/nvim-dap-view",
-    version = "v1.1.1",
+    version = "v1.2.0",
   },
   {
     src = "https://github.com/leoluz/nvim-dap-go",
