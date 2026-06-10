@@ -10,11 +10,6 @@
       "src": "https://github.com/eandrju/cellular-automaton.nvim",
       "version": "'main'"
     },
-    "codecompanion.nvim": {
-      "rev": "ab04cf7955b4f3133983ea402f7f3fc5e7d6154b",
-      "src": "https://www.github.com/olimorris/codecompanion.nvim",
-      "version": "'v19.15.0'"
-    },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim",
@@ -224,6 +219,11 @@
       "rev": "81d9bd298376ab0dc465c85d55afa4cb8d5f47a1",
       "src": "https://github.com/chaoren/vim-wordmotion",
       "version": "'master'"
+    },
+    "wiremux.nvim": {
+      "rev": "9541c5e5456b8fc8fd799d6d3a7843f4bcea3fbd",
+      "src": "https://github.com/MSmaili/wiremux.nvim",
+      "version": "'main'"
     }
   }
 }
