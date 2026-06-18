@@ -136,7 +136,7 @@
       "version": "'v1.2.0'"
     },
     "nvim-lint": {
-      "rev": "99cbc3ca8a76845fca50e496be7212bebf907dd3",
+      "rev": "4b7957daf4b81eb578114bd6fcf20b6f5a2b59e8",
       "src": "https://github.com/mfussenegger/nvim-lint",
       "version": "'master'"
     },
