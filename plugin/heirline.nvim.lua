@@ -407,6 +407,21 @@ local function get_opts()
     end,
   })
 
+  local wiremux = {
+    condition = function()
+      local has_wiremux, _ = pcall(require, "wiremux")
+      return has_wiremux
+    end,
+    provider = function()
+      local info = require("wiremux").statusline.get_info()
+      if info.count == 0 then
+        return ""
+      end
+      local icon = info.last_used.kind == "window" and "󰖯" or "󰆍"
+      return string.format("%s %d", icon, info.count)
+    end,
+  }
+
   local left = {
     columnStartLeft,
     mode,
@@ -455,6 +470,8 @@ local function get_opts()
     fileFormat,
     space,
     lsp,
+    space,
+    wiremux,
     space,
     columnEnd,
   }
