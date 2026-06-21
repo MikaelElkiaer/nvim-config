@@ -111,7 +111,7 @@
       "version": "'main'"
     },
     "mini.surround": {
-      "rev": "d401c3856585473693e5ce9ec4c8e5b608b4c0fe",
+      "rev": "580e4cb98c5900d9fe743865fb5a5b2178b4ab18",
       "src": "https://github.com/nvim-mini/mini.surround",
       "version": "'main'"
     },
