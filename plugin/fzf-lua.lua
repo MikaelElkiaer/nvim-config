@@ -42,6 +42,11 @@ require("fzf-lua").setup({
     hidden = true,
     rg_opts = '-g "!.git" -g "!.jj" --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
   },
+  keymap = {
+    fzf = {
+      ["ctrl-q"] = "select-all+accept",
+    },
+  },
 })
 
 local function handle_oil_dir(opts)
