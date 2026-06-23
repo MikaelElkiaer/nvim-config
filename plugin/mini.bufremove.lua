@@ -39,22 +39,41 @@ vim.keymap.set("n", "<leader>bD", function(...)
   on_buf_delete()
 end, { desc = "Delete Buffer (Force)" })
 
-vim.keymap.set("n", "<leader>ba", function()
-  vim.cmd("bufdo bwipeout")
+local delete_others = function(force)
+  local current_buf = vim.api.nvim_get_current_buf()
+  local bufs = vim.api.nvim_list_bufs()
+  for _, buf in ipairs(bufs) do
+    if buf ~= current_buf and vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted then
+      pcall(require("mini.bufremove").wipeout, buf, force)
+    end
+  end
   on_buf_delete()
+end
+
+local delete_all = function(force)
+  local current_buf = vim.api.nvim_get_current_buf()
+  local bufs = vim.api.nvim_list_bufs()
+  for _, buf in ipairs(bufs) do
+    if buf ~= current_buf and vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted then
+      pcall(require("mini.bufremove").wipeout, buf, force)
+    end
+  end
+  pcall(require("mini.bufremove").wipeout, current_buf, force)
+  on_buf_delete()
+end
+
+vim.keymap.set("n", "<leader>ba", function()
+  delete_all(false)
 end, { desc = "Delete buffers - All" })
 
 vim.keymap.set("n", "<leader>bA", function()
-  vim.cmd("bufdo bwipeout!")
-  on_buf_delete()
+  delete_all(true)
 end, { desc = "Delete buffers - All (Force)" })
 
 vim.keymap.set("n", "<leader>bo", function()
-  vim.cmd(":execute 'bufdo if bufnr() != ' . bufnr('%') . ' | bwipeout | endif'")
-  on_buf_delete()
+  delete_others(false)
 end, { desc = "Delete buffers - Others" })
 
 vim.keymap.set("n", "<leader>bO", function()
-  vim.cmd(":execute 'bufdo if bufnr() != ' . bufnr('%') . ' | bwipeout! | endif'")
-  on_buf_delete()
+  delete_others(true)
 end, { desc = "Delete buffers - Others (Force)" })
