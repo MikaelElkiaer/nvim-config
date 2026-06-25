@@ -117,7 +117,7 @@ local function get_opts()
     condition = function()
       return vim.g.config_updated
     end,
-    provider = " 󰚰 Config Updated - Restart Neovim ",
+    provider = " 󰚰 Config updated",
     hl = { fg = "red" },
   }
 
