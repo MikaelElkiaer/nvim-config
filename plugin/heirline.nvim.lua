@@ -16,14 +16,14 @@ local function get_opts()
   local colors = {
     dark = utils.get_highlight("Search").fg,
     light = utils.get_highlight("Normal").fg,
-    red = utils.get_highlight("Statement").fg,
-    green = utils.get_highlight("String").fg,
-    blue = utils.get_highlight("Identifier").fg,
+    red = utils.get_highlight("DiagnosticSignError").fg,
+    green = utils.get_highlight("DiagnosticSignOk").fg,
+    blue = utils.get_highlight("DiagnosticSignInfo").fg,
     gray = utils.get_highlight("Comment").fg,
-    orange = utils.get_highlight("Special").fg,
-    purple = utils.get_highlight("Constant").fg,
-    cyan = utils.get_highlight("Structure").fg,
-    yellow = utils.get_highlight("Search").fg,
+    orange = utils.get_highlight("SpecialKey").fg,
+    purple = utils.get_highlight("DiagnosticSignHint").fg,
+    cyan = utils.get_highlight("@string").fg,
+    yellow = utils.get_highlight("DiagnosticSignWarn").fg,
   }
 
   local align = { provider = "%=" }
