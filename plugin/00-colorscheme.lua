@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "WayfinderSelectionPath", {
       link = "TabLine",
     })
+    vim.api.nvim_set_hl(0, "DashboardHeader", {
+      link = "BlueSign",
+    })
   end,
 })
 

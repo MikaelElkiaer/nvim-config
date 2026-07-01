@@ -21,12 +21,19 @@ local on_buf_delete = function()
   -- WARN: Delete final buffer before opening oil
   vim.api.nvim_buf_delete(buf_id, {})
 
+  local has_dashboard, dashboard = pcall(require, "dashboard")
+  if has_dashboard then
+    dashboard:instance()
+    return
+  end
+
   local has_oil, oil = pcall(require, "oil")
   if has_oil then
     oil.open()
-  else
-    vim.notify("No oil.nvim found, unable to open file explorer", vim.log.levels.WARN)
+    return
   end
+
+  vim.notify("No dashboard or oil found to open after deleting the last buffer.", vim.log.levels.WARN)
 end
 
 vim.keymap.set("n", "<leader>bd", function(...)
