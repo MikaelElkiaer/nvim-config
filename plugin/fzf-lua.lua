@@ -32,7 +32,7 @@ require("fzf-lua").setup({
   fzf_opts = {
     ["--layout"] = "reverse",
   },
-  ui_select = true,
+  ui_select = {},
   defaults = {
     actions = {
       ["ctrl-o"] = { fn = open_oil },
