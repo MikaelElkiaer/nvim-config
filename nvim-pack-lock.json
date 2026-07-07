@@ -106,7 +106,7 @@
       "version": "'main'"
     },
     "mini.cursorword": {
-      "rev": "331bc17172e41343d39d91a4ab571d510766812e",
+      "rev": "d06a70d2779851b2119459943312a4215039b153",
       "src": "https://github.com/nvim-mini/mini.cursorword",
       "version": "'main'"
     },
