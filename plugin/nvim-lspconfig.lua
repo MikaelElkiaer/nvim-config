@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/neovim/nvim-lspconfig",
-    version = "v2.10.0",
+    version = "v2.11.0",
   },
 })
 
