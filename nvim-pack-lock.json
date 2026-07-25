@@ -151,7 +151,7 @@
       "version": "'v2.11.0'"
     },
     "nvim-treesitter": {
-      "rev": "a03c6283b079df3ec55705d4702d515ab2072267",
+      "rev": "0153df68b44fa97a3e11696ca55cbdd7a6d42398",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
