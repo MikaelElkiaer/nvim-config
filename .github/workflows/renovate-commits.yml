@@ -19,8 +19,8 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           # Fetch PR body and extract comparison link info
-          # Looking for: https://redirect.github.com/OWNER/REPO/compare/OLD..NEW
-          LINK=$(gh pr view $PR_NUMBER --json body --jq '.body' | grep -oE 'https://redirect\.github\.com/[^/]+/[^/]+/compare/[^/)]+' | head -n 1)
+          # Looking for: https://redirect.github.com/OWNER/REPO/compare/SHA_OLD..SHA_NEW
+          LINK=$(gh pr view $PR_NUMBER --json body --jq '.body' | grep -oE 'https://redirect\.github\.com/[^/]+/[^/]+/compare/[0-9a-f]+\.\.[0-9a-f]+' | head -n 1)
 
           if [ -z "$LINK" ]; then
             echo "No comparison link found."
