@@ -206,7 +206,7 @@
       "version": "'main'"
     },
     "smart-paste.nvim": {
-      "rev": "bb46e9a06a728d65f004ad709ff7ee0249717e5e",
+      "rev": "0a6a9b8bc5a1f8500e9a4bedcbb80d510d8ad68c",
       "src": "https://github.com/nemanjamalesija/smart-paste.nvim",
       "version": "'main'"
     },
