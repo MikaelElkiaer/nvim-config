@@ -33,6 +33,7 @@ jobs:
           NEW_SHA=$(echo "$RANGE" | sed -E 's/^.*\.{2,3}(.*)$/\1/')
 
           bash .github/scripts/renovate-commits.bash "$OWNER_REPO" "$OLD_SHA" "$NEW_SHA"
+        shell: bash
       - name: Post or Update Comment
         if: hashFiles('pr_comment.md') != ''
         env:
@@ -49,3 +50,4 @@ jobs:
             echo "Creating new comment"
             gh api -X POST repos/${{ github.repository }}/issues/$PR_NUMBER/comments -F body=@pr_comment.md
           fi
+        shell: bash
