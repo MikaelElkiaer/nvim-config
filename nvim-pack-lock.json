@@ -221,7 +221,7 @@
       "version": "'v1.5.0'"
     },
     "treewalker.nvim": {
-      "rev": "c6c37b912e84d0522fa585ce83da93b0fd53563b",
+      "rev": "976eb9921c2f26a9a4314b5a0f4842d447a49592",
       "src": "https://github.com/aaronik/treewalker.nvim",
       "version": "'main'"
     },
