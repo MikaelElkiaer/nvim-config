@@ -21,9 +21,9 @@
       "version": "'master'"
     },
     "copilot.lua": {
-      "rev": "e5401d5a1729eca3a29ae4b8975de5c695905bf0",
+      "rev": "d0e977db90b9487bd3a572529929edad73aa0ece",
       "src": "https://github.com/zbirenbaum/copilot.lua",
-      "version": "'v3.1.1'"
+      "version": "'v3.1.3'"
     },
     "dashboard-nvim": {
       "rev": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe",
