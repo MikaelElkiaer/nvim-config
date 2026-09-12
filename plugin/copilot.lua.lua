@@ -1,7 +1,7 @@
 vim.pack.add({
   {
     src = "https://github.com/zbirenbaum/copilot.lua",
-    version = "v3.1.6",
+    version = "v3.1.7",
   },
   {
     src = "https://github.com/samiulsami/copilot-eldritch.nvim",
