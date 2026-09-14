@@ -231,7 +231,7 @@
       "version": "'master'"
     },
     "wiremux.nvim": {
-      "rev": "3a6e064f4030eb38604ca5024d02ae430e2c1c6b",
+      "rev": "3cb530f2ddaf7f15afaab84445162a623781d6f4",
       "src": "https://github.com/MSmaili/wiremux.nvim",
       "version": "'main'"
     }
