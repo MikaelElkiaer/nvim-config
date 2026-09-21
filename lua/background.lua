@@ -3,6 +3,66 @@ vim.g.config_updated = false
 vim.schedule(function()
   local function watch_config_dir()
     local config_path = vim.fn.stdpath("config")
+
+    local function is_functional_file(filename)
+      if not filename then
+        return true
+      end
+
+      -- Root files we explicitly track
+      if filename == "init.lua" or filename == "nvim-pack-lock.json" then
+        return true
+      end
+
+      -- Subdirectories we explicitly track
+      local first_part = filename:match("^([^/\\]+)")
+      if first_part == "after" or first_part == "lua" or first_part == "plugin" or first_part == "queries" then
+        return true
+      end
+
+      return false
+    end
+
+    local function compute_config_hash()
+      local files = {}
+
+      local folders = { "after", "lua", "plugin", "queries" }
+      for _, folder in ipairs(folders) do
+        local found = vim.fn.globpath(config_path, folder .. "/**/*", false, true)
+        for _, f in ipairs(found) do
+          table.insert(files, f)
+        end
+      end
+
+      local root_files = { "init.lua", "nvim-pack-lock.json" }
+      for _, file in ipairs(root_files) do
+        local found = vim.fn.globpath(config_path, file, false, true)
+        for _, f in ipairs(found) do
+          table.insert(files, f)
+        end
+      end
+
+      table.sort(files)
+
+      local parts = {}
+      for _, file_path in ipairs(files) do
+        if vim.fn.isdirectory(file_path) == 0 then
+          local f = io.open(file_path, "r")
+          if f then
+            local content = f:read("*all")
+            f:close()
+            local file_hash = vim.fn.sha256(content)
+            table.insert(parts, file_path .. ":" .. file_hash)
+          end
+        end
+      end
+
+      local combined = table.concat(parts, "\n")
+      return vim.fn.sha256(combined)
+    end
+
+    local initial_hash = compute_config_hash()
+
     local fswatch = vim.uv.new_fs_event()
     if not fswatch then
       vim.notify(
@@ -20,38 +80,27 @@ vim.schedule(function()
     end
 
     vim.uv.fs_event_start(fswatch, config_path, { recursive = true }, function(err, filename, _)
-      -- 1. If we already notified, immediately drop all future events
-      if err or not filename or vim.g.config_updated then
+      if err then
         return
       end
 
-      if filename:match("^%.git[/\\]") or filename == ".git" then
+      if not is_functional_file(filename) then
         return
       end
 
-      timer:start(200, 0, function()
-        -- Double-check in case the timer was already queued
-        if vim.g.config_updated then
-          return
-        end
-
-        vim.system({ "git", "check-ignore", "-q", filename }, { cwd = config_path }, function(obj)
-          -- 2. If ignored, or if another async check beat us to the punch, abort
-          if obj.code == 0 or vim.g.config_updated then
-            return
+      timer:stop()
+      timer:start(
+        200,
+        0,
+        vim.schedule_wrap(function()
+          local current_hash = compute_config_hash()
+          local changed = (current_hash ~= initial_hash)
+          if vim.g.config_updated ~= changed then
+            vim.g.config_updated = changed
+            vim.cmd("redrawstatus")
           end
-
-          -- 3. Lock it down immediately so no other events can trigger
-          vim.g.config_updated = true
-
-          vim.schedule(function()
-            -- 4. Turn off the filesystem watcher entirely to save resources
-            if not fswatch:is_closing() then
-              fswatch:stop()
-            end
-          end)
         end)
-      end)
+      )
     end)
   end
 
