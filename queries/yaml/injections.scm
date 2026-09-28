@@ -101,10 +101,32 @@
             (#offset! @injection.content 0 1 0 0)))))
   ])
 
-; Inject language `promql` in any `expr` block
-; TODO: Limit by ensuring parent sequence `rules`
-((block_mapping_pair
-    key: (flow_node) @key_name
-    value: (block_node (block_scalar) @injection.content))
-  (#match? @key_name "^expr$")
-  (#set! injection.language "promql"))
+; Inject language `promql` in Prometheus `groups` -> `rules` -> `expr`
+(block_mapping_pair
+  key: (flow_node) @_groups
+  (#eq? @_groups "groups")
+  value: (block_node
+    (block_sequence
+      (block_sequence_item
+        (block_node
+          (block_mapping
+            (block_mapping_pair
+              key: (flow_node) @_rules
+              (#eq? @_rules "rules")
+              value: (block_node
+                (block_sequence
+                  (block_sequence_item
+                    (block_node
+                      (block_mapping
+                        (block_mapping_pair
+                          key: (flow_node) @_expr
+                          (#eq? @_expr "expr")
+                          value: [
+                            (flow_node
+                              (plain_scalar
+                                (string_scalar) @injection.content)
+                              (#set! injection.language "promql"))
+                            (block_node
+                              (block_scalar) @injection.content
+                              (#set! injection.language "promql"))
+                          ])))))))))))))
