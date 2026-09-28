@@ -15,17 +15,11 @@
 (block_mapping_pair
   key: (flow_node) @injection.language
   ; Extract language string
-  ; TODO: Handle more than 1 dot
-  ; - figure out why `[^.]` cannot be replaced by `.`
-  (#gsub! @injection.language "^[^.]*\.([^.]+)$" "%1")
-  ; Skip if no match
-  (#not-eq? @injection.language "")
+  (#lua-match? @injection.language "%.[%w_]+['\"]?$")
+  (#gsub! @injection.language "^.*%.([%w_]+)['\"]?$" "%1")
   value: [
     (block_node
-      (block_scalar) @injection.content
-      ; TODO: Figure out why offset only works for |- and >-
-      ; - and no longer seems to be needed at all
-      (#offset! @injection.content 0 0 0 0))
+      (block_scalar) @injection.content)
     (flow_node
       (plain_scalar
         (string_scalar) @injection.content))
