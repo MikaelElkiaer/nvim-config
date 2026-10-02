@@ -234,6 +234,11 @@
       "rev": "3cb530f2ddaf7f15afaab84445162a623781d6f4",
       "src": "https://github.com/MSmaili/wiremux.nvim",
       "version": "'main'"
+    },
+    "yamlls-settings.nvim": {
+      "rev": "09445e74b014715c26092867871dc193688b7de0",
+      "src": "https://github.com/MikaelElkiaer/yamlls-settings.nvim",
+      "version": "'main'"
     }
   }
 }
