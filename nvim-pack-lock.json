@@ -91,7 +91,7 @@
       "version": "'master'"
     },
     "mini.ai": {
-      "rev": "6c39ae7b11abe479fbe1bc81bf00ac6bca7afa07",
+      "rev": "c2c4278beb759aa24b9506f56a67186a6cc2209c",
       "src": "https://github.com/nvim-mini/mini.ai",
       "version": "'main'"
     },
