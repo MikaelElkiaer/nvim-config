@@ -156,7 +156,7 @@
       "version": "'main'"
     },
     "nvim-treesitter-context": {
-      "rev": "cee25e6f83935cfd0db2ec6e54ac0cdcf6fbeea5",
+      "rev": "8decd73460d26ef0a0befb745d022dd1fc2c38b8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context",
       "version": "'master'"
     },
