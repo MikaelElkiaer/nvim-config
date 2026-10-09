@@ -37,10 +37,10 @@
             (#offset! @injection.content 0 1 0 0)))))
   ])
 
-; Inject language `helm` for `$tplYaml` blocks
+; Inject language `helm` for `$tplYaml` and `$tplYamlSpread` blocks
 (block_mapping_pair
   key: (flow_node) @_key
-  (#eq? @_key "$tplYaml")
+  (#any-of? @_key "$tplYaml" "$tplYamlSpread")
   value: [
     (flow_node
       (plain_scalar
