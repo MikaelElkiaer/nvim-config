@@ -201,7 +201,7 @@
       "version": "'main'"
     },
     "scope.nvim": {
-      "rev": "4d5e2f42067b5865458146a517cb3e63201bc45f",
+      "rev": "d9ff1926b54c41ae2acf0bdb68119df8c6c4d676",
       "src": "https://github.com/tiagovla/scope.nvim",
       "version": "'main'"
     },
