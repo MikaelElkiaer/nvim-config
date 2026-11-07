@@ -46,7 +46,7 @@
       "version": "'main'"
     },
     "fzf-lua": {
-      "rev": "11357ee24a9f092b1db503237eb57e2a11e48434",
+      "rev": "6ab6a29d56888dcf66edfeb082ad4a46e7f075bb",
       "src": "https://github.com/ibhagwan/fzf-lua",
       "version": "'main'"
     },
