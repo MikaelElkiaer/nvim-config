@@ -10,6 +10,7 @@ require("wiremux").setup({
   targets = {
     definitions = {
       -- AI assistants
+      claude = { cmd = "claude", kind = { "pane", "window" }, shell = false },
       copilot = { cmd = "copilot", kind = { "pane", "window" }, shell = false },
       gemini = { cmd = "gemini", kind = { "pane", "window" }, shell = false },
       -- Interactive shell
