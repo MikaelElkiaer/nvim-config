@@ -226,7 +226,7 @@
       "version": "'main'"
     },
     "vim-wordmotion": {
-      "rev": "81d9bd298376ab0dc465c85d55afa4cb8d5f47a1",
+      "rev": "8e7f88d724f333b695d945139b3327d82d5d76be",
       "src": "https://github.com/chaoren/vim-wordmotion",
       "version": "'master'"
     },
