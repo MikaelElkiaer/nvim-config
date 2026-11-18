@@ -21,3 +21,8 @@ end, { desc = "Todo prev" })
 vim.keymap.set("n", "[T", function()
   require("todo-comments").jump_prev()
 end, { desc = "Todo prev - all" })
+
+local _, has_fzf = pcall(require, "fzf-lua")
+if has_fzf then
+  vim.keymap.set("n", "<leader>ft", "<cmd>TodoFzfLua<cr>", { desc = "Todo Fzf" })
+end
