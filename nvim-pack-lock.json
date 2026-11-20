@@ -96,7 +96,7 @@
       "version": "'main'"
     },
     "mini.bufremove": {
-      "rev": "a683172dc7d3b45c4988af12206a071f6afbc54a",
+      "rev": "8e9a7b793646c3a4dd7a9b6f70d5195a98d6e8ef",
       "src": "https://github.com/nvim-mini/mini.bufremove",
       "version": "'main'"
     },
