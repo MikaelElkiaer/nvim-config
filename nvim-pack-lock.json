@@ -111,7 +111,7 @@
       "version": "'main'"
     },
     "mini.diff": {
-      "rev": "91d6ce4b7f400439fe761f01a58280f2c0f99c01",
+      "rev": "92385df93f81a0934e50c03615865041bc074b28",
       "src": "https://github.com/nvim-mini/mini.diff",
       "version": "'main'"
     },
