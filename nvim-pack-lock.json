@@ -165,11 +165,6 @@
       "src": "https://github.com/nvim-tree/nvim-web-devicons",
       "version": "'master'"
     },
-    "octo.nvim": {
-      "rev": "4b229445735c394ad9659ab28dc9285a26782356",
-      "src": "https://github.com/pwntester/octo.nvim",
-      "version": "'master'"
-    },
     "oil.nvim": {
       "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
       "src": "https://github.com/stevearc/oil.nvim",
@@ -184,11 +179,6 @@
       "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
       "src": "https://github.com/folke/persistence.nvim",
       "version": "'main'"
-    },
-    "plenary.nvim": {
-      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
-      "src": "https://www.github.com/nvim-lua/plenary.nvim",
-      "version": "'master'"
     },
     "quicker.nvim": {
       "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
